@@ -1,0 +1,341 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Services\\Auth.Application.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj",
+        "projectName": "BuildingBlocks",
+        "projectPath": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj",
+        "packagesPath": "C:\\Users\\Hong Phuc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\BuildingBlocks\\BuildingBlocks\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Hong Phuc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.11.0, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.0, )"
+            },
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[11.11.0, )"
+            },
+            "Mapster": {
+              "target": "Package",
+              "version": "[7.4.0, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.4.1, )"
+            },
+            "Microsoft.FeatureManagement.AspNetCore": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Data\\Auth.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Data\\Auth.Data.csproj",
+        "projectName": "Auth.Data",
+        "projectPath": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Data\\Auth.Data.csproj",
+        "packagesPath": "C:\\Users\\Hong Phuc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Hong Phuc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "ServiceStack.Interfaces": {
+              "target": "Package",
+              "version": "[8.5.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Repositories\\Auth.Repositories.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Repositories\\Auth.Repositories.csproj",
+        "projectName": "Auth.Repositories",
+        "projectPath": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Repositories\\Auth.Repositories.csproj",
+        "packagesPath": "C:\\Users\\Hong Phuc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Repositories\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Hong Phuc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj": {
+                "projectPath": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj"
+              },
+              "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Data\\Auth.Data.csproj": {
+                "projectPath": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Data\\Auth.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Services\\Auth.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Services\\Auth.Application.csproj",
+        "projectName": "Auth.Application",
+        "projectPath": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Services\\Auth.Application.csproj",
+        "packagesPath": "C:\\Users\\Hong Phuc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Hong Phuc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Repositories\\Auth.Repositories.csproj": {
+                "projectPath": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Repositories\\Auth.Repositories.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DB03BED9-6FB7-4FD9-AB0C-6E7DA0DB5F27}|Services\\Auth\\Auth.Services\\Auth.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\auth\\auth.services\\jobtitles\\getjobtitle\\jobtitlemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB03BED9-6FB7-4FD9-AB0C-6E7DA0DB5F27}|Services\\Auth\\Auth.Services\\Auth.Application.csproj|solutionrelative:services\\auth\\auth.services\\jobtitles\\getjobtitle\\jobtitlemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10F579F-507E-4B74-84F6-CFB29F878829}|Services\\Auth\\Auth.API\\Auth.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\auth\\auth.api\\controllers\\jobtitles\\getjobtitle\\getjobtitleendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D10F579F-507E-4B74-84F6-CFB29F878829}|Services\\Auth\\Auth.API\\Auth.API.csproj|solutionrelative:services\\auth\\auth.api\\controllers\\jobtitles\\getjobtitle\\getjobtitleendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10F579F-507E-4B74-84F6-CFB29F878829}|Services\\Auth\\Auth.API\\Auth.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\auth\\auth.api\\controllers\\jobtitles\\deletejobtitles\\deletejobtitleendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D10F579F-507E-4B74-84F6-CFB29F878829}|Services\\Auth\\Auth.API\\Auth.API.csproj|solutionrelative:services\\auth\\auth.api\\controllers\\jobtitles\\deletejobtitles\\deletejobtitleendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB03BED9-6FB7-4FD9-AB0C-6E7DA0DB5F27}|Services\\Auth\\Auth.Services\\Auth.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\auth\\auth.services\\jobtitles\\deletjobtitles\\deletejobtitlehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB03BED9-6FB7-4FD9-AB0C-6E7DA0DB5F27}|Services\\Auth\\Auth.Services\\Auth.Application.csproj|solutionrelative:services\\auth\\auth.services\\jobtitles\\deletjobtitles\\deletejobtitlehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7F4B9EF-9229-48ED-B268-0E320D7E0CB9}|Services\\Auth\\Auth.Data\\Auth.Data.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\auth\\auth.data\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7F4B9EF-9229-48ED-B268-0E320D7E0CB9}|Services\\Auth\\Auth.Data\\Auth.Data.csproj|solutionrelative:services\\auth\\auth.data\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10F579F-507E-4B74-84F6-CFB29F878829}|Services\\Auth\\Auth.API\\Auth.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\auth\\auth.api\\controllers\\jobtitles\\deletejobtitles\\deletejobtitlesvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D10F579F-507E-4B74-84F6-CFB29F878829}|Services\\Auth\\Auth.API\\Auth.API.csproj|solutionrelative:services\\auth\\auth.api\\controllers\\jobtitles\\deletejobtitles\\deletejobtitlesvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB03BED9-6FB7-4FD9-AB0C-6E7DA0DB5F27}|Services\\Auth\\Auth.Services\\Auth.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\auth\\auth.services\\jobtitles\\deletjobtitles\\deletejobtitlerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB03BED9-6FB7-4FD9-AB0C-6E7DA0DB5F27}|Services\\Auth\\Auth.Services\\Auth.Application.csproj|solutionrelative:services\\auth\\auth.services\\jobtitles\\deletjobtitles\\deletejobtitlerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB03BED9-6FB7-4FD9-AB0C-6E7DA0DB5F27}|Services\\Auth\\Auth.Services\\Auth.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\auth\\auth.services\\jobtitles\\deletjobtitles\\deletejobtitleresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB03BED9-6FB7-4FD9-AB0C-6E7DA0DB5F27}|Services\\Auth\\Auth.Services\\Auth.Application.csproj|solutionrelative:services\\auth\\auth.services\\jobtitles\\deletjobtitles\\deletejobtitleresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 670,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "JobTitleModel.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Services\\JobTitles\\GetJobTitle\\JobTitleModel.cs",
+              "RelativeDocumentMoniker": "Services\\Auth\\Auth.Services\\JobTitles\\GetJobTitle\\JobTitleModel.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Services\\JobTitles\\GetJobTitle\\JobTitleModel.cs",
+              "RelativeToolTip": "Services\\Auth\\Auth.Services\\JobTitles\\GetJobTitle\\JobTitleModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T15:21:02.751Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GetJobTitleEndpoint.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\Controllers\\JobTitles\\GetJobTitle\\GetJobTitleEndpoint.cs",
+              "RelativeDocumentMoniker": "Services\\Auth\\Auth.API\\Controllers\\JobTitles\\GetJobTitle\\GetJobTitleEndpoint.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\Controllers\\JobTitles\\GetJobTitle\\GetJobTitleEndpoint.cs",
+              "RelativeToolTip": "Services\\Auth\\Auth.API\\Controllers\\JobTitles\\GetJobTitle\\GetJobTitleEndpoint.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T15:14:19.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DeleteJobTitleEndpoint.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\Controllers\\JobTitles\\DeleteJobTitles\\DeleteJobTitleEndpoint.cs",
+              "RelativeDocumentMoniker": "Services\\Auth\\Auth.API\\Controllers\\JobTitles\\DeleteJobTitles\\DeleteJobTitleEndpoint.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\Controllers\\JobTitles\\DeleteJobTitles\\DeleteJobTitleEndpoint.cs",
+              "RelativeToolTip": "Services\\Auth\\Auth.API\\Controllers\\JobTitles\\DeleteJobTitles\\DeleteJobTitleEndpoint.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T15:14:16.341Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DeleteJobTitlesValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\Controllers\\JobTitles\\DeleteJobTitles\\DeleteJobTitlesValidator.cs",
+              "RelativeDocumentMoniker": "Services\\Auth\\Auth.API\\Controllers\\JobTitles\\DeleteJobTitles\\DeleteJobTitlesValidator.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\Controllers\\JobTitles\\DeleteJobTitles\\DeleteJobTitlesValidator.cs",
+              "RelativeToolTip": "Services\\Auth\\Auth.API\\Controllers\\JobTitles\\DeleteJobTitles\\DeleteJobTitlesValidator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T15:11:35.124Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Message.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Data\\Message.cs",
+              "RelativeDocumentMoniker": "Services\\Auth\\Auth.Data\\Message.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Data\\Message.cs",
+              "RelativeToolTip": "Services\\Auth\\Auth.Data\\Message.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T15:09:44.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DeleteJobTitleHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Services\\JobTitles\\DeletJobTitles\\DeleteJobTitleHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Auth\\Auth.Services\\JobTitles\\DeletJobTitles\\DeleteJobTitleHandler.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Services\\JobTitles\\DeletJobTitles\\DeleteJobTitleHandler.cs",
+              "RelativeToolTip": "Services\\Auth\\Auth.Services\\JobTitles\\DeletJobTitles\\DeleteJobTitleHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T15:05:10.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DeleteJobTitleResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Services\\JobTitles\\DeletJobTitles\\DeleteJobTitleResponse.cs",
+              "RelativeDocumentMoniker": "Services\\Auth\\Auth.Services\\JobTitles\\DeletJobTitles\\DeleteJobTitleResponse.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Services\\JobTitles\\DeletJobTitles\\DeleteJobTitleResponse.cs",
+              "RelativeToolTip": "Services\\Auth\\Auth.Services\\JobTitles\\DeletJobTitles\\DeleteJobTitleResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T15:04:53.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DeleteJobTitleRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Services\\JobTitles\\DeletJobTitles\\DeleteJobTitleRequest.cs",
+              "RelativeDocumentMoniker": "Services\\Auth\\Auth.Services\\JobTitles\\DeletJobTitles\\DeleteJobTitleRequest.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Services\\JobTitles\\DeletJobTitles\\DeleteJobTitleRequest.cs",
+              "RelativeToolTip": "Services\\Auth\\Auth.Services\\JobTitles\\DeletJobTitles\\DeleteJobTitleRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAQAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T15:04:29.601Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

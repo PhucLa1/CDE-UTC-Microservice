@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Event.Core/1.0.0": {
+        "dependencies": {
+          "Event.Shared": "1.0.0"
+        },
+        "runtime": {
+          "Event.Core.dll": {}
+        }
+      },
+      "Event.Shared/1.0.0": {
+        "runtime": {
+          "Event.Shared.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Event.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Event.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

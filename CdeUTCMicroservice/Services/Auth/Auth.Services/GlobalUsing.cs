@@ -1,0 +1,13 @@
+﻿global using Auth.Data.Entities;
+global using Auth.Repositories.Base;
+global using Auth.Repositories.Setting;
+global using BuildingBlocks.CQRS;
+global using BuildingBlocks.Exceptions;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Options;
+global using Microsoft.IdentityModel.Tokens;
+global using System.IdentityModel.Tokens.Jwt;
+global using System.Security.Claims;
+global using System.Text;
+global using BuildingBlocks.ApiResponse;
+global using Auth.Data;
