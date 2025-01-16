@@ -8,7 +8,7 @@ namespace Auth.API.Controllers.Languages.GetLanguages
     {
         [HttpGet]
         [Route("pagination")]
-        public async Task<IActionResult> GetPaginationLanguages([AsParameters] GetPaginationLanguagesRequest getPaginationLanguagesRequest)
+        public async Task<IActionResult> GetPaginationLanguages([FromQuery] GetPaginationLanguagesRequest getPaginationLanguagesRequest)
         {
             return Ok(await mediator.Send(getPaginationLanguagesRequest));
         }
