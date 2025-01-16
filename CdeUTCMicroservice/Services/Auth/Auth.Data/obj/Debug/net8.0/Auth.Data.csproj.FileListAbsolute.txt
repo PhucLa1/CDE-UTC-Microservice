@@ -12,3 +12,4 @@ C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservic
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.Data\obj\Debug\net8.0\Auth.Data.pdb
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.Data\obj\Debug\net8.0\Auth.Data.genruntimeconfig.cache
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.Data\obj\Debug\net8.0\ref\Auth.Data.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.Data\obj\Debug\net8.0\Auth.Data.sourcelink.json

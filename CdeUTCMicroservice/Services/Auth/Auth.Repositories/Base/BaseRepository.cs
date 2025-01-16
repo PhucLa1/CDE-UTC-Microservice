@@ -1,6 +1,7 @@
 ﻿using Auth.Data.Data;
+using BuildingBlocks.Pagination;
 using Microsoft.EntityFrameworkCore;
-
+using System.Linq.Dynamic.Core;
 namespace Auth.Repositories.Base
 {
     public class BaseRepository<T>
@@ -8,7 +9,7 @@ namespace Auth.Repositories.Base
         : IBaseRepository<T>
        where T : class
     {
-        protected readonly DbSet<T> _dbSet = _context.Set<T>(); 
+        protected readonly DbSet<T> _dbSet = _context.Set<T>();
         public async Task AddAsync(T entity, CancellationToken cancellationToken)
         {
 
@@ -31,6 +32,48 @@ namespace Auth.Repositories.Base
         {
             return await _dbSet.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync(cancellationToken);
         }
+
+        public async Task<PaginationResult<T>> QueryAsync(PaginationRequest paginationRequest, CancellationToken cancellationToken)
+        {
+            var query = _dbSet.AsQueryable();
+
+            // Tìm kiếm toàn cục (SearchTerm)
+            if (!string.IsNullOrEmpty(paginationRequest.SearchTerm))
+            {
+                // Tùy chỉnh tìm kiếm theo yêu cầu
+                query = query.Where(e => EF.Functions.Like(EF.Property<string>(e, "name"), $"%{paginationRequest.SearchTerm}%"));
+            }
+
+            // Lọc theo cột
+            if (paginationRequest.Filters != null)
+            {
+                foreach (var filter in paginationRequest.Filters)
+                {
+                    query = query.Where($"{filter.Key}.Contains(@0)", filter.Value);
+                }
+            }
+
+            // Sắp xếp
+            if (!string.IsNullOrEmpty(paginationRequest.SortColumn))
+            {
+                query = paginationRequest.SortDescending
+                    ? query.OrderByDescending(e => EF.Property<object>(e, paginationRequest.SortColumn))
+                    : query.OrderBy(e => EF.Property<object>(e, paginationRequest.SortColumn));
+            }
+
+            // Tổng số bản ghi
+            var totalRecords = await query.CountAsync();
+
+            // Phân trang
+            var data = await query
+            .Skip((paginationRequest.PageIndex - 1) * paginationRequest.PageSize)
+            .Take(paginationRequest.PageSize)
+                .ToListAsync();
+
+            // Tính toán kết quả trả về
+            return new PaginationResult<T>(paginationRequest.PageIndex, paginationRequest.PageSize, totalRecords, data);
+        }
+
 
         public async Task RemoveAsync(int id, CancellationToken cancellationToken)
         {

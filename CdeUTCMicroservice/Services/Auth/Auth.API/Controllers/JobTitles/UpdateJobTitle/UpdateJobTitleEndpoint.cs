@@ -1,5 +1,4 @@
 ﻿using Auth.Application.JobTitles.UpdateJobTitle;
-using BuildingBlocks.Extensions;
 
 namespace Auth.API.Controllers.JobTitles.UpdateJobTitle
 {

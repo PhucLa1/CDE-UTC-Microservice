@@ -188,3 +188,5 @@ C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservic
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.API\bin\Debug\net8.0\Auth.Application.dll
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.API\bin\Debug\net8.0\Auth.Application.pdb
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.API\bin\Debug\net8.0\ServiceStack.Interfaces.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.API\obj\Debug\net8.0\Auth.API.sourcelink.json
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.API\bin\Debug\net8.0\System.Linq.Dynamic.Core.dll

@@ -7,10 +7,17 @@ namespace Auth.API.Controllers.JobTitles.GetJobTitle
     public class GetJobTitleEndpoint(IMediator mediator) : ControllerBase
     {
         [HttpGet]
-        [Route("")]
-        public async Task<IActionResult> GetJobTitle([AsParameters] GetJobTitleRequest getJobTitleRequest)
+        [Route("pagination")]
+        public async Task<IActionResult> GetPaginationJobTitle([FromQuery] GetPaginationJobTitleRequest getPaginationJobTitleRequest)
         {
-            return Ok(await mediator.Send(getJobTitleRequest));
+            return Ok(await mediator.Send(getPaginationJobTitleRequest));
+        }
+
+        [HttpGet]
+        [Route("")]
+        public async Task<IActionResult> GetJobTitle()
+        {
+            return Ok(await mediator.Send(new GetJobTitleRequest()));
         }
     }
 }

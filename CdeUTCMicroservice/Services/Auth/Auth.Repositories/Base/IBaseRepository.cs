@@ -1,5 +1,7 @@
 ﻿
 
+using BuildingBlocks.Pagination;
+
 namespace Auth.Repositories.Base
 {
     public interface IBaseRepository<T>
@@ -10,6 +12,7 @@ namespace Auth.Repositories.Base
         void RemoveRangeByEntitiesAsync(List<T> entities);
         void Update(T entity);
         Task<IEnumerable<T>> GetPaginatedAsync(int pageNumber, int pageSize, CancellationToken cancellationToken);
+        Task<PaginationResult<T>> QueryAsync(PaginationRequest paginationRequest, CancellationToken cancellationToken);
         Task<int> SaveChangeAsync(CancellationToken cancellationToken);
         IQueryable<T> GetAllQueryAble();
         Task AddRangeAsync(IEnumerable<T> entities, CancellationToken cancellationToken);

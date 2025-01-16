@@ -17,3 +17,4 @@ C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservic
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.Services\obj\Debug\net8.0\refint\Auth.Application.dll
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.Services\obj\Debug\net8.0\Auth.Application.pdb
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.Services\obj\Debug\net8.0\ref\Auth.Application.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.Services\obj\Debug\net8.0\Auth.Application.sourcelink.json

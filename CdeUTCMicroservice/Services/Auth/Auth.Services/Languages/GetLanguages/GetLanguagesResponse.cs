@@ -1,9 +1,9 @@
-﻿namespace Auth.Application.JobTitles.GetJobTitle
+﻿namespace Auth.Application.Languages.GetLanguages
 {
-    public class JobTitleModel
+    public class GetLanguagesResponse
     {
-        public Guid Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string UUID { get; set; } = string.Empty;
+        public Guid Id { get; set; }
     }
 }

@@ -1,8 +1,18 @@
-﻿namespace Auth.Application.JobTitles.GetJobTitle
+﻿using BuildingBlocks.Pagination;
+
+namespace Auth.Application.JobTitles.GetJobTitle
 {
-    public class GetJobTitleRequest : IQuery<GetJobTitleResponse>
+    #region Pagination
+    public class GetPaginationJobTitleRequest : PaginationRequest, IQuery<ApiResponse<PaginationResult<GetJobTitleResponse>>>
     {
-        public int? PageIndex { get; set; } = 1;
-        public int? PageSize { get; set; } = 10;
+
     }
+    #endregion
+
+    #region No Pagination
+    public class GetJobTitleRequest : IQuery<ApiResponse<List<GetJobTitleResponse>>>
+    {
+
+    }
+    #endregion
 }
