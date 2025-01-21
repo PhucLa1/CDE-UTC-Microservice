@@ -8,9 +8,8 @@ namespace Event.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<ActivityType> builder)
         {
-            builder.Property(x => x.Name).HasMaxLength(25);
-            builder.Property(x => x.TimeSend).HasMaxLength(50).IsRequired();
-            builder.Property(x => x.Template).HasMaxLength(25).IsRequired();
+            builder.Property(x => x.Name).HasMaxLength(50);
+            builder.Property(x => x.Template).HasMaxLength(100).IsRequired();
         }
     }
 }

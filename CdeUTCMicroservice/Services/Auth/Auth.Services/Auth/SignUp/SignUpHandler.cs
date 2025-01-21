@@ -1,10 +1,13 @@
-﻿using FluentValidation;
+﻿
+using BuildingBlocks.Messaging.Events;
+using FluentValidation;
 using Mapster;
+using MassTransit;
 
 namespace Auth.Application.Auth.SignUp
 {
     internal class SignUpHandler
-        (IBaseRepository<User> userRepository)
+        (IBaseRepository<User> userRepository, IPublishEndpoint publishEndpoint)
         : ICommandHandler<SignUpRequest, SignUpResponse>
     {
         public async Task<SignUpResponse> Handle(SignUpRequest request, CancellationToken cancellationToken)
@@ -22,6 +25,10 @@ namespace Auth.Application.Auth.SignUp
 
             await userRepository.AddAsync(user, cancellationToken);
             await userRepository.SaveChangeAsync(cancellationToken);
+
+            //Gửi message đến event service
+            var signUpEvent = user.Adapt<SignUpSuccessfullyEvent>();
+            await publishEndpoint.Publish(signUpEvent, cancellationToken);
 
             return new SignUpResponse() { Data = true, Message = Message.SIGNUP_SUCCESSFULLY };
         }

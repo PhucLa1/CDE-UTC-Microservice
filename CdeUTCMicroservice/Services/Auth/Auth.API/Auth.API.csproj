@@ -20,8 +20,4 @@
     <ProjectReference Include="..\Auth.Services\Auth.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Swagger\Examples\" />
-  </ItemGroup>
-
 </Project>

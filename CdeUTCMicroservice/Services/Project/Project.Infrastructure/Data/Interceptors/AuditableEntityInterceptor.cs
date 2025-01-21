@@ -39,6 +39,8 @@ namespace Project.Infrastructure.Data.Interceptors
             }
 
         }
+        #region Get Token in middleware
+        /*
         public Guid GetCurrentUserId()
         {
             if (_httpContextAccessor == null || _httpContextAccessor.HttpContext == null)
@@ -61,6 +63,26 @@ namespace Project.Infrastructure.Data.Interceptors
 
             return Guid.Empty; // Trả về Guid mặc định nếu chuyển đổi thất bại
         }
+        */
+        #endregion
+
+        #region Get token from gateways
+
+        public Guid GetCurrentUserId()
+        {
+            var context = _httpContextAccessor.HttpContext;
+            var userIdObj = context.Request.Headers["X-UserId"].FirstOrDefault();
+            if (userIdObj is null)
+                throw new Exception("Không có request header gửi từ yarp gateway");
+            if (Guid.TryParse(userIdObj.ToString(), out var userId))
+            {
+                return userId; // Trả về Guid nếu chuyển đổi thành công
+            }
+
+            return Guid.Empty; // Trả về Guid mặc định nếu chuyển đổi thất bại
+        }
+
+        #endregion
 
     }
     public static class Extensions

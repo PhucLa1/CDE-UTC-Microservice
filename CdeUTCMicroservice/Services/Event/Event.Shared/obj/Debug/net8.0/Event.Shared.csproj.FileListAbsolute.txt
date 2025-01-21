@@ -9,3 +9,5 @@ C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservic
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Event\Event.Shared\obj\Debug\net8.0\refint\Event.Shared.dll
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Event\Event.Shared\obj\Debug\net8.0\Event.Shared.pdb
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Event\Event.Shared\obj\Debug\net8.0\ref\Event.Shared.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Event\Event.Shared\obj\Debug\net8.0\Event.Shared.csproj.AssemblyReference.cache
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Event\Event.Shared\obj\Debug\net8.0\Event.Shared.sourcelink.json

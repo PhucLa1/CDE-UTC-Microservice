@@ -24,6 +24,7 @@ namespace Auth.Application.Auth.Login
                 throw new BadRequestException("Mật khẩu không đúng!");
 
             string encrypterToken = JWTGenerator(user);
+            Console.WriteLine(encrypterToken);
             return new LoginResponse { Data = encrypterToken, Message = Message.LOGIN_SUCCESSFULLY };
 
 

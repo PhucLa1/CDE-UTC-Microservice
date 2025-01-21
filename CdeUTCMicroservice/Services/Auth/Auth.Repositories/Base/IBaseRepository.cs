@@ -1,5 +1,6 @@
 ﻿
 
+using Auth.Data.Data;
 using BuildingBlocks.Pagination;
 
 namespace Auth.Repositories.Base
@@ -7,6 +8,7 @@ namespace Auth.Repositories.Base
     public interface IBaseRepository<T>
        where T : class
     {
+        AuthDBContext GetDbContext { get; }
         Task AddAsync(T entity, CancellationToken cancellationToken);
         Task RemoveAsync(int id, CancellationToken cancellationToken);
         void RemoveRangeByEntitiesAsync(List<T> entities);

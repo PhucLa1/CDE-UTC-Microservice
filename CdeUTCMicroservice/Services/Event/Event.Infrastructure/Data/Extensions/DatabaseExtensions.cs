@@ -1,5 +1,6 @@
 ﻿
 
+using Auth.Data.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,9 +19,8 @@ namespace Event.Infrastructure.Data
         }
         public static async Task SeedAsync(EventDBContext context)
         {
-            //Thêm dữ liệu mẫu vào đây
-        }
-
-        
+            await context.ActivityTypeParents.AddRangeAsync(InitalData.ActivityTypeParents);
+            await context.SaveChangesAsync();
+        }  
     }
 }

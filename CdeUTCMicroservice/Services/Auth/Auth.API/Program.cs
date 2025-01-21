@@ -3,6 +3,7 @@ using Auth.Data.Data;
 using Auth.Data.Data.Extensions;
 using Auth.Repositories;
 using Auth.Services;
+using BuildingBlocks.Behaviors;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,10 +21,6 @@ builder.Services
     .AddApplicationServices(builder.Configuration)
     .AddRepositoryServices(builder.Configuration)
     .AddPresentationServices(builder.Configuration);
-
-
-
-
 
 
 var app = builder.Build();
@@ -45,9 +42,12 @@ using (var scope = app.Services.CreateScope())
     // await context.Database.MigrateAsync();
 }
 
+//app.UseMiddleware<JwtBehavior>();
 app.UseHttpsRedirection();
+/* Không cần nữa vì đã xác thực toàn bộ ở gateways
 app.UseAuthentication();
 app.UseAuthorization();
+*/
 app.MapControllers(); // Bắt buộc phải gọi để ánh xạ các controller
 
 app.Run();

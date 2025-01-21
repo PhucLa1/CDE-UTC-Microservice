@@ -8,7 +8,26 @@
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
         {
-            return Ok(await mediator.Send(loginRequest));
+            var result = await mediator.Send(loginRequest);
+            SetJWT(result.Data);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Đây là hàm lưu cookie vào client
+        /// </summary>
+        /// <param name="encryptedToken"></param>
+        private void SetJWT(string encryptedToken)
+        {
+            HttpContext.Response.Cookies.Append("X-Access-Token", encryptedToken,
+                 new CookieOptions
+                 {
+                     Expires = DateTime.UtcNow.AddDays(15),
+                     HttpOnly = true,
+                     Secure = true,
+                     IsEssential = true,
+                     SameSite = SameSiteMode.None
+                 });
         }
     }
 }

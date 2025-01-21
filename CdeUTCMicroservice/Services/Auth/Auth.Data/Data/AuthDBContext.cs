@@ -1,6 +1,5 @@
 ﻿using Auth.Data.Entities;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace Auth.Data.Data
@@ -46,6 +45,8 @@ namespace Auth.Data.Data
             }
         }
 
+        #region Get Token in middleware
+        /*
         public Guid GetCurrentUserId()
         {
             if (_httpContextAccessor == null || _httpContextAccessor.HttpContext == null)
@@ -68,7 +69,26 @@ namespace Auth.Data.Data
 
             return Guid.Empty; // Trả về Guid mặc định nếu chuyển đổi thất bại
         }
+        */
+        #endregion
 
+        #region Get token from gateways
+        
+        public Guid GetCurrentUserId()
+        {
+            var context = _httpContextAccessor.HttpContext;
+            var userIdObj = context.Request.Headers["X-UserId"].FirstOrDefault();
+            if (userIdObj is null)
+                throw new Exception("Không có request header gửi từ yarp gateway");
+            if (Guid.TryParse(userIdObj.ToString(), out var userId))
+            {
+                return userId; // Trả về Guid nếu chuyển đổi thành công
+            }
+
+            return Guid.Empty; // Trả về Guid mặc định nếu chuyển đổi thất bại
+        }
+        
+        #endregion
         public DbSet<City> Cities { get; set; }
         public DbSet<JobTitle> JobTitles { get; set; }
         public DbSet<Language> Languages { get; set; }

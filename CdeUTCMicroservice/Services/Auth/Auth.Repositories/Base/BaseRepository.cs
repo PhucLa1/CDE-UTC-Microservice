@@ -12,10 +12,9 @@ namespace Auth.Repositories.Base
         protected readonly DbSet<T> _dbSet = _context.Set<T>();
         public async Task AddAsync(T entity, CancellationToken cancellationToken)
         {
-
-
             await _dbSet.AddAsync(entity, cancellationToken);
         }
+        public AuthDBContext GetDbContext => _context;
 
         public async Task AddRangeAsync(IEnumerable<T> entities, CancellationToken cancellationToken)
         {

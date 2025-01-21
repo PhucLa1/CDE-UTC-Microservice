@@ -18,3 +18,5 @@ C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservic
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.Services\obj\Debug\net8.0\Auth.Application.pdb
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.Services\obj\Debug\net8.0\ref\Auth.Application.dll
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.Services\obj\Debug\net8.0\Auth.Application.sourcelink.json
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.Services\bin\Debug\net8.0\BuildingBlocks.Messaging.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.Services\bin\Debug\net8.0\BuildingBlocks.Messaging.pdb

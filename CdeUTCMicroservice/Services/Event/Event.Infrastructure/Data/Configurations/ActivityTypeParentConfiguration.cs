@@ -8,10 +8,9 @@ namespace Event.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<ActivityTypeParent> builder)
         {
-            builder.Property(x => x.Name).HasMaxLength(25);
+            builder.Property(x => x.Name).HasMaxLength(50);
             builder.HasIndex(x => x.Name).IsUnique();
-            builder.Property(x => x.TimeSend).HasMaxLength(50).IsRequired();
-            builder.Property(x => x.IconImageUrl).HasMaxLength(255).IsRequired();
+            builder.Property(x => x.IconImageUrl).HasMaxLength(50).IsRequired();
         }
     }
 }

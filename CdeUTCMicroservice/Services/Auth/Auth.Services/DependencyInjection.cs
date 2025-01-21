@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using BuildingBlocks.Messaging.MassTransit;
 
 namespace Auth.Services
 {
@@ -10,6 +11,8 @@ namespace Auth.Services
         public static IServiceCollection AddApplicationServices
             (this IServiceCollection services, IConfiguration configuration)
         {
+            //Async communication Services
+            services.AddMessageBroker(configuration);
 
             services.AddMediatR(config =>
             {

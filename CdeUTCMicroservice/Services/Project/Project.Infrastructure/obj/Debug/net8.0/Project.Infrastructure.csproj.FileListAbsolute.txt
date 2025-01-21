@@ -21,3 +21,4 @@ C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservic
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.Infrastructure\bin\Debug\net8.0\BuildingBlocks.pdb
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.Infrastructure\bin\Debug\net8.0\BuildingBlocks.Messaging.pdb
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.Infrastructure\obj\Debug\net8.0\Project.Infrastructure.genruntimeconfig.cache
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.Infrastructure\obj\Debug\net8.0\Project.Infrastructure.sourcelink.json

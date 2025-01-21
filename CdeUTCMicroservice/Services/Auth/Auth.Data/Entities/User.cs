@@ -13,8 +13,8 @@ namespace Auth.Data.Entities
         public string MobilePhoneNumber { get; set; } = string.Empty;
         public Guid? LanguageId { get; set; }
         public Guid? CityId { get; set; }
-        public DateDisplay DateDisplay { get; set; }
-        public TimeDisplay TimeDisplay { get; set; }
+        public DateDisplay DateDisplay { get; set; } = DateDisplay.Iso8601;
+        public TimeDisplay TimeDisplay { get; set; } = TimeDisplay.TwelveHour;
         public string Employer { get; set; } = string.Empty;
         public Guid? JobTitleId { get; set; }
         public string ImageUrl { get; set; } = string.Empty;

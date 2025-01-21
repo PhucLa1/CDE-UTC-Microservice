@@ -1,5 +1,6 @@
+﻿using Event.Features;
 using Event.Infrastructure;
-using Microsoft.EntityFrameworkCore;
+using Event.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,8 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<EventDBContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("EventDBContext")));
+builder.Services.AddInfraService(builder.Configuration)
+                .AddFeaturesService(builder.Configuration);
 
 var app = builder.Build();
 
@@ -20,16 +21,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Migration và tự động seed data
 using (var scope = app.Services.CreateScope())
 {
-    var context = scope.ServiceProvider.GetRequiredService<EventDBContext>();
-
-    //await context.Database.MigrateAsync();
-
+    var services = scope.ServiceProvider;
+    SeedData.InitializeAsync(services);
 }
 
 app.UseHttpsRedirection();
 //app.MapControllers();
-app.UseHttpsRedirection();
 app.Run();//
 

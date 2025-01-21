@@ -17,3 +17,6 @@ C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservic
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Event\Event.Infrastructure\obj\Debug\net8.0\ref\Event.Infrastructure.dll
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Event\Event.Infrastructure\bin\Debug\net8.0\Event.Infrastructure.runtimeconfig.json
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Event\Event.Infrastructure\obj\Debug\net8.0\Event.Infrastructure.genruntimeconfig.cache
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Event\Event.Infrastructure\obj\Debug\net8.0\Event.Infrastructure.sourcelink.json
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Event\Event.Infrastructure\bin\Debug\net8.0\BuildingBlocks.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Event\Event.Infrastructure\bin\Debug\net8.0\BuildingBlocks.pdb
