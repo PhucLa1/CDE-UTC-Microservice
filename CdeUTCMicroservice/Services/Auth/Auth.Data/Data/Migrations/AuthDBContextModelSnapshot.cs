@@ -29,6 +29,10 @@ namespace Auth.Data.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
 
+                    b.Property<string>("CodeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
                         .HasColumnName("created_at");
@@ -37,15 +41,16 @@ namespace Auth.Data.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("created_by");
 
+                    b.Property<string>("DivisionType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UUID")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                    b.Property<int>("PhoneCode")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2")
@@ -58,6 +63,55 @@ namespace Auth.Data.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("Auth.Data.Entities.District", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
+
+                    b.Property<Guid>("CityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CodeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("created_at");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("created_by");
+
+                    b.Property<string>("DivisionType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShortCodeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("updated_at");
+
+                    b.Property<Guid>("UpdatedBy")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("updated_by");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.ToTable("Districts");
                 });
 
             modelBuilder.Entity("Auth.Data.Entities.JobTitle", b =>
@@ -101,47 +155,6 @@ namespace Auth.Data.Data.Migrations
                     b.ToTable("JobTitles");
                 });
 
-            modelBuilder.Entity("Auth.Data.Entities.Language", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("id");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("created_at");
-
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("created_by");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("UUID")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("updated_at");
-
-                    b.Property<Guid>("UpdatedBy")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("updated_by");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
-
-                    b.ToTable("Languages");
-                });
-
             modelBuilder.Entity("Auth.Data.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -149,8 +162,15 @@ namespace Auth.Data.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
 
+                    b.Property<bool>("CanChangePassword")
+                        .HasColumnType("bit");
+
                     b.Property<Guid?>("CityId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
@@ -162,6 +182,9 @@ namespace Auth.Data.Data.Migrations
 
                     b.Property<int>("DateDisplay")
                         .HasColumnType("int");
+
+                    b.Property<Guid?>("DistrictId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -184,9 +207,6 @@ namespace Auth.Data.Data.Migrations
                     b.Property<Guid?>("JobTitleId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("LanguageId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -204,6 +224,9 @@ namespace Auth.Data.Data.Migrations
                     b.Property<int>("TimeDisplay")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("TimeExpired")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("TokenExpired")
                         .HasColumnType("datetime2");
 
@@ -215,6 +238,9 @@ namespace Auth.Data.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("updated_by");
 
+                    b.Property<Guid?>("WardId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("WorkPhoneNumber")
                         .IsRequired()
                         .HasMaxLength(12)
@@ -224,29 +250,130 @@ namespace Auth.Data.Data.Migrations
 
                     b.HasIndex("CityId");
 
+                    b.HasIndex("DistrictId");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
                     b.HasIndex("JobTitleId");
 
-                    b.HasIndex("LanguageId");
+                    b.HasIndex("WardId");
 
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Auth.Data.Entities.User", b =>
+            modelBuilder.Entity("Auth.Data.Entities.Ward", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
+
+                    b.Property<Guid?>("CityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CodeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("created_at");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("created_by");
+
+                    b.Property<Guid>("DistrictId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DivisionType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShortCodeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("updated_at");
+
+                    b.Property<Guid>("UpdatedBy")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("updated_by");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("DistrictId");
+
+                    b.ToTable("Wards");
+                });
+
+            modelBuilder.Entity("Auth.Data.Entities.District", b =>
                 {
                     b.HasOne("Auth.Data.Entities.City", null)
-                        .WithMany()
+                        .WithMany("Districts")
                         .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Auth.Data.Entities.User", b =>
+                {
+                    b.HasOne("Auth.Data.Entities.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId");
+
+                    b.HasOne("Auth.Data.Entities.District", "District")
+                        .WithMany()
+                        .HasForeignKey("DistrictId");
 
                     b.HasOne("Auth.Data.Entities.JobTitle", null)
                         .WithMany()
                         .HasForeignKey("JobTitleId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("Auth.Data.Entities.Language", null)
+                    b.HasOne("Auth.Data.Entities.Ward", "Ward")
                         .WithMany()
-                        .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("WardId");
+
+                    b.Navigation("City");
+
+                    b.Navigation("District");
+
+                    b.Navigation("Ward");
+                });
+
+            modelBuilder.Entity("Auth.Data.Entities.Ward", b =>
+                {
+                    b.HasOne("Auth.Data.Entities.City", null)
+                        .WithMany("Wards")
+                        .HasForeignKey("CityId");
+
+                    b.HasOne("Auth.Data.Entities.District", null)
+                        .WithMany("Wards")
+                        .HasForeignKey("DistrictId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Auth.Data.Entities.City", b =>
+                {
+                    b.Navigation("Districts");
+
+                    b.Navigation("Wards");
+                });
+
+            modelBuilder.Entity("Auth.Data.Entities.District", b =>
+                {
+                    b.Navigation("Wards");
                 });
 #pragma warning restore 612, 618
         }

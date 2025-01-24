@@ -2,8 +2,7 @@
 using Auth.Data.Data;
 using Auth.Data.Data.Extensions;
 using Auth.Repositories;
-using Auth.Services;
-using BuildingBlocks.Behaviors;
+using Auth.Application;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -44,6 +43,7 @@ using (var scope = app.Services.CreateScope())
 
 //app.UseMiddleware<JwtBehavior>();
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 /* Không cần nữa vì đã xác thực toàn bộ ở gateways
 app.UseAuthentication();
 app.UseAuthorization();

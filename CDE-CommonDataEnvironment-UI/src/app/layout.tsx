@@ -1,21 +1,25 @@
-"use client";
-import { baselightTheme } from "@/utils/theme/DefaultColors";
-import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import type { Metadata } from "next";
+import "./globals.css";
+import AppLayout from "@/app/system/ui/app-layout";
+import AppContext from "@/app/system/ui/app-context";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const metadata: Metadata = {
+  title: "myHRM",
+  description: "Created by .NET Developers",
+};
+
+
+
+export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
   return (
-    <html lang="en">
-      <body>
-        <ThemeProvider theme={baselightTheme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          {children}
-        </ThemeProvider>
+    <html lang="en" suppressHydrationWarning={true} >
+      <body className={``}>
+        <AppContext>
+          <AppLayout>
+            {children}
+          </AppLayout>
+        </AppContext>
       </body>
     </html>
   );

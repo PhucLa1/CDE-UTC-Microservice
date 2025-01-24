@@ -79,7 +79,7 @@ namespace Auth.Data.Data
             var context = _httpContextAccessor.HttpContext;
             var userIdObj = context.Request.Headers["X-UserId"].FirstOrDefault();
             if (userIdObj is null)
-                throw new Exception("Không có request header gửi từ yarp gateway");
+                return Guid.Empty;
             if (Guid.TryParse(userIdObj.ToString(), out var userId))
             {
                 return userId; // Trả về Guid nếu chuyển đổi thành công
@@ -89,10 +89,11 @@ namespace Auth.Data.Data
         }
         
         #endregion
-        public DbSet<City> Cities { get; set; }
         public DbSet<JobTitle> JobTitles { get; set; }
-        public DbSet<Language> Languages { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Ward> Wards { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<District> Districts { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

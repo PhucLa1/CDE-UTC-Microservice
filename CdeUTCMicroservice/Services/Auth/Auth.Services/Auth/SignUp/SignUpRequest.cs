@@ -7,7 +7,7 @@
         public string Email { get; set; } = default!;
         public string Password { get; set; } = default!;
         public string RePassword { get; set; } = default!;
-        public string MobilePhonenumber { get; set; } = default!;
+        public string MobilePhoneNumber { get; set; } = default!;
 
     }
 }

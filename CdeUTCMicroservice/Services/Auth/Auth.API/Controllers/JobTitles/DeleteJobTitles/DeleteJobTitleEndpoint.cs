@@ -1,8 +1,9 @@
 ﻿using Auth.Application.JobTitles.DeletJobTitles;
+using BuildingBlocks;
 
 namespace Auth.API.Controllers.JobTitles.DeleteJobTitles
 {
-    [Route("api/jobtitle")]
+    [Route(NameRouter.JOB_TITLES_ROUTER)]
     [ApiController]
     public class DeleteJobTitleEndpoint(IMediator mediator) : ControllerBase
     {

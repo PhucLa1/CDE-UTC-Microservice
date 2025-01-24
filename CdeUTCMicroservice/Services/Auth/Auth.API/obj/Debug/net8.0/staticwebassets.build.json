@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "9qlxsiSAFE8kK9DGeqkhaJXnOPkSpCJfaBrYFAZYv1c=",
+  "Hash": "G/DnSbW1V3jg9TqPzobtLP90KOZLGGCo04FciTH5ffs=",
   "Source": "Auth.API",
   "BasePath": "_content/Auth.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "Auth.API\\wwwroot",
+      "Source": "Auth.API",
+      "ContentRoot": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\wwwroot\\",
+      "BasePath": "_content/Auth.API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\wwwroot\\User\\638732101863990525.jpg",
+      "SourceId": "Auth.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\wwwroot\\",
+      "BasePath": "_content/Auth.API",
+      "RelativePath": "User/638732101863990525.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\User\\638732101863990525.jpg"
+    }
+  ]
 }

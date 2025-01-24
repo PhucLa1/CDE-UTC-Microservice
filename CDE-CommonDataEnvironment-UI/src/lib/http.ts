@@ -1,0 +1,88 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import envConfig from "@/config";
+import { Service } from "@/data/enums/service.enum";
+import { assertApiResponse } from "@/lib/utils";
+
+type CustomOptions = RequestInit & {
+  baseUrl?: string | undefined;
+};
+
+const request = async <T>(
+  method: "GET" | "POST" | "PUT" | "DELETE",
+  url: string,
+  options?: CustomOptions | undefined,
+  service?: Service.AuthService | Service.EventService | Service.ProjectService
+) => {
+  let body: FormData | string | undefined = undefined;
+  if (options?.body instanceof FormData) {
+    body = options.body;
+  } else if (options?.body) {
+    body = JSON.stringify(options.body);
+  }
+  const baseHeaders: { [key: string]: string } =
+    body instanceof FormData ? {} : { "Content-Type": "application/json" };
+
+  // Nếu không truyền baseUrl (hoặc baseUrl = undefined) thì lấy từ envConfig.NEXT_PUBLIC_API_ENDPOINT
+  // Nếu truyền baseUrl thì lấy giá trị truyền vào, truyền vào '' thì đồng nghĩa với việc chúng ta gọi API đến Next.js Server
+  let baseUrl = options?.baseUrl ?? envConfig.NEXT_PUBLIC_API_ENDPOINT;
+  if (service != null) {
+    baseUrl = baseUrl + service
+  }
+
+
+  const fullUrl = url.startsWith("/")
+    ? `${baseUrl}${url}`
+    : `${baseUrl}/${url}`;
+
+  const res = await fetch(fullUrl, {
+    ...options,
+    headers: {
+      ...baseHeaders,
+      ...options?.headers,
+    } as any,
+    body,
+    method,
+    credentials: 'include'
+  });
+
+  const payload: Response = await res.json();
+
+  try {
+    const resData = assertApiResponse<T>(payload);
+    // console.log("resData",resData)
+    return resData;
+  } catch (error) {
+    console.error(error)
+    throw error;
+  }
+
+
+};
+
+const http = {
+  get<T>(url: string, options?: Omit<CustomOptions, "body"> | undefined, service?: Service.AuthService | Service.EventService | Service.ProjectService) {
+    return request<T>("GET", url, options, service);
+  },
+  post<T>(
+    url: string,
+    body: any,
+    options?: Omit<CustomOptions, "body"> | undefined,
+    service?: Service.AuthService | Service.EventService | Service.ProjectService
+  ) {
+    return request<T>("POST", url, { ...options, body }, service);
+  },
+  put<T>(
+    url: string,
+    body: any,
+    options?: Omit<CustomOptions, "body"> | undefined,
+    service?: Service.AuthService | Service.EventService | Service.ProjectService
+  ) {
+    return request<T>("PUT", url, { ...options, body }, service);
+  },
+  delete<T>(url: string, options?: Omit<CustomOptions, "body"> | undefined, service?: Service.AuthService | Service.EventService | Service.ProjectService) {
+    return request<T>("DELETE", url, { ...options }, service);
+  },
+};
+
+export default http;

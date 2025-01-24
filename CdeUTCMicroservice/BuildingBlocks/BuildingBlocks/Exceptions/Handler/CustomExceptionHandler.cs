@@ -43,6 +43,12 @@ namespace BuildingBlocks.Exceptions.Handler
                     exception.GetType().Name,
                     httpContext.Response.StatusCode = StatusCodes.Status404NotFound
                 ),
+                ForbiddenException =>
+                (
+                    exception.Message,
+                    exception.GetType().Name,
+                    httpContext.Response.StatusCode = StatusCodes.Status403Forbidden
+                ),
                 _ =>
                 (
                     exception.Message,

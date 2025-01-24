@@ -1,10 +1,10 @@
 ﻿using BuildingBlocks.Behaviors;
+using BuildingBlocks.Messaging.MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using BuildingBlocks.Messaging.MassTransit;
 
-namespace Auth.Services
+namespace Auth.Application
 {
     public static class DependencyInjection
     {
@@ -13,7 +13,7 @@ namespace Auth.Services
         {
             //Async communication Services
             services.AddMessageBroker(configuration);
-
+            services.AddHttpClient();
             services.AddMediatR(config =>
             {
                 config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());

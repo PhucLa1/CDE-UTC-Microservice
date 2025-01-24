@@ -1,8 +1,9 @@
 ﻿using Auth.Application.JobTitles.UpdateJobTitle;
+using BuildingBlocks;
 
 namespace Auth.API.Controllers.JobTitles.UpdateJobTitle
 {
-    [Route("api/jobtitle")]
+    [Route(NameRouter.JOB_TITLES_ROUTER)]
     [ApiController]
     public class UpdateJobTitleEndpoint(IMediator mediator) : ControllerBase
     {

@@ -25,7 +25,7 @@ namespace Auth.API.Controllers.Auth.SignUp
             RuleFor(x => x.LastName)
                 .NotEmpty()
                 .WithMessage("Tên không được để trống");
-            RuleFor(x => x.MobilePhonenumber)
+            RuleFor(x => x.MobilePhoneNumber)
                 .NotEmpty()
                 .WithMessage("Số điện thoại không được để trống")
                 .Matches(@"^\d{10}$")

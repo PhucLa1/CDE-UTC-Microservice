@@ -5,11 +5,13 @@ namespace Auth.Application.Auth.ChangeInfo
 {
     public class ChangeInfoRequest : ICommand<ChangeInfoResponse>
     {
-        public string? Email { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
         public string? MobilePhoneNumber { get; set; }
         public string? WorkPhoneNumber { get; set; }
-        public Guid? LanguageId { get; set; }
         public Guid? CityId { get; set; }
+        public Guid? DistrictId { get; set; }
+        public Guid? WardId { get; set; }
         public DateDisplay? DateDisplay { get; set; }
         public TimeDisplay? TimeDisplay { get; set; }
         public string? Employer { get; set; }

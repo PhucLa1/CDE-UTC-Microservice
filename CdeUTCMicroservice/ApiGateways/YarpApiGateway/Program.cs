@@ -14,6 +14,20 @@ builder.Services.AddReverseProxy()
 #endregion
 
 
+#region CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin",
+        builder => builder
+            .WithOrigins("http://127.0.0.1:5500", "http://localhost:3000") // Điền vào tên miền của dự án giao diện của bạn
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials() // Cho phép sử dụng credentials (cookies, xác thực)
+    );
+});
+#endregion
+
+
 #region Authencation
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddCookie(x =>
@@ -64,7 +78,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
+app.UseCors("AllowOrigin");
 app.UseMiddleware<JwtBehavior>();
 app.UseAuthentication();
 app.UseAuthorization();

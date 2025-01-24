@@ -1,8 +1,9 @@
 ﻿using Auth.Application.JobTitles.GetJobTitle;
+using BuildingBlocks;
 
 namespace Auth.API.Controllers.JobTitles.GetJobTitle
 {
-    [Route("api/jobtitle")]
+    [Route(NameRouter.JOB_TITLES_ROUTER)]
     [ApiController]
     public class GetJobTitleEndpoint(IMediator mediator) : ControllerBase
     {

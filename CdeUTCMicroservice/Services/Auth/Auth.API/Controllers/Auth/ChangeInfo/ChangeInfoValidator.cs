@@ -7,22 +7,24 @@ namespace Auth.API.Controllers.Auth.ChangeInfo
         public ChangeInfoValidator()
         {
 
-            RuleFor(x => x.Email)
-                .NotEmpty().WithMessage("Email không được để trống.")
-                .EmailAddress().WithMessage("Invalid email format.");
+            RuleFor(x => x.FirstName)
+                .NotEmpty().WithMessage("Họ không được để trống.");
+
+            RuleFor(x => x.LastName)
+                .NotEmpty().WithMessage("Tên không được để trống.");
 
             RuleFor(x => x.MobilePhoneNumber)
-                .NotEmpty().WithMessage("Mobile phone number is required.")
-                .Matches(@"^\+?[1-9]\d{1,14}$").WithMessage("Invalid mobile phone number format.");
+                .Matches(@"^\d{10}$").WithMessage("Sai định dạng số điện thoại.");
 
             RuleFor(x => x.WorkPhoneNumber)
-                .Matches(@"^\+?[1-9]\d{1,14}$").WithMessage("Invalid work phone number format.");
+                .Matches(@"^\d{10}$").WithMessage("Sai định dạng số điện thoại.");
 
             RuleFor(x => x.Employer)
                 .MaximumLength(100).WithMessage("Employer name must not exceed 100 characters.");
 
             RuleFor(x => x.Image)
-                .Must(file => IsValidImageFile(file!)).WithMessage("Invalid image file format. Allowed formats: .jpg, .png, .jpeg.");
+                .Must(file => file == null || IsValidImageFile(file)).WithMessage("Invalid image file format. Allowed formats: .jpg, .png, .jpeg.");
+
         }
 
         private bool IsValidImageFile(IFormFile file)

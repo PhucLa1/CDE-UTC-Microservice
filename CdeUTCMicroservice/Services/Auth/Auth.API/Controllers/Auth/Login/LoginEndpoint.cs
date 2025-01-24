@@ -1,11 +1,11 @@
 ﻿namespace Auth.API.Controllers.Auth.Login
 {
-    [Route("api")]
+    [Route(NameRouter.AUTH_ROUTER)]
     [ApiController]
     public class LoginEndpoint(IMediator mediator) : ControllerBase
     {
         [HttpPost]
-        [Route("login")]
+        [Route(NameRouter.LOGIN)]
         public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
         {
             var result = await mediator.Send(loginRequest);

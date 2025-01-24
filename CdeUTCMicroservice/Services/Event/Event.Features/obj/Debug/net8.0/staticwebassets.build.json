@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uopnUJK4N9ODAwKllxjZsxGYhmkUbFQgWRAwuTC4cWQ=",
+  "Hash": "gvMVTNGYcsQgjhAYDCBqNvZlU+OeiW8gzsumA+fTrRs=",
   "Source": "Event.Features",
   "BasePath": "_content/Event.Features",
   "Mode": "Default",
@@ -16,6 +16,25 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Email\\SendEmailVerify.html",
+      "SourceId": "Event.Features",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\",
+      "BasePath": "_content/Event.Features",
+      "RelativePath": "Email/SendEmailVerify.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Email\\SendEmailVerify.html"
+    },
     {
       "Identity": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Email\\SignUpSuccessfully.html",
       "SourceId": "Event.Features",

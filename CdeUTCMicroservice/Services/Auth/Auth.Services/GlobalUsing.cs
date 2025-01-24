@@ -11,3 +11,4 @@ global using System.Security.Claims;
 global using System.Text;
 global using BuildingBlocks.ApiResponse;
 global using BuildingBlocks;
+global using Newtonsoft.Json;

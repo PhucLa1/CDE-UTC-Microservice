@@ -4,6 +4,9 @@
     {
         #region Notice Exception
         public static string NOT_FOUND = "Không thể tìm thấy bản ghi";
+        public static string CODE_NOT_RIGHT = "Mã code nhập vào không đúng";
+        public static string CODE_EXPIRED = "Mã code đã hết hạn dùng";
+        public static string FORBIDDEN_CHANGE_PASSWORD = "Không có quyền thay đổi mật khẩu";
         #endregion
 
         #region Notice Successfully
@@ -13,6 +16,10 @@
         public static string UPDATE_SUCCESSFULLY = "Sửa đổi bản ghi thành công";
         public static string GET_SUCCESSFULLY = "Lấy thành công bản ghi";
         public static string DELETE_SUCCESSFULLY = "Xóa thành công bản ghi";
+        public static string CRAWL_SUCCESSFULLY = "Cào dữ liệu thành công";
+        public static string SEND_CODE_SUCCESSFULLY = "Gửi code qua email thành công";
+        public static string CODE_VERIFY_SUCCESSFULLY = "Xác nhận mã code thành công";
+        public static string CHANGE_PASSWORD_SUCCESSFULLY = "Thay đổi mật khẩu thành công";
         #endregion
 
 

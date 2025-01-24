@@ -27,7 +27,7 @@ namespace Auth.Application.Auth.SignUp
             await userRepository.SaveChangeAsync(cancellationToken);
 
             //Gửi message đến event service
-            var signUpEvent = user.Adapt<SignUpSuccessfullyEvent>();
+            var signUpEvent = user.Adapt<SignUpEvent>();
             await publishEndpoint.Publish(signUpEvent, cancellationToken);
 
             return new SignUpResponse() { Data = true, Message = Message.SIGNUP_SUCCESSFULLY };
