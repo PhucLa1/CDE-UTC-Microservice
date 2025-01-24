@@ -19,4 +19,4 @@ export default envConfig
 
 
 export const privatePaths = ["/sample-list"];
-export const authPaths =  ['/login','/register'];
+export const authPaths = ['/login', '/sign-up', 'change-password'];

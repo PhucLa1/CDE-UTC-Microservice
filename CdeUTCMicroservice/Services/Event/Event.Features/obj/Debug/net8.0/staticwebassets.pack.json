@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Email\\ChangePassword.html",
+      "PackagePath": "staticwebassets\\Email\\ChangePassword.html"
+    },
+    {
       "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Email\\SendEmailVerify.html",
       "PackagePath": "staticwebassets\\Email\\SendEmailVerify.html"
     },

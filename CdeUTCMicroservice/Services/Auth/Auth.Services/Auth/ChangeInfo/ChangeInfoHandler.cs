@@ -15,8 +15,8 @@ namespace Auth.Application.Auth.ChangeInfo
             if (user is null)
                 throw new NotFoundException(Message.NOT_FOUND);
 
-            if (request.FirstName is not null) user.Email = request.FirstName;
-            if (request.LastName is not null) user.Email = request.LastName;
+            if (request.FirstName is not null) user.FirstName = request.FirstName;
+            if (request.LastName is not null) user.LastName = request.LastName;
             if (request.MobilePhoneNumber is not null) user.MobilePhoneNumber = request.MobilePhoneNumber;
             if (request.WorkPhoneNumber is not null) user.WorkPhoneNumber = request.WorkPhoneNumber;
             if (request.CityId is not null) user.CityId = request.CityId.Value;

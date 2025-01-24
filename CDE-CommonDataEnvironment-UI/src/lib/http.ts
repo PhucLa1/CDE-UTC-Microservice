@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import envConfig from "@/config";
 import { Service } from "@/data/enums/service.enum";
-import { assertApiResponse } from "@/lib/utils";
+import { assertApiResponse, handleErrorApi } from "@/lib/utils";
 
 type CustomOptions = RequestInit & {
   baseUrl?: string | undefined;
@@ -45,7 +45,25 @@ const request = async <T>(
     method,
     credentials: 'include'
   });
-
+  if (!res.ok) {
+    let errorMessage = 'Unknown error'; // Giá trị mặc định nếu không nhận được message từ API
+    try {
+      // Cố gắng đọc phản hồi từ API dưới dạng JSON
+      const errorResponse = await res.json();
+      errorMessage = errorResponse.detail || errorMessage;
+    } catch (error) {
+      // Nếu không thể parse JSON, sử dụng statusText làm fallback
+      errorMessage = res.statusText || errorMessage;
+    }
+  
+    // Gọi hàm xử lý lỗi (handleErrorApi) với thông tin lỗi
+    handleErrorApi({
+      error: errorMessage,
+    });
+  
+    // Ném lỗi để dừng luồng xử lý
+    throw new Error(`Request failed with status ${res.status}: ${errorMessage}`);
+  }
   const payload: Response = await res.json();
 
   try {
@@ -53,6 +71,7 @@ const request = async <T>(
     // console.log("resData",resData)
     return resData;
   } catch (error) {
+    console.log()
     console.error(error)
     throw error;
   }

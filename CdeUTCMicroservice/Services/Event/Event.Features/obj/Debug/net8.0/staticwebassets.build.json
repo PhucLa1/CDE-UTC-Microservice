@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gvMVTNGYcsQgjhAYDCBqNvZlU+OeiW8gzsumA+fTrRs=",
+  "Hash": "Mp/y18ce4WXZKUstXCc6zluKgmLWL1AKP2rl/xeQW68=",
   "Source": "Event.Features",
   "BasePath": "_content/Event.Features",
   "Mode": "Default",
@@ -16,6 +16,25 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Email\\ChangePassword.html",
+      "SourceId": "Event.Features",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\",
+      "BasePath": "_content/Event.Features",
+      "RelativePath": "Email/ChangePassword.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Email\\ChangePassword.html"
+    },
     {
       "Identity": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Email\\SendEmailVerify.html",
       "SourceId": "Event.Features",

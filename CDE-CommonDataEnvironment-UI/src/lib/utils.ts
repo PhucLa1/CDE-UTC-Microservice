@@ -12,26 +12,13 @@ export const handleErrorApi = ({ error, duration }: {
   error: any,
   duration?: number
 }) => {
-  if (Array.isArray(error)) {
-    for (let i = 0; i < error.length; i++) {
-      toaster.error({
-        title: 'System Error',
-        message: error[i] ?? "Undefined Error",
-      }, {
-        position: "bottom-right",
-        autoClose: duration ?? 2000
-      })
-    }
-  }
-  else {
-    toaster.error({
-      title: 'Uncontroled Error',
-      message: error ?? "Undefined Error",
-    }, {
-      position: "bottom-right",
-      autoClose: duration ?? 2000
-    })
-  }
+  toaster.error({
+    title: 'Đã có lỗi xảy ra',
+    message: error ?? "Undefined Error",
+  }, {
+    position: "bottom-right",
+    autoClose: duration ?? 2000
+  })
   throw new Error('API fetching error', error);
 }
 export const handleSuccessApi = ({ title, message, duration }: {

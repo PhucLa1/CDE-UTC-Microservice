@@ -21,7 +21,10 @@ namespace Auth.API
 
         public static WebApplication UsePresentationServices(this WebApplication webApplication)
         {
+            webApplication.UseExceptionHandler(options =>
+            {
 
+            });
             return webApplication;
         }
     }

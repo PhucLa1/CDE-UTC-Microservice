@@ -11,7 +11,7 @@ namespace Auth.API.Controllers.Auth.ChangePassword
                 .EmailAddress().WithMessage("Email không hợp lệ.");
 
             RuleFor(x => x.Password)
-                .NotEmpty().WithMessage("Mật khẩu không được để trống.")
+                .NotEmpty().WithMessage("Mật khẩu không được để trống.");
 
             RuleFor(x => x.RePassword)
                 .NotEmpty().WithMessage("Vui lòng nhập lại mật khẩu.")

@@ -61,9 +61,9 @@ export default function page() {
         if (values.districtId != null) formData.append("districtId", values.districtId);
         if (values.wardId != null) formData.append("wardId", values.wardId);
         if (selectedFile != null) formData.append("image", selectedFile);
-        
+
         mutate(formData)
-        
+
     }
 
     const { mutate, isPending } = useMutation({
@@ -71,11 +71,11 @@ export default function page() {
         mutationFn: (value: FormData) => authApiRequest.changeInfoUser(value),
         onSuccess: () => {
             handleSuccessApi
-            ({
-                title: "Sửa đổi thông tin thành công", 
-                message: "Bạn đã sửa đổi thông tin cá nhân thành công"
-            })
-            queryClient.invalidateQueries({queryKey: ["info-user"]})
+                ({
+                    title: "Sửa đổi thông tin thành công",
+                    message: "Bạn đã sửa đổi thông tin cá nhân thành công"
+                })
+            queryClient.invalidateQueries({ queryKey: ["infoUser"] })
         }
     })
 
@@ -227,7 +227,7 @@ export default function page() {
                                     </form>
                                 </CardContent>
                                 <CardFooter className="flex justify-between">
-                                    <Link href={"#"} className="block rounded px-2 py-1 hover:bg-gray-200">
+                                    <Link href={"/change-password"} className="block rounded px-2 py-1 hover:bg-gray-200">
                                         <p className="text-[14px] font-semibold tracking-tight">Đổi mật khẩu</p>
                                     </Link>
                                 </CardFooter>

@@ -1,7 +1,6 @@
 "use client";
-import { HTMLAttributes, useState } from 'react'
+import { HTMLAttributes } from 'react'
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Form,
@@ -14,45 +13,39 @@ import {
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/custom/button'
 import { PasswordInput } from '@/components/custom/password-input'
-import { cn } from '@/lib/utils'
+import { cn, handleSuccessApi } from '@/lib/utils'
 import Link from 'next/link'
+import { Login, loginDefault, loginSchema } from '@/data/schema/Auth/login.schema';
+import { useMutation } from '@tanstack/react-query';
+import authApiRequest from '@/apis/auth.api';
+import { useRouter } from 'next/navigation';
 
 interface UserAuthFormProps extends HTMLAttributes<HTMLDivElement> { }
 
-const formSchema = z.object({
-  email: z
-    .string()
-    .min(1, { message: 'Please enter your email' })
-    .email({ message: 'Invalid email address' }),
-  password: z
-    .string()
-    .min(1, {
-      message: 'Please enter your password',
-    })
-    .min(7, {
-      message: 'Password must be at least 7 characters long',
-    }),
-})
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
-  const [isLoading, setIsLoading] = useState(false)
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: '',
-      password: '',
-    },
+  const router = useRouter();
+  const form = useForm<Login>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: loginDefault,
   })
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    setIsLoading(true)
-    console.log(data)
-
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 3000)
+  const onSubmit = (data: Login) => {
+    mutate(data)
   }
+
+  const { mutate, isPending } = useMutation({
+    mutationKey: ['login'],
+    mutationFn: (data: Login) => authApiRequest.login(data),
+    onSuccess: () => {
+      handleSuccessApi({
+        title: 'Đăng nhập thành công',
+        message: 'Đang chuyển hướng trang sang trang chủ'
+      })
+      router.push('/detail-user')
+    }
+  })
+
 
   return (
     <div className={cn('grid gap-6', className)} {...props}>
@@ -91,7 +84,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                 </FormItem>
               )}
             />
-            <Button className='mt-2' loading={isLoading}>
+            <Button className='mt-2' loading={isPending}>
               Đăng nhập
             </Button>
             <p className='mt-4 text-center text-sm text-muted-foreground'>
