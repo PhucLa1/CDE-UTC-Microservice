@@ -10,16 +10,14 @@ namespace Project.Infrastructure.Data.Configurations
                 BCFTopicTagId => BCFTopicTagId.Value, // Chuyển từ ValueObject -> Giá trị trong table
                 dbId => BCFTopicTagId.Of(dbId));  // Chuyển từ Table SQL -> Giá trị ValueObject
 
-            builder.HasOne<BCFTopic>()
-                .WithMany()
+            builder.HasOne(x => x.BCFTopic)
+                .WithMany(x => x.BCFTopicTags)
                 .HasForeignKey(o => o.BCFTopicId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.NoAction);
-            builder.HasOne<Tag>()
-                .WithMany()
+                .OnDelete(DeleteBehavior.SetNull);
+            builder.HasOne(x => x.Tag)
+                .WithMany(x => x.BCFTopicTags)
                 .HasForeignKey(o => o.TagId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

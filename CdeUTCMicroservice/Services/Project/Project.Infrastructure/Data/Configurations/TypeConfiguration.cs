@@ -11,11 +11,10 @@ namespace Project.Infrastructure.Data.Configurations
                 TypeId => TypeId.Value, // Chuyển từ ValueObject -> Giá trị trong table
                 dbId => TypeId.Of(dbId));  // Chuyển từ Table SQL -> Giá trị ValueObject
 
-            builder.HasOne<Projects>()
-                .WithMany()
+            builder.HasOne(x => x.Project)
+                .WithMany(x => x.Types)
                 .HasForeignKey(o => o.ProjectId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

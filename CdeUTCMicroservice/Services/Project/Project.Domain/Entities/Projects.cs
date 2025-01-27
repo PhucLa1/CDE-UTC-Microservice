@@ -4,46 +4,43 @@ namespace Project.Domain.Entities
 {
     public class Projects : Aggregate<ProjectId>
     {
-        public string Name { get; private set; } = default!;
-        public string ImageUrl { get; private set; } = default!;
-        public DateTime StartDate { get; private set; }
-        public DateTime EndDate { get; private set; }
-        public string Description { get; private set; } = default!;
-        public bool TodoVisibility { get; private set; }
-        public bool InvitationVisibility { get; private set; }
-        public bool EmailNotification { get; private set; }
-        public UnitSystem UnitSystem { get; private set; } = UnitSystem.Metric;
-        public UnitLength UnitLength { get; private set; } = UnitLength.Meters;
-        public UnitLengthPrecision UnitLengthPrecision { get; private set; } = UnitLengthPrecision.Centimeters;
-        public bool IsCheckMeasurement { get; private set; } = true;
-        public UnitArea UnitArea { get; private set; } = UnitArea.SquareMeters;
-        public UnitAreaPrecision UnitAreaPrecision { get; private set; } = UnitAreaPrecision.SquareCentimeters;
-        public UnitWeight UnitWeight { get; private set; } = UnitWeight.Kilograms;
-        public UnitWeightPrecision UnitWeightPrecision { get; private set; } = UnitWeightPrecision.Grams;
-        public UnitVolume UnitVolume { get; private set; } = UnitVolume.Liters;
-        public UnitVolumePrecision UnitVolumePrecision { get; private set; } = UnitVolumePrecision.CubicInches;
-        public UnitAngle UnitAngle { get; private set; } = UnitAngle.Degrees;
-        public UnitAnglePrecision UnitAnglePrecision { get; private set; } = UnitAnglePrecision.Minutes;
-        public string Ownership { get; private set; } = "University Of Transformation Communication"!;
-        public TimeSpan DigestTime { get; private set; } = new TimeSpan(5,0,0);
-        public ActivityType ActivityType { get; private set; } = ActivityType.Instant;
+        public string Name { get; set; } = default!;
+        public string ImageUrl { get; set; } = default!;
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string Description { get; set; } = default!;
+        public bool TodoVisibility { get; set; }
+        public bool InvitationVisibility { get; set; }
+        public bool EmailNotification { get; set; }
+        public UnitSystem UnitSystem { get; set; } = UnitSystem.Metric;
+        public UnitLength UnitLength { get; set; } = UnitLength.Meters;
+        public UnitLengthPrecision UnitLengthPrecision { get; set; } = UnitLengthPrecision.Centimeters;
+        public bool IsCheckMeasurement { get; set; } = true;
+        public UnitArea UnitArea { get; set; } = UnitArea.SquareMeters;
+        public UnitAreaPrecision UnitAreaPrecision { get; set; } = UnitAreaPrecision.SquareCentimeters;
+        public UnitWeight UnitWeight { get; set; } = UnitWeight.Kilograms;
+        public UnitWeightPrecision UnitWeightPrecision { get; set; } = UnitWeightPrecision.Grams;
+        public UnitVolume UnitVolume { get; set; } = UnitVolume.Liters;
+        public UnitVolumePrecision UnitVolumePrecision { get; set; } = UnitVolumePrecision.CubicInches;
+        public UnitAngle UnitAngle { get; set; } = UnitAngle.Degrees;
+        public UnitAnglePrecision UnitAnglePrecision { get; set; } = UnitAnglePrecision.Minutes;
+        public string Ownership { get; set; } = "University Of Transformation Communication"!;
+        public TimeSpan DigestTime { get; set; } = new TimeSpan(5,0,0);
+        public ActivityType ActivityType { get; set; } = ActivityType.Instant;
 
-        public static Projects Create(string name, string imageUrl, DateTime startDate, DateTime endDate, string description, bool todoVisibility, bool invitationVisibility, bool emailNotification)
+        //Relation
+        public ICollection<BCFTopic>? BCFTopics { get; set; }
+        public ICollection<Status>? Statuses { get; set; }
+        public ICollection<Type>? Types { get; set; }
+        public ICollection<Priority>? Priorities { get; set; }
+        public Projects()
         {
-            if (startDate < endDate)
-                throw new ArgumentOutOfRangeException("Start Date cannot max than End Date");
-            var project = new Projects
-            {
-                Name = name,
-                ImageUrl = imageUrl,
-                StartDate = startDate,
-                EndDate = endDate,
-                Description = description,
-                TodoVisibility = todoVisibility,
-                InvitationVisibility = invitationVisibility,
-                EmailNotification = emailNotification
-            };
-            return project;
+            // Initialize Statuses by passing ProjectId
+            Statuses = Status.InitData(Id);
+            Types = Type.InitData(Id);
+            Priorities = Priority.InitData(Id);
+
         }
+
     }
 }

@@ -13,8 +13,7 @@ namespace Project.Infrastructure.Data.Configurations
             builder.HasOne<Group>()
                 .WithMany()
                 .HasForeignKey(o => o.GroupId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

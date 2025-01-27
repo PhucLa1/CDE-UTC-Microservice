@@ -13,12 +13,14 @@ namespace Project.Infrastructure.Data.Configurations
                 dbId => FileId.Of(dbId));  // Chuyển từ Table SQL -> Giá trị ValueObject
 
             builder.Property(x => x.FolderId).HasConversion(
-                FolderId => FolderId.Value, // Chuyển từ ValueObject -> Giá trị trong table
-                dbId => FolderId.Of(dbId));  // Chuyển từ Table SQL -> Giá trị ValueObject
+                FolderId => FolderId != null ? FolderId.Value : (Guid?)null, // Chuyển từ ValueObject -> Giá trị trong table
+                dbId => dbId.HasValue ? FolderId.Of(dbId.Value) : null // Chuyển từ Table SQL -> Giá trị ValueObject
+            );
 
             builder.Property(x => x.ProjectId).HasConversion(
-                ProjectId => ProjectId.Value, // Chuyển từ ValueObject -> Giá trị trong table
-                dbId => ProjectId.Of(dbId));  // Chuyển từ Table SQL -> Giá trị ValueObject
+                ProjectId => ProjectId != null ? ProjectId.Value : (Guid?)null, // Chuyển từ ValueObject -> Giá trị trong table
+                dbId => dbId.HasValue ? ProjectId.Of(dbId.Value) : null // Chuyển từ Table SQL -> Giá trị ValueObject
+            );
             builder.Property(f => f.Size)
                 .HasPrecision(18, 4);
         }

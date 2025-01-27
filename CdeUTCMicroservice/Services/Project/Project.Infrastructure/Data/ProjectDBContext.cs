@@ -1,10 +1,10 @@
-﻿using Project.Application.Data;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace Project.Infrastructure.Data
 {
-    public class ProjectDBContext : DbContext, IProjectDBContext
+    public class ProjectDBContext : DbContext
     {
+
         public ProjectDBContext(DbContextOptions<ProjectDBContext> options)
             : base(options) { }
 

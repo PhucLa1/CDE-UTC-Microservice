@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "0DOXXH60B6Dm11cRyCt7zc4Dr1R9ddxRcSRik5FSOU4=",
+  "Hash": "PYL9TM+/1hYvHhKTMFRUE69gWkbaHFcG5sR/i6dcG4c=",
   "Source": "Project.API",
   "BasePath": "_content/Project.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "Project.API\\wwwroot",
+      "Source": "Project.API",
+      "ContentRoot": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\",
+      "BasePath": "_content/Project.API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Project\\638736155813135980.jpg",
+      "SourceId": "Project.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\",
+      "BasePath": "_content/Project.API",
+      "RelativePath": "Project/638736155813135980.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Project\\638736155813135980.jpg"
+    }
+  ]
 }

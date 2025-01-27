@@ -4,7 +4,7 @@ namespace Project.Domain.ValueObjects.Id
 {
     public class FolderPermissionId
     {
-        public Guid Value { get; private set; }
+        public Guid Value { get; set; }
         private FolderPermissionId(Guid value) => Value = value;
         public static FolderPermissionId Of(Guid value)
         {

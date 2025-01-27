@@ -4,7 +4,7 @@ namespace Project.Domain.ValueObjects
 {
     public class BCFTopicId
     {
-        public Guid Value { get; private set; }
+        public Guid Value { get; set; }
         private BCFTopicId(Guid value) => Value = value;
         public static BCFTopicId Of(Guid value)
         {

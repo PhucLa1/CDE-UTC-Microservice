@@ -6,7 +6,7 @@ namespace Project.Domain.ValueObjects
 {
     public class ViewTodoId
     {
-        public Guid Value { get; private set; }
+        public Guid Value { get; set; }
         private ViewTodoId(Guid value) => Value = value;
         public static ViewTodoId Of(Guid value)
         {

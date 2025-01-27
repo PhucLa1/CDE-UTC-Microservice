@@ -4,7 +4,7 @@ namespace Project.Domain.ValueObjects.Id
 {
     public class FolderCommentId
     {
-        public Guid Value { get; private set; }
+        public Guid Value { get; set; }
         private FolderCommentId(Guid value) => Value = value;
         public static FolderCommentId Of(Guid value)
         {

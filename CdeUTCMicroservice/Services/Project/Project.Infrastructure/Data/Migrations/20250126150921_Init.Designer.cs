@@ -13,8 +13,8 @@ using Project.Infrastructure.Data;
 namespace Project.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ProjectDBContext))]
-    [Migration("20250113142726_InitalCreate")]
-    partial class InitalCreate
+    [Migration("20250126150921_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,7 +31,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("BCFTopicId")
+                    b.Property<Guid?>("BCFTopicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Content")
@@ -84,7 +84,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("ProjectId")
+                    b.Property<Guid?>("ProjectId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Title")
@@ -125,7 +125,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("BCFTopicId")
+                    b.Property<Guid?>("BCFTopicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
@@ -136,7 +136,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("created_by");
 
-                    b.Property<Guid>("TagId")
+                    b.Property<Guid?>("TagId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -179,7 +179,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Property<int>("FileVersion")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("FolderId")
+                    b.Property<Guid?>("FolderId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsCheckIn")
@@ -196,7 +196,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("ProjectId")
+                    b.Property<Guid?>("ProjectId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Size")
@@ -225,7 +225,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("BCFTopicId")
+                    b.Property<Guid?>("BCFTopicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
@@ -236,7 +236,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("created_by");
 
-                    b.Property<Guid>("FileId")
+                    b.Property<Guid?>("FileId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -273,7 +273,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("created_by");
 
-                    b.Property<Guid>("FileId")
+                    b.Property<Guid?>("FileId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -307,7 +307,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("created_by");
 
-                    b.Property<Guid>("FileId")
+                    b.Property<Guid?>("FileId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -341,10 +341,10 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("created_by");
 
-                    b.Property<Guid>("FileId")
+                    b.Property<Guid?>("FileId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("TagId")
+                    b.Property<Guid?>("TagId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -377,10 +377,10 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("created_by");
 
-                    b.Property<Guid>("FileId")
+                    b.Property<Guid?>("FileId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("TodoId")
+                    b.Property<Guid?>("TodoId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -429,7 +429,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Property<Guid>("ParentId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ProjectId")
+                    b.Property<Guid?>("ProjectId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -464,7 +464,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("created_by");
 
-                    b.Property<Guid>("FolderId")
+                    b.Property<Guid?>("FolderId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -498,7 +498,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("created_by");
 
-                    b.Property<Guid>("FolderId")
+                    b.Property<Guid?>("FolderId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsApplyAll")
@@ -535,10 +535,10 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("created_by");
 
-                    b.Property<Guid>("FolderId")
+                    b.Property<Guid?>("FolderId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("TagId")
+                    b.Property<Guid?>("TagId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -579,7 +579,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("ProjectId")
+                    b.Property<Guid?>("ProjectId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -618,7 +618,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("ProjectId")
+                    b.Property<Guid?>("ProjectId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -762,7 +762,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("ProjectId")
+                    b.Property<Guid?>("ProjectId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -801,7 +801,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("ProjectId")
+                    b.Property<Guid?>("ProjectId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -846,7 +846,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("ProjectId")
+                    b.Property<Guid?>("ProjectId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -895,7 +895,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("created_by");
 
-                    b.Property<Guid>("TodoId")
+                    b.Property<Guid?>("TodoId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -926,10 +926,10 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("created_by");
 
-                    b.Property<Guid>("TagId")
+                    b.Property<Guid?>("TagId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("TodoId")
+                    b.Property<Guid?>("TodoId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -970,7 +970,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("ProjectId")
+                    b.Property<Guid?>("ProjectId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -1007,7 +1007,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Property<DateTime>("DateLeft")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("GroupId")
+                    b.Property<Guid?>("GroupId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -1054,7 +1054,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Property<DateTime>("LastAccessed")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("ProjectId")
+                    b.Property<Guid?>("ProjectId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Role")
@@ -1098,7 +1098,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("FileId")
+                    b.Property<Guid?>("FileId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
@@ -1126,7 +1126,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("BCFTopicId")
+                    b.Property<Guid?>("BCFTopicId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
@@ -1145,7 +1145,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("updated_by");
 
-                    b.Property<Guid>("ViewId")
+                    b.Property<Guid?>("ViewId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -1182,7 +1182,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("updated_by");
 
-                    b.Property<Guid>("ViewId")
+                    b.Property<Guid?>("ViewId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -1205,7 +1205,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("created_by");
 
-                    b.Property<Guid>("TagId")
+                    b.Property<Guid?>("TagId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -1216,7 +1216,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("updated_by");
 
-                    b.Property<Guid>("ViewId")
+                    b.Property<Guid?>("ViewId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -1241,7 +1241,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("created_by");
 
-                    b.Property<Guid>("TodoId")
+                    b.Property<Guid?>("TodoId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -1252,7 +1252,7 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("updated_by");
 
-                    b.Property<Guid>("ViewId")
+                    b.Property<Guid?>("ViewId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -1266,35 +1266,39 @@ namespace Project.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Project.Domain.Entities.BCFComment", b =>
                 {
-                    b.HasOne("Project.Domain.Entities.BCFTopic", null)
-                        .WithMany()
+                    b.HasOne("Project.Domain.Entities.BCFTopic", "BCFTopic")
+                        .WithMany("BCFComments")
                         .HasForeignKey("BCFTopicId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("BCFTopic");
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.BCFTopic", b =>
                 {
-                    b.HasOne("Project.Domain.Entities.Projects", null)
-                        .WithMany()
+                    b.HasOne("Project.Domain.Entities.Projects", "Project")
+                        .WithMany("BCFTopics")
                         .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Project");
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.BCFTopicTag", b =>
                 {
-                    b.HasOne("Project.Domain.Entities.BCFTopic", null)
-                        .WithMany()
+                    b.HasOne("Project.Domain.Entities.BCFTopic", "BCFTopic")
+                        .WithMany("BCFTopicTags")
                         .HasForeignKey("BCFTopicId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("Project.Domain.Entities.Tag", null)
-                        .WithMany()
+                    b.HasOne("Project.Domain.Entities.Tag", "Tag")
+                        .WithMany("BCFTopicTags")
                         .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("BCFTopic");
+
+                    b.Navigation("Tag");
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.FileBCFTopic", b =>
@@ -1302,14 +1306,12 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.BCFTopic", null)
                         .WithMany()
                         .HasForeignKey("BCFTopicId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Project.Domain.Entities.File", null)
                         .WithMany()
                         .HasForeignKey("FileId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.FileComment", b =>
@@ -1317,8 +1319,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.File", null)
                         .WithMany()
                         .HasForeignKey("FileId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.FilePermission", b =>
@@ -1326,8 +1327,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.File", null)
                         .WithMany()
                         .HasForeignKey("FileId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.FileTag", b =>
@@ -1335,14 +1335,12 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.File", null)
                         .WithMany()
                         .HasForeignKey("FileId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Project.Domain.Entities.Tag", null)
                         .WithMany()
                         .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.FileTodo", b =>
@@ -1350,14 +1348,12 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.File", null)
                         .WithMany()
                         .HasForeignKey("FileId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Project.Domain.Entities.Todo", null)
                         .WithMany()
                         .HasForeignKey("TodoId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.Folder", b =>
@@ -1365,8 +1361,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.Projects", null)
                         .WithMany()
                         .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.FolderComment", b =>
@@ -1374,8 +1369,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.Folder", null)
                         .WithMany()
                         .HasForeignKey("FolderId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.FolderPermission", b =>
@@ -1383,8 +1377,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.Folder", null)
                         .WithMany()
                         .HasForeignKey("FolderId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.FolderTag", b =>
@@ -1392,14 +1385,12 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.Folder", null)
                         .WithMany()
                         .HasForeignKey("FolderId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Project.Domain.Entities.Tag", null)
                         .WithMany()
                         .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.Group", b =>
@@ -1407,26 +1398,27 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.Projects", null)
                         .WithMany()
                         .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.Priority", b =>
                 {
-                    b.HasOne("Project.Domain.Entities.Projects", null)
-                        .WithMany()
+                    b.HasOne("Project.Domain.Entities.Projects", "Project")
+                        .WithMany("Priorities")
                         .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Project");
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.Status", b =>
                 {
-                    b.HasOne("Project.Domain.Entities.Projects", null)
-                        .WithMany()
+                    b.HasOne("Project.Domain.Entities.Projects", "Project")
+                        .WithMany("Statuses")
                         .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Project");
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.Tag", b =>
@@ -1434,8 +1426,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.Projects", null)
                         .WithMany()
                         .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.Todo", b =>
@@ -1443,8 +1434,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.Projects", null)
                         .WithMany()
                         .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.TodoComment", b =>
@@ -1452,8 +1442,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.Todo", null)
                         .WithMany()
                         .HasForeignKey("TodoId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.TodoTag", b =>
@@ -1461,23 +1450,22 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.Tag", null)
                         .WithMany()
                         .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Project.Domain.Entities.Todo", null)
                         .WithMany()
                         .HasForeignKey("TodoId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.Type", b =>
                 {
-                    b.HasOne("Project.Domain.Entities.Projects", null)
-                        .WithMany()
+                    b.HasOne("Project.Domain.Entities.Projects", "Project")
+                        .WithMany("Types")
                         .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Project");
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.UserGroup", b =>
@@ -1485,8 +1473,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.Group", null)
                         .WithMany()
                         .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.UserProject", b =>
@@ -1494,8 +1481,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.Projects", null)
                         .WithMany()
                         .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.ViewBCFTopic", b =>
@@ -1503,14 +1489,12 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.BCFTopic", null)
                         .WithMany()
                         .HasForeignKey("BCFTopicId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Project.Domain.Entities.View", null)
                         .WithMany()
                         .HasForeignKey("ViewId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.ViewComment", b =>
@@ -1518,8 +1502,7 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.View", null)
                         .WithMany()
                         .HasForeignKey("ViewId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.ViewTag", b =>
@@ -1527,14 +1510,12 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.Tag", null)
                         .WithMany()
                         .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Project.Domain.Entities.View", null)
                         .WithMany()
                         .HasForeignKey("ViewId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.ViewTodo", b =>
@@ -1542,14 +1523,35 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasOne("Project.Domain.Entities.Todo", null)
                         .WithMany()
                         .HasForeignKey("TodoId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Project.Domain.Entities.View", null)
                         .WithMany()
                         .HasForeignKey("ViewId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
+                });
+
+            modelBuilder.Entity("Project.Domain.Entities.BCFTopic", b =>
+                {
+                    b.Navigation("BCFComments");
+
+                    b.Navigation("BCFTopicTags");
+                });
+
+            modelBuilder.Entity("Project.Domain.Entities.Projects", b =>
+                {
+                    b.Navigation("BCFTopics");
+
+                    b.Navigation("Priorities");
+
+                    b.Navigation("Statuses");
+
+                    b.Navigation("Types");
+                });
+
+            modelBuilder.Entity("Project.Domain.Entities.Tag", b =>
+                {
+                    b.Navigation("BCFTopicTags");
                 });
 #pragma warning restore 612, 618
         }

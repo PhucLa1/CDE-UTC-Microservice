@@ -13,8 +13,7 @@ namespace Project.Infrastructure.Data.Configurations
             builder.HasOne<View>()
               .WithMany()
               .HasForeignKey(o => o.ViewId)
-              .IsRequired()
-              .OnDelete(DeleteBehavior.NoAction);
+              .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

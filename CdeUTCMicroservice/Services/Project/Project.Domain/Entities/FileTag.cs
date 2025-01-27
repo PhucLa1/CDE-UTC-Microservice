@@ -4,17 +4,8 @@ namespace Project.Domain.Entities
 {
     public class FileTag : Entity<FileTagId>
     {
-        public FileId FileId { get; private set; } = default!;
-        public TagId TagId { get; private set; } = default!;
+        public FileId? FileId { get; set; } = default!;
+        public TagId? TagId { get; set; } = default!;
 
-        public static FileTag Create(FileId fileId, TagId tagId)
-        {
-            var fileTag = new FileTag
-            {
-                FileId = fileId,
-                TagId = tagId
-            };
-            return fileTag;
-        }
     }
 }

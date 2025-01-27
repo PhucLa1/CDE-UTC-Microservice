@@ -10,11 +10,10 @@ namespace Project.Infrastructure.Data.Configurations
                 PriorityId => PriorityId.Value, // Chuyển từ ValueObject -> Giá trị trong table
                 dbId => PriorityId.Of(dbId));  // Chuyển từ Table SQL -> Giá trị ValueObject
 
-            builder.HasOne<Projects>()
-                .WithMany()
+            builder.HasOne(x => x.Project)
+                .WithMany(x => x.Priorities)
                 .HasForeignKey(o => o.ProjectId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

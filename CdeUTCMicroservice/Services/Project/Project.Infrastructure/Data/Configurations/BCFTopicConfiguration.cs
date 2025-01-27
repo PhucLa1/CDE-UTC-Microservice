@@ -11,11 +11,10 @@ namespace Project.Infrastructure.Data.Configurations
                 dbId => BCFTopicId.Of(dbId));  // Chuyển từ Table SQL -> Giá trị ValueObject
 
 
-            builder.HasOne<Projects>()
-                .WithMany()
+            builder.HasOne(x => x.Project)
+                .WithMany(x => x.BCFTopics)
                 .HasForeignKey(o => o.ProjectId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.SetNull);
             builder.ComplexProperty(
                 o => o.Characteristic, //1. Thuộc tính phức tạp 
                 nameBuilder => //2. Cấu hình chi tiết cho thuộc tính

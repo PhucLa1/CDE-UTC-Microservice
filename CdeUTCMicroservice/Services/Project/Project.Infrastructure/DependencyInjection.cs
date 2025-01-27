@@ -4,8 +4,9 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Project.Application.Data;
-using Project.Infrastructure.Data.Interceptors;
 using Project.Infrastructure.Data;
+using Project.Infrastructure.Data.Base;
+using Project.Infrastructure.Data.Interceptors;
 
 namespace Project.Infrastructure
 {
@@ -26,7 +27,7 @@ namespace Project.Infrastructure
                 options.UseSqlServer(connectionString);
             });
 
-            services.AddScoped<IProjectDBContext, ProjectDBContext>();
+            services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 
             return services;
         }

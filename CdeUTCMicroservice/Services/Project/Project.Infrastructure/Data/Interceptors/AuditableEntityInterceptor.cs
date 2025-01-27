@@ -73,7 +73,7 @@ namespace Project.Infrastructure.Data.Interceptors
             var context = _httpContextAccessor.HttpContext;
             var userIdObj = context.Request.Headers["X-UserId"].FirstOrDefault();
             if (userIdObj is null)
-                throw new Exception("Không có request header gửi từ yarp gateway");
+                return Guid.Empty;
             if (Guid.TryParse(userIdObj.ToString(), out var userId))
             {
                 return userId; // Trả về Guid nếu chuyển đổi thành công

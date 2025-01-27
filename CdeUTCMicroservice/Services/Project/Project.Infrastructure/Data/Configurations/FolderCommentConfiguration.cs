@@ -15,8 +15,7 @@ namespace Project.Infrastructure.Data.Configurations
             builder.HasOne<Folder>()
                 .WithMany()
                 .HasForeignKey(o => o.FolderId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

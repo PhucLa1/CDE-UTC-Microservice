@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 
 
 // Create a client
-const authPaths = ['/login', '/sign-up', '/change-password'];
+const authPaths = ['/login', '/sign-up', '/change-password', '/project'];
 export default function AppLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     const pathname = usePathname()
     let layout = 0;

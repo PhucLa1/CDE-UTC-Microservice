@@ -11,8 +11,8 @@ namespace Project.Infrastructure.Data.Configurations
                 dbId => ViewId.Of(dbId));  // Chuyển từ Table SQL -> Giá trị ValueObject
 
             builder.Property(x => x.FileId).HasConversion(
-                FileId => FileId.Value, // Chuyển từ ValueObject -> Giá trị trong table
-                dbId => FileId.Of(dbId));  // Chuyển từ Table SQL -> Giá trị ValueObject
+                FileId => FileId != null ? FileId.Value : (Guid?)null, // Chuyển từ ValueObject -> Giá trị trong table
+                dbId => dbId.HasValue ? FileId.Of(dbId.Value) : null);  // Chuyển từ Table SQL -> Giá trị ValueObject
         }
     }
 }

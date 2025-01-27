@@ -4,7 +4,7 @@ namespace Project.Domain.ValueObjects.Id
 {
     public class ViewId
     {
-        public Guid Value { get; private set; }
+        public Guid Value { get; set; }
         private ViewId(Guid value) => Value = value;
         public static ViewId Of(Guid value)
         {

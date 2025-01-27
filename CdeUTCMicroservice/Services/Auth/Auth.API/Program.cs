@@ -44,10 +44,6 @@ using (var scope = app.Services.CreateScope())
 //app.UseMiddleware<JwtBehavior>();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-/* Không cần nữa vì đã xác thực toàn bộ ở gateways
-app.UseAuthentication();
-app.UseAuthorization();
-*/
 app.MapControllers(); // Bắt buộc phải gọi để ánh xạ các controller
 
 app.Run();

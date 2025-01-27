@@ -4,7 +4,7 @@ namespace Project.Domain.ValueObjects
 {
     public class ProjectId
     {
-        public Guid Value { get; private set; }
+        public Guid Value { get; set; }
         private ProjectId(Guid value) => Value = value;
         public static ProjectId Of(Guid value)
         {

@@ -29,5 +29,16 @@
 
 
         #endregion
+
+
+
+        #region Project
+        #region Project
+        public const string PROJECT_ROUTER = "projects";
+
+
+        #endregion
+
+        #endregion
     }
 }

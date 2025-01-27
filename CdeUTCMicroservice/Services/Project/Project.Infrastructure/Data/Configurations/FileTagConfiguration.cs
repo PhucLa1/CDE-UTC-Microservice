@@ -14,14 +14,12 @@ namespace Project.Infrastructure.Data.Configurations
             builder.HasOne<File>()
                 .WithMany()
                 .HasForeignKey(o => o.FileId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.SetNull);
 
             builder.HasOne<Tag>()
                 .WithMany()
                 .HasForeignKey(o => o.TagId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.SetNull);
             // Chuyển từ Table SQL -> Giá trị ValueObject
         }
     }

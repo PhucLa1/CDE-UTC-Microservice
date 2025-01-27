@@ -4,7 +4,7 @@ namespace Project.Domain.ValueObjects
 {
     public class TodoTagId
     {
-        public Guid Value { get; private set; }
+        public Guid Value { get; set; }
         private TodoTagId(Guid value) => Value = value;
         public static TodoTagId Of(Guid value)
         {

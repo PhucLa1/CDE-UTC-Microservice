@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Auth.Repositories")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+632bfddb0b553804fbb35679df02ccabf88437ca")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e033d82ab5c52744e19431eebaec6e7ac30ed713")]
 [assembly: System.Reflection.AssemblyProductAttribute("Auth.Repositories")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Auth.Repositories")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

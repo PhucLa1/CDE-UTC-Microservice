@@ -4,7 +4,7 @@ namespace Project.Domain.ValueObjects.Id
 {
     public class FolderTagId
     {
-        public Guid Value { get; private set; }
+        public Guid Value { get; set; }
         private FolderTagId(Guid value) => Value = value;
         public static FolderTagId Of(Guid value)
         {

@@ -11,11 +11,10 @@ namespace Project.Infrastructure.Data.Configurations
                 BCFCommentId => BCFCommentId.Value, // Chuyển từ ValueObject -> Giá trị trong table
                 dbId => BCFCommentId.Of(dbId));  // Chuyển từ Table SQL -> Giá trị ValueObject
 
-            builder.HasOne<BCFTopic>()
-                .WithMany()
+            builder.HasOne(x => x.BCFTopic)
+                .WithMany(x => x.BCFComments)
                 .HasForeignKey(o => o.BCFTopicId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

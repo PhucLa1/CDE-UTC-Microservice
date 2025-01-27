@@ -13,8 +13,7 @@ namespace Project.Infrastructure.Data.Configurations
             builder.HasOne<Projects>()
                 .WithMany()
                 .HasForeignKey(o => o.ProjectId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

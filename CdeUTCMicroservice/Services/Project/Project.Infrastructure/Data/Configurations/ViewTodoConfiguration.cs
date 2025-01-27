@@ -13,13 +13,11 @@ namespace Project.Infrastructure.Data.Configurations
             builder.HasOne<View>()
               .WithMany()
               .HasForeignKey(o => o.ViewId)
-              .IsRequired()
-              .OnDelete(DeleteBehavior.NoAction);
+              .OnDelete(DeleteBehavior.SetNull);
             builder.HasOne<Todo>()
               .WithMany()
               .HasForeignKey(o => o.TodoId)
-              .IsRequired()
-              .OnDelete(DeleteBehavior.NoAction);
+              .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

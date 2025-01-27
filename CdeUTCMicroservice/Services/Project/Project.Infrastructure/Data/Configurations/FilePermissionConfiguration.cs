@@ -14,8 +14,7 @@ namespace Project.Infrastructure.Data.Configurations
             builder.HasOne<File>()
                 .WithMany()
                 .HasForeignKey(o => o.FileId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.SetNull);
 
         }
     }
