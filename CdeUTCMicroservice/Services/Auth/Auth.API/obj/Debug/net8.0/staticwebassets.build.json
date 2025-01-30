@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zi1caTCgni3/NTG19bejfGDwhuRnhSX3B/4bcFZ8jMg=",
+  "Hash": "wrVdD3kUbLntbrlIKO0o7JDXtTrM/zN83z6ki8Yeh+Y=",
   "Source": "Auth.API",
   "BasePath": "_content/Auth.API",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\User\\638733211386174719.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\wwwroot\\User\\638734450306940431.jpg",
+      "SourceId": "Auth.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\wwwroot\\",
+      "BasePath": "_content/Auth.API",
+      "RelativePath": "User/638734450306940431.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\User\\638734450306940431.jpg"
     }
   ]
 }

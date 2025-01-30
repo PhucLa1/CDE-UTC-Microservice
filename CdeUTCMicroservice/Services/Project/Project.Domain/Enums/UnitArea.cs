@@ -6,8 +6,9 @@ namespace Project.Domain.Enums
     {
         [Description("Square Meters")]
         SquareMeters,
-        [Description("Square Feet")]
-        SquareFeet,
-        // ... các đơn vị diện tích
+        [Description("Square Decimeters")]
+        SquareDecimeters,
+        [Description("Square Centimeters")]
+        SquareCentimeters
     }
 }

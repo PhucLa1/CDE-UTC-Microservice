@@ -3,8 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\project\\getproject\\getprojecthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\project\\getproject\\getprojecthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DB03BED9-6FB7-4FD9-AB0C-6E7DA0DB5F27}|Services\\Auth\\Auth.Services\\Auth.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\auth\\auth.services\\auth\\changeinfo\\changeinfohandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB03BED9-6FB7-4FD9-AB0C-6E7DA0DB5F27}|Services\\Auth\\Auth.Services\\Auth.Application.csproj|solutionrelative:services\\auth\\auth.services\\auth\\changeinfo\\changeinfohandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.api\\endpoint\\unit\\updateunitbyprojectid\\updateunitbyprojectidvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|solutionrelative:services\\project\\project.api\\endpoint\\unit\\updateunitbyprojectid\\updateunitbyprojectidvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.api\\endpoint\\unit\\getunitbyprojectid\\getunitbyprojectidvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|solutionrelative:services\\project\\project.api\\endpoint\\unit\\getunitbyprojectid\\getunitbyprojectidvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.api\\endpoint\\unit\\getunitbyprojectid\\getunitbyprojectidendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|solutionrelative:services\\project\\project.api\\endpoint\\unit\\getunitbyprojectid\\getunitbyprojectidendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.api\\endpoint\\unit\\updateunitbyprojectid\\updateunitbyprojectidendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|solutionrelative:services\\project\\project.api\\endpoint\\unit\\updateunitbyprojectid\\updateunitbyprojectidendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\unit\\updateunitbyprojectid\\updateunitbyprojectidhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\unit\\updateunitbyprojectid\\updateunitbyprojectidhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -13,7 +33,7 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 750,
+          "DockedWidth": 458,
           "SelectedChildIndex": 1,
           "Children": [
             {
@@ -23,14 +43,79 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GetProjectHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Project\\GetProject\\GetProjectHandler.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Project\\GetProject\\GetProjectHandler.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Project\\GetProject\\GetProjectHandler.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Project\\GetProject\\GetProjectHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAABPAAAA",
+              "Title": "ChangeInfoHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Services\\Auth\\ChangeInfo\\ChangeInfoHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Auth\\Auth.Services\\Auth\\ChangeInfo\\ChangeInfoHandler.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.Services\\Auth\\ChangeInfo\\ChangeInfoHandler.cs",
+              "RelativeToolTip": "Services\\Auth\\Auth.Services\\Auth\\ChangeInfo\\ChangeInfoHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T16:24:00.745Z",
+              "WhenOpened": "2025-01-29T16:41:07.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UpdateUnitByProjectIdValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Unit\\UpdateUnitByProjectId\\UpdateUnitByProjectIdValidator.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.API\\Endpoint\\Unit\\UpdateUnitByProjectId\\UpdateUnitByProjectIdValidator.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Unit\\UpdateUnitByProjectId\\UpdateUnitByProjectIdValidator.cs",
+              "RelativeToolTip": "Services\\Project\\Project.API\\Endpoint\\Unit\\UpdateUnitByProjectId\\UpdateUnitByProjectIdValidator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-29T16:17:41.91Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GetUnitByProjectIdValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Unit\\GetUnitByProjectId\\GetUnitByProjectIdValidator.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.API\\Endpoint\\Unit\\GetUnitByProjectId\\GetUnitByProjectIdValidator.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Unit\\GetUnitByProjectId\\GetUnitByProjectIdValidator.cs",
+              "RelativeToolTip": "Services\\Project\\Project.API\\Endpoint\\Unit\\GetUnitByProjectId\\GetUnitByProjectIdValidator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-29T16:17:39.597Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GetUnitByProjectIdEndpoint.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Unit\\GetUnitByProjectId\\GetUnitByProjectIdEndpoint.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.API\\Endpoint\\Unit\\GetUnitByProjectId\\GetUnitByProjectIdEndpoint.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Unit\\GetUnitByProjectId\\GetUnitByProjectIdEndpoint.cs",
+              "RelativeToolTip": "Services\\Project\\Project.API\\Endpoint\\Unit\\GetUnitByProjectId\\GetUnitByProjectIdEndpoint.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-29T15:54:50.824Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UpdateUnitByProjectIdEndpoint.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Unit\\UpdateUnitByProjectId\\UpdateUnitByProjectIdEndpoint.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.API\\Endpoint\\Unit\\UpdateUnitByProjectId\\UpdateUnitByProjectIdEndpoint.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Unit\\UpdateUnitByProjectId\\UpdateUnitByProjectIdEndpoint.cs",
+              "RelativeToolTip": "Services\\Project\\Project.API\\Endpoint\\Unit\\UpdateUnitByProjectId\\UpdateUnitByProjectIdEndpoint.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-29T15:51:46.026Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UpdateUnitByProjectIdHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Unit\\UpdateUnitByProjectId\\UpdateUnitByProjectIdHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Unit\\UpdateUnitByProjectId\\UpdateUnitByProjectIdHandler.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Unit\\UpdateUnitByProjectId\\UpdateUnitByProjectIdHandler.cs",
+              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Unit\\UpdateUnitByProjectId\\UpdateUnitByProjectIdHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAABcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-29T13:56:28.914Z",
               "EditorCaption": ""
             }
           ]

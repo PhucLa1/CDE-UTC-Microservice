@@ -31,7 +31,7 @@ namespace Project.Application.Features.Project.CreateProject
             await projectEntityRepository.AddAsync(project, cancellationToken);
             await userProjectRepository.AddAsync(userProject, cancellationToken);
             await projectEntityRepository.SaveChangeAsync(cancellationToken);
-            return new CreateProjectResponse() { Data = true, Message = Message.CREATE_SUCCESSFULLY };
+            return new CreateProjectResponse() { Data = true,  Message= Message.CREATE_SUCCESSFULLY };
         }
     }
 }

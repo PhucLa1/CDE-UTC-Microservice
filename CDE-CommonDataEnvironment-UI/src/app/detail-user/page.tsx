@@ -274,7 +274,6 @@ export default function page() {
                                             </div>
                                             <div className="flex flex-col space-y-1.5">
                                                 <FormField
-
                                                     control={form.control}
                                                     name="districtId"
                                                     render={({ field }) => (
@@ -347,7 +346,10 @@ export default function page() {
                                                                 <Select
                                                                     key={field.value}
                                                                     value={field.value?.toString()} // Lấy giá trị từ field
-                                                                    onValueChange={(value) => field.onChange(value)}
+                                                                    onValueChange={(value) => {
+                                                                        const enumValue = parseInt(value, 10); // Chuyển giá trị chuỗi về kiểu số
+                                                                        field.onChange(enumValue); // Truyền lại giá trị enum số vào field
+                                                                      }}
                                                                 >
                                                                     <SelectTrigger id="framework">
                                                                         <SelectValue placeholder="Chọn định dạng ngày" />
@@ -379,7 +381,10 @@ export default function page() {
                                                                 <Select
                                                                     key={field.value}
                                                                     value={field.value?.toString()} // Lấy giá trị từ field
-                                                                    onValueChange={(value) => field.onChange(value)}
+                                                                    onValueChange={(value) => {
+                                                                        const enumValue = parseInt(value, 10); // Chuyển giá trị chuỗi về kiểu số
+                                                                        field.onChange(enumValue); // Truyền lại giá trị enum số vào field
+                                                                      }}
                                                                 >
                                                                     <SelectTrigger id="framework">
                                                                         <SelectValue placeholder="Chọn định dạng giờ&phút" />

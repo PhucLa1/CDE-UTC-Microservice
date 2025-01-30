@@ -6,13 +6,10 @@ namespace Project.Domain.Enums
     {
         [Description("Cubic Meters")]
         CubicMeters,
-        [Description("Cubic Feet")]
-        CubicFeet,
-        [Description("Liters")]
-        Liters,
-        [Description("Gallons")]
-        Gallons,
-        // ... các đơn vị thể tích
+        [Description("Cubic Centimeters")]
+        CubicCentimeters,
+        [Description("Cubic Decimeters")]
+        CubicDecimeters
     }
 
 }

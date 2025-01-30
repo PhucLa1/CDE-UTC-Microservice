@@ -6,8 +6,9 @@ namespace Project.Domain.Enums
     {
         [Description("Kilograms")]
         Kilograms,
-        [Description("Pounds")]
-        Pounds,
-        // ... các đơn vị khối lượng
+        [Description("Grams")]
+        Grams,
+        [Description("Miligrams")]
+        Miligrams,
     }
 }
