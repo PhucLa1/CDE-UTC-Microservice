@@ -1,7 +1,9 @@
 ﻿
+
+
 namespace Project.Domain.Entities
 {
-    public class BCFTopic : Aggregate<BCFTopicId>
+    public class BCFTopic : BaseEntity<BCFTopicId>
     {
         public ProjectId? ProjectId { get; set; } = default!;
         public Guid AssignTo { get; set; } = default!;

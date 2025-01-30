@@ -2,7 +2,7 @@
 
 namespace Project.Domain.Entities
 {
-    public class Folder : Aggregate<FolderId>
+    public class Folder : BaseEntity<FolderId>
     {
         public string Name { get; set; } = default!;
         public ProjectId? ProjectId { get; set; }

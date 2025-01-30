@@ -2,7 +2,7 @@
 
 namespace Project.Domain.Entities
 {
-    public class Status : Entity<StatusId>
+    public class Status : BaseEntity<StatusId>
     {
         public ProjectId? ProjectId { get; set; }
         public bool IsDefault { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Project.Domain.Entities
 {
-    public class ViewComment : Entity<ViewCommentId>
+    public class ViewComment : BaseEntity<ViewCommentId>
     {
         public string Content { get; set; } = default!;
         public ViewId? ViewId { get; set; } = default!;

@@ -45,7 +45,8 @@ export default function CreateProject() {
                 title: "Tạo mới dự án thành công",
                 message: "Dự án đã được tạo mới thành công",
             })
-            queryClient.invalidateQueries({queryKey: ['list-project']})
+            queryClient.invalidateQueries({ queryKey: ['list-project'] })
+            form.reset();
         }
     })
     return (

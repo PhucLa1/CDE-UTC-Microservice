@@ -1,7 +1,6 @@
-using Project.Infrastructure.Data.Extensions;
-using Project.Infrastructure;
-using Project.Application;
 using Project.API;
+using Project.Application;
+using Project.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 

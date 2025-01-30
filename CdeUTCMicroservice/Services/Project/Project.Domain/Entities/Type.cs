@@ -1,6 +1,6 @@
 ﻿namespace Project.Domain.Entities
 {
-    public class Type : Entity<TypeId>
+    public class Type : BaseEntity<TypeId>
     {
         public ProjectId? ProjectId { get; set; } = default!;
         public string IconImageUrl { get; set; } = default!;

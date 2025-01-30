@@ -1,6 +1,6 @@
 namespace Project.Domain.Entities
 {
-    public class BCFTopicTag : Entity<BCFTopicTagId>
+    public class BCFTopicTag : BaseEntity<BCFTopicTagId>
     {
         public BCFTopicId? BCFTopicId { get; set; } = default!;
         public TagId? TagId { get; set; } = default!;

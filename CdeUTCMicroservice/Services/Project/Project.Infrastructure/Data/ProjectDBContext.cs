@@ -1,12 +1,68 @@
-﻿using System.Reflection;
+﻿using Microsoft.AspNetCore.Http;
+using Project.Domain.Abstractions;
+using System.Reflection;
 
 namespace Project.Infrastructure.Data
 {
     public class ProjectDBContext : DbContext
     {
-
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public ProjectDBContext(DbContextOptions<ProjectDBContext> options, IHttpContextAccessor httpContextAccessor) : base(options)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
         public ProjectDBContext(DbContextOptions<ProjectDBContext> options)
             : base(options) { }
+
+        public override int SaveChanges()
+        {
+            UpdateAuditFields();
+            return base.SaveChanges();
+        }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            UpdateAuditFields();
+            return base.SaveChangesAsync(cancellationToken);
+        }
+
+        private void UpdateAuditFields()
+        {
+            var userId = GetCurrentUserId();
+
+            foreach (var entry in ChangeTracker.Entries().Where(e => e.State == EntityState.Modified || e.State == EntityState.Added))
+            {
+                if (entry.Entity is IAuditable)
+                {
+                    var entity = (IAuditable)entry.Entity;
+                    entity.UpdatedAt = DateTime.UtcNow;
+                    entity.UpdatedBy = userId;
+
+                    if (entry.State == EntityState.Added)
+                    {
+                        entity.CreatedAt = DateTime.UtcNow;
+                        entity.CreatedBy = userId;
+                    }
+                }
+            }
+        }
+
+        #region Get token from gateways
+
+        public Guid GetCurrentUserId()
+        {
+            var context = _httpContextAccessor.HttpContext;
+            var userIdObj = context.Request.Headers["X-UserId"].FirstOrDefault();
+            if (userIdObj is null)
+                throw new Exception("Không có request header gửi từ yarp gateway");
+            if (Guid.TryParse(userIdObj.ToString(), out var userId))
+            {
+                return userId; // Trả về Guid nếu chuyển đổi thành công
+            }
+            return Guid.Empty; // Trả về Guid mặc định nếu chuyển đổi thất bại
+        }
+
+        #endregion
 
         public DbSet<Projects> Projects => Set<Projects>();
         public DbSet<Folder> Folders => Set<Folder>();

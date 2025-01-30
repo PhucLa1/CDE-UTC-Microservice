@@ -2,7 +2,7 @@
 
 namespace Project.Domain.Entities
 {
-    public class ViewBCFTopic : Entity<ViewBCFTopicId>
+    public class ViewBCFTopic : BaseEntity<ViewBCFTopicId>
     {
         public ViewId? ViewId { get; set; } = default!;
         public BCFTopicId? BCFTopicId { get; set; } = default!;

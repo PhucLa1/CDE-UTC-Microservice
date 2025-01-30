@@ -1,6 +1,6 @@
 namespace Project.Domain.Entities
 {
-    public class Group : Entity<GroupId>
+    public class Group : BaseEntity<GroupId>
     {
         public string Name { get; set; } = default!;
         public string Description { get; set; } = default!;

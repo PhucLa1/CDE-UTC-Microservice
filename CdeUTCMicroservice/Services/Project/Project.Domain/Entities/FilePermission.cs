@@ -2,7 +2,7 @@
 
 namespace Project.Domain.Entities
 {
-    public class FilePermission : Entity<FilePermissionId>
+    public class FilePermission : BaseEntity<FilePermissionId>
     {
         public FileId? FileId { get; set; }
         public Guid UserId { get; set; }

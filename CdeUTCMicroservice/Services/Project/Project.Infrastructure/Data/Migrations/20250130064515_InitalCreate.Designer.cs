@@ -13,8 +13,8 @@ using Project.Infrastructure.Data;
 namespace Project.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ProjectDBContext))]
-    [Migration("20250126150921_Init")]
-    partial class Init
+    [Migration("20250130064515_InitalCreate")]
+    partial class InitalCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,7 +29,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.BCFComment", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<Guid?>("BCFTopicId")
                         .HasColumnType("uniqueidentifier");
@@ -64,7 +65,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.BCFTopic", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<Guid>("AssignTo")
                         .HasColumnType("uniqueidentifier");
@@ -123,7 +125,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.BCFTopicTag", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<Guid?>("BCFTopicId")
                         .HasColumnType("uniqueidentifier");
@@ -159,7 +162,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.File", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
@@ -223,7 +227,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.FileBCFTopic", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<Guid?>("BCFTopicId")
                         .HasColumnType("uniqueidentifier");
@@ -259,7 +264,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.FileComment", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -294,7 +300,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.FilePermission", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<int>("Access")
                         .HasColumnType("int");
@@ -331,7 +338,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.FileTag", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
@@ -367,7 +375,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.FileTodo", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
@@ -403,7 +412,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.Folder", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
@@ -450,7 +460,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.FolderComment", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -485,7 +496,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.FolderPermission", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<int>("Access")
                         .HasColumnType("int");
@@ -525,7 +537,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.FolderTag", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
@@ -561,7 +574,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.Group", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
@@ -600,7 +614,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.Priority", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<string>("ColorRGB")
                         .IsRequired()
@@ -639,7 +654,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.Projects", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<int>("ActivityType")
                         .HasColumnType("int");
@@ -738,7 +754,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.Status", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<string>("ColorRGB")
                         .IsRequired()
@@ -783,7 +800,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.Tag", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
@@ -822,7 +840,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.Todo", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<Guid>("AssignTo")
                         .HasColumnType("uniqueidentifier");
@@ -881,7 +900,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.TodoComment", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -916,7 +936,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.TodoTag", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
@@ -952,7 +973,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.Type", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
@@ -991,7 +1013,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.UserGroup", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
@@ -1031,7 +1054,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.UserProject", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
@@ -1084,7 +1108,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.View", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
@@ -1124,7 +1149,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.ViewBCFTopic", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<Guid?>("BCFTopicId")
                         .HasColumnType("uniqueidentifier");
@@ -1160,7 +1186,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.ViewComment", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -1195,7 +1222,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.ViewTag", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
@@ -1231,7 +1259,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.ViewTodo", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")

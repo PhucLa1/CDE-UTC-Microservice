@@ -1,6 +1,6 @@
 namespace Project.Domain.Entities
 {
-    public class Tag : Entity<TagId>
+    public class Tag : BaseEntity<TagId>
     {
         public ProjectId? ProjectId { get; set; }
         public string Name { get; set; } = default!;

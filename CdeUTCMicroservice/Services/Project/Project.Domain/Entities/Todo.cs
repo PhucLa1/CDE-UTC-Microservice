@@ -1,6 +1,6 @@
 ﻿namespace Project.Domain.Entities
 {
-    public class Todo : Aggregate<TodoId>
+    public class Todo : BaseEntity<TodoId>
     {
         public ProjectId? ProjectId { get; set; }
         public Guid AssignTo { get; set; }

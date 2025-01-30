@@ -6,7 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Project.Application.Data;
 using Project.Infrastructure.Data;
 using Project.Infrastructure.Data.Base;
-using Project.Infrastructure.Data.Interceptors;
 
 namespace Project.Infrastructure
 {
@@ -16,14 +15,11 @@ namespace Project.Infrastructure
             (this IServiceCollection services, IConfiguration configuration)
         {
 
-            //DI
-            services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
-            services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
 
             var connectionString = configuration.GetConnectionString("ProjectDBContext");
+            services.AddHttpContextAccessor();
             services.AddDbContext<ProjectDBContext>((sp, options) =>
             {
-                options.AddInterceptors(sp.GetService<ISaveChangesInterceptor>());
                 options.UseSqlServer(connectionString);
             });
 

@@ -2,7 +2,7 @@
 
 namespace Project.Domain.Entities
 {
-    public class FileTodo : Entity<FileTodoId>
+    public class FileTodo : BaseEntity<FileTodoId>
     {
         public FileId? FileId { get; set; } = default!;
         public TodoId? TodoId { get; set; } = default!;

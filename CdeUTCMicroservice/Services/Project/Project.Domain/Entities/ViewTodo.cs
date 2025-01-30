@@ -2,7 +2,7 @@
 
 namespace Project.Domain.Entities
 {
-    public class ViewTodo : Entity<ViewTodoId>
+    public class ViewTodo : BaseEntity<ViewTodoId>
     {
         public ViewId? ViewId { get; set; } = default!;
         public TodoId? TodoId { get; set; } = default!;

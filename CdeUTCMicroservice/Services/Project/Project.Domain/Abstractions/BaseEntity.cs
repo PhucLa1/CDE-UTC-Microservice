@@ -1,9 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Project.Domain.Abstractions
 {
-    public abstract class Entity<T> : IEntity<T>
+    public class BaseEntity<T> : IAuditable
+        where T : class
     {
+        [Key]
+        [Column("id")]
         public T Id { get; set; }
         [Column("created_at")]
         public DateTime CreatedAt { get; set; }

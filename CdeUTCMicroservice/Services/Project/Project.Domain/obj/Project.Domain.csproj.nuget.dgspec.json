@@ -53,6 +53,10 @@
             "MediatR": {
               "target": "Package",
               "version": "[12.4.1, )"
+            },
+            "StackifyLib": {
+              "target": "Package",
+              "version": "[2.2.16, )"
             }
           },
           "imports": [

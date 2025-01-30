@@ -2,7 +2,7 @@
 
 namespace Project.Domain.Entities
 {
-    public class FolderTag : Entity<FolderTagId>
+    public class FolderTag : BaseEntity<FolderTagId>
     {
         public TagId? TagId { get; set; }
         public FolderId? FolderId { get; set; }

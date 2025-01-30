@@ -1,6 +1,6 @@
 ﻿namespace Project.Domain.Entities
 {
-    public class Priority : Entity<PriorityId>
+    public class Priority : BaseEntity<PriorityId>
     {
         public ProjectId? ProjectId { get; set; }
         public string ColorRGB { get; set; } = default!;

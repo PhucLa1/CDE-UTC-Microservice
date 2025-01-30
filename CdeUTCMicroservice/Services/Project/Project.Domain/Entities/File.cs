@@ -1,9 +1,8 @@
-﻿using Project.Domain.Extensions;
-using Project.Domain.ValueObjects.Id;
+﻿using Project.Domain.ValueObjects.Id;
 
 namespace Project.Domain.Entities
 {
-    public class File : Aggregate<FileId>
+    public class File : BaseEntity<FileId>
     {
         public string Name { get; set; } = default!;
         public decimal Size { get; set; }

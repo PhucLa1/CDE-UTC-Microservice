@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Project.Infrastructure.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class InitalCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,7 +15,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "Files",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Size = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
                     Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -34,14 +34,14 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Files", x => x.Id);
+                    table.PrimaryKey("PK_Files", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Projects",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -72,14 +72,14 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Projects", x => x.Id);
+                    table.PrimaryKey("PK_Projects", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Views",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FileId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ViewType = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -91,14 +91,14 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Views", x => x.Id);
+                    table.PrimaryKey("PK_Views", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "FileComments",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FileId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -108,12 +108,12 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FileComments", x => x.Id);
+                    table.PrimaryKey("PK_FileComments", x => x.id);
                     table.ForeignKey(
                         name: "FK_FileComments_Files_FileId",
                         column: x => x.FileId,
                         principalTable: "Files",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -121,7 +121,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "FilePermissions",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FileId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Access = table.Column<int>(type: "int", nullable: false),
@@ -132,12 +132,12 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FilePermissions", x => x.Id);
+                    table.PrimaryKey("PK_FilePermissions", x => x.id);
                     table.ForeignKey(
                         name: "FK_FilePermissions_Files_FileId",
                         column: x => x.FileId,
                         principalTable: "Files",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -145,7 +145,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "BCFTopics",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ProjectId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     AssignTo = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -161,12 +161,12 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BCFTopics", x => x.Id);
+                    table.PrimaryKey("PK_BCFTopics", x => x.id);
                     table.ForeignKey(
                         name: "FK_BCFTopics_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -174,7 +174,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "Folders",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProjectId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     FolderVersion = table.Column<int>(type: "int", nullable: false),
@@ -188,12 +188,12 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Folders", x => x.Id);
+                    table.PrimaryKey("PK_Folders", x => x.id);
                     table.ForeignKey(
                         name: "FK_Folders_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -201,7 +201,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "Groups",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProjectId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
@@ -212,12 +212,12 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Groups", x => x.Id);
+                    table.PrimaryKey("PK_Groups", x => x.id);
                     table.ForeignKey(
                         name: "FK_Groups_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -225,7 +225,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "Priorities",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ProjectId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ColorRGB = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -236,12 +236,12 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Priorities", x => x.Id);
+                    table.PrimaryKey("PK_Priorities", x => x.id);
                     table.ForeignKey(
                         name: "FK_Priorities_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -249,7 +249,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "Statuses",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ProjectId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IsDefault = table.Column<bool>(type: "bit", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -262,12 +262,12 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Statuses", x => x.Id);
+                    table.PrimaryKey("PK_Statuses", x => x.id);
                     table.ForeignKey(
                         name: "FK_Statuses_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -275,7 +275,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "Tags",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ProjectId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DataNearest = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -286,12 +286,12 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tags", x => x.Id);
+                    table.PrimaryKey("PK_Tags", x => x.id);
                     table.ForeignKey(
                         name: "FK_Tags_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -299,7 +299,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "Todos",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ProjectId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     AssignTo = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -315,12 +315,12 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Todos", x => x.Id);
+                    table.PrimaryKey("PK_Todos", x => x.id);
                     table.ForeignKey(
                         name: "FK_Todos_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -328,7 +328,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "Types",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ProjectId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IconImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -339,12 +339,12 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Types", x => x.Id);
+                    table.PrimaryKey("PK_Types", x => x.id);
                     table.ForeignKey(
                         name: "FK_Types_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -352,7 +352,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "UserProjects",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ProjectId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Role = table.Column<int>(type: "int", nullable: false),
@@ -368,12 +368,12 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserProjects", x => x.Id);
+                    table.PrimaryKey("PK_UserProjects", x => x.id);
                     table.ForeignKey(
                         name: "FK_UserProjects_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -381,7 +381,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "ViewComments",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ViewId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -391,12 +391,12 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ViewComments", x => x.Id);
+                    table.PrimaryKey("PK_ViewComments", x => x.id);
                     table.ForeignKey(
                         name: "FK_ViewComments_Views_ViewId",
                         column: x => x.ViewId,
                         principalTable: "Views",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -404,7 +404,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "BCFComments",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BCFTopicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -414,12 +414,12 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BCFComments", x => x.Id);
+                    table.PrimaryKey("PK_BCFComments", x => x.id);
                     table.ForeignKey(
                         name: "FK_BCFComments_BCFTopics_BCFTopicId",
                         column: x => x.BCFTopicId,
                         principalTable: "BCFTopics",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -427,7 +427,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "FileBCFTopics",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FileId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     BCFTopicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -437,18 +437,18 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FileBCFTopics", x => x.Id);
+                    table.PrimaryKey("PK_FileBCFTopics", x => x.id);
                     table.ForeignKey(
                         name: "FK_FileBCFTopics_BCFTopics_BCFTopicId",
                         column: x => x.BCFTopicId,
                         principalTable: "BCFTopics",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_FileBCFTopics_Files_FileId",
                         column: x => x.FileId,
                         principalTable: "Files",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -456,7 +456,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "ViewBCFTopics",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ViewId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     BCFTopicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -466,18 +466,18 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ViewBCFTopics", x => x.Id);
+                    table.PrimaryKey("PK_ViewBCFTopics", x => x.id);
                     table.ForeignKey(
                         name: "FK_ViewBCFTopics_BCFTopics_BCFTopicId",
                         column: x => x.BCFTopicId,
                         principalTable: "BCFTopics",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_ViewBCFTopics_Views_ViewId",
                         column: x => x.ViewId,
                         principalTable: "Views",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -485,7 +485,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "FolderComments",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FolderId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -495,12 +495,12 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FolderComments", x => x.Id);
+                    table.PrimaryKey("PK_FolderComments", x => x.id);
                     table.ForeignKey(
                         name: "FK_FolderComments_Folders_FolderId",
                         column: x => x.FolderId,
                         principalTable: "Folders",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -508,7 +508,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "FolderPermissions",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FolderId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Access = table.Column<int>(type: "int", nullable: false),
@@ -520,12 +520,12 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FolderPermissions", x => x.Id);
+                    table.PrimaryKey("PK_FolderPermissions", x => x.id);
                     table.ForeignKey(
                         name: "FK_FolderPermissions_Folders_FolderId",
                         column: x => x.FolderId,
                         principalTable: "Folders",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -533,7 +533,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "UserGroups",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     GroupId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DateJoined = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -545,12 +545,12 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserGroups", x => x.Id);
+                    table.PrimaryKey("PK_UserGroups", x => x.id);
                     table.ForeignKey(
                         name: "FK_UserGroups_Groups_GroupId",
                         column: x => x.GroupId,
                         principalTable: "Groups",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -558,7 +558,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "BCFTopicTags",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     BCFTopicId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     TagId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -568,18 +568,18 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BCFTopicTags", x => x.Id);
+                    table.PrimaryKey("PK_BCFTopicTags", x => x.id);
                     table.ForeignKey(
                         name: "FK_BCFTopicTags_BCFTopics_BCFTopicId",
                         column: x => x.BCFTopicId,
                         principalTable: "BCFTopics",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_BCFTopicTags_Tags_TagId",
                         column: x => x.TagId,
                         principalTable: "Tags",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -587,7 +587,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "FileTags",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FileId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     TagId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -597,18 +597,18 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FileTags", x => x.Id);
+                    table.PrimaryKey("PK_FileTags", x => x.id);
                     table.ForeignKey(
                         name: "FK_FileTags_Files_FileId",
                         column: x => x.FileId,
                         principalTable: "Files",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_FileTags_Tags_TagId",
                         column: x => x.TagId,
                         principalTable: "Tags",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -616,7 +616,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "FolderTags",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TagId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     FolderId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -626,18 +626,18 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FolderTags", x => x.Id);
+                    table.PrimaryKey("PK_FolderTags", x => x.id);
                     table.ForeignKey(
                         name: "FK_FolderTags_Folders_FolderId",
                         column: x => x.FolderId,
                         principalTable: "Folders",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_FolderTags_Tags_TagId",
                         column: x => x.TagId,
                         principalTable: "Tags",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -645,7 +645,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "ViewTags",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ViewId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     TagId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -655,18 +655,18 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ViewTags", x => x.Id);
+                    table.PrimaryKey("PK_ViewTags", x => x.id);
                     table.ForeignKey(
                         name: "FK_ViewTags_Tags_TagId",
                         column: x => x.TagId,
                         principalTable: "Tags",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_ViewTags_Views_ViewId",
                         column: x => x.ViewId,
                         principalTable: "Views",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -674,7 +674,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "FileTodos",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FileId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     TodoId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -684,18 +684,18 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FileTodos", x => x.Id);
+                    table.PrimaryKey("PK_FileTodos", x => x.id);
                     table.ForeignKey(
                         name: "FK_FileTodos_Files_FileId",
                         column: x => x.FileId,
                         principalTable: "Files",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_FileTodos_Todos_TodoId",
                         column: x => x.TodoId,
                         principalTable: "Todos",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -703,7 +703,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "TodoComments",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TodoId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -713,12 +713,12 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TodoComments", x => x.Id);
+                    table.PrimaryKey("PK_TodoComments", x => x.id);
                     table.ForeignKey(
                         name: "FK_TodoComments_Todos_TodoId",
                         column: x => x.TodoId,
                         principalTable: "Todos",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -726,7 +726,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "TodoTags",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TodoId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     TagId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -736,18 +736,18 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TodoTags", x => x.Id);
+                    table.PrimaryKey("PK_TodoTags", x => x.id);
                     table.ForeignKey(
                         name: "FK_TodoTags_Tags_TagId",
                         column: x => x.TagId,
                         principalTable: "Tags",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_TodoTags_Todos_TodoId",
                         column: x => x.TodoId,
                         principalTable: "Todos",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -755,7 +755,7 @@ namespace Project.Infrastructure.Data.Migrations
                 name: "ViewTodos",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ViewId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     TodoId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -765,18 +765,18 @@ namespace Project.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ViewTodos", x => x.Id);
+                    table.PrimaryKey("PK_ViewTodos", x => x.id);
                     table.ForeignKey(
                         name: "FK_ViewTodos_Todos_TodoId",
                         column: x => x.TodoId,
                         principalTable: "Todos",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_ViewTodos_Views_ViewId",
                         column: x => x.ViewId,
                         principalTable: "Views",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                 });
 

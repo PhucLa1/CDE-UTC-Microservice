@@ -2,7 +2,7 @@
 
 namespace Project.Domain.Entities
 {
-    public class FileComment : Entity<FileCommentId>
+    public class FileComment : BaseEntity<FileCommentId>
     {
         public string Content { get; set; } = default!;
         public FileId? FileId { get; set; }

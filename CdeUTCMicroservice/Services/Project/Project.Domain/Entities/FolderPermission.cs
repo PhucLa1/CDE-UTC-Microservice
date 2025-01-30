@@ -2,7 +2,7 @@
 
 namespace Project.Domain.Entities
 {
-    public class FolderPermission : Entity<FolderPermissionId>
+    public class FolderPermission : BaseEntity<FolderPermissionId>
     {
         public FolderId? FolderId { get; set; }
         public Guid UserId { get; set; } = default!;

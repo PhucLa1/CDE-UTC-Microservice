@@ -2,7 +2,7 @@
 
 namespace Project.Domain.Entities
 {
-    public class View : Aggregate<ViewId>
+    public class View : BaseEntity<ViewId>
     {
         public FileId? FileId { get; set; } = default!;
         public ViewType ViewType { get; set; }

@@ -193,3 +193,6 @@ C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservic
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\Mapster.Core.dll
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\obj\Debug\net8.0\Project.API.sourcelink.json
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\Project.API.staticwebassets.runtime.json
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\StackifyLib.dll

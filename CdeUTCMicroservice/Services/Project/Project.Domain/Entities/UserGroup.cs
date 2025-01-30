@@ -1,6 +1,6 @@
 namespace Project.Domain.Entities
 {
-    public class UserGroup : Entity<UserGroupId>
+    public class UserGroup : BaseEntity<UserGroupId>
     {
         public GroupId? GroupId { get; set; } = default!;
         public Guid UserId { get; set; }
