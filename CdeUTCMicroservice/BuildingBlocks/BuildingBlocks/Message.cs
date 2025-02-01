@@ -7,6 +7,7 @@
         public static string CODE_NOT_RIGHT = "Mã code nhập vào không đúng";
         public static string CODE_EXPIRED = "Mã code đã hết hạn dùng";
         public static string FORBIDDEN_CHANGE_PASSWORD = "Không có quyền thay đổi mật khẩu";
+        public static string FORBIDDEN_CHANGE = "Không có quyền thay đổi dữ kiện";
         #endregion
 
         #region Notice Successfully

@@ -4,11 +4,22 @@ using BuildingBlocks.Exceptions;
 namespace Project.Application.Features.Unit.UpdateUnitByProjectId
 {
     public class UpdateUnitByProjectIdHandler
-        (IBaseRepository<ProjectEntity> projectEntityRepository)
+        (IBaseRepository<ProjectEntity> projectEntityRepository,
+        IBaseRepository<UserProject> userProjectRepository)
         : ICommandHandler<UpdateUnitByProjectIdRequest, UpdateUnitByProjectIdResponse>
     {
         public async Task<UpdateUnitByProjectIdResponse> Handle(UpdateUnitByProjectIdRequest request, CancellationToken cancellationToken)
         {
+            var userCurrentId = userProjectRepository.GetCurrentId();
+            var userProject = await userProjectRepository.GetAllQueryAble()
+                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == ProjectId.Of(request.ProjectId));
+
+            if (userProject is null)
+                throw new NotFoundException(Message.NOT_FOUND);
+
+            if (userProject.Role is not Role.Admin)
+                throw new ForbiddenException(Message.FORBIDDEN_CHANGE);
+
             var project = await projectEntityRepository.GetAllQueryAble()
                 .FirstOrDefaultAsync(e => e.Id == ProjectId.Of(request.ProjectId));
 
