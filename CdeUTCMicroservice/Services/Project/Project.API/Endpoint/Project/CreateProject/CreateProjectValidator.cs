@@ -8,13 +8,13 @@ namespace Project.API.Endpoint.Project.CreateProject
         public CreateProjectValidator()
         {
             RuleFor(x => x.Name)
-            .NotEmpty().WithMessage("Tên dự án không được để trống.")
-            .Length(1, 100).WithMessage("Tên dự án phải từ 1 đến 100 ký tự.");
+                .NotEmpty().WithMessage("Tên dự án không được để trống.")
+                .Length(1, 100).WithMessage("Tên dự án phải từ 1 đến 100 ký tự.");
 
             // Kiểm tra ImageUrl (không rỗng, phải là URL hợp lệ)
             RuleFor(x => x.Image)
-            .NotNull().WithMessage("Ảnh không được để trống.")
-            .Must(IsValidImage).WithMessage("Ảnh phải là file hợp lệ (jpg, jpeg, png).");
+                .NotNull().WithMessage("Ảnh không được để trống.")
+                .Must(IsValidImage).WithMessage("Ảnh phải là file hợp lệ (jpg, jpeg, png).");
 
             // Kiểm tra StartDate (không rỗng, phải là ngày trong tương lai)
             RuleFor(x => x.StartDate)

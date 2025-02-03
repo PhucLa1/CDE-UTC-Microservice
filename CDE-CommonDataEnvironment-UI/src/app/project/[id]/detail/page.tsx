@@ -7,10 +7,13 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { ProjectDetail, projectDetailDefault, projectDetailSchema } from '@/data/schema/Project/projectdetail.schema';
+import { handleSuccessApi } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
+import DeleteProject from './_component/delete-project';
+import LeaveProject from './_component/leave-project';
 const pathList: Array<PathItem> = [
   {
     name: "Chi tiết dự án",
@@ -19,6 +22,7 @@ const pathList: Array<PathItem> = [
 ];
 export default function page({ params }: { params: { id: string } }) {
   const queryClient = useQueryClient()
+
   const form = useForm<ProjectDetail>({
     resolver: zodResolver(projectDetailSchema),
     defaultValues: projectDetailDefault
@@ -27,6 +31,19 @@ export default function page({ params }: { params: { id: string } }) {
     queryKey: ['get-detail-project'],
     queryFn: () => projectApiRequest.getDetail(params.id),
   })
+
+  const { mutate, isPending } = useMutation({
+    mutationKey: ['update-project'],
+    mutationFn: (body: FormData) => projectApiRequest.updateProject(body),
+    onSuccess: () => {
+      handleSuccessApi({
+        title: "Cập nhật dự án thành công",
+        message: "Bạn đã cập nhật dự án thành công"
+      })
+      queryClient.invalidateQueries({ queryKey: ['get-detail-project'] })
+    }
+  })
+
   useEffect(() => {
     if (data) {
       form.setValue("id", params.id)
@@ -45,272 +62,271 @@ export default function page({ params }: { params: { id: string } }) {
     }
   }, [data])
   const onSubmit = (values: ProjectDetail) => {
-
+    const formData = new FormData()
+    formData.append("id", params.id)
+    formData.append("name", form.getValues("name"))
+    formData.append("description", form.getValues("description"))
+    formData.append("image", form.getValues("image"))
+    formData.append("startDate", form.getValues("startDate"))
+    formData.append("endDate", form.getValues("endDate"))
+    mutate(formData)
   };
-
+  if (isLoading) return <></>
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <div className='mb-2 flex items-center justify-between space-y-2'>
-          <div>
-            <h2 className='text-2xl font-bold tracking-tight'>Chi tiết dự án</h2>
-            <AppBreadcrumb pathList={pathList} className="mt-2" />
-          </div>
-          <div>
-            <Button loading={false}>Lưu</Button>
-          </div>
-        </div>
-        <div className='-mx-4 flex-1 overflow-auto px-4 py-8 lg:flex-row'>
-          <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-8'>
-            <Card className="rounded-xl border bg-card text-card-foreground shadow col-span-4">
-              <CardHeader>
-                <CardTitle>Thông tin cơ bản</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid w-full items-center gap-4">
-                  <div className="flex flex-col space-y-1.5 flex-1">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Tên dự án</FormLabel>
-                          <FormControl>
-                            <Input placeholder="" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  <div className="flex flex-col space-y-1.5 flex-1">
-                    <FormField
-                      control={form.control}
-                      name="description"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Mô tả</FormLabel>
-                          <FormControl>
-                            <Textarea placeholder="" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  <div className="flex flex-col space-y-1.5 flex-1">
-                    <FormField
-                      control={form.control}
-                      name="ownership"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Chủ sở hữu</FormLabel>
-                          <FormControl>
-                            <span className='text-xs block text-gray-600'>{field.value || "Không có chủ sỡ hữu"}</span>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  <div className="flex space-x-4">
-                    <div className="flex flex-col space-y-1.5 flex-1">
-                      <FormField
-                        control={form.control}
-                        name="createdAt"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Ngày tạo dự án</FormLabel>
-                            <FormControl>
-                              <span className='text-xs block text-gray-600'>{field.value || "Không có chủ sỡ hữu"}</span>
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div className="flex flex-col space-y-1.5 flex-1">
-                      <FormField
-                        control={form.control}
-                        name="updatedAt"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Lần sửa cuối cùng</FormLabel>
-                            <FormControl>
-                              <span className='text-xs block text-gray-600'>{field.value || "Không có chủ sỡ hữu"}</span>
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                  </div>
-                  <div className="flex space-x-4">
-                    <div className="flex flex-col space-y-1.5 flex-1">
-                      <FormField
-                        control={form.control}
-                        name="userCount"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Thành viên</FormLabel>
-                            <FormControl>
-                              <span className='text-xs block text-gray-600'>{field.value}</span>
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div className="flex flex-col space-y-1.5 flex-1">
-                      <FormField
-                        control={form.control}
-                        name="fileCount"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Tệp</FormLabel>
-                            <FormControl>
-                              <span className='text-xs block text-gray-600'>{field.value}</span>
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div className="flex flex-col space-y-1.5 flex-1">
-                      <FormField
-                        control={form.control}
-                        name="folderCount"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Thư mục</FormLabel>
-                            <FormControl>
-                              <span className='text-xs block text-gray-600'>{field.value}</span>
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div className="flex flex-col space-y-1.5 flex-1">
-                      <FormField
-                        control={form.control}
-                        name="size"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Kích thước</FormLabel>
-                            <FormControl>
-                              <span className='text-xs block text-gray-600'>{field.value}</span>
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-              <CardFooter className="flex justify-between">
-              </CardFooter>
-            </Card>
-            <Card className="rounded-xl border bg-card text-card-foreground shadow col-span-4">
-              <CardHeader>
-                <CardTitle>Cấu hình dự án</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid w-full items-center gap-4">
-                  <div className="flex flex-col space-y-1.5 flex-1">
-                    <FormField
-                      control={form.control}
-                      name="image"
-                      render={({ field }) => {
-                        const imageUrl = data?.data.imageUrl; // Lấy URL từ form nếu có
-                        return (
-                          <FormItem className="space-y-1">
-                            <FormLabel>Ảnh dự án</FormLabel>
-                            <FormControl>
-                              <div className="relative w-128 h-64 border-2 border-dashed border-gray-300 rounded-lg flex justify-center items-center">
-                                {field.value && field.value.size > 0 ? (
-                                  <img
-                                    src={URL.createObjectURL(field.value)}
-                                    alt="Selected"
-                                    className="w-full h-full object-cover rounded-lg"
-                                  />
-                                ) : imageUrl ? (
-                                  <img
-                                    src={imageUrl}
-                                    alt="Project"
-                                    className="w-full h-full object-cover rounded-lg"
-                                  />
-                                ) : (
-                                  <span className="text-gray-500">Nhấn vào đây để chọn ảnh</span>
-                                )}
-                                <Input
-                                  type="file"
-                                  accept="image/*"
-                                  onChange={(e) => {
-                                    const file = e.target.files?.[0];
-                                    if (file) {
-                                      field.onChange(file); // Cập nhật giá trị vào form
-                                    }
-                                  }}
-                                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                                />
-                              </div>
-                            </FormControl>
-                            <FormMessage /> {/* Hiển thị thông báo lỗi từ Zod */}
-                          </FormItem>
-                        );
-                      }}
-                    />
-                  </div>
-                  <div className="flex space-x-4">
-                    <div className="flex flex-col space-y-1.5 flex-1">
-                      <FormField
-                        control={form.control}
-                        name="startDate"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Ngày bắt đầu dự án</FormLabel>
-                            <FormControl>
-                              <Input type="date" {...field}></Input>
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div className="flex flex-col space-y-1.5 flex-1">
-                      <FormField
-                        control={form.control}
-                        name="endDate"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Ngày kết thúc dự án</FormLabel>
-                            <FormControl>
-                              <Input type="date" {...field}></Input>
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-              <CardFooter className="flex justify-between">
-              </CardFooter>
-            </Card>
-            <div className="flex items-center gap-2">
-              <Button variant={'outline'} className="border border-red-500 text-red-500 hover:bg-red-500 hover:text-white">
-                Xóa dự án
-              </Button>
-              <Button className="bg-red-500 text-white hover:bg-white hover:text-red-600 hover:border-red-500">
-                Rời dự án
-              </Button>
+    <>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <div className='mb-2 flex items-center justify-between space-y-2'>
+            <div>
+              <h2 className='text-2xl font-bold tracking-tight'>Chi tiết dự án</h2>
+              <AppBreadcrumb pathList={pathList} className="mt-2" />
+            </div>
+            <div>
+              <Button loading={isPending}>Lưu</Button>
             </div>
           </div>
-        </div>
-      </form>
-    </Form>
+          <div className='-mx-4 flex-1 overflow-auto px-4 py-8 lg:flex-row'>
+            <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-8'>
+              <Card className="rounded-xl border bg-card text-card-foreground shadow col-span-4">
+                <CardHeader>
+                  <CardTitle>Thông tin cơ bản</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid w-full items-center gap-4">
+                    <div className="flex flex-col space-y-1.5 flex-1">
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Tên dự án</FormLabel>
+                            <FormControl>
+                              <Input placeholder="" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    <div className="flex flex-col space-y-1.5 flex-1">
+                      <FormField
+                        control={form.control}
+                        name="description"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Mô tả</FormLabel>
+                            <FormControl>
+                              <Textarea placeholder="" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    <div className="flex flex-col space-y-1.5 flex-1">
+                      <FormField
+                        control={form.control}
+                        name="ownership"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Chủ sở hữu</FormLabel>
+                            <FormControl>
+                              <span className='text-xs block text-gray-600'>{field.value || "Không có chủ sỡ hữu"}</span>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    <div className="flex space-x-4">
+                      <div className="flex flex-col space-y-1.5 flex-1">
+                        <FormField
+                          control={form.control}
+                          name="createdAt"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Ngày tạo dự án</FormLabel>
+                              <FormControl>
+                                <span className='text-xs block text-gray-600'>{field.value || "Không có chủ sỡ hữu"}</span>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="flex flex-col space-y-1.5 flex-1">
+                        <FormField
+                          control={form.control}
+                          name="updatedAt"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Lần sửa cuối cùng</FormLabel>
+                              <FormControl>
+                                <span className='text-xs block text-gray-600'>{field.value || "Không có chủ sỡ hữu"}</span>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex space-x-4">
+                      <div className="flex flex-col space-y-1.5 flex-1">
+                        <FormField
+                          control={form.control}
+                          name="userCount"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Thành viên</FormLabel>
+                              <FormControl>
+                                <span className='text-xs block text-gray-600'>{field.value}</span>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="flex flex-col space-y-1.5 flex-1">
+                        <FormField
+                          control={form.control}
+                          name="fileCount"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Tệp</FormLabel>
+                              <FormControl>
+                                <span className='text-xs block text-gray-600'>{field.value}</span>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="flex flex-col space-y-1.5 flex-1">
+                        <FormField
+                          control={form.control}
+                          name="folderCount"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Thư mục</FormLabel>
+                              <FormControl>
+                                <span className='text-xs block text-gray-600'>{field.value}</span>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="flex flex-col space-y-1.5 flex-1">
+                        <FormField
+                          control={form.control}
+                          name="size"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Kích thước</FormLabel>
+                              <FormControl>
+                                <span className='text-xs block text-gray-600'>{field.value}</span>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="rounded-xl border bg-card text-card-foreground shadow col-span-4">
+                <CardHeader>
+                  <CardTitle>Cấu hình dự án</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid w-full items-center gap-4">
+                    <div className="flex flex-col space-y-1.5 flex-1">
+                      <FormField
+                        control={form.control}
+                        name="image"
+                        render={({ field }) => {
+                          const imageUrl = data?.data.imageUrl; // Lấy URL từ form nếu có
+                          return (
+                            <FormItem className="space-y-1">
+                              <FormLabel>Ảnh dự án</FormLabel>
+                              <FormControl>
+                                <div className="relative w-128 h-64 border-2 border-dashed border-gray-300 rounded-lg flex justify-center items-center">
+                                  {field.value && field.value.size > 0 ? (
+                                    <img
+                                      src={URL.createObjectURL(field.value)}
+                                      alt="Selected"
+                                      className="w-full h-full object-cover rounded-lg"
+                                    />
+                                  ) : imageUrl ? (
+                                    <img
+                                      src={imageUrl}
+                                      alt="Project"
+                                      className="w-full h-full object-cover rounded-lg"
+                                    />
+                                  ) : (
+                                    <span className="text-gray-500">Nhấn vào đây để chọn ảnh</span>
+                                  )}
+                                  <Input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={(e) => {
+                                      const file = e.target.files?.[0];
+                                      field.onChange(file ?? field.value); // Nếu không chọn ảnh mới, giữ nguyên giá trị cũ
+                                    }}
+                                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                                  />
+                                </div>
+                              </FormControl>
+                              <FormMessage /> {/* Hiển thị thông báo lỗi từ Zod */}
+                            </FormItem>
+                          );
+                        }}
+                      />
+                    </div>
+                    <div className="flex space-x-4">
+                      <div className="flex flex-col space-y-1.5 flex-1">
+                        <FormField
+                          control={form.control}
+                          name="startDate"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Ngày bắt đầu dự án</FormLabel>
+                              <FormControl>
+                                <Input type="date" {...field}></Input>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="flex flex-col space-y-1.5 flex-1">
+                        <FormField
+                          control={form.control}
+                          name="endDate"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Ngày kết thúc dự án</FormLabel>
+                              <FormControl>
+                                <Input type="date" {...field}></Input>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </form>
+      </Form>
+      <div className="flex items-center gap-2 mb-4">
+        <DeleteProject id={params.id} />
+        <LeaveProject id={params.id} />
+      </div>
+    </>
   )
 }

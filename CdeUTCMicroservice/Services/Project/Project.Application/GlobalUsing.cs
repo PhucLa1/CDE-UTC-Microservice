@@ -10,3 +10,4 @@ global using Project.Domain.Entities;
 global using BuildingBlocks.Extensions;
 global using Project.Domain.Enums;
 global using Project.Domain.ValueObjects;
+global using BuildingBlocks.Exceptions;

@@ -43,16 +43,13 @@ namespace Project.Infrastructure.Data.Base
             return await _dbSet.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync(cancellationToken);
         }
 
-        
 
 
-        public async Task RemoveAsync(int id, CancellationToken cancellationToken)
+
+        public void Remove(T entity, CancellationToken cancellationToken)
         {
-            var res = await _dbSet.FindAsync(id, cancellationToken);
-            if (res != null)
-            {
-                _dbSet.Remove(res);
-            }
+            _dbSet.Remove(entity);
+
         }
         public void RemoveRange(IEnumerable<T> entities)
         {

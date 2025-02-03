@@ -38,6 +38,12 @@
         public const string UNIT = "unit";
 
 
+        #region Team
+        public const string TEAM_ROUTER = "team";
+        public const string LEAVE_PROJECT = "leave-project";
+        #endregion
+
+
         #endregion
 
         #endregion

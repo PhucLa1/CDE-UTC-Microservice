@@ -8,21 +8,12 @@ export const projectDetailSchema = z.object({
         .min(1, "Tên dự án phải có ít nhất 1 ký tự."),
     startDate: z
         .string()
-        .min(1, "Ngày bắt đầu là bắt buộc.")
-        .refine((val) => new Date(val) > new Date(), {
-            message: "Ngày bắt đầu phải lớn hơn ngày hiện tại.",
-        }),
+        .min(1, "Ngày bắt đầu là bắt buộc."),
     endDate: z
         .string()
-        .min(1, "Ngày kết thúc là bắt buộc.")
-        .refine((val) => new Date(val) > new Date(), {
-            message: "Ngày kết thúc phải lớn hơn ngày bắt đầu.",
-        }),
+        .min(1, "Ngày kết thúc là bắt buộc."),
     image: z
-        .instanceof(File)
-        .refine((file) => file.size > 0, {
-            message: "Vui lòng chọn một ảnh.",
-        }),
+        .instanceof(File),
     imageUrl: z.string().optional(),
     description: z
         .string()
@@ -35,7 +26,10 @@ export const projectDetailSchema = z.object({
     fileCount: z.number().optional(),
     size: z.number().optional(),
     folderCount: z.number().optional(),
-})
+}).refine((data) => new Date(data.endDate) > new Date(data.startDate), {
+    path: ["endDate"],
+    message: "Ngày kết thúc phải lớn hơn ngày bắt đầu",
+});
 
 export type ProjectDetail = z.infer<typeof projectDetailSchema>;
 export const projectDetailDefault: ProjectDetail = {

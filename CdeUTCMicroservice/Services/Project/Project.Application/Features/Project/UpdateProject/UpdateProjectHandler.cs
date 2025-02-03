@@ -31,7 +31,8 @@ namespace Project.Application.Features.Project.UpdateProject
             project.Description = request.Description;
             project.StartDate = request.StartDate;
             project.EndDate = request.EndDate;
-            project.ImageUrl = HandleFile.UPLOAD("Project", request.Image);
+            if(request.Image.Length > 0)
+                project.ImageUrl = HandleFile.UPLOAD("Project", request.Image);
 
             projectEntityRepository.Update(project);
             await projectEntityRepository.SaveChangeAsync(cancellationToken);
