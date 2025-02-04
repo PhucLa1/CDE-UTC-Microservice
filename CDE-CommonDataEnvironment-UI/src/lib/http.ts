@@ -55,12 +55,12 @@ const request = async <T>(
       // Nếu không thể parse JSON, sử dụng statusText làm fallback
       errorMessage = res.statusText || errorMessage;
     }
-  
+
     // Gọi hàm xử lý lỗi (handleErrorApi) với thông tin lỗi
     handleErrorApi({
       error: errorMessage,
     });
-  
+
     // Ném lỗi để dừng luồng xử lý
     throw new Error(`Request failed with status ${res.status}: ${errorMessage}`);
   }
@@ -99,8 +99,8 @@ const http = {
   ) {
     return request<T>("PUT", url, { ...options, body }, service);
   },
-  delete<T>(url: string, options?: Omit<CustomOptions, "body"> | undefined, service?: Service.AuthService | Service.EventService | Service.ProjectService) {
-    return request<T>("DELETE", url, { ...options }, service);
+  delete<T>(url: string, body: any, options?: Omit<CustomOptions, "body"> | undefined, service?: Service.AuthService | Service.EventService | Service.ProjectService) {
+    return request<T>("DELETE", url, { ...options,body }, service);
   },
 };
 

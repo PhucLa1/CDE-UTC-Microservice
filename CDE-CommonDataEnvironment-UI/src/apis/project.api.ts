@@ -9,6 +9,6 @@ const projectApiRequest = {
     create: (body: FormData) => http.post<ApiResponse<boolean>>('projects', body, undefined, Service.ProjectService),
     getDetail: (id: string) => http.get<ApiResponse<ProjectDetail>>('projects/' + id, undefined, Service.ProjectService),
     updateProject: (body: FormData) => http.put<ApiResponse<boolean>>('projects', body, undefined, Service.ProjectService),
-    deleteProject: (id: string) => http.delete<ApiResponse<boolean>>('projects/'+ id, undefined, Service.ProjectService)
+    deleteProject: (id: string) => http.delete<ApiResponse<boolean>>('projects/' + id, null, undefined, Service.ProjectService)
 }
 export default projectApiRequest;
