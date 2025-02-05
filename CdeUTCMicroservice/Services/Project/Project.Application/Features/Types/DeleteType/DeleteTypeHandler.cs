@@ -23,18 +23,14 @@ namespace Project.Application.Features.Types.DeleteType
             if (userProject.Role is not Role.Admin)
                 throw new ForbiddenException(Message.FORBIDDEN_CHANGE);
 
-            var type = Type.InitData(ProjectId.Of(request.ProjectId))
-                .FirstOrDefault(e => e.Id == TypeId.Of(request.Id));
-            //Nếu là 1 trong những type mặc định thì sẽ không được xóa
-
-            if (type is not null)
-                throw new ForbiddenException(Message.FORBIDDEN_CHANGE);
-
             var typeDelete = await typeRepository.GetAllQueryAble()
                 .FirstOrDefaultAsync(e => e.Id == TypeId.Of(request.Id));
 
             if (typeDelete is null)
                 throw new NotFoundException(Message.NOT_FOUND);
+
+            if(typeDelete.IsBlock)
+                throw new NotFoundException(Message.FORBIDDEN_CHANGE);
 
             typeRepository.Remove(typeDelete);
             await typeRepository.SaveChangeAsync(cancellationToken);

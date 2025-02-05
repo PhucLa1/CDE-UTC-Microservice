@@ -23,12 +23,6 @@ namespace Project.Application.Features.Types.ResetType
             if (userProject.Role is not Role.Admin)
                 throw new ForbiddenException(Message.FORBIDDEN_CHANGE);
 
-            var type = Type.InitData(ProjectId.Of(request.ProjectId))
-                .FirstOrDefault(e => e.Id == TypeId.Of(request.Id));
-            //Nếu là 1 trong những type mặc định thì sẽ không được xóa
-
-            if (type is not null)
-                throw new ForbiddenException(Message.FORBIDDEN_CHANGE);
 
             var typeDelete = typeRepository.GetAllQueryAble();
 

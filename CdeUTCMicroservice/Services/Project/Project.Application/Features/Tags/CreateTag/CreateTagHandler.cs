@@ -9,7 +9,7 @@ namespace Project.Application.Features.Tags.CreateTag
         {
             var tag = new Tag()
             {
-                Id = TagId.Of(Guid.NewGuid()),
+                Id = TagId.Of(Guid.NewGuid().Sequence()),
                 Name = request.Name,
                 ProjectId = ProjectId.Of(request.ProjectId),
             };

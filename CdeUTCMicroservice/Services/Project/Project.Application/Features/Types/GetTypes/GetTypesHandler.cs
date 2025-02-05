@@ -12,7 +12,9 @@ namespace Project.Application.Features.Types.GetTypes
                 .Select(e => new GetTypeResponse
                 {
                     Name = e.Name,
-                    ImageIconUrl = Setting.PROJECT_HOST + "/Types/" + e.IconImageUrl
+                    ImageIconUrl = Setting.PROJECT_HOST + "/Types/" + e.IconImageUrl,
+                    Id = e.Id.Value,
+                    IsBlock = e.IsBlock
                 })
                 .ToListAsync(cancellationToken);
 

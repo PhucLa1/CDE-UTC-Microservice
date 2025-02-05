@@ -8,7 +8,7 @@ namespace Project.API.Endpoint.Types.UpdateType
     {
         [HttpPut]
         [Route(NameRouter.TYPE)]
-        public async Task<IActionResult> UpdateType([FromBody] UpdateTypeRequest updateTypeRequest)
+        public async Task<IActionResult> UpdateType([FromForm] UpdateTypeRequest updateTypeRequest)
         {
             return Ok(await mediator.Send(updateTypeRequest));
         }

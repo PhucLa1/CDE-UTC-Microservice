@@ -5,5 +5,6 @@
         public string ImageIconUrl { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public Guid Id { get; set; }
+        public bool IsBlock { get; set; }
     }
 }

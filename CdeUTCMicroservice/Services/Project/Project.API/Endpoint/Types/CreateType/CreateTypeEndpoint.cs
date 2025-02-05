@@ -8,7 +8,7 @@ namespace Project.API.Endpoint.Types.CreateType
     {
         [HttpPost]
         [Route(NameRouter.TYPE)]
-        public async Task<IActionResult> CreateType([FromBody] CreateTypeRequest createTypeRequest)
+        public async Task<IActionResult> CreateType([FromForm] CreateTypeRequest createTypeRequest)
         {
             return Ok(await mediator.Send(createTypeRequest));
         }

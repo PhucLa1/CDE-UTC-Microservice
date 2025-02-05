@@ -11,7 +11,7 @@ namespace Project.Application.Features.Project.CreateProject
         {
             var project = new ProjectEntity()
             {
-                Id = ProjectId.Of(Guid.NewGuid()),
+                Id = ProjectId.Of(Guid.NewGuid().Sequence()),
                 Name = request.Name,
                 ImageUrl = HandleFile.UPLOAD("Project", request.Image),
                 Description = request.Description,
@@ -20,7 +20,7 @@ namespace Project.Application.Features.Project.CreateProject
             };
             var userProject = new UserProject()
             {
-                Id = UserProjectId.Of(Guid.NewGuid()),
+                Id = UserProjectId.Of(Guid.NewGuid().Sequence()),
                 UserId = userProjectRepository.GetCurrentId(),
                 ProjectId = project.Id,
                 Role = Role.Admin,

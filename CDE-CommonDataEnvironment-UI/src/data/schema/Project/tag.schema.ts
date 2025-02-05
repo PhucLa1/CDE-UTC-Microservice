@@ -7,6 +7,7 @@ export const tagSchema = z.object({
         .string()
         .min(1, "Tên nhãn dán phải có ít nhất 1 ký tự."),
     projectId: z.string().optional(),
+    isBlock: z.boolean().optional(),
 })
 
 export type Tag = z.infer<typeof tagSchema>;

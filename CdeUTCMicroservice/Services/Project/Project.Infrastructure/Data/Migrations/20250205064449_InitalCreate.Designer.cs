@@ -13,8 +13,8 @@ using Project.Infrastructure.Data;
 namespace Project.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ProjectDBContext))]
-    [Migration("20250203113734_UpdateRemoveDatanearest")]
-    partial class UpdateRemoveDatanearest
+    [Migration("20250205064449_InitalCreate")]
+    partial class InitalCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -629,6 +629,9 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("created_by");
 
+                    b.Property<bool>("IsBlock")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -770,6 +773,9 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnName("created_by");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsBlock")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsDefault")
@@ -983,6 +989,9 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Property<string>("IconImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsBlock")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()

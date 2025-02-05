@@ -11,3 +11,6 @@ C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservic
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.Domain\obj\Debug\net8.0\ref\Project.Domain.dll
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.Domain\obj\Debug\net8.0\Project.Domain.csproj.AssemblyReference.cache
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.Domain\obj\Debug\net8.0\Project.Domain.sourcelink.json
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.Domain\bin\Debug\net8.0\BuildingBlocks.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.Domain\bin\Debug\net8.0\BuildingBlocks.pdb
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.Domain\obj\Debug\net8.0\Project..001C4952.Up2Date

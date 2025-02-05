@@ -1,4 +1,6 @@
+﻿
 
+using BuildingBlocks.Extensions;
 
 namespace Project.Domain.Entities
 {
@@ -9,6 +11,7 @@ namespace Project.Domain.Entities
         public bool IsActive { get; set; }
         public string ColorRGB { get; set; } = default!;
         public string Name { get; set; } = default!;
+        public bool IsBlock { get; set; } = false;
         public Projects? Project { get; set; }
 
 
@@ -16,11 +19,11 @@ namespace Project.Domain.Entities
         {
             return new List<Status>()
             {
-                new Status() { Id = StatusId.Of(Guid.NewGuid()), ProjectId = projectId, IsDefault = true, IsActive = true, ColorRGB = "#1E7BD7", Name = "M?i"},
-                new Status() { Id = StatusId.Of(Guid.NewGuid()), ProjectId = projectId, IsDefault = false, IsActive = true, ColorRGB = "#28A745", Name = "?ang th?c hi?n" },
-                new Status() { Id = StatusId.Of(Guid.NewGuid()), ProjectId = projectId, IsDefault = false, IsActive = true, ColorRGB = "#FFC107", Name = "?ang ch?" },
-                new Status() { Id = StatusId.Of(Guid.NewGuid()), ProjectId = projectId, IsDefault = false, IsActive = true, ColorRGB = "#DC3545", Name = "Ho�n th�nh" },
-                new Status() { Id = StatusId.Of(Guid.NewGuid()), ProjectId = projectId, IsDefault = false, IsActive = true, ColorRGB = "#6C757D", Name = "?� ?�ng" },
+                new Status() { Id = StatusId.Of(Guid.NewGuid().Sequence()), ProjectId = projectId, IsDefault = true, IsActive = true, ColorRGB = "#1E7BD7", Name = "Mới", IsBlock = true},
+                new Status() { Id = StatusId.Of(Guid.NewGuid().Sequence()), ProjectId = projectId, IsDefault = false, IsActive = true, ColorRGB = "#28A745", Name = "Đang thực hiện", IsBlock = true },
+                new Status() { Id = StatusId.Of(Guid.NewGuid().Sequence()), ProjectId = projectId, IsDefault = false, IsActive = true, ColorRGB = "#FFC107", Name = "Đang chờ" , IsBlock = true},
+                new Status() { Id = StatusId.Of(Guid.NewGuid().Sequence()), ProjectId = projectId, IsDefault = false, IsActive = true, ColorRGB = "#DC3545", Name = "Hoàn thành", IsBlock = true },
+                new Status() { Id = StatusId.Of(Guid.NewGuid().Sequence()), ProjectId = projectId, IsDefault = false, IsActive = true, ColorRGB = "#6C757D", Name = "Đã đóng" , IsBlock = true},
             };
         }
     }

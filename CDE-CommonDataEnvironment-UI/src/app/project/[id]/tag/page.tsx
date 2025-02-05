@@ -9,6 +9,8 @@ import React, { useEffect, useState } from 'react'
 import FormCRUD from './_components/formCRUD';
 import { State } from '@/data/enums/state.enum';
 import { Pencil, Trash } from 'lucide-react';
+import { useRole } from '../layout';
+import { Role } from '@/data/enums/role.enum';
 const pathList: Array<PathItem> = [
     {
         name: "Dãn nhán",
@@ -17,6 +19,7 @@ const pathList: Array<PathItem> = [
 ];
 export default function page({ params }: { params: { id: string } }) {
     const [ids, setIds] = useState<string[]>()
+    const { role } = useRole();
     const { data, isLoading } = useQuery({
         queryKey: ['get-list-tags'],
         queryFn: () => tagApiRequest.getList(params.id)
@@ -59,11 +62,10 @@ export default function page({ params }: { params: { id: string } }) {
                                             projectId: params.id,
                                             name: ''
                                         }} />
-                                        <FormCRUD trigger={<Button className='ml-1' variant="destructive">Xóa tất cả</Button>} state={State.DELETE} tag={{
+                                        {role === Role.Admin && <FormCRUD trigger={<Button className='ml-1' variant="destructive">Xóa tất cả</Button>} state={State.DELETE} tag={{
                                             projectId: params.id,
                                             name: ''
-                                        }} ids={ids} />
-
+                                        }} ids={ids} />}
                                     </div>
                                 </div>
                                 <Table>
@@ -71,7 +73,7 @@ export default function page({ params }: { params: { id: string } }) {
                                         <TableRow>
                                             <TableHead>#</TableHead>
                                             <TableHead>Tên nhãn</TableHead>
-                                            <TableHead>Hành động</TableHead>
+                                            {role === Role.Admin && <TableHead>Hành động</TableHead>}
                                         </TableRow>
                                     </TableHeader>
                                     <TableBody>
@@ -79,11 +81,11 @@ export default function page({ params }: { params: { id: string } }) {
                                             <TableRow key={index}>
                                                 <TableCell>{index + 1}</TableCell>
                                                 <TableCell>{item.name}</TableCell>
-                                                <TableCell>
+                                                {role === Role.Admin && <TableCell>
                                                     <div className='flex items-center justify-start'>
                                                         <FormCRUD
                                                             trigger={
-                                                                <Button variant="ghost" size="icon" className="hover:text-white  hover:bg-black">
+                                                                <Button disabled={item.isBlock} variant="ghost" size="icon" className="hover:text-white  hover:bg-black">
                                                                     <Pencil className="w-4 h-4" />
                                                                 </Button>
                                                             }
@@ -106,7 +108,7 @@ export default function page({ params }: { params: { id: string } }) {
                                                                 id: item.id
                                                             }} />
                                                     </div>
-                                                </TableCell>
+                                                </TableCell>}
                                             </TableRow>
                                         ))}
                                     </TableBody>

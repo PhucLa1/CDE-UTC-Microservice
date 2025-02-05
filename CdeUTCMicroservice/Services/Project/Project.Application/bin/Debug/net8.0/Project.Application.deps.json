@@ -446,6 +446,7 @@
       },
       "Project.Domain/1.0.0": {
         "dependencies": {
+          "BuildingBlocks": "1.0.0",
           "MediatR": "12.4.1",
           "StackifyLib": "2.2.16"
         },

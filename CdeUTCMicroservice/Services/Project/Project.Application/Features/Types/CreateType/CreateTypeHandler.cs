@@ -8,7 +8,7 @@
         public async Task<CreateTypeResponse> Handle(CreateTypeRequest request, CancellationToken cancellationToken)
         {
             /* Quy đinh: 
-           * Admin : được tạo mới tag
+           * Admin : được tạo mới type
            * Member : Không được tạo mới
            */
 
@@ -24,6 +24,7 @@
 
             var type = new Type()
             {
+                Id = TypeId.Of(Guid.NewGuid().Sequence()),
                 ProjectId = ProjectId.Of(request.ProjectId),
                 IconImageUrl = HandleFile.UPLOAD("Types", request.IconImage),
                 Name = request.Name,
