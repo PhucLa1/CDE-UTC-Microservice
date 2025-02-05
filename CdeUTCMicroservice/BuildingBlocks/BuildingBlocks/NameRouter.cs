@@ -37,6 +37,7 @@
         public const string PROJECT_ROUTER = "projects";
         public const string UNIT = "unit";
         public const string TAG = "tag";
+        public const string TYPE = "type";
 
         #region Team
         public const string TEAM_ROUTER = "team";

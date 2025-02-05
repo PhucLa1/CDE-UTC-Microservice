@@ -17,6 +17,7 @@ namespace Project.API
             {
 
             });
+            webApplication.UseStaticFiles();
 
             return webApplication;
         }

@@ -17,7 +17,7 @@ namespace Auth.Application.Auth.GetInfo
                 throw new NotFoundException(Message.NOT_FOUND);
 
             var userInfo = user.Adapt<GetInfoResponse>();
-            userInfo.ImageUrl = "https://localhost:5050/User/" + userInfo.ImageUrl;
+            userInfo.ImageUrl = Setting.AUTH_HOST + "/User/" + userInfo.ImageUrl;
             return new ApiResponse<GetInfoResponse> { Data = userInfo, Message = Message.LOGIN_SUCCESSFULLY };
         }
     }

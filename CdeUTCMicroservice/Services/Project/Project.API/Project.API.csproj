@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\Types\" />
     <Folder Include="wwwroot\Project\" />
   </ItemGroup>
 

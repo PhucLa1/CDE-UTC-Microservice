@@ -26,7 +26,7 @@ namespace Project.Application.Features.Project.DeleteProject
             if (project is null)
                 throw new NotFoundException(Message.NOT_FOUND);
 
-            projectEntityRepository.Remove(project, cancellationToken);
+            projectEntityRepository.Remove(project);
             await projectEntityRepository.SaveChangeAsync(cancellationToken);
             return new DeleteProjectResponse() { Data = true, Message = Message.DELETE_SUCCESSFULLY };
 

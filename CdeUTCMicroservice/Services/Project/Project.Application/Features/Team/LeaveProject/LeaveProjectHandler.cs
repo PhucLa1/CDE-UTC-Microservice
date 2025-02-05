@@ -15,7 +15,7 @@ namespace Project.Application.Features.Team.LeaveProject
             if (userProject is null)
                 throw new NotFoundException(Message.NOT_FOUND);
 
-            userProjectRepository.Remove(userProject, cancellationToken);
+            userProjectRepository.Remove(userProject);
             await userProjectRepository.SaveChangeAsync(cancellationToken);
              
             return new LeaveProjectResponse() { Data = true, Message = Message.DELETE_SUCCESSFULLY };

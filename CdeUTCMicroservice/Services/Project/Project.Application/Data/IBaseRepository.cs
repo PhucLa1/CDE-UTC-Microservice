@@ -10,7 +10,7 @@ namespace Project.Application.Data
     {
         Guid GetCurrentId();
         Task AddAsync(T entity, CancellationToken cancellationToken);
-        void Remove(T entity, CancellationToken cancellationToken);
+        void Remove(T entity);
         void RemoveRangeByEntitiesAsync(List<T> entities);
         void Update(T entity);
         Task<IEnumerable<T>> GetPaginatedAsync(int pageNumber, int pageSize, CancellationToken cancellationToken);        

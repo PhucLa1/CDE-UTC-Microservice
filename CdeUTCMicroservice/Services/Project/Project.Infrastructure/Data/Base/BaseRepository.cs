@@ -46,7 +46,7 @@ namespace Project.Infrastructure.Data.Base
 
 
 
-        public void Remove(T entity, CancellationToken cancellationToken)
+        public void Remove(T entity)
         {
             _dbSet.Remove(entity);
 
