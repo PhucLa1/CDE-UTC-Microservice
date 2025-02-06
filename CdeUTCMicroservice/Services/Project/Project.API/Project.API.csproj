@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Types\" />
+    <Folder Include="wwwroot\Statuss\" />
     <Folder Include="wwwroot\Project\" />
   </ItemGroup>
 
