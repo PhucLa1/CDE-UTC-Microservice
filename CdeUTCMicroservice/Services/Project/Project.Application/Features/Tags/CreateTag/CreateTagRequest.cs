@@ -2,7 +2,7 @@
 {
     public class CreateTagRequest : ICommand<CreateTagResponse>
     {
-        public Guid ProjectId { get; set; }
+        public int ProjectId { get; set; }
         public string Name { get; set; } = string.Empty;
     }
 }

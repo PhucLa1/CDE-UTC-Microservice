@@ -1,11 +1,9 @@
-﻿using Project.Domain.ValueObjects.Id;
-
-namespace Project.Domain.Entities
+﻿namespace Project.Domain.Entities
 {
-    public class ViewBCFTopic : BaseEntity<ViewBCFTopicId>
+    public class ViewBCFTopic : BaseEntity
     {
-        public ViewId? ViewId { get; set; } = default!;
-        public BCFTopicId? BCFTopicId { get; set; } = default!;
+        public int? ViewId { get; set; } = default!;
+        public int? BCFTopicId { get; set; } = default!;
        
     }
 }

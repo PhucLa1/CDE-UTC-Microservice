@@ -38,8 +38,8 @@ const pathList: Array<PathItem> = [
 ];
 export default function page() {
     const queryClient = useQueryClient()
-    const [districtId, setDistrictId] = useState<string>("")
-    const [cityId, setCityId] = useState<string>("")
+    const [districtId, setDistrictId] = useState<number>(0)
+    const [cityId, setCityId] = useState<number>(0)
     const [avatarUrl, setAvatarUrl] = useState("https://github.com/shadcn.png");
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const form = useForm<Info>({
@@ -56,10 +56,10 @@ export default function page() {
         if (values.employer != null) formData.append("employer", values.employer);
         if (values.dateDisplay != null) formData.append("dateDisplay", values.dateDisplay.toString());
         if (values.timeDisplay != null) formData.append("timeDisplay", values.timeDisplay.toString());
-        if (values.jobTitleId != null) formData.append("jobTitleId", values.jobTitleId);
-        if (values.cityId != null) formData.append("cityId", values.cityId);
-        if (values.districtId != null) formData.append("districtId", values.districtId);
-        if (values.wardId != null) formData.append("wardId", values.wardId);
+        if (values.jobTitleId != null) formData.append("jobTitleId", values.jobTitleId.toString());
+        if (values.cityId != null) formData.append("cityId", values.cityId.toString());
+        if (values.districtId != null) formData.append("districtId", values.districtId.toString());
+        if (values.wardId != null) formData.append("wardId", values.wardId.toString());
         if (selectedFile != null) formData.append("image", selectedFile);
 
         mutate(formData)
@@ -76,6 +76,7 @@ export default function page() {
                     message: "Bạn đã sửa đổi thông tin cá nhân thành công"
                 })
             queryClient.invalidateQueries({ queryKey: ["infoUser"] })
+            setSelectedFile(null)
         }
     })
 
@@ -252,8 +253,8 @@ export default function page() {
                                                                     value={field.value?.toString()} // Lấy giá trị từ field
                                                                     onValueChange={(value) => {
                                                                         console.log(value)
-                                                                        setCityId(value)
-                                                                        field.onChange(value)
+                                                                        setCityId(Number(value))
+                                                                        field.onChange(Number(value))
                                                                     }}>
                                                                     <SelectTrigger id="framework">
                                                                         <SelectValue placeholder="Chọn thành phố" />
@@ -261,7 +262,7 @@ export default function page() {
                                                                     <SelectContent position="popper">
                                                                         {
                                                                             cities?.data.map((item, _) => {
-                                                                                return <SelectItem key={item.id} value={item.id!}>{item.name}</SelectItem>
+                                                                                return <SelectItem key={item.id} value={item.id!.toString()}>{item.name}</SelectItem>
                                                                             })
                                                                         }
                                                                     </SelectContent>
@@ -281,12 +282,12 @@ export default function page() {
                                                             <FormLabel>Huyện</FormLabel>
                                                             <FormControl>
                                                                 <Select
-                                                                    disabled={cityId == ""}
+                                                                    disabled={cityId == 0}
                                                                     key={field.value}
                                                                     value={field.value?.toString()} // Lấy giá trị từ field
                                                                     onValueChange={(value) => {
-                                                                        setDistrictId(value)
-                                                                        field.onChange(value)
+                                                                        setDistrictId(Number(value))
+                                                                        field.onChange(Number(value))
                                                                     }}>
                                                                     <SelectTrigger id="framework">
                                                                         <SelectValue placeholder="Chọn huyện" />
@@ -294,7 +295,7 @@ export default function page() {
                                                                     <SelectContent position="popper">
                                                                         {
                                                                             districts?.data.map((item, _) => {
-                                                                                return <SelectItem key={item.id} value={item.id!}>{item.name}</SelectItem>
+                                                                                return <SelectItem key={item.id} value={item.id!.toString()}>{item.name}</SelectItem>
                                                                             })
                                                                         }
                                                                     </SelectContent>
@@ -314,17 +315,17 @@ export default function page() {
                                                             <FormLabel>Phường</FormLabel>
                                                             <FormControl>
                                                                 <Select
-                                                                    disabled={districtId == ""}
+                                                                    disabled={districtId == 0}
                                                                     key={field.value}
                                                                     value={field.value?.toString()} // Lấy giá trị từ field
-                                                                    onValueChange={(value) => { field.onChange(value); console.log(value) }}>
+                                                                    onValueChange={(value) => { field.onChange(Number(value)); console.log(value) }}>
                                                                     <SelectTrigger id="framework">
                                                                         <SelectValue placeholder="Chọn phường" />
                                                                     </SelectTrigger>
                                                                     <SelectContent position="popper">
                                                                         {
                                                                             wards?.data.map((item, _) => {
-                                                                                return <SelectItem key={item.id} value={item.id!}>{item.name}</SelectItem>
+                                                                                return <SelectItem key={item.id} value={item.id!.toString()}>{item.name}</SelectItem>
                                                                             })
                                                                         }
                                                                     </SelectContent>
@@ -349,7 +350,7 @@ export default function page() {
                                                                     onValueChange={(value) => {
                                                                         const enumValue = parseInt(value, 10); // Chuyển giá trị chuỗi về kiểu số
                                                                         field.onChange(enumValue); // Truyền lại giá trị enum số vào field
-                                                                      }}
+                                                                    }}
                                                                 >
                                                                     <SelectTrigger id="framework">
                                                                         <SelectValue placeholder="Chọn định dạng ngày" />
@@ -384,7 +385,7 @@ export default function page() {
                                                                     onValueChange={(value) => {
                                                                         const enumValue = parseInt(value, 10); // Chuyển giá trị chuỗi về kiểu số
                                                                         field.onChange(enumValue); // Truyền lại giá trị enum số vào field
-                                                                      }}
+                                                                    }}
                                                                 >
                                                                     <SelectTrigger id="framework">
                                                                         <SelectValue placeholder="Chọn định dạng giờ&phút" />
@@ -438,7 +439,11 @@ export default function page() {
                                                             <FormItem>
                                                                 <FormLabel>Điện thoại công sở</FormLabel>
                                                                 <FormControl>
-                                                                    <Input placeholder="" {...field} />
+                                                                    <Input
+                                                                        placeholder="Nhập số điện thoại công sở"
+                                                                        {...field}
+                                                                        value={field.value || ''} // Đảm bảo giá trị được hiển thị dưới dạng chuỗi
+                                                                    />
                                                                 </FormControl>
                                                                 <FormMessage />
                                                             </FormItem>
@@ -491,7 +496,7 @@ export default function page() {
                                                                         <SelectContent position="popper">
                                                                             {
                                                                                 jobTitles?.data.map((item, _) => {
-                                                                                    return <SelectItem key={item.id} value={item.id!}>{item.name}</SelectItem>
+                                                                                    return <SelectItem key={item.id} value={item.id!.toString()}>{item.name}</SelectItem>
                                                                                 })
                                                                             }
                                                                         </SelectContent>

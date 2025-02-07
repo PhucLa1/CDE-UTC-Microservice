@@ -47,47 +47,47 @@ namespace Auth.Data.Data
 
         #region Get Token in middleware
         /*
-        public Guid GetCurrentUserId()
+        public int GetCurrentUserId()
         {
             if (_httpContextAccessor == null || _httpContextAccessor.HttpContext == null)
             {
-                return Guid.Empty; // Trả về Guid mặc định nếu HttpContext không tồn tại
+                return 0;
             }
             if (!_httpContextAccessor.HttpContext.Items.ContainsKey("UserId"))
             {
-                return Guid.Empty; // Trả về Guid mặc định nếu không có key "UserId"
+                return 0;
             }
             var userIdObj = _httpContextAccessor.HttpContext.Items["UserId"];
             if (userIdObj == null)
             {
-                return Guid.Empty; // Trả về Guid mặc định nếu "UserId" không tồn tại
+                return 0;
             }
-            if (Guid.TryParse(userIdObj.ToString(), out var userId))
+            if (int.TryParse(userIdObj.ToString(), out int userId))
             {
-                return userId; // Trả về Guid nếu chuyển đổi thành công
+                return userId;
             }
-
-            return Guid.Empty; // Trả về Guid mặc định nếu chuyển đổi thất bại
+            return 0;
         }
         */
         #endregion
 
         #region Get token from gateways
         
-        public Guid GetCurrentUserId()
+        public int GetCurrentUserId()
         {
             var context = _httpContextAccessor.HttpContext;
             var userIdObj = context.Request.Headers["X-UserId"].FirstOrDefault();
             if (userIdObj is null)
-                return Guid.Empty;
-            if (Guid.TryParse(userIdObj.ToString(), out var userId))
+                return 0;
+            if (int.TryParse(userIdObj.ToString(), out var userId))
             {
-                return userId; // Trả về Guid nếu chuyển đổi thành công
+                return userId; // Trả về int nếu chuyển đổi thành công
             }
 
-            return Guid.Empty; // Trả về Guid mặc định nếu chuyển đổi thất bại
+            return 0; // Trả về int mặc định nếu chuyển đổi thất bại
         }
         
+
         #endregion
         public DbSet<JobTitle> JobTitles { get; set; }
         public DbSet<User> Users { get; set; }

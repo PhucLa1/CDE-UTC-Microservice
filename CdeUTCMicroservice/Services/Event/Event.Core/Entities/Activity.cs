@@ -6,8 +6,8 @@ namespace Event.Core.Entities
     {
         public string Action { get; set; } = default!;
         public string Content { get; set; } = default!;
-        public Guid ProjectId { get; set; }
-        public Guid? ActivityTypeId { get; set; }
+        public int ProjectId { get; set; }
+        public int? ActivityTypeId { get; set; }
         public ActivityType ActivityType { get; set; } = default!;
     }
 }

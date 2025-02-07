@@ -2,7 +2,7 @@
 {
     public class GetAllProvincesRequest : IQuery<ApiResponse<List<GetAllProvincesResponse>>>
     {
-        public Guid? CityId { get; set; }
-        public Guid? DistrictId { get; set; }
+        public int? CityId { get; set; }
+        public int? DistrictId { get; set; }
     }
 }

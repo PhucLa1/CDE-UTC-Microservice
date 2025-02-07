@@ -153,6 +153,10 @@
               "target": "Package",
               "version": "[12.4.1, )"
             },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
             "StackifyLib": {
               "target": "Package",
               "version": "[2.2.16, )"

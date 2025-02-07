@@ -2,6 +2,6 @@
 {
     public class ResetTypeRequest : ICommand<ResetTypeResponse>
     {
-        public Guid ProjectId { get; set; }
+        public int ProjectId { get; set; }
     }
 }

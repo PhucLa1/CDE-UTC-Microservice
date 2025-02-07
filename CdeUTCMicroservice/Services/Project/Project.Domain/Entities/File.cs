@@ -1,14 +1,12 @@
-﻿using Project.Domain.ValueObjects.Id;
-
-namespace Project.Domain.Entities
+﻿namespace Project.Domain.Entities
 {
-    public class File : BaseEntity<FileId>
+    public class File : BaseEntity
     {
         public string Name { get; set; } = default!;
         public decimal Size { get; set; }
         public string Url { get; set; } = default!;
-        public FolderId? FolderId { get; set; } 
-        public ProjectId? ProjectId { get; set; }
+        public int? FolderId { get; set; } 
+        public int? ProjectId { get; set; }
         public FileVersion FileVersion { get; set; }
         public bool IsCheckIn { get; set; }
         public bool IsCheckout { get; set; } = true;

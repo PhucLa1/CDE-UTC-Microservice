@@ -24,12 +24,20 @@ namespace Event.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Event.Core.Entities.Activity", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<string>("Action")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<Guid?>("ActivityTypeId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("ActivityTypeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -39,26 +47,22 @@ namespace Event.Infrastructure.Data.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("created_at");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int")
                         .HasColumnName("created_by");
 
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("id");
-
-                    b.Property<Guid>("ProjectId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("UpdatedBy")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("int")
                         .HasColumnName("updated_by");
 
-                    b.HasKey("Action");
+                    b.HasKey("Id");
 
                     b.HasIndex("ActivityTypeId");
 
@@ -67,20 +71,22 @@ namespace Event.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Event.Core.Entities.ActivityType", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("int")
                         .HasColumnName("id");
 
-                    b.Property<Guid?>("ActivityTypeParentId")
-                        .HasColumnType("uniqueidentifier");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("ActivityTypeParentId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
                         .HasColumnName("created_at");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int")
                         .HasColumnName("created_by");
 
                     b.Property<string>("Name")
@@ -97,8 +103,8 @@ namespace Event.Infrastructure.Data.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("UpdatedBy")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("int")
                         .HasColumnName("updated_by");
 
                     b.HasKey("Id");
@@ -110,17 +116,19 @@ namespace Event.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Event.Core.Entities.ActivityTypeParent", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("int")
                         .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
                         .HasColumnName("created_at");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int")
                         .HasColumnName("created_by");
 
                     b.Property<string>("IconImageUrl")
@@ -137,8 +145,8 @@ namespace Event.Infrastructure.Data.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("UpdatedBy")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("int")
                         .HasColumnName("updated_by");
 
                     b.HasKey("Id");
@@ -151,18 +159,19 @@ namespace Event.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Event.Core.Entities.Log", b =>
                 {
-                    b.Property<int>("StatusCode")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StatusCode"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
                         .HasColumnName("created_at");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int")
                         .HasColumnName("created_by");
 
                     b.Property<string>("Data")
@@ -172,13 +181,12 @@ namespace Event.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("id");
-
                     b.Property<string>("Method")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StatusCode")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -188,11 +196,11 @@ namespace Event.Infrastructure.Data.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("UpdatedBy")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("int")
                         .HasColumnName("updated_by");
 
-                    b.HasKey("StatusCode");
+                    b.HasKey("Id");
 
                     b.ToTable("Logs");
                 });

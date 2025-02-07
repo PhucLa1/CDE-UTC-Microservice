@@ -1,9 +1,9 @@
 namespace Project.Domain.Entities
 {
-    public class TodoComment : BaseEntity<TodoCommentId>
+    public class TodoComment : BaseEntity
     {
         public string Content { get; set; } = default!;
-        public TodoId? TodoId { get; set; }
+        public int? TodoId { get; set; }
 
     }
 }

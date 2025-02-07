@@ -8,7 +8,7 @@ namespace Project.API.Endpoint.Unit.GetUnitByProjectId
     {
         [HttpGet]
         [Route("{id}/" + NameRouter.UNIT)]
-        public async Task<IActionResult> GetUnitByProjectId([AsParameters] Guid id)
+        public async Task<IActionResult> GetUnitByProjectId([AsParameters] int id)
         {
             return Ok(await mediator.Send(new GetUnitByProjectIdRequest() { ProjectId = id }));
         }

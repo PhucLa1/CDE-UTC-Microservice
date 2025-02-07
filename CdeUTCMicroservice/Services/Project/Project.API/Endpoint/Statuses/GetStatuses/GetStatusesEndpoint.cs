@@ -8,7 +8,7 @@ namespace Project.API.Endpoint.Statuses.GetStatuses
     {
         [HttpGet]
         [Route("{projectId}/" + NameRouter.STATUS)]
-        public async Task<IActionResult> GetStatuses(Guid projectId)
+        public async Task<IActionResult> GetStatuses(int projectId)
         {
             return Ok(await mediator.Send(new GetStatusesRequest() { ProjectId = projectId }));
         }

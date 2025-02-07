@@ -14,7 +14,7 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-export default function DeleteProject({ id }: { id: string }) {
+export default function DeleteProject({ id }: { id: number }) {
     const router = useRouter()
     const { mutate: mutateDelete, isPending: isPendingDelete } = useMutation({
         mutationKey: ['delete-project'],

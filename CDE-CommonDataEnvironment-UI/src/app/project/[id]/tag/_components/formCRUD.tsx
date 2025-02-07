@@ -25,7 +25,7 @@ type Props = {
     trigger: ReactNode;
     state: State,
     tag?: Tag,
-    ids? : string[]
+    ids? : number[]
 }
 
 export default function FormCRUD({ trigger, state, tag, ids }: Props) {

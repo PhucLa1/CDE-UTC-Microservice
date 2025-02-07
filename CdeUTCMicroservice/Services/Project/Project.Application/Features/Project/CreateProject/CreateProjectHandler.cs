@@ -9,28 +9,29 @@ namespace Project.Application.Features.Project.CreateProject
     {
         public async Task<CreateProjectResponse> Handle(CreateProjectRequest request, CancellationToken cancellationToken)
         {
+            using var transaction = await projectEntityRepository.BeginTransactionAsync(cancellationToken);
             var project = new ProjectEntity()
             {
-                Id = ProjectId.Of(Guid.NewGuid().Sequence()),
                 Name = request.Name,
                 ImageUrl = HandleFile.UPLOAD("Project", request.Image),
                 Description = request.Description,
                 StartDate = request.StartDate,
                 EndDate = request.EndDate,
             };
+            await projectEntityRepository.AddAsync(project, cancellationToken);
+            await projectEntityRepository.SaveChangeAsync(cancellationToken);
             var userProject = new UserProject()
             {
-                Id = UserProjectId.Of(Guid.NewGuid().Sequence()),
                 UserId = userProjectRepository.GetCurrentId(),
                 ProjectId = project.Id,
                 Role = Role.Admin,
                 UserProjectStatus = UserProjectStatus.Active,
                 LastAccessed = DateTime.UtcNow,
                 DateJoined = DateTime.UtcNow
-            };
-            await projectEntityRepository.AddAsync(project, cancellationToken);
+            };           
             await userProjectRepository.AddAsync(userProject, cancellationToken);
             await projectEntityRepository.SaveChangeAsync(cancellationToken);
+            await projectEntityRepository.CommitTransactionAsync(transaction, cancellationToken);
             return new CreateProjectResponse() { Data = true,  Message= Message.CREATE_SUCCESSFULLY };
         }
     }

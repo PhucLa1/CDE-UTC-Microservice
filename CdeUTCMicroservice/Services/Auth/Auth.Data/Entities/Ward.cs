@@ -7,7 +7,7 @@ namespace Auth.Data.Entities
         public string Name { get; set; } = string.Empty;
         public string CodeName { get; set; } = string.Empty;
         public string ShortCodeName { get; set; } = string.Empty;
-        public Guid DistrictId { get; set; }
+        public int DistrictId { get; set; }
         public string DivisionType { get; set; } = string.Empty;
     }
 }

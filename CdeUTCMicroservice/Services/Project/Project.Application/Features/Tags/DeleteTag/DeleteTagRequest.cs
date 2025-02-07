@@ -2,7 +2,7 @@
 {
     public class DeleteTagRequest : ICommand<DeleteTagResponse>
     {
-        public List<Guid> Ids { get; set; } = new List<Guid> { };
-        public Guid ProjectId { get; set; }
+        public List<int> Ids { get; set; } = new List<int> { };
+        public int ProjectId { get; set; }
     }
 }

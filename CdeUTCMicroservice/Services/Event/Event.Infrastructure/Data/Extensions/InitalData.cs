@@ -104,6 +104,8 @@ namespace Auth.Data.Data.Extensions
                 },
                 IconImageUrl = "Project.png"
             }
-        };
+        }
+        .OrderBy(x => x.Id) // Sắp xếp theo Id của ActivityTypeParent
+        .ToList();
     }
 }

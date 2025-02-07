@@ -1,5 +1,4 @@
-﻿using BuildingBlocks.Behaviors;
-using BuildingBlocks.Exceptions.Handler;
+﻿using BuildingBlocks.Exceptions.Handler;
 
 namespace Auth.API
 {

@@ -2,6 +2,6 @@
 {
     public class GetRoleByProjectIdRequest : IQuery<GetRoleByProjectIdResponse>
     {
-        public Guid ProjectId { get; set; }
+        public int ProjectId { get; set; }
     }
 }

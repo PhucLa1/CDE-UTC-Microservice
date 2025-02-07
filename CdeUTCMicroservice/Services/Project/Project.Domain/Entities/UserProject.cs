@@ -1,9 +1,9 @@
 namespace Project.Domain.Entities
 {
-    public class UserProject : BaseEntity<UserProjectId>
+    public class UserProject : BaseEntity
     {
-        public Guid UserId { get; set; }
-        public ProjectId? ProjectId { get; set; } = default!;
+        public int UserId { get; set; }
+        public int? ProjectId { get; set; } = default!;
         public Role Role { get; set; }
         public UserProjectStatus UserProjectStatus { get; set; } = UserProjectStatus.Pending;
         public DateTime LastAccessed { get; set; }

@@ -1,8 +1,8 @@
 namespace Project.Domain.Entities
 {
-    public class Tag : BaseEntity<TagId>
+    public class Tag : BaseEntity
     {
-        public ProjectId? ProjectId { get; set; }
+        public int? ProjectId { get; set; }
         public string Name { get; set; } = default!;
         public ICollection<BCFTopicTag>? BCFTopicTags { get; set; }
     }

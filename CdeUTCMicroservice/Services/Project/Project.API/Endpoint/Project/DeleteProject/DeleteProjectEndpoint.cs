@@ -8,7 +8,7 @@ namespace Project.API.Endpoint.Project.DeleteProject
     {
         [HttpDelete]
         [Route("{id}")]
-        public async Task<IActionResult> DeleteProject(Guid id)
+        public async Task<IActionResult> DeleteProject(int id)
         {
             return Ok(await mediator.Send(new DeleteProjectRequest { Id = id }));
         }

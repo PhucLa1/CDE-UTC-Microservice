@@ -10,7 +10,7 @@ namespace Project.Application.Features.Team.LeaveProject
         {
             var currentUserId = userProjectRepository.GetCurrentId();
             var userProject = await userProjectRepository.GetAllQueryAble()
-                .FirstOrDefaultAsync(x => x.UserId == currentUserId && x.ProjectId == ProjectId.Of(request.ProjectId));
+                .FirstOrDefaultAsync(x => x.UserId == currentUserId && x.ProjectId == request.ProjectId);
 
             if (userProject is null)
                 throw new NotFoundException(Message.NOT_FOUND);

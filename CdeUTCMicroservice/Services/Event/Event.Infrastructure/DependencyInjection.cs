@@ -13,6 +13,7 @@ namespace Event.Infrastructure
             services.AddDbContext<EventDBContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("EventDBContext")));
             services.AddScoped<IEmailService, EmailService>();
+            
             #region Repositories
             services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             #endregion

@@ -12,7 +12,7 @@ namespace Project.Application.Features.Project.UpdateProject
         {
             var userCurrentId = userProjectRepository.GetCurrentId();
             var userProject = await userProjectRepository.GetAllQueryAble()
-                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == ProjectId.Of(request.Id));
+                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == request.Id);
 
             if(userProject is null) 
                 throw new NotFoundException(Message.NOT_FOUND);
@@ -22,7 +22,7 @@ namespace Project.Application.Features.Project.UpdateProject
 
 
             var project = await projectEntityRepository.GetAllQueryAble()
-                .FirstOrDefaultAsync(e => e.Id == ProjectId.Of(request.Id));
+                .FirstOrDefaultAsync(e => e.Id == request.Id);
 
             if (project is null)
                 throw new NotFoundException(Message.NOT_FOUND);

@@ -2,6 +2,6 @@
 {
     public class GetTypesRequest : IQuery<ApiResponse<List<GetTypeResponse>>>
     {
-        public Guid ProjectId { get; set; }
+        public int ProjectId { get; set; }
     }
 }

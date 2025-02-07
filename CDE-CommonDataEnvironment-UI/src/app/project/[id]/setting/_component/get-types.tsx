@@ -7,11 +7,11 @@ import typeApiRequest from '@/apis/type.api';
 import { useQuery } from '@tanstack/react-query';
 import { Button } from '@/components/custom/button';
 import { Pencil, Trash } from 'lucide-react';
-import FormCRUD from './formCRUD';
+import FormCRUDType from './form-crud-type';
 import { State } from '@/data/enums/state.enum';
 import { Role } from '@/data/enums/role.enum';
 
-export default function GetTypes({ projectId, role }: { projectId: string, role: Role }) {
+export default function GetTypes({ projectId, role }: { projectId: number, role: Role }) {
     const { data, isLoading } = useQuery({
         queryKey: ['get-list-types'],
         queryFn: () => typeApiRequest.getList(projectId)
@@ -37,7 +37,7 @@ export default function GetTypes({ projectId, role }: { projectId: string, role:
                         <div className="flex justify-between items-center mb-4">
                             <h3 className="text-lg font-semibold">Danh sách thể loại</h3>
                             <div className="flex justify-between items-center">
-                                {role == Role.Admin && <FormCRUD trigger={<Button variant="default">Thêm mới thể loại</Button>} state={State.CREATE} type={{
+                                {role == Role.Admin && <FormCRUDType trigger={<Button variant="default">Thêm mới thể loại</Button>} state={State.CREATE} type={{
                                     projectId: projectId,
                                     name: '',
                                     iconImage: new File([], "default.png"),
@@ -61,7 +61,7 @@ export default function GetTypes({ projectId, role }: { projectId: string, role:
                                         <TableCell>{item.name}</TableCell>
                                         {role == Role.Admin && !item.isBlock ? <TableCell>
                                             <div className='flex items-center justify-start'>
-                                                <FormCRUD
+                                                <FormCRUDType
                                                     trigger={
                                                         <Button variant="ghost" size="icon" className="hover:text-white  hover:bg-black">
                                                             <Pencil className="w-4 h-4" />
@@ -75,7 +75,7 @@ export default function GetTypes({ projectId, role }: { projectId: string, role:
                                                         name: item.name,
                                                         id: item.id
                                                     }} />
-                                                <FormCRUD
+                                                <FormCRUDType
                                                     trigger={
                                                         <Button variant="ghost" size="icon" className="hover:text-white  hover:bg-black">
                                                             <Trash className="w-4 h-4" />

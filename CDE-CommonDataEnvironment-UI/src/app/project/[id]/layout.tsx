@@ -18,7 +18,7 @@ interface Props {
 export default function Layout({ children, params }: Props) {
   const { data, isLoading } = useQuery({
     queryKey: ["role"],
-    queryFn: () => projectApiRequest.getRole(params.id),
+    queryFn: () => projectApiRequest.getRole(Number(params.id)),
   });
 
   if (isLoading) {

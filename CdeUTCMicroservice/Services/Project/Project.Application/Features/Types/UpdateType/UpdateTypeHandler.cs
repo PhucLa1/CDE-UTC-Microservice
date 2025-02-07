@@ -15,7 +15,7 @@ namespace Project.Application.Features.Types.UpdateType
 
             var userCurrentId = userProjectRepository.GetCurrentId();
             var userProject = await userProjectRepository.GetAllQueryAble()
-                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == ProjectId.Of(request.ProjectId));
+                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == request.ProjectId);
 
             if (userProject is null)
                 throw new NotFoundException(Message.NOT_FOUND);
@@ -24,7 +24,7 @@ namespace Project.Application.Features.Types.UpdateType
                 throw new ForbiddenException(Message.FORBIDDEN_CHANGE);
 
             var typeUpdate = await typeRepository.GetAllQueryAble()
-                .FirstOrDefaultAsync(e => e.Id == TypeId.Of(request.Id));
+                .FirstOrDefaultAsync(e => e.Id == request.Id);
 
             if (typeUpdate is null)
                 throw new NotFoundException(Message.NOT_FOUND);

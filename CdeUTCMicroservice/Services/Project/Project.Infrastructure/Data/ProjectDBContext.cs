@@ -49,17 +49,17 @@ namespace Project.Infrastructure.Data
 
         #region Get token from gateways
 
-        public Guid GetCurrentUserId()
+        public int GetCurrentUserId()
         {
             var context = _httpContextAccessor.HttpContext;
             var userIdObj = context.Request.Headers["X-UserId"].FirstOrDefault();
             if (userIdObj is null)
-                throw new Exception("Không có request header gửi từ yarp gateway");
-            if (Guid.TryParse(userIdObj.ToString(), out var userId))
+                return 0; ;
+            if (int.TryParse(userIdObj.ToString(), out var userId))
             {
-                return userId; // Trả về Guid nếu chuyển đổi thành công
+                return userId; // Trả về int nếu chuyển đổi thành công
             }
-            return Guid.Empty; // Trả về Guid mặc định nếu chuyển đổi thất bại
+            return 0; // Trả về int mặc định nếu chuyển đổi thất bại
         }
 
         #endregion

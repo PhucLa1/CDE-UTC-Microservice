@@ -1,10 +1,10 @@
 namespace Project.Domain.Entities
 {
-    public class Group : BaseEntity<GroupId>
+    public class Group : BaseEntity
     {
         public string Name { get; set; } = default!;
         public string Description { get; set; } = default!;
-        public ProjectId? ProjectId { get; set; }
+        public int? ProjectId { get; set; }
        
     }
 }

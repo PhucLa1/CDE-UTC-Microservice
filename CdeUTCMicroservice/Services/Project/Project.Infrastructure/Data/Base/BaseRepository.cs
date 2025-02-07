@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Storage;
 using Project.Application.Data;
 
 namespace Project.Infrastructure.Data.Base
@@ -13,18 +14,18 @@ namespace Project.Infrastructure.Data.Base
         {
             await _dbSet.AddAsync(entity, cancellationToken);
         }
-        public Guid GetCurrentId()
+        public int GetCurrentId()
         {
             var context = _httpContextAccessor.HttpContext;
             var userIdObj = context.Request.Headers["X-UserId"].FirstOrDefault();
             if (userIdObj is null)
-                return Guid.Empty;
-            if (Guid.TryParse(userIdObj.ToString(), out var userId))
+                return 0;
+            if (int.TryParse(userIdObj.ToString(), out var userId))
             {
-                return userId; // Trả về Guid nếu chuyển đổi thành công
+                return userId; // Trả về int nếu chuyển đổi thành công
             }
 
-            return Guid.Empty; // Trả về Guid mặc định nếu chuyển đổi thất bại
+            return 0; // Trả về int mặc định nếu chuyển đổi thất bại
         }
 
         public async Task AddRangeAsync(IEnumerable<T> entities, CancellationToken cancellationToken)
@@ -43,7 +44,24 @@ namespace Project.Infrastructure.Data.Base
             return await _dbSet.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync(cancellationToken);
         }
 
+        public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken)
+        {
+            return await _context.Database.BeginTransactionAsync(cancellationToken);
+        }
 
+        public async Task CommitTransactionAsync(IDbContextTransaction transaction, CancellationToken cancellationToken)
+        {
+            try
+            {
+                await _context.SaveChangesAsync(cancellationToken);  // Lưu thay đổi vào cơ sở dữ liệu
+                await transaction.CommitAsync(cancellationToken);    // Cam kết transaction
+            }
+            catch
+            {
+                await transaction.RollbackAsync(cancellationToken);  // Rollback nếu có lỗi xảy ra
+                throw;  // Ném lại lỗi để tầng trên xử lý
+            }
+        }
 
 
         public void Remove(T entity)

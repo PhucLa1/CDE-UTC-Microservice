@@ -14,7 +14,7 @@
 
             var userCurrentId = userProjectRepository.GetCurrentId();
             var userProject = await userProjectRepository.GetAllQueryAble()
-                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == ProjectId.Of(request.ProjectId));
+                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == request.ProjectId);
 
             if (userProject is null)
                 throw new NotFoundException(Message.NOT_FOUND);
@@ -24,8 +24,7 @@
 
             var type = new Type()
             {
-                Id = TypeId.Of(Guid.NewGuid().Sequence()),
-                ProjectId = ProjectId.Of(request.ProjectId),
+                ProjectId = request.ProjectId,
                 IconImageUrl = HandleFile.UPLOAD("Types", request.IconImage),
                 Name = request.Name,
             };

@@ -1,11 +1,9 @@
-﻿using Project.Domain.ValueObjects.Id;
-
-namespace Project.Domain.Entities
+﻿namespace Project.Domain.Entities
 {
-    public class FileComment : BaseEntity<FileCommentId>
+    public class FileComment : BaseEntity
     {
         public string Content { get; set; } = default!;
-        public FileId? FileId { get; set; }
+        public int? FileId { get; set; }
 
        
     }

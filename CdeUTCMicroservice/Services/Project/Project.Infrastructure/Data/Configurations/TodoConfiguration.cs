@@ -1,29 +1,31 @@
-
 namespace Project.Infrastructure.Data.Configurations
 {
     public class TodoConfiguration : IEntityTypeConfiguration<Todo>
     {
         public void Configure(EntityTypeBuilder<Todo> builder)
-        {
-            builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).HasConversion(
-                TodoId => TodoId.Value, // Chuyển từ ValueObject -> Giá trị trong table
-                dbId => TodoId.Of(dbId));  // Chuyển từ Table SQL -> Giá trị ValueObject
-
+        {            
             builder.HasOne<Projects>()
                 .WithMany()
                 .HasForeignKey(o => o.ProjectId)
                 .OnDelete(DeleteBehavior.SetNull);
 
-            builder.ComplexProperty(
-                o => o.Characteristic, //1. Thuộc tính phức tạp 
-                nameBuilder => //2. Cấu hình chi tiết cho thuộc tính
-                {
-                    nameBuilder.Property(n => n.TypeId);
-                    nameBuilder.Property(n => n.StatusId);
-                    nameBuilder.Property(n => n.PriorityId);
+            builder.OwnsOne(o => o.Characteristic, characteristicBuilder =>
+            {
+                characteristicBuilder.HasOne(n => n.Type)
+                    .WithMany()
+                    .HasForeignKey(n => n.TypeId)
+                    .OnDelete(DeleteBehavior.SetNull);
 
-                });
+                characteristicBuilder.HasOne(n => n.Status)
+                    .WithMany()
+                    .HasForeignKey(n => n.StatusId)
+                    .OnDelete(DeleteBehavior.SetNull);
+
+                characteristicBuilder.HasOne(n => n.Priority)
+                    .WithMany()
+                    .HasForeignKey(n => n.PriorityId)
+                    .OnDelete(DeleteBehavior.SetNull);
+            });
         }
     }
 }

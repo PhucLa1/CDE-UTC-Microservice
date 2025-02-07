@@ -1,11 +1,9 @@
-﻿using Project.Domain.ValueObjects.Id;
-
-namespace Project.Domain.Entities
+﻿namespace Project.Domain.Entities
 {
-    public class FolderPermission : BaseEntity<FolderPermissionId>
+    public class FolderPermission : BaseEntity
     {
-        public FolderId? FolderId { get; set; }
-        public Guid UserId { get; set; } = default!;
+        public int? FolderId { get; set; }
+        public int UserId { get; set; } = default!;
         public Access Access { get; set; } = default!;
         public bool IsApplyAll  { get; set; } = true;
         

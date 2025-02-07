@@ -14,7 +14,7 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import teamApiRequest from '@/apis/team.api';
-export default function LeaveProject({ id }: { id: string }) {
+export default function LeaveProject({ id }: { id: number }) {
     const router = useRouter()
     const { mutate, isPending } = useMutation({
         mutationKey: ['leave-project'],

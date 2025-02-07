@@ -7,13 +7,13 @@
         public async Task<ApiResponse<List<GetStatusesResponse>>> Handle(GetStatusesRequest request, CancellationToken cancellationToken)
         {
             var types = await statusRepository.GetAllQueryAble()
-                .Where(e => e.ProjectId == ProjectId.Of(request.ProjectId))
+                .Where(e => e.ProjectId == request.ProjectId)
                 .Select(e => new GetStatusesResponse
                 {
                     Name = e.Name,
                     ColorRGB = e.ColorRGB,
                     IsDefault = e.IsDefault,
-                    Id = e.Id.Value,
+                    Id = e.Id,
                     IsBlock = e.IsBlock
                 })
                 .ToListAsync(cancellationToken);

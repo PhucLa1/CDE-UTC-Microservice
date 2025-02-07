@@ -1,11 +1,9 @@
-﻿using Project.Domain.ValueObjects.Id;
-
-namespace Project.Domain.Entities
+﻿namespace Project.Domain.Entities
 {
-    public class FilePermission : BaseEntity<FilePermissionId>
+    public class FilePermission : BaseEntity
     {
-        public FileId? FileId { get; set; }
-        public Guid UserId { get; set; }
+        public int? FileId { get; set; }
+        public int UserId { get; set; }
         public Access Access { get; set; } = Access.Write;
 
     }

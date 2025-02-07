@@ -15,7 +15,7 @@ namespace Project.Application.Features.Statuses.CreateStatus
 
             var userCurrentId = userProjectRepository.GetCurrentId();
             var userProject = await userProjectRepository.GetAllQueryAble()
-                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == ProjectId.Of(request.ProjectId));
+                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == request.ProjectId);
 
             if (userProject is null)
                 throw new NotFoundException(Message.NOT_FOUND);
@@ -25,7 +25,7 @@ namespace Project.Application.Features.Statuses.CreateStatus
 
             //Nếu đầu vào là isDefault là true thì mấy cái đằng trước sẽ là false hết
             var statues = await statusRepository.GetAllQueryAble()
-                .Where(e => e.ProjectId == ProjectId.Of(request.ProjectId))
+                .Where(e => e.ProjectId == request.ProjectId)
                 .ToListAsync(cancellationToken);
 
             statues.ForEach(e => e.IsDefault = false);
@@ -33,11 +33,10 @@ namespace Project.Application.Features.Statuses.CreateStatus
 
             var status = new Status()
             {
-                Id = StatusId.Of(Guid.NewGuid().Sequence()),
                 Name = request.Name,
                 IsDefault = request.IsDefault,
                 ColorRGB = request.ColorRGB,
-                ProjectId = ProjectId.Of(request.ProjectId),
+                ProjectId = request.ProjectId,
             };
             await statusRepository.AddAsync(status, cancellationToken);
             await statusRepository.SaveChangeAsync(cancellationToken);

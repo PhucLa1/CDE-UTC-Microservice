@@ -1,4 +1,5 @@
 ﻿using Event.Core.Entities;
+using Event.Core.Entities.Base;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -48,46 +49,47 @@ namespace Event.Infrastructure
 
         #region Get Token in middleware
         /*
-        public Guid GetCurrentUserId()
+        public int GetCurrentUserId()
         {
             if (_httpContextAccessor == null || _httpContextAccessor.HttpContext == null)
             {
-                return Guid.Empty; // Trả về Guid mặc định nếu HttpContext không tồn tại
+                return int.Empty; // Trả về int mặc định nếu HttpContext không tồn tại
             }
             if (!_httpContextAccessor.HttpContext.Items.ContainsKey("UserId"))
             {
-                return Guid.Empty; // Trả về Guid mặc định nếu không có key "UserId"
+                return int.Empty; // Trả về int mặc định nếu không có key "UserId"
             }
             var userIdObj = _httpContextAccessor.HttpContext.Items["UserId"];
             if (userIdObj == null)
             {
-                return Guid.Empty; // Trả về Guid mặc định nếu "UserId" không tồn tại
+                return int.Empty; // Trả về int mặc định nếu "UserId" không tồn tại
             }
-            if (Guid.TryParse(userIdObj.ToString(), out var userId))
+            if (int.TryParse(userIdObj.ToString(), out var userId))
             {
-                return userId; // Trả về Guid nếu chuyển đổi thành công
+                return userId; // Trả về int nếu chuyển đổi thành công
             }
 
-            return Guid.Empty; // Trả về Guid mặc định nếu chuyển đổi thất bại
+            return int.Empty; // Trả về int mặc định nếu chuyển đổi thất bại
         }
         */
         #endregion
 
         #region Get token from gateways
 
-        public Guid GetCurrentUserId()
+        public int GetCurrentUserId()
         {
             /*
             var context = _httpContextAccessor.HttpContext;
             var userIdObj = context.Request.Headers["X-UserId"].FirstOrDefault();
             if (userIdObj is null)
-                throw new Exception("Không có request header gửi từ yarp gateway");
-            if (Guid.TryParse(userIdObj.ToString(), out var userId))
+                return 0;
+            if (int.TryParse(userIdObj.ToString(), out var userId))
             {
-                return userId; // Trả về Guid nếu chuyển đổi thành công
+                return userId; // Trả về int nếu chuyển đổi thành công
             }
             */
-            return Guid.Empty; // Trả về Guid mặc định nếu chuyển đổi thất bại
+
+            return 0; // Trả về int mặc định nếu chuyển đổi thất bại
         }
 
         #endregion

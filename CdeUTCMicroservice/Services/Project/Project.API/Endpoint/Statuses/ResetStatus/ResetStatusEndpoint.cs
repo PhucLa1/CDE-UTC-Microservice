@@ -8,7 +8,7 @@ namespace Project.API.Endpoint.Statuses.ResetStatus
     {
         [HttpPost]
         [Route("{projectId}/" + NameRouter.STATUS)]
-        public async Task<IActionResult> ResetStatus(Guid projectId)
+        public async Task<IActionResult> ResetStatus(int projectId)
         {
             return Ok(await mediator.Send(new ResetStatusRequest() { ProjectId = projectId }));
         }

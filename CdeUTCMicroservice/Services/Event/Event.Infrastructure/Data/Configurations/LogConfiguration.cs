@@ -8,7 +8,7 @@ namespace Event.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Log> builder)
         {
-            builder.HasKey(x => x.StatusCode);
+            builder.Property(x => x.StatusCode);
             builder.Property(x => x.Method).IsRequired();
             builder.Property(x => x.Description).IsRequired();
             builder.Property(x => x.Title).IsRequired();

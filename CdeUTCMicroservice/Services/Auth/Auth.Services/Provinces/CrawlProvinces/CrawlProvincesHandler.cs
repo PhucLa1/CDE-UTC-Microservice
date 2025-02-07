@@ -47,7 +47,6 @@ namespace Auth.Application.Provinces.CrawlProvinces
             {
                 var city = new City()
                 {
-                    Id = new Guid(),
                     Name = cityResultItem.Name,
                     CodeName = cityResultItem.CodeName,
                     DivisionType = cityResultItem.DivisionType,
@@ -58,7 +57,6 @@ namespace Auth.Application.Provinces.CrawlProvinces
                 {
                     var district = new District()
                     {
-                        Id = new Guid(),
                         Name = districtResultItem.Name,
                         CodeName = districtResultItem.CodeName,
                         ShortCodeName = districtResultItem.ShortCodename,

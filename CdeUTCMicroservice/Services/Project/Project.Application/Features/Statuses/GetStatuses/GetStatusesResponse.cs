@@ -6,6 +6,6 @@
         public bool IsBlock { get; set; }
         public string ColorRGB { get; set; } = string.Empty;
         public bool IsDefault { get; set; }
-        public Guid Id { get; set; }
+        public int Id { get; set; }
     }
 }

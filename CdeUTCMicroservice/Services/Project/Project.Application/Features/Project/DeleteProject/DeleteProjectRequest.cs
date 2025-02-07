@@ -2,6 +2,6 @@
 {
     public class DeleteProjectRequest : ICommand<DeleteProjectResponse>
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
     }
 }

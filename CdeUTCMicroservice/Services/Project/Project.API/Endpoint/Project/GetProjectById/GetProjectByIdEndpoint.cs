@@ -8,7 +8,7 @@ namespace Project.API.Endpoint.Project.GetProjectById
     {
         [HttpGet]
         [Route("{id}")]
-        public async Task<IActionResult> GetProjectById(Guid id)
+        public async Task<IActionResult> GetProjectById(int id)
         {
             return Ok(await mediator.Send(new GetProjectByIdRequest() { Id = id }));
         }

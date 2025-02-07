@@ -1,8 +1,7 @@
 ﻿using BuildingBlocks.Behaviors;
+using BuildingBlocks.Messaging.MassTransit;
 using Event.Shared.Setting;
 using System.Reflection;
-using BuildingBlocks.Messaging.MassTransit;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 namespace Event.Features
 {
@@ -14,7 +13,7 @@ namespace Event.Features
 
             //Async communication Services
             services.AddMessageBroker(configuration, Assembly.GetExecutingAssembly());
-
+            services.AddHttpContextAccessor();
             services.AddMediatR(config =>
             {
                 config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());

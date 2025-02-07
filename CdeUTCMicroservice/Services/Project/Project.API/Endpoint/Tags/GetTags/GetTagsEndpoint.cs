@@ -8,7 +8,7 @@ namespace Project.API.Endpoint.Tags.GetTags
     {
         [HttpGet]
         [Route("{projectId}/" + NameRouter.TAG)]
-        public async Task<IActionResult> GetTags(Guid projectId)
+        public async Task<IActionResult> GetTags(int projectId)
         {
             return Ok(await mediator.Send(new GetTagsRequest() { ProjectId = projectId }));
         }

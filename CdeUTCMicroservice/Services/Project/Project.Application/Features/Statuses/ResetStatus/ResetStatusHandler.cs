@@ -17,7 +17,7 @@ namespace Project.Application.Features.Statuses.ResetStatus
 
             var userCurrentId = userProjectRepository.GetCurrentId();
             var userProject = await userProjectRepository.GetAllQueryAble()
-                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == ProjectId.Of(request.ProjectId));
+                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == request.ProjectId);
 
             if (userProject is null)
                 throw new NotFoundException(Message.NOT_FOUND);
@@ -35,7 +35,7 @@ namespace Project.Application.Features.Statuses.ResetStatus
             statusRepository.RemoveRange(statusDelete);
 
             //Thêm mới
-            await statusRepository.AddRangeAsync(Status.InitData(ProjectId.Of(request.ProjectId)), cancellationToken);
+            await statusRepository.AddRangeAsync(Status.InitData(request.ProjectId), cancellationToken);
 
             await statusRepository.SaveChangeAsync(cancellationToken);
             return new ResetStatusResponse() { Data = true, Message = Message.RESET_SUCCESSFULLY };

@@ -24,10 +24,12 @@ namespace Auth.Data.Data.Migrations
 
             modelBuilder.Entity("Auth.Data.Entities.City", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("int")
                         .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CodeName")
                         .IsRequired()
@@ -37,8 +39,8 @@ namespace Auth.Data.Data.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("created_at");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int")
                         .HasColumnName("created_by");
 
                     b.Property<string>("DivisionType")
@@ -56,8 +58,8 @@ namespace Auth.Data.Data.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("UpdatedBy")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("int")
                         .HasColumnName("updated_by");
 
                     b.HasKey("Id");
@@ -67,13 +69,15 @@ namespace Auth.Data.Data.Migrations
 
             modelBuilder.Entity("Auth.Data.Entities.District", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("int")
                         .HasColumnName("id");
 
-                    b.Property<Guid>("CityId")
-                        .HasColumnType("uniqueidentifier");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CodeName")
                         .IsRequired()
@@ -83,8 +87,8 @@ namespace Auth.Data.Data.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("created_at");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int")
                         .HasColumnName("created_by");
 
                     b.Property<string>("DivisionType")
@@ -103,8 +107,8 @@ namespace Auth.Data.Data.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("UpdatedBy")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("int")
                         .HasColumnName("updated_by");
 
                     b.HasKey("Id");
@@ -116,17 +120,19 @@ namespace Auth.Data.Data.Migrations
 
             modelBuilder.Entity("Auth.Data.Entities.JobTitle", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("int")
                         .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
                         .HasColumnName("created_at");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int")
                         .HasColumnName("created_by");
 
                     b.Property<string>("Name")
@@ -143,8 +149,8 @@ namespace Auth.Data.Data.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("UpdatedBy")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("int")
                         .HasColumnName("updated_by");
 
                     b.HasKey("Id");
@@ -157,16 +163,18 @@ namespace Auth.Data.Data.Migrations
 
             modelBuilder.Entity("Auth.Data.Entities.User", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("int")
                         .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("CanChangePassword")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("CityId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("CityId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -176,15 +184,15 @@ namespace Auth.Data.Data.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("created_at");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int")
                         .HasColumnName("created_by");
 
                     b.Property<int>("DateDisplay")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("DistrictId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("DistrictId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -204,8 +212,8 @@ namespace Auth.Data.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("JobTitleId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("JobTitleId")
+                        .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -234,12 +242,12 @@ namespace Auth.Data.Data.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("UpdatedBy")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("int")
                         .HasColumnName("updated_by");
 
-                    b.Property<Guid?>("WardId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("WardId")
+                        .HasColumnType("int");
 
                     b.Property<string>("WorkPhoneNumber")
                         .IsRequired()
@@ -264,13 +272,15 @@ namespace Auth.Data.Data.Migrations
 
             modelBuilder.Entity("Auth.Data.Entities.Ward", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("int")
                         .HasColumnName("id");
 
-                    b.Property<Guid?>("CityId")
-                        .HasColumnType("uniqueidentifier");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CityId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CodeName")
                         .IsRequired()
@@ -280,12 +290,12 @@ namespace Auth.Data.Data.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("created_at");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int")
                         .HasColumnName("created_by");
 
-                    b.Property<Guid>("DistrictId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("DistrictId")
+                        .HasColumnType("int");
 
                     b.Property<string>("DivisionType")
                         .IsRequired()
@@ -303,8 +313,8 @@ namespace Auth.Data.Data.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("UpdatedBy")
-                        .HasColumnType("uniqueidentifier")
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("int")
                         .HasColumnName("updated_by");
 
                     b.HasKey("Id");

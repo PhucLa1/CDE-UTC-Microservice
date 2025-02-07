@@ -9,13 +9,13 @@ namespace Auth.Application.Auth.ChangeInfo
         public string? LastName { get; set; }
         public string? MobilePhoneNumber { get; set; }
         public string? WorkPhoneNumber { get; set; }
-        public Guid? CityId { get; set; }
-        public Guid? DistrictId { get; set; }
-        public Guid? WardId { get; set; }
+        public int? CityId { get; set; }
+        public int? DistrictId { get; set; }
+        public int? WardId { get; set; }
         public DateDisplay? DateDisplay { get; set; }
         public TimeDisplay? TimeDisplay { get; set; }
         public string? Employer { get; set; }
-        public Guid? JobTitleId { get; set; }
+        public int? JobTitleId { get; set; }
         public IFormFile? Image { get; set; }
     }
 }

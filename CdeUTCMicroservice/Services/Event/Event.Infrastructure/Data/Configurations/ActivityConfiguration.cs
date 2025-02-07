@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Event.Core.Entities;
 using Microsoft.EntityFrameworkCore;
-using Event.Core.Entities;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Event.Infrastructure.Data.Configurations
 {
@@ -8,7 +8,6 @@ namespace Event.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Activity> builder)
         {
-            builder.HasKey(x => x.Action);
             builder.Property(x => x.Action).HasMaxLength(255);
             builder.Property(x => x.Content).IsRequired();
             builder.Property(x => x.ProjectId).IsRequired();

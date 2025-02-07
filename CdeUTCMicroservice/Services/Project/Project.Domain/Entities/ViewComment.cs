@@ -1,11 +1,9 @@
-﻿using Project.Domain.ValueObjects.Id;
-
-namespace Project.Domain.Entities
+﻿namespace Project.Domain.Entities
 {
-    public class ViewComment : BaseEntity<ViewCommentId>
+    public class ViewComment : BaseEntity
     {
         public string Content { get; set; } = default!;
-        public ViewId? ViewId { get; set; } = default!;
+        public int? ViewId { get; set; } = default!;
         
     }
 }

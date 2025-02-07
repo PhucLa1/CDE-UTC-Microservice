@@ -1,11 +1,10 @@
-﻿using Project.Domain.ValueObjects.Id;
-
+﻿
 namespace Project.Domain.Entities
 {
-    public class ViewTag : BaseEntity<ViewTagId>
+    public class ViewTag : BaseEntity
     {
-        public ViewId? ViewId { get; set; } = default!;
-        public TagId? TagId { get; set; } = default!;
+        public int? ViewId { get; set; } = default!;
+        public int? TagId { get; set; } = default!;
         
     }
 }

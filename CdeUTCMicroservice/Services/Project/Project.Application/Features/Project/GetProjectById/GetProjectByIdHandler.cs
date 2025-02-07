@@ -15,11 +15,11 @@ namespace Project.Application.Features.Project.GetProjectById
         public async Task<ApiResponse<GetProjectByIdResponse>> Handle(GetProjectByIdRequest request, CancellationToken cancellationToken)
         {
             var userCount = await userProjectRepository.GetAllQueryAble()
-                .Where(e => e.ProjectId == ProjectId.Of(request.Id))
+                .Where(e => e.ProjectId == request.Id)
                 .CountAsync(cancellationToken);
 
             var project = await projectEntityRepository.GetAllQueryAble()
-                .FirstOrDefaultAsync(e => e.Id == ProjectId.Of(request.Id));
+                .FirstOrDefaultAsync(e => e.Id == request.Id);
 
             if (project is null)
                 throw new NotFoundException(Message.NOT_FOUND);
@@ -28,7 +28,7 @@ namespace Project.Application.Features.Project.GetProjectById
             var getProjectByIdResponse = new GetProjectByIdResponse()
             {
                 Name = project.Name,
-                ImageUrl = "https://localhost:5052/Project/" + project.ImageUrl,
+                ImageUrl = Setting.PROJECT_HOST + "/Project/" + project.ImageUrl,
                 StartDate = project.StartDate,
                 EndDate = project.EndDate,
                 Description = project.Description,

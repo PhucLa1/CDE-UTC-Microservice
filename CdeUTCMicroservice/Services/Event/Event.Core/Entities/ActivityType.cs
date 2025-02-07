@@ -6,7 +6,7 @@ namespace Event.Core.Entities
     {
         public string Name { get; set; } = default!;
         public string Template { get; set; } = default!;
-        public Guid? ActivityTypeParentId { get; set; }
+        public int? ActivityTypeParentId { get; set; }
         public ActivityTypeParent ActivityTypeParent { get; set; } = default!;
         public ICollection<Activity> Activities { get; set; } = new List<Activity>();
     }

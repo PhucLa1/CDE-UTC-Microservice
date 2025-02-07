@@ -2,7 +2,7 @@
 {
     public class DeleteTypeRequest : ICommand<DeleteTypeResponse>
     {
-        public Guid ProjectId { get; set; }
-        public Guid Id { get; set; }
+        public int ProjectId { get; set; }
+        public int Id { get; set; }
     }
 }

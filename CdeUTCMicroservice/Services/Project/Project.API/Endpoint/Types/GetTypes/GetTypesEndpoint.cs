@@ -8,7 +8,7 @@ namespace Project.API.Endpoint.Types.GetTypes
     {
         [HttpGet]
         [Route("{projectId}/" + NameRouter.TYPE)]
-        public async Task<IActionResult> GetTypes(Guid projectId)
+        public async Task<IActionResult> GetTypes(int projectId)
         {
             return Ok(await mediator.Send(new GetTypesRequest() { ProjectId = projectId }));
         }

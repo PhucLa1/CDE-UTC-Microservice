@@ -1,11 +1,9 @@
-﻿using Project.Domain.ValueObjects.Id;
-
-namespace Project.Domain.Entities
+﻿namespace Project.Domain.Entities
 {
-    public class FileBCFTopic : BaseEntity<FileBCFTopicId>
+    public class FileBCFTopic : BaseEntity
     {
-        public FileId? FileId { get; set; }
-        public BCFTopicId? BCFTopicId { get; set; }
+        public int? FileId { get; set; }
+        public int? BCFTopicId { get; set; }
 
         
     }

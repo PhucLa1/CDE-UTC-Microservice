@@ -1,7 +1,4 @@
-﻿
-using BuildingBlocks.Exceptions;
-
-namespace Project.Application.Features.Unit.UpdateUnitByProjectId
+﻿namespace Project.Application.Features.Unit.UpdateUnitByProjectId
 {
     public class UpdateUnitByProjectIdHandler
         (IBaseRepository<ProjectEntity> projectEntityRepository,
@@ -12,7 +9,7 @@ namespace Project.Application.Features.Unit.UpdateUnitByProjectId
         {
             var userCurrentId = userProjectRepository.GetCurrentId();
             var userProject = await userProjectRepository.GetAllQueryAble()
-                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == ProjectId.Of(request.ProjectId));
+                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == request.ProjectId);
 
             if (userProject is null)
                 throw new NotFoundException(Message.NOT_FOUND);
@@ -21,7 +18,7 @@ namespace Project.Application.Features.Unit.UpdateUnitByProjectId
                 throw new ForbiddenException(Message.FORBIDDEN_CHANGE);
 
             var project = await projectEntityRepository.GetAllQueryAble()
-                .FirstOrDefaultAsync(e => e.Id == ProjectId.Of(request.ProjectId));
+                .FirstOrDefaultAsync(e => e.Id == request.ProjectId);
 
             if (project is null)
                 throw new NotFoundException(Message.NOT_FOUND);

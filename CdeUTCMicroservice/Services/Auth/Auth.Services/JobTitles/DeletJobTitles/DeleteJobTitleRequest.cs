@@ -2,6 +2,6 @@
 {
     public class DeleteJobTitleRequest : ICommand<DeleteJobTitleResponse>
     {
-        public List<Guid> JobTitleIds { get; set; } = new();
+        public List<int> JobTitleIds { get; set; } = new();
     }
 }

@@ -8,7 +8,7 @@ namespace Project.API.Endpoint.Types.ResetType
     {
         [HttpPost]
         [Route("{projectId}/" + NameRouter.TYPE)]
-        public async Task<IActionResult> ResetType(Guid projectId)
+        public async Task<IActionResult> ResetType(int projectId)
         {
             return Ok(await mediator.Send(new ResetTypeRequest() { ProjectId = projectId }));
         }

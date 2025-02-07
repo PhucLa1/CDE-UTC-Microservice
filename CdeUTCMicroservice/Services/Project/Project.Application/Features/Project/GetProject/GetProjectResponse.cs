@@ -4,7 +4,7 @@ namespace Project.Application.Features.Project.GetProject
 {
     public class GetProjectResponse
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; } = default!;
         public string ImageUrl { get; set; } = default!;
         public DateTime StartDate { get; set; }

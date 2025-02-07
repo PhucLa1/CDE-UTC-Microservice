@@ -10,7 +10,7 @@ namespace Project.Application.Features.Unit.GetUnitByProjectId
         public async Task<ApiResponse<GetUnitByProjectIdResponse>> Handle(GetUnitByProjectIdRequest request, CancellationToken cancellationToken)
         {
             var project = await projectEntityRepository.GetAllQueryAble()
-                .FirstOrDefaultAsync(e => e.Id == ProjectId.Of(request.ProjectId));
+                .FirstOrDefaultAsync(e => e.Id == request.ProjectId);
 
             if (project is null)
                 throw new NotFoundException(Message.NOT_FOUND);

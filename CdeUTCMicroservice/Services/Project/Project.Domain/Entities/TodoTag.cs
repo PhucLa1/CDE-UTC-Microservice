@@ -1,9 +1,9 @@
 namespace Project.Domain.Entities
 {
-    public class TodoTag : BaseEntity<TodoTagId>
+    public class TodoTag : BaseEntity
     {
-        public TodoId? TodoId { get; set; }
-        public TagId? TagId { get; set; }
+        public int? TodoId { get; set; }
+        public int? TagId { get; set; }
         
     }
 }

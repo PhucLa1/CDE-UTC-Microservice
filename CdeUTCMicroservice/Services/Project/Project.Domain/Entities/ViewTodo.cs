@@ -1,11 +1,10 @@
-﻿using Project.Domain.ValueObjects.Id;
-
+﻿
 namespace Project.Domain.Entities
 {
-    public class ViewTodo : BaseEntity<ViewTodoId>
+    public class ViewTodo : BaseEntity
     {
-        public ViewId? ViewId { get; set; } = default!;
-        public TodoId? TodoId { get; set; } = default!;
+        public int? ViewId { get; set; } = default!;
+        public int? TodoId { get; set; } = default!;
         
     }
 }

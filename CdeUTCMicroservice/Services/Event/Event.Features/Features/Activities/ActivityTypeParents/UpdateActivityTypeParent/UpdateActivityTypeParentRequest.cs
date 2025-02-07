@@ -4,7 +4,7 @@ namespace Event.Features.Features.Activities.ActivityTypeParents.UpdateActivityT
 {
     public class UpdateActivityTypeParentRequest : ICommand<UpdateActivityTypeParentResponse>
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
     }
 }

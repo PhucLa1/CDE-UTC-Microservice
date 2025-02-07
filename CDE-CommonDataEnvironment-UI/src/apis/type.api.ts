@@ -6,7 +6,7 @@ import http from "@/lib/http";
 
 const typeApiRequest = {
     create: (type: FormData) => http.post<ApiResponse<boolean>>('projects/type', type, undefined, Service.ProjectService),
-    getList: (projectId: string) => http.get<ApiResponse<Type[]>>('projects/' + projectId + '/type', undefined, Service.ProjectService),
+    getList: (projectId: number) => http.get<ApiResponse<Type[]>>('projects/' + projectId + '/type', undefined, Service.ProjectService),
     delete: (type: Type) => http.delete<ApiResponse<boolean>>('projects/type', type, undefined, Service.ProjectService),
     update: (type: FormData) => http.put<ApiResponse<boolean>>('projects/type', type, undefined, Service.ProjectService)
 }

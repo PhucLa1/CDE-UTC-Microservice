@@ -20,7 +20,7 @@ const pathList: Array<PathItem> = [
     url: "#"
   },
 ];
-export default function page({ params }: { params: { id: string } }) {
+export default function page({ params }: { params: { id: number } }) {
   const queryClient = useQueryClient()
 
   const form = useForm<ProjectDetail>({
@@ -63,7 +63,7 @@ export default function page({ params }: { params: { id: string } }) {
   }, [data])
   const onSubmit = (values: ProjectDetail) => {
     const formData = new FormData()
-    formData.append("id", params.id)
+    formData.append("id", params.id.toString())
     formData.append("name", form.getValues("name"))
     formData.append("description", form.getValues("description"))
     formData.append("image", form.getValues("image"))

@@ -2,7 +2,7 @@ import { z } from "zod";
 // We're keeping a simple non-relational schema here.
 // IRL, you will have a schema for your data models.
 export const projectDetailSchema = z.object({
-    id: z.string().optional(),
+    id: z.number().optional(),
     name: z
         .string()
         .min(1, "Tên dự án phải có ít nhất 1 ký tự."),

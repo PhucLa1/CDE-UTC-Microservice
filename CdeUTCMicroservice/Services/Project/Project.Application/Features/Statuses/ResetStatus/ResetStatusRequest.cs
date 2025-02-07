@@ -2,6 +2,6 @@
 {
     public class ResetStatusRequest : ICommand<ResetStatusResponse>
     {
-        public Guid ProjectId { get; set; }
+        public int ProjectId { get; set; }
     }
 }

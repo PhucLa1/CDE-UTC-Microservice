@@ -14,17 +14,17 @@ namespace Project.Application.Features.Tags.GetTags
             //Lấy xem đang là role gì
             var currentUserId = userProjectRepository.GetCurrentId();
             var role = await userProjectRepository.GetAllQueryAble()
-                .FirstAsync(e => e.ProjectId == ProjectId.Of(request.ProjectId) && e.UserId == currentUserId)
+                .FirstAsync(e => e.ProjectId == request.ProjectId && e.UserId == currentUserId)
                 .Select(e => e.Role);
             var isBlock = true;
             if (role == Role.Admin)
                 isBlock = false;
 
             var tags = await tagRepository.GetAllQueryAble()
-                .Where(e => e.ProjectId == ProjectId.Of(request.ProjectId))
+                .Where(e => e.ProjectId == request.ProjectId)
                 .Select(e => new GetTagsResponse
                 {
-                    Id = e.Id.Value,
+                    Id = e.Id,
                     Name = e.Name,
                     IsBlock = isBlock,
                 })

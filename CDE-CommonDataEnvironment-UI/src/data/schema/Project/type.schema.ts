@@ -2,11 +2,11 @@ import { z } from "zod";
 // We're keeping a simple non-relational schema here.
 // IRL, you will have a schema for your data models.
 export const typeSchema = z.object({
-    id: z.string().optional(),
+    id: z.number().optional(),
     name: z
         .string()
         .min(1, "Tên nhãn dán phải có ít nhất 1 ký tự."),
-    projectId: z.string().optional(),
+    projectId: z.number().optional(),
     imageIconUrl: z.string().optional(),
     iconImage: z
         .instanceof(File),

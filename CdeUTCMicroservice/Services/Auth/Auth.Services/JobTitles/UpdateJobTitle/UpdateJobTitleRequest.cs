@@ -2,7 +2,7 @@
 {
     public class UpdateJobTitleRequest : ICommand<UpdateJobTitleResponse>
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
     }
 }

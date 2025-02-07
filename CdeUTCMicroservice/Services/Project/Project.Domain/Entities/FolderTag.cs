@@ -1,11 +1,9 @@
-﻿using Project.Domain.ValueObjects.Id;
-
-namespace Project.Domain.Entities
+﻿namespace Project.Domain.Entities
 {
-    public class FolderTag : BaseEntity<FolderTagId>
+    public class FolderTag : BaseEntity
     {
-        public TagId? TagId { get; set; }
-        public FolderId? FolderId { get; set; }
+        public int? TagId { get; set; }
+        public int? FolderId { get; set; }
         
     }
 }

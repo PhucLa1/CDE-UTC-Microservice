@@ -2118,6 +2118,7 @@
         "dependencies": {
           "BuildingBlocks": "1.0.0",
           "MediatR": "12.4.1",
+          "Microsoft.EntityFrameworkCore": "9.0.0",
           "StackifyLib": "2.2.16"
         },
         "compile": {

@@ -4,7 +4,7 @@ import { z } from "zod";
 export const jobTitleSchema = z.object({
     name: z.string().optional(),
     uuid: z.string().optional(),
-    id: z.string().optional()
+    id: z.number().optional()
 
 });
 

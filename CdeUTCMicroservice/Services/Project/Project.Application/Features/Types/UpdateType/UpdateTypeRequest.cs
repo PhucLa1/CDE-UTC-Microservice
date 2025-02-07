@@ -4,9 +4,9 @@ namespace Project.Application.Features.Types.UpdateType
 {
     public class UpdateTypeRequest : ICommand<UpdateTypeResponse>
     {
-        public Guid ProjectId { get; set; } = default!;
+        public int ProjectId { get; set; } = default!;
         public IFormFile IconImage { get; set; } = default!;
         public string Name { get; set; } = default!;
-        public Guid Id { get; set; }
+        public int Id { get; set; }
     }
 }

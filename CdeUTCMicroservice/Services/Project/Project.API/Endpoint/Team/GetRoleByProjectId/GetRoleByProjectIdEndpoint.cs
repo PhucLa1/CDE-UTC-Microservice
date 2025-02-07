@@ -8,7 +8,7 @@ namespace Project.API.Endpoint.Team.GetRoleByProjectId
     {
         [HttpGet]
         [Route("{projectId}/" + NameRouter.GET_ROLE)]
-        public async Task<IActionResult> GetRoleByProjectId(Guid projectId)
+        public async Task<IActionResult> GetRoleByProjectId(int projectId)
         {
             return Ok(await mediator.Send(new GetRoleByProjectIdRequest() {ProjectId = projectId}));
         }

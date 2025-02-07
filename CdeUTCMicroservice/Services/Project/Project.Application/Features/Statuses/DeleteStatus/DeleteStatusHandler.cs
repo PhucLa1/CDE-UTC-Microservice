@@ -14,7 +14,7 @@
 
             var userCurrentId = userProjectRepository.GetCurrentId();
             var userProject = await userProjectRepository.GetAllQueryAble()
-                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == ProjectId.Of(request.ProjectId));
+                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == request.ProjectId);
 
             if (userProject is null)
                 throw new NotFoundException(Message.NOT_FOUND);
@@ -23,7 +23,7 @@
                 throw new ForbiddenException(Message.FORBIDDEN_CHANGE);
 
             var statusDelete = await statusRepository.GetAllQueryAble()
-                .FirstOrDefaultAsync(e => e.Id == StatusId.Of(request.Id));
+                .FirstOrDefaultAsync(e => e.Id == request.Id);
 
             if (statusDelete is null)
                 throw new NotFoundException(Message.NOT_FOUND);
@@ -32,6 +32,17 @@
                 throw new NotFoundException(Message.FORBIDDEN_CHANGE);
 
             statusRepository.Remove(statusDelete);
+
+
+            //Trước khi save thì phải chuyền về cái cũ đã
+            var status = await statusRepository.GetAllQueryAble()
+                .FirstOrDefaultAsync(e => e.ProjectId == request.ProjectId);
+
+            if (status is null)
+                throw new NotFoundException(Message.FORBIDDEN_CHANGE);
+
+            status.IsDefault = true;
+            statusRepository.Update(status);
             await statusRepository.SaveChangeAsync(cancellationToken);
 
             return new DeleteStatusResponse() { Data = true, Message = Message.DELETE_SUCCESSFULLY };

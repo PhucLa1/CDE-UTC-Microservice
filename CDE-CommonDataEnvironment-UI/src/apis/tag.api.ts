@@ -6,7 +6,7 @@ import http from "@/lib/http";
 
 const tagApiRequest = {
     create: (tag: Tag) => http.post<ApiResponse<boolean>>('projects/tag', tag, undefined, Service.ProjectService),
-    getList: (projectId: string) => http.get<ApiResponse<Tag[]>>('projects/' + projectId + '/tag', undefined, Service.ProjectService),
+    getList: (projectId: number) => http.get<ApiResponse<Tag[]>>('projects/' + projectId + '/tag', undefined, Service.ProjectService),
     delete: (deleteTags: DeleteTag) => http.delete<ApiResponse<boolean>>('projects/tag', deleteTags, undefined, Service.ProjectService),
     update: (tag: Tag) => http.put<ApiResponse<boolean>>('projects/tag', tag, undefined, Service.ProjectService)
 }

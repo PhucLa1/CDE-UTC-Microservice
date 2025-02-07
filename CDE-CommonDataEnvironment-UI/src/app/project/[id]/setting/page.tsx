@@ -3,6 +3,7 @@ import AppBreadcrumb, { PathItem } from '@/components/custom/_breadcrumb'
 import React from 'react'
 import GetTypes from './_component/get-types';
 import { useRole } from '../layout';
+import GetStatuses from './_component/get-statuses';
 const pathList: Array<PathItem> = [
     {
         name: "Cấu hình dự án",
@@ -20,7 +21,8 @@ export default function page({ params }: { params: { id: string } }) {
                 </div>
             </div>
             <div className='-mx-4 flex-1 overflow-auto px-4 py-8 lg:flex-row'>
-                <GetTypes projectId={params.id} role={role!} />
+                <GetTypes projectId={Number(params.id)} role={role!} />
+                <GetStatuses projectId={Number(params.id)} role={role!} />
             </div>
         </>
     )

@@ -23,6 +23,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
+
 const pathList: Array<PathItem> = [
   {
     name: "Thông tin về độ đo",
@@ -40,10 +41,9 @@ export default function Page({ params }: { params: { id: string } }) {
   const onSubmit = (values: Unit) => {
     mutate(values);
   };
-
   const { data, isLoading } = useQuery({
     queryKey: ['unit'],
-    queryFn: () => unitApiRequest.getUnit(params.id)
+    queryFn: () => unitApiRequest.getUnit(Number(params.id)),
   })
   const { mutate, isPending } = useMutation({
     mutationKey: ['update-unit'],
@@ -57,8 +57,12 @@ export default function Page({ params }: { params: { id: string } }) {
     }
   })
   useEffect(() => {
+    console.log(form.formState.errors)
+  }, [form.formState.errors])
+  useEffect(() => {
     if (data) {
-      form.setValue("projectId", params.id)
+      console.log("f", typeof params.id)
+      form.setValue("projectId", Number(params.id))
       form.setValue("unitSystem", data.data.unitSystem)
       form.setValue("unitLength", data.data.unitLength)
       form.setValue("unitLengthPrecision", data.data.unitLengthPrecision)
@@ -71,6 +75,7 @@ export default function Page({ params }: { params: { id: string } }) {
       form.setValue("unitVolumePrecision", data.data.unitVolumePrecision)
       form.setValue("unitAngle", data.data.unitAngle)
       form.setValue("unitAnglePrecision", data.data.unitAnglePrecision)
+
     }
   }, [data])
   if (isLoading) return <></>
@@ -83,7 +88,7 @@ export default function Page({ params }: { params: { id: string } }) {
             <AppBreadcrumb pathList={pathList} className="mt-2" />
           </div>
           <div>
-            <Button loading={isPending}>Lưu</Button>
+            <Button type='submit' loading={isPending}>Lưu</Button>
           </div>
         </div>
         <div className='-mx-4 flex-1 overflow-auto px-4 py-8 lg:flex-row'>

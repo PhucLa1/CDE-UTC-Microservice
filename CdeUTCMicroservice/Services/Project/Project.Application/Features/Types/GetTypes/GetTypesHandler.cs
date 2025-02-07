@@ -8,12 +8,12 @@ namespace Project.Application.Features.Types.GetTypes
         public async Task<ApiResponse<List<GetTypeResponse>>> Handle(GetTypesRequest request, CancellationToken cancellationToken)
         {
             var types = await typeRepository.GetAllQueryAble()
-                .Where(e => e.ProjectId == ProjectId.Of(request.ProjectId))
+                .Where(e => e.ProjectId == request.ProjectId)
                 .Select(e => new GetTypeResponse
                 {
                     Name = e.Name,
                     ImageIconUrl = Setting.PROJECT_HOST + "/Types/" + e.IconImageUrl,
-                    Id = e.Id.Value,
+                    Id = e.Id,
                     IsBlock = e.IsBlock
                 })
                 .ToListAsync(cancellationToken);

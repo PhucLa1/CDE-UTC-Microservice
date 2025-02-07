@@ -8,7 +8,7 @@ namespace Project.API.Endpoint.Team.LeaveProject
     {
         [HttpDelete]
         [Route(NameRouter.LEAVE_PROJECT + "/{projectId}")]
-        public async Task<IActionResult> LeaveProject(Guid projectId)
+        public async Task<IActionResult> LeaveProject(int projectId)
         {
             return Ok(await mediator.Send(new LeaveProjectRequest(){ ProjectId = projectId}));
         }

@@ -13,7 +13,7 @@ import { z } from "zod";
 // We're keeping a simple non-relational schema here.
 // IRL, you will have a schema for your data models.
 export const unitSchema = z.object({
-    projectId: z.string().min(1, {message: "Projec id không được để trống"}),
+    projectId: z.number(),
     unitSystem: z.nativeEnum(UnitSystem),
     unitLength: z.nativeEnum(UnitLength),
     unitLengthPrecision: z.nativeEnum(UnitLengthPrecision),
@@ -30,7 +30,7 @@ export const unitSchema = z.object({
 
 export type Unit = z.infer<typeof unitSchema>;
 export const unitDefault: Unit = {
-    projectId: "000-0000-0000-0000",
+    projectId: 0,
     unitSystem: UnitSystem.Metric,
     unitLength: UnitLength.Meters,
     unitLengthPrecision: UnitLengthPrecision.Zero,

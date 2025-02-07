@@ -18,11 +18,11 @@ const pathList: Array<PathItem> = [
     },
 ];
 export default function page({ params }: { params: { id: string } }) {
-    const [ids, setIds] = useState<string[]>()
+    const [ids, setIds] = useState<number[]>()
     const { role } = useRole();
     const { data, isLoading } = useQuery({
         queryKey: ['get-list-tags'],
-        queryFn: () => tagApiRequest.getList(params.id)
+        queryFn: () => tagApiRequest.getList(Number(params.id))
     })
     useEffect(() => {
         if (data) {
@@ -59,11 +59,11 @@ export default function page({ params }: { params: { id: string } }) {
                                     <h3 className="text-lg font-semibold">Danh sách nhãn</h3>
                                     <div className="flex justify-between items-center">
                                         <FormCRUD trigger={<Button variant="default">Thêm mới nhãn</Button>} state={State.CREATE} tag={{
-                                            projectId: params.id,
+                                            projectId: Number(params.id),
                                             name: ''
                                         }} />
                                         {role === Role.Admin && <FormCRUD trigger={<Button className='ml-1' variant="destructive">Xóa tất cả</Button>} state={State.DELETE} tag={{
-                                            projectId: params.id,
+                                            projectId: Number(params.id),
                                             name: ''
                                         }} ids={ids} />}
                                     </div>
@@ -91,7 +91,7 @@ export default function page({ params }: { params: { id: string } }) {
                                                             }
                                                             state={State.UPDATE}
                                                             tag={{
-                                                                projectId: params.id,
+                                                                projectId: Number(params.id),
                                                                 name: item.name,
                                                                 id: item.id
                                                             }} />
@@ -103,7 +103,7 @@ export default function page({ params }: { params: { id: string } }) {
                                                             }
                                                             state={State.DELETE}
                                                             tag={{
-                                                                projectId: params.id,
+                                                                projectId: Number(params.id),
                                                                 name: item.name,
                                                                 id: item.id
                                                             }} />

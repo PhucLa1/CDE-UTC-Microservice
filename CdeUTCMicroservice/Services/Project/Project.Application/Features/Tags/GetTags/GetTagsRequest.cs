@@ -2,6 +2,6 @@
 {
     public class GetTagsRequest : IQuery<ApiResponse<List<GetTagsResponse>>>
     {
-        public Guid ProjectId { get; set; }
+        public int ProjectId { get; set; }
     }
 }

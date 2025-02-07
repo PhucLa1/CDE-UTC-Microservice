@@ -14,7 +14,7 @@
 
             var userCurrentId = userProjectRepository.GetCurrentId();
             var userProject = await userProjectRepository.GetAllQueryAble()
-                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == ProjectId.Of(request.ProjectId));
+                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == request.ProjectId);
 
             if (userProject is null)
                 throw new NotFoundException(Message.NOT_FOUND);
@@ -23,7 +23,7 @@
                 throw new ForbiddenException(Message.FORBIDDEN_CHANGE);
 
             var tag = await tagRepository.GetAllQueryAble()
-                .FirstOrDefaultAsync(e => e.Id == TagId.Of(request.Id));
+                .FirstOrDefaultAsync(e => e.Id == request.Id);
 
             if (tag is null)
                 throw new NotFoundException(Message.NOT_FOUND);

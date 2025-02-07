@@ -2,7 +2,7 @@
 {
     public class UpdateUnitByProjectIdRequest : ICommand<UpdateUnitByProjectIdResponse>
     {
-        public Guid ProjectId { get; set; }
+        public int ProjectId { get; set; }
         public UnitSystem UnitSystem { get; set; }
         public UnitLength UnitLength { get; set; }
         public UnitLengthPrecision UnitLengthPrecision { get; set; }
