@@ -24,7 +24,8 @@ namespace Project.Application.Features.Types.ResetType
                 throw new ForbiddenException(Message.FORBIDDEN_CHANGE);
 
 
-            var typeDelete = typeRepository.GetAllQueryAble();
+            var typeDelete = typeRepository.GetAllQueryAble()
+                .Where(e => e.IsBlock == false);
 
             if (typeDelete is null)
                 throw new NotFoundException(Message.NOT_FOUND);
@@ -32,8 +33,6 @@ namespace Project.Application.Features.Types.ResetType
             //Xóa hết đi
             typeRepository.RemoveRange(typeDelete);
 
-            //Thêm mới
-            await typeRepository.AddRangeAsync(Type.InitData(request.ProjectId), cancellationToken);
 
             await typeRepository.SaveChangeAsync(cancellationToken);
             return new ResetTypeResponse() { Data = true, Message = Message.RESET_SUCCESSFULLY };

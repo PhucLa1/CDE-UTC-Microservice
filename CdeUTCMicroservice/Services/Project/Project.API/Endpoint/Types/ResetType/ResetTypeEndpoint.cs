@@ -6,7 +6,7 @@ namespace Project.API.Endpoint.Types.ResetType
     [Route(NameRouter.PROJECT_ROUTER)]
     public class ResetTypeEndpoint(IMediator mediator) : ControllerBase
     {
-        [HttpPost]
+        [HttpDelete]
         [Route("{projectId}/" + NameRouter.TYPE)]
         public async Task<IActionResult> ResetType(int projectId)
         {

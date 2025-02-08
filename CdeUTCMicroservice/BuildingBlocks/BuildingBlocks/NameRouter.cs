@@ -39,6 +39,7 @@
         public const string TAG = "tag";
         public const string TYPE = "type";
         public const string STATUS = "status";
+        public const string PRIORITY = "priority";
         public const string GET_ROLE = "role";
 
         #region Team

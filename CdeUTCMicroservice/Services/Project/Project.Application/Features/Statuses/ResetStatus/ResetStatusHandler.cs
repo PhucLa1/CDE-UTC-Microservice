@@ -26,7 +26,8 @@ namespace Project.Application.Features.Statuses.ResetStatus
                 throw new ForbiddenException(Message.FORBIDDEN_CHANGE);
 
 
-            var statusDelete = statusRepository.GetAllQueryAble();
+            var statusDelete = statusRepository.GetAllQueryAble()
+                .Where(e => e.IsBlock == false);
 
             if (statusDelete is null)
                 throw new NotFoundException(Message.NOT_FOUND);
@@ -34,8 +35,6 @@ namespace Project.Application.Features.Statuses.ResetStatus
             //Xóa hết đi
             statusRepository.RemoveRange(statusDelete);
 
-            //Thêm mới
-            await statusRepository.AddRangeAsync(Status.InitData(request.ProjectId), cancellationToken);
 
             await statusRepository.SaveChangeAsync(cancellationToken);
             return new ResetStatusResponse() { Data = true, Message = Message.RESET_SUCCESSFULLY };
