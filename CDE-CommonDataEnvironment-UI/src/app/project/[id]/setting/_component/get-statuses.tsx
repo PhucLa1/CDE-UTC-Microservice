@@ -83,8 +83,8 @@ export default function GetStatuses({ projectId, role }: { projectId: number, ro
                                                     state={State.UPDATE}
                                                     status={{
                                                         projectId: projectId,
-                                                        colorRGB: '',
-                                                        isDefault: false,
+                                                        colorRGB: item.colorRGB,
+                                                        isDefault: item.isDefault,
                                                         name: item.name,
                                                         id: item.id
                                                     }} />

@@ -9,8 +9,8 @@ namespace Project.Domain.Entities
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string Description { get; set; } = default!;
-        public bool TodoVisibility { get; set; }
-        public bool InvitationVisibility { get; set; }
+        public TodoVisibility TodoVisibility { get; set; } = TodoVisibility.Default;
+        public InvitationPermission InvitationPermission { get; set; } = InvitationPermission.UserCanInvite;
         public bool EmailNotification { get; set; }
         public UnitSystem UnitSystem { get; set; } = UnitSystem.Metric;
         public UnitLength UnitLength { get; set; } = UnitLength.Meters;

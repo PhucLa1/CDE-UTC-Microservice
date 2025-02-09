@@ -41,6 +41,7 @@
         public const string STATUS = "status";
         public const string PRIORITY = "priority";
         public const string GET_ROLE = "role";
+        public const string PERMISSION = "permission";
 
         #region Team
         public const string TEAM_ROUTER = "team";

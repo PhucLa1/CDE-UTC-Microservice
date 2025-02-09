@@ -6,7 +6,7 @@ namespace Project.API.Endpoint.Statuses.ResetStatus
     [Route(NameRouter.PROJECT_ROUTER)]
     public class ResetStatusEndpoint(IMediator mediator) : ControllerBase
     {
-        [HttpPost]
+        [HttpDelete]
         [Route("{projectId}/" + NameRouter.STATUS)]
         public async Task<IActionResult> ResetStatus(int projectId)
         {

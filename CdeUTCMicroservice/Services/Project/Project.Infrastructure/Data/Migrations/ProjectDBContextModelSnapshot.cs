@@ -716,8 +716,8 @@ namespace Project.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("InvitationVisibility")
-                        .HasColumnType("bit");
+                    b.Property<int>("InvitationPermission")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsCheckMeasurement")
                         .HasColumnType("bit");
@@ -733,8 +733,8 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("TodoVisibility")
-                        .HasColumnType("bit");
+                    b.Property<int>("TodoVisibility")
+                        .HasColumnType("int");
 
                     b.Property<int>("UnitAngle")
                         .HasColumnType("int");

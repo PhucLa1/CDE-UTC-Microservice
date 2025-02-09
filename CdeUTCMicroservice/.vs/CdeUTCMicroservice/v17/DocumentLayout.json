@@ -3,24 +3,43 @@
   "WorkspaceRootPath": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.api\\endpoint\\priorities\\updatepriority\\updatepriorityendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|solutionrelative:services\\project\\project.api\\endpoint\\priorities\\updatepriority\\updatepriorityendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/ProjectDB/True/SqlTable/dbo.Projects.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.api\\endpoint\\priorities\\updatepriority\\updatepriorityvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|solutionrelative:services\\project\\project.api\\endpoint\\priorities\\updatepriority\\updatepriorityvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{682287E7-B86D-4ECF-8EC2-5A5B4947655B}|Services\\Project\\Project.Domain\\Project.Domain.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.domain\\entities\\projects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{682287E7-B86D-4ECF-8EC2-5A5B4947655B}|Services\\Project\\Project.Domain\\Project.Domain.csproj|solutionrelative:services\\project\\project.domain\\entities\\projects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.api\\endpoint\\types\\updatetype\\updatetypevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|solutionrelative:services\\project\\project.api\\endpoint\\types\\updatetype\\updatetypevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.api\\endpoint\\permission\\changepermission\\changepermissionendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|solutionrelative:services\\project\\project.api\\endpoint\\permission\\changepermission\\changepermissionendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.api\\endpoint\\priorities\\resetpriority\\resetpriorityendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|solutionrelative:services\\project\\project.api\\endpoint\\priorities\\resetpriority\\resetpriorityendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5897998A-302D-4C8E-B94C-4B78998C4F9F}|BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\buildingblocks\\buildingblocks\\namerouter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5897998A-302D-4C8E-B94C-4B78998C4F9F}|BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj|solutionrelative:buildingblocks\\buildingblocks\\namerouter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.api\\endpoint\\types\\resettype\\resettypeendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|solutionrelative:services\\project\\project.api\\endpoint\\types\\resettype\\resettypeendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.api\\endpoint\\permission\\changepermission\\changepermissionvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|solutionrelative:services\\project\\project.api\\endpoint\\permission\\changepermission\\changepermissionvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\permission\\changepermission\\changepermissionrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\permission\\changepermission\\changepermissionrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.api\\endpoint\\permission\\getpermissionbyprojectid\\getpermissionbyprojectidendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|solutionrelative:services\\project\\project.api\\endpoint\\permission\\getpermissionbyprojectid\\getpermissionbyprojectidendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\permission\\changepermission\\changepermissionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\permission\\changepermission\\changepermissionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\priorities\\createpriority\\createpriorityhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\priorities\\createpriority\\createpriorityhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\permission\\changepermission\\changepermissionresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\permission\\changepermission\\changepermissionresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,75 +49,137 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1419,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Projects.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Domain\\Entities\\Projects.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.Domain\\Entities\\Projects.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Domain\\Entities\\Projects.cs",
+              "RelativeToolTip": "Services\\Project\\Project.Domain\\Entities\\Projects.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAABTAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T07:21:16.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "dbo.Projects [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/ProjectDB/True/SqlTable/dbo.Projects.sql",
+              "ToolTip": "dbo.Projects [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-02-09T07:20:43.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ChangePermissionEndpoint.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Permission\\ChangePermission\\ChangePermissionEndpoint.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.API\\Endpoint\\Permission\\ChangePermission\\ChangePermissionEndpoint.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Permission\\ChangePermission\\ChangePermissionEndpoint.cs",
+              "RelativeToolTip": "Services\\Project\\Project.API\\Endpoint\\Permission\\ChangePermission\\ChangePermissionEndpoint.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T06:29:39.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ChangePermissionValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Permission\\ChangePermission\\ChangePermissionValidator.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.API\\Endpoint\\Permission\\ChangePermission\\ChangePermissionValidator.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Permission\\ChangePermission\\ChangePermissionValidator.cs",
+              "RelativeToolTip": "Services\\Project\\Project.API\\Endpoint\\Permission\\ChangePermission\\ChangePermissionValidator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T06:29:30.894Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NameRouter.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\BuildingBlocks\\BuildingBlocks\\NameRouter.cs",
+              "RelativeDocumentMoniker": "BuildingBlocks\\BuildingBlocks\\NameRouter.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\BuildingBlocks\\BuildingBlocks\\NameRouter.cs",
+              "RelativeToolTip": "BuildingBlocks\\BuildingBlocks\\NameRouter.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACsAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T06:28:34.712Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UpdateTypeValidator.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Types\\UpdateType\\UpdateTypeValidator.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.API\\Endpoint\\Types\\UpdateType\\UpdateTypeValidator.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Types\\UpdateType\\UpdateTypeValidator.cs",
-              "RelativeToolTip": "Services\\Project\\Project.API\\Endpoint\\Types\\UpdateType\\UpdateTypeValidator.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAJAAAA",
+              "DocumentIndex": 6,
+              "Title": "GetPermissionByProjectIdEndpoint.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Permission\\GetPermissionByProjectId\\GetPermissionByProjectIdEndpoint.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.API\\Endpoint\\Permission\\GetPermissionByProjectId\\GetPermissionByProjectIdEndpoint.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Permission\\GetPermissionByProjectId\\GetPermissionByProjectIdEndpoint.cs",
+              "RelativeToolTip": "Services\\Project\\Project.API\\Endpoint\\Permission\\GetPermissionByProjectId\\GetPermissionByProjectIdEndpoint.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T10:49:55.249Z",
+              "WhenOpened": "2025-02-09T06:27:34.709Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UpdatePriorityEndpoint.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Priorities\\UpdatePriority\\UpdatePriorityEndpoint.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.API\\Endpoint\\Priorities\\UpdatePriority\\UpdatePriorityEndpoint.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Priorities\\UpdatePriority\\UpdatePriorityEndpoint.cs",
-              "RelativeToolTip": "Services\\Project\\Project.API\\Endpoint\\Priorities\\UpdatePriority\\UpdatePriorityEndpoint.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAABEAAAA",
+              "DocumentIndex": 8,
+              "Title": "CreatePriorityHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Priorities\\CreatePriority\\CreatePriorityHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Priorities\\CreatePriority\\CreatePriorityHandler.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Priorities\\CreatePriority\\CreatePriorityHandler.cs",
+              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Priorities\\CreatePriority\\CreatePriorityHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T10:49:12.183Z",
+              "WhenOpened": "2025-02-09T06:25:20.07Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UpdatePriorityValidator.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Priorities\\UpdatePriority\\UpdatePriorityValidator.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.API\\Endpoint\\Priorities\\UpdatePriority\\UpdatePriorityValidator.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Priorities\\UpdatePriority\\UpdatePriorityValidator.cs",
-              "RelativeToolTip": "Services\\Project\\Project.API\\Endpoint\\Priorities\\UpdatePriority\\UpdatePriorityValidator.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAABCAAAA",
+              "DocumentIndex": 7,
+              "Title": "ChangePermissionHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Permission\\ChangePermission\\ChangePermissionHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Permission\\ChangePermission\\ChangePermissionHandler.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Permission\\ChangePermission\\ChangePermissionHandler.cs",
+              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Permission\\ChangePermission\\ChangePermissionHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T10:41:55.063Z",
+              "WhenOpened": "2025-02-09T06:23:30.579Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ResetTypeEndpoint.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Types\\ResetType\\ResetTypeEndpoint.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.API\\Endpoint\\Types\\ResetType\\ResetTypeEndpoint.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Types\\ResetType\\ResetTypeEndpoint.cs",
-              "RelativeToolTip": "Services\\Project\\Project.API\\Endpoint\\Types\\ResetType\\ResetTypeEndpoint.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAFAAAA",
+              "DocumentIndex": 9,
+              "Title": "ChangePermissionResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Permission\\ChangePermission\\ChangePermissionResponse.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Permission\\ChangePermission\\ChangePermissionResponse.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Permission\\ChangePermission\\ChangePermissionResponse.cs",
+              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Permission\\ChangePermission\\ChangePermissionResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T10:40:49.132Z",
+              "WhenOpened": "2025-02-09T06:23:18.954Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ResetPriorityEndpoint.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Priorities\\ResetPriority\\ResetPriorityEndpoint.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.API\\Endpoint\\Priorities\\ResetPriority\\ResetPriorityEndpoint.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Priorities\\ResetPriority\\ResetPriorityEndpoint.cs",
-              "RelativeToolTip": "Services\\Project\\Project.API\\Endpoint\\Priorities\\ResetPriority\\ResetPriorityEndpoint.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAJAAAA",
+              "DocumentIndex": 5,
+              "Title": "ChangePermissionRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Permission\\ChangePermission\\ChangePermissionRequest.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Permission\\ChangePermission\\ChangePermissionRequest.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Permission\\ChangePermission\\ChangePermissionRequest.cs",
+              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Permission\\ChangePermission\\ChangePermissionRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAYAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T10:40:45.683Z",
+              "WhenOpened": "2025-02-09T06:22:21.807Z",
               "EditorCaption": ""
             }
           ]

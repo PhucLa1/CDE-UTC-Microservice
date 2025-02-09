@@ -17,6 +17,34 @@
       "PackagePath": "staticwebassets\\User\\638737908527689236.jpg"
     },
     {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\wwwroot\\User\\638745359237394281.jpg",
+      "PackagePath": "staticwebassets\\User\\638745359237394281.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\wwwroot\\User\\638745359342353540.jpg",
+      "PackagePath": "staticwebassets\\User\\638745359342353540.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\wwwroot\\User\\638745359502277545.jpg",
+      "PackagePath": "staticwebassets\\User\\638745359502277545.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\wwwroot\\User\\638745359549963506.jpg",
+      "PackagePath": "staticwebassets\\User\\638745359549963506.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\wwwroot\\User\\638745359635482976.jpg",
+      "PackagePath": "staticwebassets\\User\\638745359635482976.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\wwwroot\\User\\638745359671932933.jpg",
+      "PackagePath": "staticwebassets\\User\\638745359671932933.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\wwwroot\\User\\638745359761220846.jpg",
+      "PackagePath": "staticwebassets\\User\\638745359761220846.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Auth.API.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
