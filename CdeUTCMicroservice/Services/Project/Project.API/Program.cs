@@ -1,6 +1,7 @@
 using Project.API;
 using Project.Application;
 using Project.Infrastructure;
+using User.Grpc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,17 @@ builder.Services
     .AddInfrastructureServices(builder.Configuration)
     .AddApiServices(builder.Configuration);
 
-
+builder.Services.AddGrpcClient<UserProtoService.UserProtoServiceClient>(options =>
+{
+    options.Address = new Uri("https://localhost:5050"); 
+})
+.ConfigureAdditionalHttpMessageHandlers((handlers, serviceProvider) =>
+{
+     var handler = new HttpClientHandler
+     {
+         ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+     };
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,7 +36,7 @@ if (app.Environment.IsDevelopment())
     //await app.IntialiseDatabaseAsync();
     app.UseSwagger();
     app.UseSwaggerUI();
-    
+
 }
 app.UseStaticFiles();
 app.UseHttpsRedirection();

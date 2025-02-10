@@ -20,7 +20,7 @@ const pathList: Array<PathItem> = [
     },
 ];
 export default function page({ params }: { params: { id: string } }) {
-    const { role } = useRole()
+    const { roleDetail } = useRole()
     const queryClient = useQueryClient()
     const [invitationPermission, setInvitationPermission] = useState<string>("");
     const [todoVisibility, setTodoVisibility] = useState<string>("");
@@ -56,7 +56,7 @@ export default function page({ params }: { params: { id: string } }) {
                     <h2 className='text-2xl font-bold tracking-tight'>Quyền trong dự án</h2>
                     <AppBreadcrumb pathList={pathList} className="mt-2" />
                 </div>
-                {role == Role.Admin && <div>
+                {roleDetail?.role == Role.Admin && <div>
                     <Button onClick={() => mutate({
                         projectId: Number(params.id),
                         invitationPermission: Number(invitationPermission),
@@ -71,7 +71,7 @@ export default function page({ params }: { params: { id: string } }) {
                         <CardTitle>Quyền được mời thành viên khác</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <RadioGroup disabled={role !== Role.Admin} value={invitationPermission}
+                        <RadioGroup disabled={roleDetail?.role !== Role.Admin} value={invitationPermission}
                             onValueChange={(val) => setInvitationPermission(val)}>
                             <div className="flex items-center space-x-2">
                                 <RadioGroupItem value={InvitationPermission.UserCanInvite.toString()} />
@@ -89,7 +89,7 @@ export default function page({ params }: { params: { id: string } }) {
                         <CardTitle>Quyền xem việc cần làm </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <RadioGroup disabled={role !== Role.Admin} value={todoVisibility}
+                        <RadioGroup disabled={roleDetail?.role !== Role.Admin} value={todoVisibility}
                             onValueChange={(val) => setTodoVisibility(val)}>
                             <div className="flex items-center space-x-2">
                                 <RadioGroupItem value={TodoVisibility.Default.toString()} />

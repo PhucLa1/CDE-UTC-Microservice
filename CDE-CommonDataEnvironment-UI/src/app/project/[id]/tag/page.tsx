@@ -19,7 +19,7 @@ const pathList: Array<PathItem> = [
 ];
 export default function page({ params }: { params: { id: string } }) {
     const [ids, setIds] = useState<number[]>()
-    const { role } = useRole();
+    const { roleDetail } = useRole();
     const { data, isLoading } = useQuery({
         queryKey: ['get-list-tags'],
         queryFn: () => tagApiRequest.getList(Number(params.id))
@@ -62,7 +62,7 @@ export default function page({ params }: { params: { id: string } }) {
                                             projectId: Number(params.id),
                                             name: ''
                                         }} />
-                                        {role === Role.Admin && <FormCRUD trigger={<Button className='ml-1' variant="destructive">Xóa tất cả</Button>} state={State.DELETE} tag={{
+                                        {roleDetail!.role === Role.Admin && <FormCRUD trigger={<Button className='ml-1' variant="destructive">Xóa tất cả</Button>} state={State.DELETE} tag={{
                                             projectId: Number(params.id),
                                             name: ''
                                         }} ids={ids} />}
@@ -73,7 +73,7 @@ export default function page({ params }: { params: { id: string } }) {
                                         <TableRow>
                                             <TableHead>#</TableHead>
                                             <TableHead>Tên nhãn</TableHead>
-                                            {role === Role.Admin && <TableHead>Hành động</TableHead>}
+                                            {roleDetail!.role === Role.Admin && <TableHead>Hành động</TableHead>}
                                         </TableRow>
                                     </TableHeader>
                                     <TableBody>
@@ -81,7 +81,7 @@ export default function page({ params }: { params: { id: string } }) {
                                             <TableRow key={index}>
                                                 <TableCell>{index + 1}</TableCell>
                                                 <TableCell>{item.name}</TableCell>
-                                                {role === Role.Admin && <TableCell>
+                                                {roleDetail!.role === Role.Admin && <TableCell>
                                                     <div className='flex items-center justify-start'>
                                                         <FormCRUD
                                                             trigger={

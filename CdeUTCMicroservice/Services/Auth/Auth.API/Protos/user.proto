@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "User.Grpc";
+
+package user;
+
+// User service definition.
+service UserProtoService {
+  // Retrieves a list of users by their IDs.
+  // Returns a stream of UserModel messages.
+  rpc GetUserByIds(GetUserRequest) returns (GetUserResponse) {
+  }
+}
+
+// Request message for GetUserByIds.
+message GetUserRequest {
+  repeated int32 ids = 1;
+}
+
+// User model message.
+message UserModel {
+  int32 id = 1;
+  string full_name = 2;
+  string email = 3;
+  string image_url = 4;
+}
+
+message GetUserResponse {
+	repeated UserModel userModel = 1;
+}

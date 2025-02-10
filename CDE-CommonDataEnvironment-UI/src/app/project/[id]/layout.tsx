@@ -1,11 +1,11 @@
 "use client";
 import projectApiRequest from "@/apis/project.api";
-import { Role } from "@/data/enums/role.enum";
+import { RoleDetail } from "@/data/schema/Project/role.schema";
 import { useQuery } from "@tanstack/react-query";
 import React, { ReactNode, createContext, useContext } from "react";
 
 interface RoleContextType {
-  role?: Role; // Có thể undefined nếu đang load
+  roleDetail?: RoleDetail; // Có thể undefined nếu đang load
 }
 
 const RoleContext = createContext<RoleContextType | null>(null);
@@ -25,7 +25,7 @@ export default function Layout({ children, params }: Props) {
     return <p></p>; // Hoặc return null nếu không muốn hiển thị gì
   }
   return (
-    <RoleContext.Provider value={{ role: data!.data }}>
+    <RoleContext.Provider value={{ roleDetail: data!.data }}>
       {children}
     </RoleContext.Provider>
   );

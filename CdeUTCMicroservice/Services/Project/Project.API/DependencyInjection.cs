@@ -1,5 +1,6 @@
 ﻿using BuildingBlocks.Exceptions.Handler;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Project.API.Grpc;
+using Project.Application.Grpc;
 
 namespace Project.API
 {
@@ -8,6 +9,7 @@ namespace Project.API
         public static IServiceCollection AddApiServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddExceptionHandler<CustomExceptionHandler>();
+            services.AddTransient<IUserGrpc, UserGrpc>();
             return services;
         }
 

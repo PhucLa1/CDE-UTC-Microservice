@@ -80,7 +80,7 @@ export default function Page({ params }: { params: { id: string } }) {
   }, [data])
   if (isLoading) return <></>
   return (
-    <Form {...form}>
+    <Form {...form} >
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <div className='mb-2 flex items-center justify-between space-y-2'>
           <div>

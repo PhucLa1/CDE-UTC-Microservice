@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.49.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
       <PrivateAssets>all</PrivateAssets>
@@ -25,6 +26,12 @@
   <ItemGroup>
     <Folder Include="wwwroot\Statuss\" />
     <Folder Include="wwwroot\Project\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="..\..\Auth\Auth.API\Protos\user.proto" GrpcServices="Client">
+      <Link>Protos\user.proto</Link>
+    </Protobuf>
   </ItemGroup>
 
 </Project>

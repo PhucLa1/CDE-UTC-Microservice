@@ -12,7 +12,7 @@ const pathList: Array<PathItem> = [
     },
 ];
 export default function page({ params }: { params: { id: string } }) {
-    const { role } = useRole()
+    const { roleDetail } = useRole()
     return (
         <>
             <div className='mb-2 flex items-center justify-between space-y-2'>
@@ -22,9 +22,9 @@ export default function page({ params }: { params: { id: string } }) {
                 </div>
             </div>
             <div className='-mx-4 flex-1 overflow-auto px-4 py-8 lg:flex-row'>
-                <GetTypes projectId={Number(params.id)} role={role!} />
-                <GetStatuses projectId={Number(params.id)} role={role!} />
-                <GetPriorities projectId={Number(params.id)} role={role!} />
+                <GetTypes projectId={Number(params.id)} role={roleDetail!.role} />
+                <GetStatuses projectId={Number(params.id)} role={roleDetail!.role} />
+                <GetPriorities projectId={Number(params.id)} role={roleDetail!.role} />
             </div>
         </>
     )

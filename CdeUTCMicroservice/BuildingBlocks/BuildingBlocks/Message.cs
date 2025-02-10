@@ -22,6 +22,7 @@
         public static string CODE_VERIFY_SUCCESSFULLY = "Xác nhận mã code thành công";
         public static string CHANGE_PASSWORD_SUCCESSFULLY = "Thay đổi mật khẩu thành công";
         public static string RESET_SUCCESSFULLY = "Reset dữ liệu thành công";
+        public static string INVITATION_USER = "Mời người dùng thành công";
         #endregion
 
 
