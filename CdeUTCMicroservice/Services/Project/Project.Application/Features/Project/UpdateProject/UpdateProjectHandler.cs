@@ -12,7 +12,7 @@ namespace Project.Application.Features.Project.UpdateProject
         {
             var userCurrentId = userProjectRepository.GetCurrentId();
             var userProject = await userProjectRepository.GetAllQueryAble()
-                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == request.Id);
+                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == request.Id && e.UserProjectStatus == UserProjectStatus.Active);
 
             if(userProject is null) 
                 throw new NotFoundException(Message.NOT_FOUND);

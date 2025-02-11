@@ -47,6 +47,8 @@
         public const string TEAM_ROUTER = "team";
         public const string LEAVE_PROJECT = "leave-project";
         public const string INVITE_USER = "invite-user";
+        public const string CHANGE_ROLE = "change-role";
+        public const string KICK_USER = "kick-user";
 
         #endregion
 

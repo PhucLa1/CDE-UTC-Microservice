@@ -23,6 +23,7 @@ import teamApiRequest from '@/apis/team.api';
 import { UserProjectStatus } from '@/data/enums/userprojectstatus.enum';
 import { UserProject } from '@/data/schema/Project/userproject.schema';
 import InviteForm from './_components/invite-form';
+import UserInfoSheet from './_components/form-update-delete';
 const pathList: Array<PathItem> = [
     {
         name: "Đội ngũ trong dự án",
@@ -125,35 +126,37 @@ export default function page({ params }: { params: { id: string } }) {
                                 </TableHeader>
                                 <TableBody>
                                     {filteredData.map((item, index) => (
-                                        <TableRow key={index}>
-                                            <TableCell className="flex items-center gap-3">
-                                                <Avatar>
-                                                    <AvatarImage src={item.imageUrl} alt="@shadcn" />
-                                                    <AvatarFallback>{item.fullName!.charAt(0)}</AvatarFallback>
-                                                </Avatar>
-                                                <div>
-                                                    <p className="font-medium">{item.fullName}</p>
-                                                    <a href={`mailto:${item.email}`} className="text-blue-500">
-                                                        {item.email}
-                                                    </a>
-                                                </div>
-                                            </TableCell>
-                                            <TableCell
-                                                className={item.role === Role.Admin ? "text-red-500 font-semibold" : "text-gray-600"}
-                                            >
-                                                {item.role === Role.Admin ? "Quản trị viên" : "Người dùng"}
-                                            </TableCell>
-                                            {/* Thêm màu cho trạng thái */}
-                                            <TableCell
-                                                className={item.userProjectStatus === UserProjectStatus.Active
-                                                    ? "text-green-500 font-semibold"
-                                                    : "text-yellow-500 font-semibold"
-                                                }
-                                            >
-                                                {item.userProjectStatus === UserProjectStatus.Active ? "Đã vào" : "Đang chờ"}
-                                            </TableCell>
-                                            <TableCell>{item.dateJoined}</TableCell>
-                                        </TableRow>
+                                        <UserInfoSheet projectId = {Number(params.id)} currentRole={roleDetail!.role} userProject={item} node={
+                                            <TableRow key={index}>
+                                                <TableCell className="flex items-center gap-3">
+                                                    <Avatar>
+                                                        <AvatarImage src={item.imageUrl} alt="@shadcn" />
+                                                        <AvatarFallback>{item.fullName!.charAt(0)}</AvatarFallback>
+                                                    </Avatar>
+                                                    <div>
+                                                        <p className="font-medium">{item.fullName}</p>
+                                                        <a href={`mailto:${item.email}`} className="text-blue-500">
+                                                            {item.email}
+                                                        </a>
+                                                    </div>
+                                                </TableCell>
+                                                <TableCell
+                                                    className={item.role === Role.Admin ? "text-red-500 font-semibold" : "text-gray-600"}
+                                                >
+                                                    {item.role === Role.Admin ? "Quản trị viên" : "Người dùng"}
+                                                </TableCell>
+                                                {/* Thêm màu cho trạng thái */}
+                                                <TableCell
+                                                    className={item.userProjectStatus === UserProjectStatus.Active
+                                                        ? "text-green-500 font-semibold"
+                                                        : "text-yellow-500 font-semibold"
+                                                    }
+                                                >
+                                                    {item.userProjectStatus === UserProjectStatus.Active ? "Đã vào" : "Đang chờ"}
+                                                </TableCell>
+                                                <TableCell>{item.dateJoined}</TableCell>
+                                            </TableRow>
+                                        } />
                                     ))}
                                 </TableBody>
                             </Table>

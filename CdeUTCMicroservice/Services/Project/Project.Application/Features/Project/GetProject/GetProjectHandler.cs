@@ -13,7 +13,7 @@ namespace Project.Application.Features.Project.GetProject
             var idCurrent = projectEntityRepository.GetCurrentId();
             var projects = await (from up in userProjectRepository.GetAllQueryAble()
                                   join pe in projectEntityRepository.GetAllQueryAble() on up.ProjectId equals pe.Id
-                                  where up.UserId == idCurrent
+                                  where up.UserId == idCurrent && up.UserProjectStatus == UserProjectStatus.Active
                                   select new GetProjectResponse()
                                   {
                                       Name = pe.Name,

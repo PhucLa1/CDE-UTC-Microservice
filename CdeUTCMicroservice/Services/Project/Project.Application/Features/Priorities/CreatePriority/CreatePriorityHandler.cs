@@ -17,7 +17,7 @@ namespace Project.Application.Features.Priorities.CreatePriority
 
             var userCurrentId = userProjectRepository.GetCurrentId();
             var userProject = await userProjectRepository.GetAllQueryAble()
-                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == request.ProjectId);
+                .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == request.ProjectId && e.UserProjectStatus == UserProjectStatus.Active);
 
             if (userProject is null)
                 throw new NotFoundException(Message.NOT_FOUND);

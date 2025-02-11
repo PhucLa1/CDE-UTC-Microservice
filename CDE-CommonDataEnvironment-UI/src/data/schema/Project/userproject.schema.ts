@@ -5,6 +5,7 @@ import { UserProjectStatus } from "@/data/enums/userprojectstatus.enum";
 export const userProjectSchema = z.object({
     id: z.number().optional(),
     projectId: z.number().optional(),
+    userId: z.number().optional(),
     fullName: z.string().optional(),
     email: z.string().email("Email không hợp lệ."),
     imageUrl: z.string().optional(),

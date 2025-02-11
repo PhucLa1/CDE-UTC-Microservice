@@ -41,6 +41,12 @@ export default function InviteForm({ button, projectId }: { button: ReactNode, p
                 message: 'Làm ơn chờ đợi phản hồi từ thành viên đó',
             })
             queryClient.invalidateQueries({queryKey: ['users-project']})
+            setIsOpen(false)
+            form.reset()
+        },
+        onError: () => {
+            setIsOpen(false)
+            form.reset()
         }
     })
 
@@ -79,7 +85,10 @@ export default function InviteForm({ button, projectId }: { button: ReactNode, p
                                         <FormLabel>Chọn quyền trong dự án</FormLabel>
                                         <FormControl>
                                             <RadioGroup
-                                                onValueChange={field.onChange}
+                                                onValueChange={(value) => {
+                                                    const enumValue = parseInt(value, 10);
+                                                    field.onChange(enumValue)
+                                                }}
                                                 defaultValue={field.value.toString()}
                                                 className="flex flex-col space-y-1"
                                             >

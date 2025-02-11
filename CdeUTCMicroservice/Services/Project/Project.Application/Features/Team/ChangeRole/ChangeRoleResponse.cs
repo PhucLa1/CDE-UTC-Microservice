@@ -1,6 +1,7 @@
 ﻿namespace Project.Application.Features.Team.ChangeRole
 {
-    internal class ChangeRoleResponse
+    public class ChangeRoleResponse : ApiResponse<bool>
     {
+
     }
 }
