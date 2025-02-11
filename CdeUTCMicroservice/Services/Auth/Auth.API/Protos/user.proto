@@ -10,12 +10,19 @@ service UserProtoService {
   // Returns a stream of UserModel messages.
   rpc GetUserByIds(GetUserRequest) returns (GetUserResponse) {
   }
+  rpc GetUserByEmail(GetUserByEmailStore) returns (UserModel) {
+  }
 }
 
 // Request message for GetUserByIds.
 message GetUserRequest {
   repeated int32 ids = 1;
 }
+
+message GetUserByEmailStore {
+  string email = 1;
+}
+
 
 // User model message.
 message UserModel {

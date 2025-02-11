@@ -204,3 +204,4 @@ C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservic
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.API\bin\Debug\net8.0\Grpc.Net.Client.dll
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.API\bin\Debug\net8.0\Grpc.Net.ClientFactory.dll
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.API\bin\Debug\net8.0\Grpc.Net.Common.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Auth\Auth.API\obj\Debug\net8.0\Auth.API.MvcApplicationPartsAssemblyInfo.cs

@@ -1417,6 +1417,7 @@
           "BCrypt.Net-Next": "4.0.3",
           "BuildingBlocks": "1.0.0",
           "BuildingBlocks.Messaging": "1.0.0",
+          "Grpc.Core.Api": "2.67.0",
           "MassTransit": "8.3.4",
           "Newtonsoft.Json": "13.0.3"
         },

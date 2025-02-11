@@ -48,7 +48,7 @@ export default function page({ params }: { params: { id: string } }) {
     useEffect(() => {
         if (data) {
             const filteredData = data.data.filter(item =>
-                (item.fullName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                (item.fullName!.toLowerCase().includes(searchQuery.toLowerCase()) ||
                     item.email.toLowerCase().includes(searchQuery.toLowerCase())) &&
                 (selectedRole.includes(item.role) || selectedRole.length == 0)
             );
@@ -65,7 +65,7 @@ export default function page({ params }: { params: { id: string } }) {
                     <AppBreadcrumb pathList={pathList} className="mt-2" />
                 </div>
                 {roleDetail?.invitationPermission == InvitationPermission.OnlyAdminCanInvite && roleDetail.role == Role.Member ? <></> : <div className='mr-6'>
-                    <InviteForm button={<Button >Mời thành viên khác vào dự án</Button>} />
+                    <InviteForm projectId={Number(params.id)} button={<Button >Mời thành viên khác vào dự án</Button>} />
                 </div>}
             </div>
             <div className='-mx-4 flex-1 overflow-auto px-4 py-8 lg:flex-row'>
@@ -129,7 +129,7 @@ export default function page({ params }: { params: { id: string } }) {
                                             <TableCell className="flex items-center gap-3">
                                                 <Avatar>
                                                     <AvatarImage src={item.imageUrl} alt="@shadcn" />
-                                                    <AvatarFallback>{item.fullName.charAt(0)}</AvatarFallback>
+                                                    <AvatarFallback>{item.fullName!.charAt(0)}</AvatarFallback>
                                                 </Avatar>
                                                 <div>
                                                     <p className="font-medium">{item.fullName}</p>

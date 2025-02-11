@@ -1,4 +1,5 @@
 ﻿using BuildingBlocks.Exceptions.Handler;
+using FluentValidation;
 using Project.API.Grpc;
 using Project.Application.Grpc;
 
@@ -10,6 +11,7 @@ namespace Project.API
         {
             services.AddExceptionHandler<CustomExceptionHandler>();
             services.AddTransient<IUserGrpc, UserGrpc>();
+            services.AddValidatorsFromAssembly(typeof(Program).Assembly);
             return services;
         }
 

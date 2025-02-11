@@ -52,6 +52,10 @@ namespace User.Grpc {
     static readonly grpc::Marshaller<global::User.Grpc.GetUserRequest> __Marshaller_user_GetUserRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::User.Grpc.GetUserRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::User.Grpc.GetUserResponse> __Marshaller_user_GetUserResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::User.Grpc.GetUserResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::User.Grpc.GetUserByEmailStore> __Marshaller_user_GetUserByEmailStore = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::User.Grpc.GetUserByEmailStore.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::User.Grpc.UserModel> __Marshaller_user_UserModel = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::User.Grpc.UserModel.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::User.Grpc.GetUserRequest, global::User.Grpc.GetUserResponse> __Method_GetUserByIds = new grpc::Method<global::User.Grpc.GetUserRequest, global::User.Grpc.GetUserResponse>(
@@ -60,6 +64,14 @@ namespace User.Grpc {
         "GetUserByIds",
         __Marshaller_user_GetUserRequest,
         __Marshaller_user_GetUserResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::User.Grpc.GetUserByEmailStore, global::User.Grpc.UserModel> __Method_GetUserByEmail = new grpc::Method<global::User.Grpc.GetUserByEmailStore, global::User.Grpc.UserModel>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetUserByEmail",
+        __Marshaller_user_GetUserByEmailStore,
+        __Marshaller_user_UserModel);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -84,6 +96,12 @@ namespace User.Grpc {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::User.Grpc.UserModel> GetUserByEmail(global::User.Grpc.GetUserByEmailStore request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -92,7 +110,8 @@ namespace User.Grpc {
     public static grpc::ServerServiceDefinition BindService(UserProtoServiceBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_GetUserByIds, serviceImpl.GetUserByIds).Build();
+          .AddMethod(__Method_GetUserByIds, serviceImpl.GetUserByIds)
+          .AddMethod(__Method_GetUserByEmail, serviceImpl.GetUserByEmail).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -103,6 +122,7 @@ namespace User.Grpc {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, UserProtoServiceBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_GetUserByIds, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::User.Grpc.GetUserRequest, global::User.Grpc.GetUserResponse>(serviceImpl.GetUserByIds));
+      serviceBinder.AddMethod(__Method_GetUserByEmail, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::User.Grpc.GetUserByEmailStore, global::User.Grpc.UserModel>(serviceImpl.GetUserByEmail));
     }
 
   }

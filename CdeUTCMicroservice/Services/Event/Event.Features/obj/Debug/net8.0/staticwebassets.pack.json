@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Email\\ChangePassword.html"
     },
     {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Email\\InvitationUser.html",
+      "PackagePath": "staticwebassets\\Email\\InvitationUser.html"
+    },
+    {
       "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Email\\SendEmailVerify.html",
       "PackagePath": "staticwebassets\\Email\\SendEmailVerify.html"
     },

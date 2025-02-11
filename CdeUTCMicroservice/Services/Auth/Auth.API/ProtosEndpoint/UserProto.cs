@@ -1,4 +1,5 @@
-﻿using Auth.Application.Auth.GetUserByIds;
+﻿using Auth.Application.Auth.GetUserByEmail;
+using Auth.Application.Auth.GetUserByIds;
 using Grpc.Core;
 using Mapster;
 using User.Grpc;
@@ -14,6 +15,13 @@ namespace Auth.API.ProtosEndpoint
             var getUserResponse = new GetUserResponse();
             getUserResponse.UserModel.AddRange(userResponse.Data.Adapt<List<UserModel>>());
             return getUserResponse;
+        }
+
+        public override async Task<UserModel> GetUserByEmail(GetUserByEmailStore request, ServerCallContext context)
+        {
+            var userResponse = await mediator.Send(new GetUserByEmailRequest() { Email = request.Email });
+            var userModel = userResponse.Data.Adapt<UserModel>();
+            return userModel;
         }
     }
 }

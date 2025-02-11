@@ -52,6 +52,10 @@ namespace User.Grpc {
     static readonly grpc::Marshaller<global::User.Grpc.GetUserRequest> __Marshaller_user_GetUserRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::User.Grpc.GetUserRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::User.Grpc.GetUserResponse> __Marshaller_user_GetUserResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::User.Grpc.GetUserResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::User.Grpc.GetUserByEmailStore> __Marshaller_user_GetUserByEmailStore = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::User.Grpc.GetUserByEmailStore.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::User.Grpc.UserModel> __Marshaller_user_UserModel = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::User.Grpc.UserModel.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::User.Grpc.GetUserRequest, global::User.Grpc.GetUserResponse> __Method_GetUserByIds = new grpc::Method<global::User.Grpc.GetUserRequest, global::User.Grpc.GetUserResponse>(
@@ -60,6 +64,14 @@ namespace User.Grpc {
         "GetUserByIds",
         __Marshaller_user_GetUserRequest,
         __Marshaller_user_GetUserResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::User.Grpc.GetUserByEmailStore, global::User.Grpc.UserModel> __Method_GetUserByEmail = new grpc::Method<global::User.Grpc.GetUserByEmailStore, global::User.Grpc.UserModel>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetUserByEmail",
+        __Marshaller_user_GetUserByEmailStore,
+        __Marshaller_user_UserModel);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -145,6 +157,26 @@ namespace User.Grpc {
       public virtual grpc::AsyncUnaryCall<global::User.Grpc.GetUserResponse> GetUserByIdsAsync(global::User.Grpc.GetUserRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_GetUserByIds, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::User.Grpc.UserModel GetUserByEmail(global::User.Grpc.GetUserByEmailStore request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetUserByEmail(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::User.Grpc.UserModel GetUserByEmail(global::User.Grpc.GetUserByEmailStore request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetUserByEmail, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::User.Grpc.UserModel> GetUserByEmailAsync(global::User.Grpc.GetUserByEmailStore request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetUserByEmailAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::User.Grpc.UserModel> GetUserByEmailAsync(global::User.Grpc.GetUserByEmailStore request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetUserByEmail, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]

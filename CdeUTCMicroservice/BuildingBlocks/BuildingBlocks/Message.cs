@@ -8,6 +8,7 @@
         public static string CODE_EXPIRED = "Mã code đã hết hạn dùng";
         public static string FORBIDDEN_CHANGE_PASSWORD = "Không có quyền thay đổi mật khẩu";
         public static string FORBIDDEN_CHANGE = "Không có quyền thay đổi dữ kiện";
+        public static string IS_EXIST = "Người dùng đã tồn tại trong dự án rồi";
         #endregion
 
         #region Notice Successfully
