@@ -608,7 +608,6 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnName("created_by");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -1658,10 +1657,12 @@ namespace Project.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Project.Domain.Entities.UserGroup", b =>
                 {
-                    b.HasOne("Project.Domain.Entities.Group", null)
-                        .WithMany()
+                    b.HasOne("Project.Domain.Entities.Group", "Group")
+                        .WithMany("UserGroups")
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Group");
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.UserProject", b =>
@@ -1732,6 +1733,11 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Navigation("BCFComments");
 
                     b.Navigation("BCFTopicTags");
+                });
+
+            modelBuilder.Entity("Project.Domain.Entities.Group", b =>
+                {
+                    b.Navigation("UserGroups");
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.Projects", b =>

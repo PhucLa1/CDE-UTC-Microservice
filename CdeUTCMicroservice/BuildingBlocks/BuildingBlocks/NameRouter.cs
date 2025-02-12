@@ -49,7 +49,11 @@
         public const string INVITE_USER = "invite-user";
         public const string CHANGE_ROLE = "change-role";
         public const string KICK_USER = "kick-user";
+        public const string APPROVE_INVITE = "approve-invite";
+        #endregion
 
+        #region Team
+        public const string GROUP_ROUTER = "group";
         #endregion
 
 

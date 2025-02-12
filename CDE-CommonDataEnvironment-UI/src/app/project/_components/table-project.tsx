@@ -20,6 +20,7 @@ export default function TableProject({ filteredProjects }: { filteredProjects: P
                         {filteredProjects.map((project) => (
                             <tr key={project.id} className="border-b transition-colors hover:bg-muted/50" onClick={() => {
                                 router.push(`project/${project.id}/unit`);
+                                localStorage.setItem('projectId', project.id!.toString());
                             }}>
 
                                 <td className="p-4">

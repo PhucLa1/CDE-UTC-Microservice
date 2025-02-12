@@ -66,7 +66,7 @@ export const sidelinks: SideLink[] = [
   {
     title: 'Đội nhóm',
     label: '',
-    href: '/user',
+    href: '/team',
     icon: <IconUsers size={18} />, // Icon người dùng/đội nhóm
   },
   {
@@ -78,13 +78,13 @@ export const sidelinks: SideLink[] = [
       {
         title: 'Chi tiết dự án',
         label: '',
-        href: '/project-detail',
+        href: '/detail',
         icon: <IconInfoCircle size={18} />, // Icon thông tin chi tiết
       },
       {
         title: 'Cấu hình dự án',
         label: '',
-        href: '/config-project',
+        href: '/setting',
         icon: <IconSettings size={18} />, // Icon cài đặt
       },
       {
@@ -96,19 +96,19 @@ export const sidelinks: SideLink[] = [
       {
         title: 'Đơn vị đo',
         label: '',
-        href: '/units',
+        href: '/unit',
         icon: <IconRuler size={18} />, // Icon thước đo
       },
       {
         title: 'Nhãn',
         label: '',
-        href: '/tags',
+        href: '/tag',
         icon: <IconTag size={18} />, // Icon nhãn
       },
       {
         title: 'Quyền',
         label: '',
-        href: '/permissions',
+        href: '/permission',
         icon: <IconShieldCheck size={18} />, // Icon khiên bảo vệ
       },
     ],

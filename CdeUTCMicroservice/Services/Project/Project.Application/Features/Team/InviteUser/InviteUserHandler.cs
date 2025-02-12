@@ -66,14 +66,24 @@ namespace Project.Application.Features.Team.InviteUser
                 }
 
                 /*Có trong dự án nhưng đang trong trạng thái pending 
-                thì sẽ chỉ gửi mail*/
+                thì sẽ chỉ gửi mail và update cái mới*/
+                else
+                {
+                    userInvite.Role = request.Role;
+                    userProjectRepository.Update(userInvite);
+                    await userProjectRepository.SaveChangeAsync(cancellationToken);
+                }
+
+
 
                 //Gửi message cho service event
                 var invitationUser = new InvitationUserEvent()
                 {
                     FullName = user.FullName,
                     Email = user.Email,
-                    Role = userProject.Role == Role.Admin ? "Quản trị viên" : "Người dùng"
+                    Role = userProject.Role == Role.Admin ? "Quản trị viên" : "Người dùng",
+                    ProjectId = request.ProjectId,
+                    UserId = user.Id
                 };
 
                 await publishEndpoint.Publish(invitationUser, cancellationToken);

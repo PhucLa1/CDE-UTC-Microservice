@@ -3,28 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.api\\endpoint\\team\\kickuserfromproject\\kickuserfromprojectendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|solutionrelative:services\\project\\project.api\\endpoint\\team\\kickuserfromproject\\kickuserfromprojectendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5897998A-302D-4C8E-B94C-4B78998C4F9F}|BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\buildingblocks\\buildingblocks\\namerouter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5897998A-302D-4C8E-B94C-4B78998C4F9F}|BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj|solutionrelative:buildingblocks\\buildingblocks\\namerouter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.api\\endpoint\\team\\kickuserfromproject\\kickuserfromprojectvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|solutionrelative:services\\project\\project.api\\endpoint\\team\\kickuserfromproject\\kickuserfromprojectvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\team\\kickuserfromproject\\kickuserfromprojecthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\team\\kickuserfromproject\\kickuserfromprojecthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\team\\changerole\\changerolehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\team\\changerole\\changerolehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\team\\kickuserfromproject\\kickuserfromprojectresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\team\\kickuserfromproject\\kickuserfromprojectresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\groups\\getuserdbygroupid\\getuserdbygroupidhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\groups\\getuserdbygroupid\\getuserdbygroupidhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,95 +13,24 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 1349,
-          "SelectedChildIndex": -1,
+          "DockedWidth": 1655,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 1175,
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "NameRouter.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\BuildingBlocks\\BuildingBlocks\\NameRouter.cs",
-              "RelativeDocumentMoniker": "BuildingBlocks\\BuildingBlocks\\NameRouter.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\BuildingBlocks\\BuildingBlocks\\NameRouter.cs",
-              "RelativeToolTip": "BuildingBlocks\\BuildingBlocks\\NameRouter.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADIAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T09:31:13.56Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "KickUserFromProjectEndpoint.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Team\\KickUserFromProject\\KickUserFromProjectEndpoint.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.API\\Endpoint\\Team\\KickUserFromProject\\KickUserFromProjectEndpoint.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Team\\KickUserFromProject\\KickUserFromProjectEndpoint.cs",
-              "RelativeToolTip": "Services\\Project\\Project.API\\Endpoint\\Team\\KickUserFromProject\\KickUserFromProjectEndpoint.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAkAAAA",
+              "Title": "GetUserdByGroupIdHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Groups\\GetUserdByGroupId\\GetUserdByGroupIdHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Groups\\GetUserdByGroupId\\GetUserdByGroupIdHandler.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Groups\\GetUserdByGroupId\\GetUserdByGroupIdHandler.cs",
+              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Groups\\GetUserdByGroupId\\GetUserdByGroupIdHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T09:29:44.164Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "KickUserFromProjectValidator.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Team\\KickUserFromProject\\KickUserFromProjectValidator.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.API\\Endpoint\\Team\\KickUserFromProject\\KickUserFromProjectValidator.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Team\\KickUserFromProject\\KickUserFromProjectValidator.cs",
-              "RelativeToolTip": "Services\\Project\\Project.API\\Endpoint\\Team\\KickUserFromProject\\KickUserFromProjectValidator.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAA/AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T09:29:39.8Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ChangeRoleHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Team\\ChangeRole\\ChangeRoleHandler.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Team\\ChangeRole\\ChangeRoleHandler.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Team\\ChangeRole\\ChangeRoleHandler.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Team\\ChangeRole\\ChangeRoleHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAABHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T09:27:38.647Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "KickUserFromProjectHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Team\\KickUserFromProject\\KickUserFromProjectHandler.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Team\\KickUserFromProject\\KickUserFromProjectHandler.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Team\\KickUserFromProject\\KickUserFromProjectHandler.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Team\\KickUserFromProject\\KickUserFromProjectHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T09:26:13.545Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "KickUserFromProjectResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Team\\KickUserFromProject\\KickUserFromProjectResponse.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Team\\KickUserFromProject\\KickUserFromProjectResponse.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Team\\KickUserFromProject\\KickUserFromProjectResponse.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Team\\KickUserFromProject\\KickUserFromProjectResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAA/AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T09:25:58.627Z",
+              "WhenOpened": "2025-02-12T09:28:28.64Z",
               "EditorCaption": ""
             }
           ]

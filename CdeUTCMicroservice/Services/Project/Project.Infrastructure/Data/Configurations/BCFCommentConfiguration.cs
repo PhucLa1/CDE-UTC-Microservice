@@ -1,5 +1,3 @@
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-
 namespace Project.Infrastructure.Data.Configurations
 {
     public class BCFCommentConfiguration : IEntityTypeConfiguration<BCFComment>

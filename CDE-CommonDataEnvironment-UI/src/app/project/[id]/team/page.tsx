@@ -14,6 +14,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
     DropdownMenuCheckboxItem,
+    DropdownMenuItem,
 } from "@/components/ui/dropdown-menu"
 import { useRole } from '../layout';
 import { InvitationPermission } from '@/data/enums/invitationpermission.enum';
@@ -24,6 +25,10 @@ import { UserProjectStatus } from '@/data/enums/userprojectstatus.enum';
 import { UserProject } from '@/data/schema/Project/userproject.schema';
 import InviteForm from './_components/invite-form';
 import UserInfoSheet from './_components/form-update-delete';
+import groupApiRequest from '@/apis/group.api';
+import FormCRUDGroup from './_components/form-crud-group';
+import { State } from '@/data/enums/state.enum';
+import { Edit, Trash } from 'lucide-react';
 const pathList: Array<PathItem> = [
     {
         name: "Đội ngũ trong dự án",
@@ -46,6 +51,10 @@ export default function page({ params }: { params: { id: string } }) {
         queryKey: ['users-project'],
         queryFn: () => teamApiRequest.getUsersByProjectId(Number(params.id))
     })
+    const { data: dataGroups, isLoading: isLoadingGroups } = useQuery({
+        queryKey: ['groups'],
+        queryFn: () => groupApiRequest.getList(Number(params.id))
+    })
     useEffect(() => {
         if (data) {
             const filteredData = data.data.filter(item =>
@@ -57,7 +66,7 @@ export default function page({ params }: { params: { id: string } }) {
             console.log(filteredData)
         }
     }, [data, searchQuery, selectedRole])
-    if (isLoading) return <></>
+    if (isLoading || isLoadingGroups) return <></>
     return (
         <>
             <div className='mb-2 flex items-center justify-between space-y-2'>
@@ -72,13 +81,38 @@ export default function page({ params }: { params: { id: string } }) {
             <div className='-mx-4 flex-1 overflow-auto px-4 py-8 lg:flex-row'>
                 <div className="flex gap-2 p-6">
                     <Card className="w-1/4 p-4">
-                        <h2 className="text-lg font-semibold">Thành viên dự án</h2>
+                        <div className='flex items-center justify-between'>
+                            <h2 className="text-lg font-semibold">Thành viên dự án</h2>
+                            {roleDetail?.role == Role.Admin && <FormCRUDGroup trigger={<Button>Tạo nhóm</Button>} state={State.CREATE} group={{
+                                projectId: Number(params.id),
+                                name: ""
+                            }} />}
+                        </div>
                         <div className="mt-4 space-y-2">
                             <p className="font-medium">Tất cả thành viên dự án ({data?.data.length} người)</p>
                             <Separator className='mt-4' />
+
                             <div className='mt-4'>
                                 <p className="text-gray-500 mt-4">Nhóm riêng</p>
-                                <p className="font-medium mt-2">Hello (1 User)</p>
+                                {
+                                    dataGroups?.data.map((item, index) => {
+                                        return <div key={index} className='flex items-center justify-between'>
+                                            <p className="font-medium mt-2">{item.name} ({item.userCount} thành viên)</p>
+                                            <div className='flex items-center justify-end mt-2'>
+                                                <FormCRUDGroup trigger={<Edit className="w-4 h-4 mr-2" />} state={State.UPDATE} group={{
+                                                    projectId: Number(params.id),
+                                                    name: item.name,
+                                                    id: item.id
+                                                }} />
+                                                <FormCRUDGroup trigger={<Trash className="w-4 h-4 mr-2" />} state={State.DELETE} group={{
+                                                    projectId: Number(params.id),
+                                                    name: item.name,
+                                                    id: item.id
+                                                }} />
+                                            </div>
+                                        </div>
+                                    })
+                                }
                             </div>
                         </div>
                     </Card>
@@ -126,7 +160,7 @@ export default function page({ params }: { params: { id: string } }) {
                                 </TableHeader>
                                 <TableBody>
                                     {filteredData.map((item, index) => (
-                                        <UserInfoSheet projectId = {Number(params.id)} currentRole={roleDetail!.role} userProject={item} node={
+                                        <UserInfoSheet projectId={Number(params.id)} currentRole={roleDetail!.role} userProject={item} node={
                                             <TableRow key={index}>
                                                 <TableCell className="flex items-center gap-3">
                                                     <Avatar>

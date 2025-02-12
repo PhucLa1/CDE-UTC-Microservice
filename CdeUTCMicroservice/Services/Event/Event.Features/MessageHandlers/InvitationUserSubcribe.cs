@@ -11,7 +11,8 @@ namespace Event.Features.MessageHandlers
             var bodyContentEmail = HandleFile.READ_FILE("Email", "InvitationUser.html")
                                         .Replace("{fullName}", message.FullName)
                                         .Replace("{role}", message.Role)
-                                        .Replace("{invitationLink}", "");
+                                        .Replace("{invitationLink}", $"{Setting.PROJECT_HOST}/team/approve-invite?UserId={message.UserId}&ProjectId={message.ProjectId}");
+
 
             var contentEmail = emailService.TemplateContent.Replace("{content}", bodyContentEmail);
 

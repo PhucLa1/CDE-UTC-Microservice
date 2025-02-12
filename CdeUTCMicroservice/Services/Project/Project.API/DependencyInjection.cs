@@ -17,10 +17,12 @@ namespace Project.API
 
         public static WebApplication UseApiServices(this WebApplication webApplication)
         {
+            /*
             webApplication.UseExceptionHandler(options =>
             {
 
             });
+            */
             webApplication.UseStaticFiles();
 
             return webApplication;

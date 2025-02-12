@@ -92,7 +92,7 @@ function NavLink({
   const { checkActiveNav } = useCheckActiveNav()
   return (
     <Link
-      href={href}
+      href={"/project/" + localStorage.getItem("projectId") + "/" + href}
       suppressHydrationWarning={true}
       onClick={closeNav}
       className={cn(
