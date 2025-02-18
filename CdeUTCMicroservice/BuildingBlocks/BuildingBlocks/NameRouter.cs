@@ -61,6 +61,10 @@
         public const string FOLDER_ROUTER = "folder";
         #endregion
 
+        #region Storage
+        public const string STORAGE_ROUTER = "storage";
+        #endregion
+
 
         #endregion
 

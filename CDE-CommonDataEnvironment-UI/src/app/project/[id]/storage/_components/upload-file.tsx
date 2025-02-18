@@ -73,6 +73,7 @@ export default function UploadFile({ node }: FormProps) {
                                             },
                                         });
                                         console.log(res);
+                                        console.log(addedFileState.file.type)
                                     } catch (err) {
                                         updateFileProgress(addedFileState.key, 'ERROR');
                                     }

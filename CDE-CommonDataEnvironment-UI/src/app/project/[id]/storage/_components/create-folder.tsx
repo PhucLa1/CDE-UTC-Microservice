@@ -33,6 +33,8 @@ export default function CreateFolder({ node, parentId, projectId }: FormProps) {
     });
 
     const onSubmit = (values: Folder) => {
+        values.parentId = parentId
+        values.projectId = projectId
         mutate(values)
     };
 

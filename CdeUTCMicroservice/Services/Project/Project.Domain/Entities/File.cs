@@ -7,7 +7,7 @@
         public string Url { get; set; } = default!;
         public int? FolderId { get; set; } 
         public int? ProjectId { get; set; }
-        public FileVersion FileVersion { get; set; }
+        public int FileVersion { get; set; }
         public bool IsCheckIn { get; set; }
         public bool IsCheckout { get; set; } = true;
         public FileType FileType { get; set; } = default!;

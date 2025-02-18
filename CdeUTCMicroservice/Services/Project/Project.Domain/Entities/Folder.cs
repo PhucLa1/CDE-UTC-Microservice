@@ -8,6 +8,7 @@
         public int ParentId { get; set; } = default!;  //Nếu parent id bằng 0 thì tức là nó không có folder cha
         public bool IsCheckin { get; set; }
         public bool IsCheckout { get; set; }
-        
+        public ICollection<FolderTag>? FolderTags { get; set; }
+
     }
 }

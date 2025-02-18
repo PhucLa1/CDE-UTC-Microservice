@@ -297,6 +297,66 @@ namespace Project.Infrastructure.Data.Migrations
                     b.ToTable("FileComments");
                 });
 
+            modelBuilder.Entity("Project.Domain.Entities.FileHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("created_at");
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int")
+                        .HasColumnName("created_by");
+
+                    b.Property<string>("Extension")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("FileId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FileType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FileVersion")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MimeType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Size")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("updated_at");
+
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("int")
+                        .HasColumnName("updated_by");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FileId");
+
+                    b.ToTable("FileHistories");
+                });
+
             modelBuilder.Entity("Project.Domain.Entities.FilePermission", b =>
                 {
                     b.Property<int>("Id")
@@ -632,6 +692,8 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnName("updated_by");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FolderId");
 
                     b.HasIndex("TagId");
 
@@ -1510,6 +1572,14 @@ namespace Project.Infrastructure.Data.Migrations
                         .OnDelete(DeleteBehavior.SetNull);
                 });
 
+            modelBuilder.Entity("Project.Domain.Entities.FileHistory", b =>
+                {
+                    b.HasOne("Project.Domain.Entities.File", null)
+                        .WithMany()
+                        .HasForeignKey("FileId")
+                        .OnDelete(DeleteBehavior.SetNull);
+                });
+
             modelBuilder.Entity("Project.Domain.Entities.FilePermission", b =>
                 {
                     b.HasOne("Project.Domain.Entities.File", null)
@@ -1578,10 +1648,19 @@ namespace Project.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Project.Domain.Entities.FolderTag", b =>
                 {
-                    b.HasOne("Project.Domain.Entities.Tag", null)
-                        .WithMany()
+                    b.HasOne("Project.Domain.Entities.Folder", "Folder")
+                        .WithMany("FolderTags")
+                        .HasForeignKey("FolderId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Project.Domain.Entities.Tag", "Tag")
+                        .WithMany("FolderTags")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Folder");
+
+                    b.Navigation("Tag");
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.Group", b =>
@@ -1791,6 +1870,11 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Navigation("BCFTopicTags");
                 });
 
+            modelBuilder.Entity("Project.Domain.Entities.Folder", b =>
+                {
+                    b.Navigation("FolderTags");
+                });
+
             modelBuilder.Entity("Project.Domain.Entities.Group", b =>
                 {
                     b.Navigation("UserGroups");
@@ -1810,6 +1894,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.Tag", b =>
                 {
                     b.Navigation("BCFTopicTags");
+
+                    b.Navigation("FolderTags");
                 });
 #pragma warning restore 612, 618
         }

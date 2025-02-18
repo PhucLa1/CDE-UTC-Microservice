@@ -7,6 +7,9 @@ import React, { useState } from 'react'
 import CreateFolder from './_components/create-folder';
 import { FaFolder, FaUpload } from 'react-icons/fa';
 import UploadFile from './_components/upload-file';
+import { useQuery } from '@tanstack/react-query';
+import storageApiRequest from '@/apis/storage.api';
+import TableStorage from './_components/table-storage';
 const pathList: Array<PathItem> = [
     {
         name: "Tệp & Thư mục",
@@ -18,6 +21,12 @@ export default function page({ params }: { params: { id: string } }) {
     const [searchQuery, setSearchQuery] = useState('');
     const [isOpen, setIsOpen] = useState(false);
     const [parentId, setParentId] = useState<number>(0)
+
+    const { data, isLoading } = useQuery({
+        queryKey: ['storage'],
+        queryFn: () => storageApiRequest.getList(Number(params.id), parentId),
+    })
+    if (isLoading) return <></>
     return (
         <>
             <div className='mb-2 flex items-center justify-between space-y-2'>
@@ -85,7 +94,11 @@ export default function page({ params }: { params: { id: string } }) {
                 </div>
             </div>
             <div className='-mx-4 flex-1 overflow-auto px-4 py-8 lg:flex-row'>
-
+                {viewMode === 'table' && (//+
+                    <TableStorage
+                        data={data!.data}
+                    />
+                )}
             </div>
         </>
     )

@@ -77,6 +77,7 @@ namespace Project.Infrastructure.Data
         public DbSet<FileBCFTopic> FileBCFTopics => Set<FileBCFTopic>();
         public DbSet<FileComment> FileComments => Set<FileComment>();
         public DbSet<FilePermission> FilePermissions => Set<FilePermission>();
+        public DbSet<FileHistory> FileHistories => Set<FileHistory>();
         public DbSet<FileTag> FileTags => Set<FileTag>();
         public DbSet<FileTodo> FileTodos => Set<FileTodo>();
         public DbSet<FolderComment> FolderComments => Set<FolderComment>();
