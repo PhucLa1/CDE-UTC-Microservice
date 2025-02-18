@@ -51,7 +51,7 @@ namespace Event.Infrastructure.Data.Migrations
                         .HasColumnType("int")
                         .HasColumnName("created_by");
 
-                    b.Property<int>("ProjectId")
+                    b.Property<int>("ResourceId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -77,6 +77,12 @@ namespace Event.Infrastructure.Data.Migrations
                         .HasColumnName("id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ActivityTypeCategory")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ActivityTypeMode")
+                        .HasColumnType("int");
 
                     b.Property<int?>("ActivityTypeParentId")
                         .HasColumnType("int");
@@ -123,6 +129,9 @@ namespace Event.Infrastructure.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("ActivityTypeParentCategory")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
                         .HasColumnName("created_at");
@@ -140,6 +149,9 @@ namespace Event.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2")

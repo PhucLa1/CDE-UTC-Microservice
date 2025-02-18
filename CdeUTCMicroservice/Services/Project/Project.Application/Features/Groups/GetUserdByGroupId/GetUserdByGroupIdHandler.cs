@@ -11,8 +11,13 @@ namespace Project.Application.Features.Groups.GetUserdByGroupId
     {
         public async Task<ApiResponse<List<GetUserdByGroupIdResponse>>> Handle(GetUserdByGroupIdRequest request, CancellationToken cancellationToken)
         {
+            //Lấy ra kiểu ngày tháng mà người dùng hiện tại
+            var currentDateDisplay = userProjectRepository.GetCurrentDateDisplay();
+            var currenTimeDisplay = userProjectRepository.GetCurrentTimeDisplay();
+
             var users = await (from ug in userGroupRepository.GetAllQueryAble()
                                join up in userProjectRepository.GetAllQueryAble() on ug.UserId equals up.UserId
+                               where ug.GroupId == request.GroupId
                                select new
                                {
                                    UserId = ug.UserId,
@@ -32,7 +37,7 @@ namespace Project.Application.Features.Groups.GetUserdByGroupId
                                    Id = ui.Id,
                                    Email = ui.Email,
                                    ImageUrl = ui.ImageUrl,
-                                   DateJoined = u.DateJoined,
+                                   DateJoined = u.DateJoined.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
                                    UserProjectStatus = u.UserProjectStatus,
                                    Role = u.Role
                                }).ToList();

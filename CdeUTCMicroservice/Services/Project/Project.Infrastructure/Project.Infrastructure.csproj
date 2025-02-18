@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj" />
     <ProjectReference Include="..\Project.Application\Project.Application.csproj" />
   </ItemGroup>
-
 </Project>

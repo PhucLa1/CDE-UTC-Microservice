@@ -34,7 +34,7 @@ export const sidelinks: SideLink[] = [
       {
         title: 'Tệp & Thư mục',
         label: '',
-        href: '/explorer',
+        href: '/storage',
         icon: <IconFolder size={18} />, // Icon thư mục
       },
       {

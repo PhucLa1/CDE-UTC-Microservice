@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BuildingBlocks.Enums;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Storage;
 using Project.Application.Data;
 
@@ -95,6 +96,39 @@ namespace Project.Infrastructure.Data.Base
         public void UpdateMany(IEnumerable<T> entities)
         {
             _dbSet.UpdateRange(entities);
+        }
+
+        public DateDisplay GetCurrentDateDisplay()
+        {
+            var context = _httpContextAccessor.HttpContext;
+            var userDateDisplayStr = context.Request.Headers["X-UserDateDisplay"].FirstOrDefault();
+
+            if (userDateDisplayStr is null)
+                return DateDisplay.Iso8601;
+
+            if (Enum.TryParse<DateDisplay>(userDateDisplayStr, true, out var dateDisplay))
+            {
+                return dateDisplay; // Trả về enum nếu chuyển đổi thành công
+            }
+
+            return DateDisplay.Iso8601; // Giá trị mặc định nếu không hợp lệ
+        }
+
+
+        public TimeDisplay GetCurrentTimeDisplay()
+        {
+            var context = _httpContextAccessor.HttpContext;
+            var userTimeDisplayStr = context.Request.Headers["X-UserDateDisplay"].FirstOrDefault();
+
+            if (userTimeDisplayStr is null)
+                return TimeDisplay.TwelveHour;
+
+            if (Enum.TryParse<TimeDisplay>(userTimeDisplayStr, true, out var timeDisplay))
+            {
+                return timeDisplay; // Trả về enum nếu chuyển đổi thành công
+            }
+
+            return TimeDisplay.TwelveHour; // Giá trị mặc định nếu không hợp lệ
         }
     }
 }

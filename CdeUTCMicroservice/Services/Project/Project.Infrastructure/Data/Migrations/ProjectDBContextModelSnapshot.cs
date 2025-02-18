@@ -435,9 +435,6 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("int")
                         .HasColumnName("created_by");
 
-                    b.Property<int>("FolderVersion")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsCheckin")
                         .HasColumnType("bit");
 
@@ -446,7 +443,7 @@ namespace Project.Infrastructure.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("ParentId")
                         .HasColumnType("int");
@@ -462,7 +459,13 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("int")
                         .HasColumnName("updated_by");
 
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.HasIndex("ProjectId");
 
@@ -506,6 +509,51 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasIndex("FolderId");
 
                     b.ToTable("FolderComments");
+                });
+
+            modelBuilder.Entity("Project.Domain.Entities.FolderHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("created_at");
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int")
+                        .HasColumnName("created_by");
+
+                    b.Property<int?>("FolderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("updated_at");
+
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("int")
+                        .HasColumnName("updated_by");
+
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FolderId");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("FolderHistorys");
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.FolderPermission", b =>
@@ -1505,6 +1553,14 @@ namespace Project.Infrastructure.Data.Migrations
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.FolderComment", b =>
+                {
+                    b.HasOne("Project.Domain.Entities.Folder", null)
+                        .WithMany()
+                        .HasForeignKey("FolderId")
+                        .OnDelete(DeleteBehavior.SetNull);
+                });
+
+            modelBuilder.Entity("Project.Domain.Entities.FolderHistory", b =>
                 {
                     b.HasOne("Project.Domain.Entities.Folder", null)
                         .WithMany()

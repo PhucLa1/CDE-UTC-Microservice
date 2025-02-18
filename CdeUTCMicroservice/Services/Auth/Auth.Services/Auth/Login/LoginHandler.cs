@@ -43,6 +43,8 @@ namespace Auth.Application.Auth.Login
                         new Claim("Id", user.Id.ToString()),
                         new Claim("Email", user.Email),
                         new Claim("Password", user.Password),
+                        new Claim("DateDisplay", user.DateDisplay.ToString()),
+                        new Claim("TimeDisplay", user.TimeDisplay.ToString()),
                     };
 
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtServerSetting.Value.Key));

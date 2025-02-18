@@ -13,7 +13,17 @@ import teamApiRequest from "@/apis/team.api";
 import { handleSuccessApi } from "@/lib/utils";
 import FormDeleteUser from "./form-delete-user";
 
-export default function UserInfoSheet({ node, userProject, currentRole, projectId }: { node: ReactNode, userProject: UserProject, currentRole: Role, projectId: number }) {
+type FormProps = {
+    node: ReactNode,
+    userProject: UserProject,
+    currentRole: Role,
+    projectId: number,
+    isInGroup: boolean,
+    currentUserId: number,
+    groupId: number
+}
+
+export default function UserInfoSheet({ node, userProject, currentRole, projectId, isInGroup, currentUserId, groupId }: FormProps) {
     const [role, setRole] = useState<Role>(userProject.role);
     const queryClient = useQueryClient()
     const { mutate: mutateUpdate, isPending: isPendingUpdate } = useMutation({
@@ -74,14 +84,18 @@ export default function UserInfoSheet({ node, userProject, currentRole, projectI
                     </p>
                 </Card>
                 <Card className="p-4 mt-2">
-                    <p className="text-sm font-semibold">Groups</p>
-                    <p className="text-sm text-gray-500">This user is not in any groups</p>
+                    <p className="text-sm font-semibold">Nhóm</p>
+                    <p className="text-sm text-gray-500">Người này không thuộc bất kì nhóm nào</p>
                 </Card>
 
-                {currentRole == Role.Admin && <div className="flex justify-start mt-4">
-                    <Button loading={isPendingUpdate} onClick={() => mutateUpdate()}>Lưu thay đổi</Button>
-                    <FormDeleteUser projectId={projectId} userProject={userProject} node={<Button className="ml-4" variant='destructive'>Rời dự án</Button>} />
-                </div>}
+                <div className="flex justify-start mt-4">
+                    {currentRole == Role.Admin && <Button loading={isPendingUpdate} onClick={() => mutateUpdate()}>Lưu thay đổi</Button>}
+                    {currentUserId == userProject.id && <FormDeleteUser groupId={groupId} projectId={projectId} userProject={userProject}
+                        node={
+                            <Button className="ml-4" variant='destructive'>
+                                {isInGroup == true ? "Rời nhóm" : "Rời dự án"}
+                            </Button>} />}
+                </div>
             </SheetContent>
         </Sheet>
     );

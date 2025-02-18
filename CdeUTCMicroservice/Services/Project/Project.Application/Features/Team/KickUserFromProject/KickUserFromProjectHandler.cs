@@ -15,7 +15,7 @@ namespace Project.Application.Features.Team.KickUserFromProject
             if (userProject is null)
                 throw new NotFoundException(Message.NOT_FOUND);
 
-            if (userProject.Role is not Role.Admin)
+            if (userProject.Role is not Role.Admin && request.UserId != userCurrentId)
                 throw new ForbiddenException(Message.FORBIDDEN_CHANGE);
 
             var userProjectDelete = await userProjectRepository.GetAllQueryAble()

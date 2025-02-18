@@ -1,34 +1,22 @@
 "use client"
 import AppBreadcrumb, { PathItem } from '@/components/custom/_breadcrumb'
-import React, { useEffect, useState } from 'react'
-import { Card, CardContent } from "@/components/ui/card";
+import React, { useState } from 'react'
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
-import { Input } from '@/components/ui/input';
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-    DropdownMenuCheckboxItem,
-    DropdownMenuItem,
-} from "@/components/ui/dropdown-menu"
 import { useRole } from '../layout';
 import { InvitationPermission } from '@/data/enums/invitationpermission.enum';
 import { Role } from '@/data/enums/role.enum';
 import { useQuery } from '@tanstack/react-query';
 import teamApiRequest from '@/apis/team.api';
-import { UserProjectStatus } from '@/data/enums/userprojectstatus.enum';
-import { UserProject } from '@/data/schema/Project/userproject.schema';
 import InviteForm from './_components/invite-form';
-import UserInfoSheet from './_components/form-update-delete';
 import groupApiRequest from '@/apis/group.api';
 import FormCRUDGroup from './_components/form-crud-group';
 import { State } from '@/data/enums/state.enum';
 import { Edit, Trash } from 'lucide-react';
+import TableAllUsers from './_components/table-all-users';
+import userGroupApiRequest from '@/apis/usergroup.api';
+import TableGroupUsers from './_components/table-group-user';
 const pathList: Array<PathItem> = [
     {
         name: "Đội ngũ trong dự án",
@@ -36,37 +24,23 @@ const pathList: Array<PathItem> = [
     },
 ];
 export default function page({ params }: { params: { id: string } }) {
-    const [selectedRole, setSelectedRole] = useState<Role[]>([]);
-    const [searchQuery, setSearchQuery] = useState('');
-    const [filteredData, setFilteredData] = useState<UserProject[]>([]);
-    const togglePosition = (value: Role) => {
-        setSelectedRole((prev) =>
-            prev.includes(value)
-                ? prev.filter((item) => item !== value)
-                : [...prev, value]
-        );
-    };
     const { roleDetail } = useRole()
-    const { data, isLoading } = useQuery({
-        queryKey: ['users-project'],
-        queryFn: () => teamApiRequest.getUsersByProjectId(Number(params.id))
-    })
+    const [groupId, setGroupId] = useState<number>(0)
     const { data: dataGroups, isLoading: isLoadingGroups } = useQuery({
         queryKey: ['groups'],
         queryFn: () => groupApiRequest.getList(Number(params.id))
     })
-    useEffect(() => {
-        if (data) {
-            const filteredData = data.data.filter(item =>
-                (item.fullName!.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                    item.email.toLowerCase().includes(searchQuery.toLowerCase())) &&
-                (selectedRole.includes(item.role) || selectedRole.length == 0)
-            );
-            setFilteredData(filteredData)
-            console.log(filteredData)
-        }
-    }, [data, searchQuery, selectedRole])
-    if (isLoading || isLoadingGroups) return <></>
+    const { data, isLoading } = useQuery({
+        queryKey: ['users-project'],
+        queryFn: () => teamApiRequest.getUsersByProjectId(Number(params.id)),
+        enabled: groupId === 0, // Chỉ gọi khi groupId = 0
+    })
+    const { data: dataUserGroups, isLoading: isLoadingUserGroups } = useQuery({
+        queryKey: ['users-group', groupId],
+        queryFn: () => userGroupApiRequest.getUsersByGroupId(groupId),
+        enabled: groupId !== 0, // Chỉ gọi khi groupId = 0
+    })
+    if (isLoading || isLoadingGroups || isLoadingUserGroups) return <></>
     return (
         <>
             <div className='mb-2 flex items-center justify-between space-y-2'>
@@ -89,16 +63,23 @@ export default function page({ params }: { params: { id: string } }) {
                             }} />}
                         </div>
                         <div className="mt-4 space-y-2">
-                            <p className="font-medium">Tất cả thành viên dự án ({data?.data.length} người)</p>
+                            <div onClick={() => setGroupId(0)}
+                            // className={`${groupId == 0 ? 'bg-gray-800 rounded-lg cursor-pointer' : 'cursor-pointer'}`}
+                            >
+                                <p className="font-semibold">Thành viên dự án ({data?.data.length} người)</p>
+                            </div>
                             <Separator className='mt-4' />
-
                             <div className='mt-4'>
                                 <p className="text-gray-500 mt-4">Nhóm riêng</p>
                                 {
                                     dataGroups?.data.map((item, index) => {
                                         return <div key={index} className='flex items-center justify-between'>
-                                            <p className="font-medium mt-2">{item.name} ({item.userCount} thành viên)</p>
-                                            <div className='flex items-center justify-end mt-2'>
+                                            <div onClick={() => setGroupId(item.id!)}
+                                            // className={`${groupId == item.id! ? 'bg-gray-600 rounded-lg cursor-pointer' : 'cursor-pointer'}`}
+                                            >
+                                                <p className="font-medium mt-2">{item.name} ({item.userCount} thành viên)</p>
+                                            </div>
+                                            {roleDetail?.role == Role.Admin && <div className='flex items-center justify-end mt-2'>
                                                 <FormCRUDGroup trigger={<Edit className="w-4 h-4 mr-2" />} state={State.UPDATE} group={{
                                                     projectId: Number(params.id),
                                                     name: item.name,
@@ -109,7 +90,7 @@ export default function page({ params }: { params: { id: string } }) {
                                                     name: item.name,
                                                     id: item.id
                                                 }} />
-                                            </div>
+                                            </div>}
                                         </div>
                                     })
                                 }
@@ -117,85 +98,8 @@ export default function page({ params }: { params: { id: string } }) {
                         </div>
                     </Card>
 
-                    <Card className="w-3/4">
-                        <CardContent className="p-4">
-                            <div className="flex justify-between items-center">
-                                <h2 className="text-lg font-semibold">Tất cả thành viên</h2>
-                                <div className="flex items-center gap-4">
-                                    <DropdownMenu>
-                                        <DropdownMenuTrigger asChild>
-                                            <Button variant="outline">Vị trí</Button>
-                                        </DropdownMenuTrigger>
-                                        <DropdownMenuContent className="w-56">
-                                            <DropdownMenuLabel>Vị trí</DropdownMenuLabel>
-                                            <DropdownMenuSeparator />
-                                            <DropdownMenuCheckboxItem
-                                                checked={selectedRole.includes(Role.Admin)}
-                                                onCheckedChange={() => togglePosition(Role.Admin)}
-                                                onSelect={(e) => e.preventDefault()}
-                                            >
-                                                Quản trị viên
-                                            </DropdownMenuCheckboxItem>
-                                            <DropdownMenuCheckboxItem
-                                                checked={selectedRole.includes(Role.Member)}
-                                                onCheckedChange={() => togglePosition(Role.Member)}
-                                                onSelect={(e) => e.preventDefault()}
-                                            >
-                                                Người dùng
-                                            </DropdownMenuCheckboxItem>
-                                        </DropdownMenuContent>
-                                    </DropdownMenu>
-                                    <Input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} type="text" placeholder="Tìm kiếm..." />
-                                </div>
-                            </div>
-                            <Separator className="my-4" />
-                            <Table>
-                                <TableHeader>
-                                    <TableRow>
-                                        <TableHead>Tên</TableHead>
-                                        <TableHead>Vị trí</TableHead>
-                                        <TableHead>Trạng thái</TableHead>
-                                        <TableHead>Ngày tham gia</TableHead>
-                                    </TableRow>
-                                </TableHeader>
-                                <TableBody>
-                                    {filteredData.map((item, index) => (
-                                        <UserInfoSheet projectId={Number(params.id)} currentRole={roleDetail!.role} userProject={item} node={
-                                            <TableRow key={index}>
-                                                <TableCell className="flex items-center gap-3">
-                                                    <Avatar>
-                                                        <AvatarImage src={item.imageUrl} alt="@shadcn" />
-                                                        <AvatarFallback>{item.fullName!.charAt(0)}</AvatarFallback>
-                                                    </Avatar>
-                                                    <div>
-                                                        <p className="font-medium">{item.fullName}</p>
-                                                        <a href={`mailto:${item.email}`} className="text-blue-500">
-                                                            {item.email}
-                                                        </a>
-                                                    </div>
-                                                </TableCell>
-                                                <TableCell
-                                                    className={item.role === Role.Admin ? "text-red-500 font-semibold" : "text-gray-600"}
-                                                >
-                                                    {item.role === Role.Admin ? "Quản trị viên" : "Người dùng"}
-                                                </TableCell>
-                                                {/* Thêm màu cho trạng thái */}
-                                                <TableCell
-                                                    className={item.userProjectStatus === UserProjectStatus.Active
-                                                        ? "text-green-500 font-semibold"
-                                                        : "text-yellow-500 font-semibold"
-                                                    }
-                                                >
-                                                    {item.userProjectStatus === UserProjectStatus.Active ? "Đã vào" : "Đang chờ"}
-                                                </TableCell>
-                                                <TableCell>{item.dateJoined}</TableCell>
-                                            </TableRow>
-                                        } />
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </CardContent>
-                    </Card>
+                    {groupId == 0 && <TableAllUsers currentUserId={roleDetail!.id} projectId={Number(params.id)} role={roleDetail!.role} data={data} />}
+                    {groupId !== 0 && <TableGroupUsers currentUserId={roleDetail!.id} groupId={groupId} projectId={Number(params.id)} role={roleDetail!.role} data={dataUserGroups} dataDropdown={data} />}
                 </div>
             </div>
         </>

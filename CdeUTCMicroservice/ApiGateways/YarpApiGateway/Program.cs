@@ -90,6 +90,8 @@ app.MapReverseProxy(proxyPipeline =>
         if (context.Items.ContainsKey("UserId"))
         {
             context.Request.Headers["X-UserId"] = context.Items["UserId"]!.ToString();
+            context.Request.Headers["X-UserDateDisplay"] = context.Items["UserDateDisplay"]!.ToString();
+            context.Request.Headers["X-UserTimeDisplay"] = context.Items["UserTimeDisplay"]!.ToString();
         }
         await next();
     });

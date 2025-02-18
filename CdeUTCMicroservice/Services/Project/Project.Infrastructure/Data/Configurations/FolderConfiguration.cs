@@ -8,6 +8,7 @@ namespace Project.Infrastructure.Data.Configurations
                 .WithMany()
                 .HasForeignKey(o => o.ProjectId)
                 .OnDelete(DeleteBehavior.SetNull);
+            builder.HasIndex(o => o.Name).IsUnique();
         }
     }
 }

@@ -1,7 +1,7 @@
 "use client"
 import { Button } from '@/components/custom/button';
 import { Input } from '@/components/ui/input';
-import { LayoutGrid, List, Search, Plus } from 'lucide-react';
+import { LayoutGrid, List, Search } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import CreateProject from './_components/create-project';
 import TableProject from './_components/table-project';

@@ -3,6 +3,7 @@
 
 
 
+using BuildingBlocks.Enums;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Project.Application.Data
@@ -11,6 +12,8 @@ namespace Project.Application.Data
        where T : class
     {
         int GetCurrentId();
+        DateDisplay GetCurrentDateDisplay();
+        TimeDisplay GetCurrentTimeDisplay();
         Task AddAsync(T entity, CancellationToken cancellationToken);
         void Remove(T entity);
         void RemoveRangeByEntitiesAsync(List<T> entities);

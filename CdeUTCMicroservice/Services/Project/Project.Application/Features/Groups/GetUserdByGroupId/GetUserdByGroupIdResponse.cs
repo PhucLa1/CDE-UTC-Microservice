@@ -6,7 +6,7 @@
         public int Id { get; set; }
         public string Email { get; set; } = string.Empty;
         public string ImageUrl { get; set; } = string.Empty;
-        public DateTime DateJoined { get; set; }
+        public string DateJoined { get; set; } = string.Empty;
         public UserProjectStatus UserProjectStatus { get; set; }
         public Role Role { get; set; }
     }

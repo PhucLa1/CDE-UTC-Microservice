@@ -12,10 +12,6 @@ namespace Project.Application.Features.Groups.CreateGroup
              Admin được tạo mới group
              Member không được tạo mới
              */
-            /*
-             * Admin: được sửa group
-             * Member : không được 
-             */
             var userCurrentId = userProjectRepository.GetCurrentId();
             var userProject = await userProjectRepository.GetAllQueryAble()
                 .FirstOrDefaultAsync(e => e.UserId == userCurrentId && e.ProjectId == request.ProjectId);

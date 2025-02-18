@@ -4,10 +4,10 @@ namespace Event.Core.Entities
 {
     public class Activity : BaseEntity
     {
-        public string Action { get; set; } = default!;
+        public string Action { get; set; } = string.Empty;
+        public int ResourceId { get; set; } //Tác nhân bị tác động
         public string Content { get; set; } = default!;
-        public int ProjectId { get; set; }
         public int? ActivityTypeId { get; set; }
-        public ActivityType ActivityType { get; set; } = default!;
+        public ActivityType? ActivityType { get; set; }
     }
 }

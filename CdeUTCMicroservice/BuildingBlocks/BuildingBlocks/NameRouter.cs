@@ -54,6 +54,11 @@
 
         #region Team
         public const string GROUP_ROUTER = "group";
+        public const string USERS = "user";
+        #endregion
+
+        #region Folder
+        public const string FOLDER_ROUTER = "folder";
         #endregion
 
 

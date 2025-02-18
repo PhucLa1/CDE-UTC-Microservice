@@ -16,6 +16,7 @@ namespace Project.Application.Features.Team.GetRoleByProjectId
                               where pe.Id == request.ProjectId && up.UserId == currentUserId
                               select new GetRoleByProjectIdResponse()
                               {
+                                  Id = up.UserId,
                                   Role = up.Role,
                                   InvitationPermission = pe.InvitationPermission,
                                   TodoVisibility = pe.TodoVisibility,

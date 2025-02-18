@@ -1,0 +1,15 @@
+﻿
+namespace Project.Infrastructure.Data.Configurations
+{
+    public class FolderHistoryConfiguration : IEntityTypeConfiguration<FolderHistory>
+    {
+        public void Configure(EntityTypeBuilder<FolderHistory> builder)
+        {
+            builder.HasOne<Folder>()
+                .WithMany()
+                .HasForeignKey(o => o.FolderId)
+                .OnDelete(DeleteBehavior.SetNull);
+            builder.HasIndex(o => o.Name).IsUnique();
+        }
+    }
+}

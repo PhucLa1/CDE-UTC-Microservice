@@ -20,9 +20,17 @@ namespace BuildingBlocks.Behaviors
                     // Lấy ra id của người dùng từ claim
                     var userId = jsonToken?.Claims.FirstOrDefault(claim => claim.Type == "Id")?.Value;
 
+                    //Lấy ra kiểu dữ liệu của datedisplay
+                    var userDateDisplay = jsonToken?.Claims.FirstOrDefault(claim => claim.Type == "DateDisplay")?.Value;
 
-                    // Lưu thông tin id, role của người dùng vào context để các middleware khác có thể sử dụng
+                    //Lấy ra kiểu dữ liệu của timedisplay
+                    var userTimeDisplay = jsonToken?.Claims.FirstOrDefault(claim => claim.Type == "DateDisplay")?.Value;
+
+
+                    // Lưu thông tin id, datedisplay, timedisplay của người dùng vào context để các middleware khác có thể sử dụng
                     context.Items["UserId"] = userId;
+                    context.Items["UserDateDisplay"] = userDateDisplay;
+                    context.Items["UserTimeDisplay"] = userTimeDisplay;
                 }
 
             }

@@ -3,9 +3,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 import AppLayout from "@/app/system/ui/app-layout";
 import AppContext from "@/app/system/ui/app-context";
+import { EdgeStoreProvider } from "@/lib/edgestore";
 
 export const metadata: Metadata = {
-  title: "myHRM",
+  title: ".NET ",
   description: "Created by .NET Developers",
 };
 
@@ -15,11 +16,13 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
   return (
     <html lang="en" suppressHydrationWarning={true} >
       <body className={``}>
-        <AppContext>
-          <AppLayout>
-            {children}
-          </AppLayout>
-        </AppContext>
+        <EdgeStoreProvider>
+          <AppContext>
+            <AppLayout>
+              {children}
+            </AppLayout>
+          </AppContext>
+        </EdgeStoreProvider>
       </body>
     </html>
   );

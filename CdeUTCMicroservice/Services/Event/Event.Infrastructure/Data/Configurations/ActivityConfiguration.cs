@@ -10,7 +10,6 @@ namespace Event.Infrastructure.Data.Configurations
         {
             builder.Property(x => x.Action).HasMaxLength(255);
             builder.Property(x => x.Content).IsRequired();
-            builder.Property(x => x.ProjectId).IsRequired();
         }
     }
 }

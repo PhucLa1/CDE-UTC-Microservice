@@ -14,6 +14,10 @@ namespace Project.Application.Features.Project.GetProjectById
     {
         public async Task<ApiResponse<GetProjectByIdResponse>> Handle(GetProjectByIdRequest request, CancellationToken cancellationToken)
         {
+            //Lấy ra kiểu ngày tháng mà người dùng hiện tại
+            var currentDateDisplay = userProjectRepository.GetCurrentDateDisplay();
+            var currenTimeDisplay = userProjectRepository.GetCurrentTimeDisplay();
+
             var userCount = await userProjectRepository.GetAllQueryAble()
                 .Where(e => e.ProjectId == request.Id)
                 .CountAsync(cancellationToken);
@@ -37,8 +41,8 @@ namespace Project.Application.Features.Project.GetProjectById
                 FolderCount = 0,
                 FileCount = 0,
                 Size = 0.0,
-                CreatedAt = project.CreatedAt,
-                UpdatedAt = project.UpdatedAt,
+                CreatedAt = project.CreatedAt.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
+                UpdatedAt = project.UpdatedAt.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
             };
 
             return new ApiResponse<GetProjectByIdResponse> { Data = getProjectByIdResponse, Message = Message.GET_SUCCESSFULLY };

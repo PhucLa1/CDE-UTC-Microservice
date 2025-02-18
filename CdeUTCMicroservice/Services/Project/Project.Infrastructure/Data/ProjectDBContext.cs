@@ -82,6 +82,7 @@ namespace Project.Infrastructure.Data
         public DbSet<FolderComment> FolderComments => Set<FolderComment>();
         public DbSet<FolderPermission> FolderPermissions => Set<FolderPermission>();
         public DbSet<FolderTag> FolderTags => Set<FolderTag>();
+        public DbSet<FolderHistory> FolderHistorys => Set<FolderHistory>();
         public DbSet<Group> Groups => Set<Group>();
         public DbSet<TodoComment> TodoComments => Set<TodoComment>();
         public DbSet<TodoTag> TodoTags => Set<TodoTag>();

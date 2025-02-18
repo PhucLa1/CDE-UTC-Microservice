@@ -12,7 +12,7 @@
         public int FolderCount { get; set; }
         public int FileCount { get; set; }
         public double Size { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public string CreatedAt { get; set; } = string.Empty;
+        public string UpdatedAt { get; set; } = string.Empty;
     }
 }

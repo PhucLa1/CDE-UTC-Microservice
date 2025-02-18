@@ -13,6 +13,10 @@ namespace Project.Application.Features.Team.GetUsersByProjectId
 
         public async Task<ApiResponse<List<GetUsersByProjectIdResponse>>> Handle(GetUsersByProjectIdRequest request, CancellationToken cancellationToken)
         {
+            //Lấy ra kiểu ngày tháng mà người dùng hiện tại
+            var currentDateDisplay = userProjectRepository.GetCurrentDateDisplay();
+            var currenTimeDisplay = userProjectRepository.GetCurrentTimeDisplay();
+
             var userProjects = await userProjectRepository.GetAllQueryAble()
                 .Where(e => e.ProjectId == request.ProjectId)
                 .Select(e => new 
@@ -35,7 +39,7 @@ namespace Project.Application.Features.Team.GetUsersByProjectId
                         UserProjectStatus = userProject.UserProjectStatus,
                         FullName = userInfo.FullName,  
                         Email = userInfo.Email,
-                        DateJoined = userProject.DateJoined,
+                        DateJoined = userProject.DateJoined.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
                         ImageUrl = userInfo.ImageUrl,
                         Role = userProject.Role,
                     }).ToList();

@@ -17,7 +17,8 @@ namespace Auth.Data.Data.Extensions
                     new ActivityType(){ Name = "Đổi tên tệp", Template = "Tệp {OldFileName} đã được đổi tên thành {NewFileName}" },
                     new ActivityType(){ Name = "Tải xuống tệp", Template = "Tệp {FileName} đã được tải xuống" }
                 },
-                IconImageUrl = "Files.png"
+                IconImageUrl = "Files.png",
+
             },
             new ActivityTypeParent()
             {

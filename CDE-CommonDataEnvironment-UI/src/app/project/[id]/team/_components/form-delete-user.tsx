@@ -15,7 +15,14 @@ import teamApiRequest from '@/apis/team.api'
 import { Role } from '@/data/enums/role.enum'
 import { handleSuccessApi } from '@/lib/utils'
 import { Button } from '@/components/custom/button'
-export default function FormDeleteUser({ node, userProject, projectId }: { node: ReactNode, userProject: UserProject, projectId: number }) {
+import userGroupApiRequest from '@/apis/usergroup.api'
+type FormProps = {
+    node: ReactNode, 
+    userProject: UserProject, 
+    projectId: number, 
+    groupId: number
+}
+export default function FormDeleteUser({ node, userProject, projectId, groupId }: FormProps) {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const queryClient = useQueryClient()
     const { mutate: mutateDelete, isPending: isPendingDelete } = useMutation({
@@ -35,6 +42,29 @@ export default function FormDeleteUser({ node, userProject, projectId }: { node:
             setIsOpen(false)
         }
     })
+    const { mutate: mutateDeleteUserGroup, isPending: isPendingDeleteUserGroup } = useMutation({
+        mutationKey: ['kick-user'],
+        mutationFn: () => userGroupApiRequest.deleteUser({
+            projectId: projectId,
+            role: Role.Admin,
+            email: userProject.email,
+            userId: userProject.id,
+            groupId: groupId,
+        }),
+        onSuccess: () => {
+            handleSuccessApi({
+                title: 'Xóa người dùng khỏi nhóm thành công',
+                message: 'Xóa người dùng khỏi nhóm thành công'
+            })
+            queryClient.invalidateQueries({ queryKey: ['users-group', groupId] })
+            setIsOpen(false)
+        }
+    })
+
+    const handleDelete = () => {
+        if (groupId == 0) mutateDelete()
+        else mutateDeleteUserGroup()
+    }
     return (
         <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
             <AlertDialogTrigger asChild>
@@ -49,7 +79,7 @@ export default function FormDeleteUser({ node, userProject, projectId }: { node:
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel>Hủy</AlertDialogCancel>
-                    <Button loading={isPendingDelete} onClick={() => mutateDelete()}>Tiếp tục</Button>
+                    <Button loading={isPendingDelete || isPendingDeleteUserGroup} onClick={() => handleDelete()}>Tiếp tục</Button>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>

@@ -4,7 +4,7 @@ namespace Project.API.Endpoint.Groups.UpdateGroup
 {
     [ApiController]
     [Route(NameRouter.GROUP_ROUTER)]
-    public class DeleteGroupEndpoint(IMediator mediator) : ControllerBase
+    public class UpdateGroupEndpoint(IMediator mediator) : ControllerBase
     {
         [HttpPut]
         [Route("")]
