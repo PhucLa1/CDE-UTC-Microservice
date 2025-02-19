@@ -65,6 +65,10 @@
         public const string STORAGE_ROUTER = "storage";
         #endregion
 
+        #region Folder Comment
+        public const string FOLDER_COMMENT_ROUTER = "folder-comment";
+        #endregion
+
 
         #endregion
 

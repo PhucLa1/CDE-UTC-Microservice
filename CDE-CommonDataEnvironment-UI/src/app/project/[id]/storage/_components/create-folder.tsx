@@ -48,6 +48,7 @@ export default function CreateFolder({ node, parentId, projectId }: FormProps) {
             })
             setIsOpen(false)
             form.reset()
+            queryClient.invalidateQueries({ queryKey: ['storage'] })
             //Gọi lại API
         },
         onError: () => {

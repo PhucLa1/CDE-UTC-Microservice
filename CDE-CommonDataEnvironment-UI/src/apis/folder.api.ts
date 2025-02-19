@@ -7,6 +7,7 @@ import http from "@/lib/http";
 const folderApiRequest = {
     create: (folder: Folder) => http.post<ApiResponse<boolean>>('folder', folder, undefined, Service.ProjectService),
     delete: (folder: Folder) => http.delete<ApiResponse<boolean>>('folder', folder, undefined, Service.ProjectService),
-    update: (folder: Folder) => http.put<ApiResponse<boolean>>('folder', folder, undefined, Service.ProjectService)
+    update: (folder: Folder) => http.put<ApiResponse<boolean>>('folder', folder, undefined, Service.ProjectService),
+    getDetail: (id: number) => http.get<ApiResponse<Folder>>('folder/' + id, undefined, Service.ProjectService),
 }
 export default folderApiRequest;

@@ -96,6 +96,7 @@ export default function page({ params }: { params: { id: string } }) {
             <div className='-mx-4 flex-1 overflow-auto px-4 py-8 lg:flex-row'>
                 {viewMode === 'table' && (//+
                     <TableStorage
+                        projectId={Number(params.id)}
                         data={data!.data}
                     />
                 )}

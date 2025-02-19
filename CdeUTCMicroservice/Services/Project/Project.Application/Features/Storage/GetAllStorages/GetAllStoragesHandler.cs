@@ -8,9 +8,7 @@ namespace Project.Application.Features.Storage.GetAllStorages
     public class GetAllStoragesHandler
         (IBaseRepository<Folder> folderRepository,
         IBaseRepository<File> fileRepository,
-        IUserGrpc userGrpc,
-        IBaseRepository<Tag> tagRepository,
-        IBaseRepository<FolderTag> folderTagRepository)
+        IUserGrpc userGrpc)
         : IQueryHandler<GetAllStoragesRequest, ApiResponse<List<GetAllStoragesResponse>>>
     {
         public async Task<ApiResponse<List<GetAllStoragesResponse>>> Handle(GetAllStoragesRequest request, CancellationToken cancellationToken)
@@ -47,9 +45,32 @@ namespace Project.Application.Features.Storage.GetAllStorages
                            CreatedAt = f.CreatedAt,
                            CreatedBy = f.CreatedBy,
                            NameCreatedBy = u.FullName,
+                           TagNames = ConvertTagsToView(f.TagNames)
                        }).ToList();
 
             return new ApiResponse<List<GetAllStoragesResponse>> { Data = folders, Message = Message.GET_SUCCESSFULLY };
         }
+
+        private List<string> ConvertTagsToView(List<string> tagNames)
+        {
+            var MAX_COUNT = 25;
+            List<string> result = new List<string>();
+            var countChars = 0;
+            for(int i = 0; i < tagNames.Count; i++) 
+            {
+                countChars += tagNames[i].Count();
+                if(countChars <= MAX_COUNT)
+                {
+                    result.Add(tagNames[i]);
+                }
+                else
+                {
+                    result.Add("+ " + (tagNames.Count() - i).ToString());
+                }
+            }
+            
+            return result;
+        }
+
     }
 }

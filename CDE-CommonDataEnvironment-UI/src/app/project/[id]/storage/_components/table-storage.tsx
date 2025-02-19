@@ -13,13 +13,17 @@ import { Badge } from "@/components/ui/badge";
 import { useState } from 'react';
 import { Storage } from '@/data/schema/Project/storage.schema';
 import SheetFolder from './sheet-folder';
+import { Button } from '@/components/custom/button';
 type FormProps = {
-  data: Storage[]
+  data: Storage[],
+  projectId: number
 
 }
-export default function TableStorage({ data }: FormProps) {
+export default function TableStorage({ data, projectId }: FormProps) {
   const [selectedStorage, setSelectedStorage] = useState<Set<number>>(new Set());
   const [selectAll, setSelectAll] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [id, setId] = useState<number>(0)
   const handleSelectAll = (checked: boolean) => {
     setSelectAll(checked);
     if (checked) {
@@ -40,60 +44,66 @@ export default function TableStorage({ data }: FormProps) {
     setSelectAll(newSelected.size === data.length);
   };
   return (
-    <div>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-[50px]">
-              <Checkbox
-                checked={selectAll}
-                onCheckedChange={handleSelectAll}
-                aria-label="Chọn tất cả"
-              />
-            </TableHead>
-            <TableHead className="w-[400px]">
-              Tên <ChevronUpIcon className="inline-block ml-2 h-4 w-4" />
-            </TableHead>
-            <TableHead>Được tạo vào</TableHead>
-            <TableHead>Được tạo bởi</TableHead>
-            <TableHead>Nhãn dán</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {data.map((item, index) => (
-            <SheetFolder node={<TableRow className='h-[60px]' key={index}>
-              <TableCell>
+    <>
+      {id != 0 && <SheetFolder projectId={projectId} id={id} node={<></>} isOpen={isOpen} setIsOpen={setIsOpen} />}
+      <div>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[50px]">
                 <Checkbox
-                  checked={selectedStorage.has(item.id!)}
-                  onCheckedChange={(checked) => handleSelectFile(item.id!, checked as boolean)}
-                  aria-label={`Select ${item.id}`}
+                  checked={selectAll}
+                  onCheckedChange={handleSelectAll}
+                  aria-label="Chọn tất cả"
                 />
-              </TableCell>
-              <TableCell className="font-medium">
-                <div className="flex items-center gap-2">
-                  {item.isFile === false ? (
-                    <FolderIcon className="h-6 w-6 text-blue-500" />
-                  ) : (
-                    <FileIcon className="h-6 w-6 text-gray-500" />
-                  )}
-                  {item.name}
-                </div>
-              </TableCell>
-              <TableCell>{item.createdAt}</TableCell>
-              <TableCell>{item.nameCreatedBy}</TableCell>
-              <TableCell>
-                <div className="flex gap-1">
-                  {item.tagNames?.map((tag, subIndex) => (
-                    <Badge key={subIndex} variant="secondary">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-              </TableCell>
-            </TableRow>} />
-          ))}
-        </TableBody>
-      </Table>
-    </div>
+              </TableHead>
+              <TableHead className="w-[400px]">
+                Tên <ChevronUpIcon className="inline-block ml-2 h-4 w-4" />
+              </TableHead>
+              <TableHead>Được tạo vào</TableHead>
+              <TableHead>Được tạo bởi</TableHead>
+              <TableHead>Nhãn dán</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {data.map((item, index) => (
+              <TableRow onClick={() => {
+                setIsOpen(true);
+                setId(item.id!);
+              }} className='h-[60px]' key={index}>
+                <TableCell>
+                  <Checkbox
+                    checked={selectedStorage.has(item.id!)}
+                    onCheckedChange={(checked) => handleSelectFile(item.id!, checked as boolean)}
+                    aria-label={`Select ${item.id}`}
+                  />
+                </TableCell>
+                <TableCell className="font-medium">
+                  <div className="flex items-center gap-2">
+                    {item.isFile === false ? (
+                      <FolderIcon className="h-6 w-6 text-blue-500" />
+                    ) : (
+                      <FileIcon className="h-6 w-6 text-gray-500" />
+                    )}
+                    {item.name}
+                  </div>
+                </TableCell>
+                <TableCell>{item.createdAt}</TableCell>
+                <TableCell>{item.nameCreatedBy}</TableCell>
+                <TableCell>
+                  <div className="flex gap-1">
+                    {item.tagNames?.map((tag, subIndex) => (
+                      <Badge className='bg-gray-300' key={subIndex} variant="secondary">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+    </>
   )
 }
