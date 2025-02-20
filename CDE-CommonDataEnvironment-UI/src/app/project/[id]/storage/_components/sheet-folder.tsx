@@ -32,6 +32,7 @@ import folderCommentApiRequest from "@/apis/foldercomment.api"
 import DeleteForm from "./delete-form"
 import UpdateComment from "./update-comment"
 import DeleteFolder from "./delete-folder"
+import FolderHistoryPage from "./folder-history"
 type FormProps = {
     node: ReactNode,
     id: number,
@@ -151,7 +152,11 @@ export default function SheetFolder({ node, id, isOpen, setIsOpen, projectId }: 
                         <div className="text-[12px]">
                             <div className="mt-2">
                                 <span>Phiên bản</span>
-                                <p>3 phiên bản trước đó</p>
+                                <FolderHistoryPage
+                                    node={<p className="hover:cursor-pointer hover:text-gray-600 font-bold underline">{data?.data.folderHistoryResults?.length} phiên bản trước đó</p>}
+                                    folderHistories={data?.data.folderHistoryResults!}
+                                />
+
                             </div>
                             <div className="mt-2">
                                 <span>Ngày tạo</span>

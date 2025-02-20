@@ -5,8 +5,8 @@ namespace Project.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<FolderHistory> builder)
         {
-            builder.HasOne<Folder>()
-                .WithMany()
+            builder.HasOne(e => e.Folder)
+                .WithMany(e => e.FolderHistories)
                 .HasForeignKey(o => o.FolderId)
                 .OnDelete(DeleteBehavior.SetNull);
             builder.HasIndex(o => o.Name).IsUnique();

@@ -9,6 +9,7 @@
         public bool IsCheckin { get; set; }
         public bool IsCheckout { get; set; }
         public ICollection<FolderTag>? FolderTags { get; set; }
+        public ICollection<FolderHistory>? FolderHistories { get; set; }
 
     }
 }

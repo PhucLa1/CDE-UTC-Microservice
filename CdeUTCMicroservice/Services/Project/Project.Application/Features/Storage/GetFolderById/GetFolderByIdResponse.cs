@@ -10,6 +10,7 @@ namespace Project.Application.Features.Storage.GetFolderById
         public int CreatedBy { get; set; }
         public string NameCreatedBy { get; set; } = string.Empty;
         public List<TagResult> TagResults { get; set; } = new List<TagResult>() { };
+        public List<FolderHistoryResult> FolderHistoryResults { get; set; } = new List<FolderHistoryResult>() { };
         public List<UserCommentResult> UserCommentResults { get; set; } = new List<UserCommentResult>() { };
     }
 }
