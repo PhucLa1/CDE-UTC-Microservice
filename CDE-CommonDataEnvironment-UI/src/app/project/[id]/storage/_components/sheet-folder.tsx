@@ -31,6 +31,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import folderCommentApiRequest from "@/apis/foldercomment.api"
 import DeleteForm from "./delete-form"
 import UpdateComment from "./update-comment"
+import DeleteFolder from "./delete-folder"
 type FormProps = {
     node: ReactNode,
     id: number,
@@ -129,18 +130,20 @@ export default function SheetFolder({ node, id, isOpen, setIsOpen, projectId }: 
                                 </TooltipContent>
                             </Tooltip>
                         </TooltipProvider>
-                        <TooltipProvider>
-                            <Tooltip>
-                                <TooltipTrigger asChild>
-                                    <div className="flex items-center gap-1 text-red-500 cursor-pointer">
-                                        <TrashIcon className="h-5 w-5" />
-                                    </div>
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                    <p>Xóa thư mục</p>
-                                </TooltipContent>
-                            </Tooltip>
-                        </TooltipProvider>
+                        <DeleteFolder
+                            setSheetOpen={setIsOpen}
+                            node={
+                                <div className="flex items-center gap-1 text-red-500 cursor-pointer">
+                                    <TrashIcon className="h-5 w-5" />
+                                </div>
+                            }
+                            folder={{
+                                id: id,
+                                name: "",
+                                projectId: projectId
+                            }}
+                        />
+
                     </div>
                     <Separator className="my-2" />
                     <div>
@@ -182,7 +185,7 @@ export default function SheetFolder({ node, id, isOpen, setIsOpen, projectId }: 
                             {
                                 data?.data.userCommentResults?.map((item, index) => {
                                     if (updateComment != item.id!) {
-                                        return <Card onClick={() => setUpdateComment(item.id!)} key={index} className="mb-4 p-2">
+                                        return <Card key={index} className="mb-4 p-2">
                                             <div className="flex items-center justify-between">
                                                 <div className="flex items-start">
                                                     <div className="mr-3">
@@ -208,7 +211,7 @@ export default function SheetFolder({ node, id, isOpen, setIsOpen, projectId }: 
                                                         }}
                                                     />
 
-                                                    <Pencil className="w-4 h-4 ml-2 cursor-pointer text-gray-500 hover:text-gray-900" />
+                                                    <Pencil onClick={() => setUpdateComment(item.id!)} className="w-4 h-4 ml-2 cursor-pointer text-gray-500 hover:text-gray-900" />
                                                 </div>
 
                                             </div>
@@ -216,6 +219,7 @@ export default function SheetFolder({ node, id, isOpen, setIsOpen, projectId }: 
                                     }
                                     else {
                                         return <UpdateComment
+                                            key={index}
                                             setUpdateComment={setUpdateComment}
                                             folderComment={{
                                                 content: item.content,

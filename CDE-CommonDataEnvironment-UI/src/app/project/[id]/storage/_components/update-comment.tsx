@@ -52,7 +52,7 @@ export default function UpdateComment({ folderComment, setUpdateComment }: FormP
                         />
                     </div>
                     <div className='flex justify-start items-center mt-2 mb-2'>
-                        <Button variant={"destructive"}>Hủy</Button>
+                        <Button onClick={() => setUpdateComment(0)} variant={"destructive"}>Hủy</Button>
                         <Button className='ml-2' type='submit' loading={isPending}>Cập nhật</Button>
                     </div>
                 </form>
