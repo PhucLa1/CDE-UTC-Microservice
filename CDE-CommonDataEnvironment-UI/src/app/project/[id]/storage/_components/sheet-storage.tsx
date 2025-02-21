@@ -33,20 +33,28 @@ import DeleteForm from "./delete-form"
 import UpdateComment from "./update-comment"
 import DeleteFolder from "./delete-folder"
 import FolderHistoryPage from "./folder-history"
+import fileApiRequest from "@/apis/file.api"
 type FormProps = {
     node: ReactNode,
     id: number,
     isOpen: boolean,
     setIsOpen: (value: boolean) => void,
-    projectId: number
+    projectId: number,
+    isFile: boolean,
 }
-export default function SheetFolder({ node, id, isOpen, setIsOpen, projectId }: FormProps) {
+export default function SheetStorage({ node, id, isOpen, setIsOpen, projectId, isFile }: FormProps) {
     const [updateComment, setUpdateComment] = useState<number>(0)
-    const { data, isLoading } = useQuery({
+    const { data: dataFolder, isLoading: isLoadingFolder } = useQuery({
         queryKey: ['get-detail-folder', id],
         queryFn: () => folderApiRequest.getDetail(id),
-        enabled: id !== 0
+        enabled: id !== 0 && isFile == false
     })
+    const { data: dataFile, isLoading: isLoadingFile } = useQuery({
+        queryKey: ['get-detail-file', id],
+        queryFn: () => fileApiRequest.getDetail(id),
+        enabled: id !== 0 && isFile
+    })
+    console.log(isFile, id)
     const { roleDetail } = useRole()
     const form = useForm<FolderComment>({
         resolver: zodResolver(folderCommentSchema),
@@ -69,7 +77,7 @@ export default function SheetFolder({ node, id, isOpen, setIsOpen, projectId }: 
         }
     })
 
-    if (isLoading && data) return <></>
+    if (isLoadingFile || isLoadingFolder) return <></>
     return (
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
@@ -84,10 +92,12 @@ export default function SheetFolder({ node, id, isOpen, setIsOpen, projectId }: 
                 </SheetHeader>
                 <div className="grid gap-4 py-4">
                     <div className="flex items-center justify-between">
-                        <span className="text-[14px] font-semibold">{data?.data.name}</span>
-                        {roleDetail?.role !== Role.Admin && data?.data.createdBy !== roleDetail?.id
+                        <span className="text-[14px] font-semibold">
+                            {isFile ? dataFile?.data.name : dataFolder?.data.name}
+                        </span>
+                        {roleDetail?.role !== Role.Admin && (isFile ? dataFile : dataFolder)?.data.createdBy !== roleDetail?.id
                             ? <></>
-                            : <UpdateFolder folder={data!.data} projectId={projectId} node={<Pencil className="h-5 w-5" />} />}
+                            : <UpdateFolder folder={dataFolder!.data} projectId={projectId} node={<Pencil className="h-5 w-5" />} />}
                     </div>
                     <Separator className="my-2" />
                     <div className="flex items-center justify-center">
@@ -148,23 +158,25 @@ export default function SheetFolder({ node, id, isOpen, setIsOpen, projectId }: 
                     </div>
                     <Separator className="my-2" />
                     <div>
-                        <h5 className="font-bold">Chi tiết thư mục</h5>
+                        <h5 className="font-bold">Chi tiết {isFile ? "tệp" : "thư mục"}</h5>
                         <div className="text-[12px]">
                             <div className="mt-2">
                                 <span>Phiên bản</span>
                                 <FolderHistoryPage
-                                    node={<p className="hover:cursor-pointer hover:text-gray-600 font-bold underline">{data?.data.folderHistoryResults?.length} phiên bản trước đó</p>}
-                                    folderHistories={data?.data.folderHistoryResults!}
+                                    node={<p className="hover:cursor-pointer hover:text-gray-600 font-bold underline">
+                                        {(isFile ? dataFile?.data.fileHistoryResults : dataFolder?.data.folderHistoryResults)?.length} phiên bản trước đó
+                                    </p>}
+                                    folderHistories={dataFolder?.data.folderHistoryResults!}
                                 />
 
                             </div>
                             <div className="mt-2">
                                 <span>Ngày tạo</span>
-                                <p>{data?.data.createdAt}</p>
+                                <p>{isFile ? dataFile?.data.createdAt : dataFolder?.data.createdAt}</p>
                             </div>
                             <div className="mt-2">
                                 <span>Được tạo bởi</span>
-                                <p>{data?.data.nameCreatedBy}</p>
+                                <p>{isFile ? dataFile?.data.createdBy : dataFolder?.data.createdBy}</p>
                             </div>
                         </div>
                     </div>
@@ -172,23 +184,23 @@ export default function SheetFolder({ node, id, isOpen, setIsOpen, projectId }: 
                     <div>
                         <h5 className="font-bold">Nhãn dán</h5>
                         <ul className="flex flex-wrap">
-                            {
-                                data?.data.tagResults?.map((item, index) => {
-                                    return <li key={index} className="flex items-center bg-[#eaeaef] rounded-3xl text-[#6a6976] h-8 justify-between mt-2 min-h-8 overflow-hidden pl-3 w-auto mr-2 mb-2 max-w-[16rem] px-2">
-                                        <span>
-                                            {item.name}
-                                        </span>
-                                    </li>
-                                })
-                            }
+                            {(isFile ? dataFile?.data.tagResults : dataFolder?.data.tagResults)?.map((item, index) => (
+                                <li
+                                    key={index}
+                                    className="flex items-center bg-[#eaeaef] rounded-3xl text-[#6a6976] h-8 justify-between mt-2 min-h-8 overflow-hidden pl-3 w-auto mr-2 mb-2 max-w-[16rem] px-2"
+                                >
+                                    <span>{item.name}</span>
+                                </li>
+                            ))}
                         </ul>
+
                     </div>
                     <Separator className="my-2" />
                     <div>
                         <h5 className="font-bold">Bình luận</h5>
                         <div className="mt-2">
                             {
-                                data?.data.userCommentResults?.map((item, index) => {
+                                (isFile ? dataFile?.data.userCommentResults : dataFolder?.data.userCommentResults)?.map((item, index) => {
                                     if (updateComment != item.id!) {
                                         return <Card key={index} className="mb-4 p-2">
                                             <div className="flex items-center justify-between">

@@ -6,5 +6,6 @@ namespace Project.Domain.Entities
         public string Name { get; set; } = default!;
         public ICollection<BCFTopicTag>? BCFTopicTags { get; set; }
         public ICollection<FolderTag>? FolderTags { get; set; }
+        public ICollection<FileTag>? FileTags { get; set; }
     }
 }

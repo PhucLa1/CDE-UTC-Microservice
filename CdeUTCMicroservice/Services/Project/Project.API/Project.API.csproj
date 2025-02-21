@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\Statuss\**" />
+    <Content Remove="wwwroot\Statuss\**" />
+    <EmbeddedResource Remove="wwwroot\Statuss\**" />
+    <None Remove="wwwroot\Statuss\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.49.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
@@ -24,7 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Statuss\" />
     <Folder Include="wwwroot\Project\" />
   </ItemGroup>
 

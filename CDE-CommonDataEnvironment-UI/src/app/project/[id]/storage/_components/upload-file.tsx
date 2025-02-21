@@ -13,19 +13,26 @@ import {
 } from "@/components/ui/sheet"
 import { useEdgeStore } from "@/lib/edgestore";
 import { FileState, MultiFileDropzone } from "@/components/ui/multi-dropzone";
+import { useMutation } from "@tanstack/react-query";
+import { File } from "@/data/schema/Project/file.schema";
+import fileApiRequest from "@/apis/file.api";
+import path from "path";
 
 type FormProps = {
     node: ReactNode;
+    folderId: number,
+    projectId: number
 };
 
-export default function UploadFile({ node }: FormProps) {
+export default function UploadFile({ node, folderId, projectId }: FormProps) {
     const [open, setOpen] = useState(false);
     const [fileStates, setFileStates] = useState<FileState[]>([]);
     const { edgestore } = useEdgeStore();
-    const [urls, setUrls] = useState<{
-        url: string,
-        thumbnailUrl: string | null
-    }>()
+
+    const { mutate } = useMutation({
+        mutationKey: ['create-file'],
+        mutationFn: (value: File) => fileApiRequest.create(value)
+    })
     const updateFileProgress = (key: string, progress: FileState['progress']) => {
         setFileStates((fileStates) => {
             const newFileStates = structuredClone(fileStates);
@@ -72,8 +79,15 @@ export default function UploadFile({ node }: FormProps) {
                                                 }
                                             },
                                         });
-                                        console.log(res);
-                                        console.log(addedFileState.file.type)
+                                        mutate({
+                                            name: path.parse(addedFileState.file.name).name,
+                                            url: res.url,
+                                            size: res.size,
+                                            folderId: folderId,
+                                            projectId: projectId,
+                                            mimeType: addedFileState.file.type,
+                                            extension: path.parse(addedFileState.file.name).ext
+                                        })
                                     } catch (err) {
                                         updateFileProgress(addedFileState.key, 'ERROR');
                                     }

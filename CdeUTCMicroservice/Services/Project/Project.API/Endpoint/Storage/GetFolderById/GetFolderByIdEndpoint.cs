@@ -8,7 +8,7 @@ namespace Project.API.Endpoint.Storage.GetFolderById
     {
         [HttpGet]
         [Route("{id}")]
-        public async Task<IActionResult> GetFolderByIdGetFolderById(int id)
+        public async Task<IActionResult> GetFolderById(int id)
         {
             return Ok(await mediator.Send(new GetFolderByIdRequest() { Id = id }));
         }

@@ -13,7 +13,8 @@
         public FileType FileType { get; set; } = default!;
         public string MimeType { get; set; } = default!;
         public string Extension { get; set; } = default!;
-        
+        public ICollection<FileTag>? FileTags { get; set; }
+
     }
 
 }

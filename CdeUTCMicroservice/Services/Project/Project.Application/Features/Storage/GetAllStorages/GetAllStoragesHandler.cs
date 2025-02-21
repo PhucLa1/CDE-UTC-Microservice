@@ -1,7 +1,7 @@
 ﻿
+using Project.Application.Extensions;
 using Project.Application.Grpc;
 using Project.Application.Grpc.GrpcRequest;
-using System.Linq;
 
 namespace Project.Application.Features.Storage.GetAllStorages
 {
@@ -13,6 +13,7 @@ namespace Project.Application.Features.Storage.GetAllStorages
     {
         public async Task<ApiResponse<List<GetAllStoragesResponse>>> Handle(GetAllStoragesRequest request, CancellationToken cancellationToken)
         {
+            var IMAGE_EXTENSION = new List<string>() { ".png", ".jpg", ".jpeg" };
             //lấy định dạng ngày tháng
             var currentDateDisplay = folderRepository.GetCurrentDateDisplay();
             var currenTimeDisplay = folderRepository.GetCurrentTimeDisplay();
@@ -26,29 +27,55 @@ namespace Project.Application.Features.Storage.GetAllStorages
                     Id = e.Id,
                     IsFile = false,
                     Name = e.Name,
+                    UrlImage = "",
                     CreatedAt = e.CreatedAt.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
                     CreatedBy = e.CreatedBy,
                     TagNames = e.FolderTags.Select(e => e.Tag.Name).ToList()
                 })
                 .ToListAsync(cancellationToken);
 
+            var files = await fileRepository.GetAllQueryAble()
+                .Include(e => e.FileTags)
+                .ThenInclude(e => e.Tag)
+                .Where(e => e.ProjectId == request.ProjectId && e.FolderId == request.ParentId)
+                .Select(e => new GetAllStoragesResponse()
+                {
+                    Id = e.Id,
+                    IsFile = true,
+                    Name = e.Name + e.Extension,
+                    UrlImage = IMAGE_EXTENSION.Contains(e.Extension)
+                    ? e.Url
+                    : Setting.PROJECT_HOST + "/Extension/" + e.Extension.ConvertToUrl(),
+                    CreatedAt = e.CreatedAt.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
+                    CreatedBy = e.CreatedBy,
+                    TagNames = e.FileTags.Select(e => e.Tag.Name).ToList()
+                })
+                .ToListAsync(cancellationToken);
+
+            var folderCreatedByList = folders.Select(e => e.CreatedBy).ToList();
+            var fileCreatedByList = files.Select(e => e.CreatedBy).ToList();
+            var mergeList = folderCreatedByList.Concat(fileCreatedByList).Distinct().ToList();
+
             var users = await userGrpc
-                .GetUsersByIds(new GetUserRequestGrpc { Ids = folders.Select(e => e.CreatedBy).ToList() });
+                .GetUsersByIds(new GetUserRequestGrpc { Ids = mergeList });
 
-            folders = (from f in folders
-                       join u in users on f.CreatedBy equals u.Id
-                       select new GetAllStoragesResponse()
-                       {
-                           Id = f.Id,
-                           IsFile = false,
-                           Name = f.Name,
-                           CreatedAt = f.CreatedAt,
-                           CreatedBy = f.CreatedBy,
-                           NameCreatedBy = u.FullName,
-                           TagNames = ConvertTagsToView(f.TagNames)
-                       }).ToList();
+            var storage = files.Concat(folders).ToList();
 
-            return new ApiResponse<List<GetAllStoragesResponse>> { Data = folders, Message = Message.GET_SUCCESSFULLY };
+            var storages = (from s in storage
+                            join u in users on s.CreatedBy equals u.Id
+                            select new GetAllStoragesResponse()
+                            {
+                                Id = s.Id,
+                                IsFile = s.IsFile,
+                                Name = s.Name,
+                                UrlImage = s.UrlImage,
+                                CreatedAt = s.CreatedAt,
+                                CreatedBy = s.CreatedBy,
+                                NameCreatedBy = u.FullName,
+                                TagNames = ConvertTagsToView(s.TagNames)
+                            }).ToList();
+
+            return new ApiResponse<List<GetAllStoragesResponse>> { Data = storages, Message = Message.GET_SUCCESSFULLY };
         }
 
         private List<string> ConvertTagsToView(List<string> tagNames)
@@ -56,10 +83,10 @@ namespace Project.Application.Features.Storage.GetAllStorages
             var MAX_COUNT = 25;
             List<string> result = new List<string>();
             var countChars = 0;
-            for(int i = 0; i < tagNames.Count; i++) 
+            for (int i = 0; i < tagNames.Count; i++)
             {
                 countChars += tagNames[i].Count();
-                if(countChars <= MAX_COUNT)
+                if (countChars <= MAX_COUNT)
                 {
                     result.Add(tagNames[i]);
                 }
@@ -68,7 +95,7 @@ namespace Project.Application.Features.Storage.GetAllStorages
                     result.Add("+ " + (tagNames.Count() - i).ToString());
                 }
             }
-            
+
             return result;
         }
 

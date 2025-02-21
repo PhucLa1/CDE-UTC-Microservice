@@ -50,13 +50,15 @@ export default function page({ params }: { params: { id: string } }) {
                                     parentId={parentId}
                                     projectId={Number(params.id)}
                                 />
-                                <UploadFile node={<button
-                                    className="w-full px-4 py-2 hover:bg-gray-100 flex items-center gap-3"
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    <span className="text-gray-600 text-[14px]"><FaUpload className="w-5 h-5" /></span>
-                                    <span className="text-gray-700 text-[14px]">Thêm tệp</span>
-                                </button>} />
+                                <UploadFile
+                                    folderId={parentId}
+                                    projectId={Number(params.id)} node={<button
+                                        className="w-full px-4 py-2 hover:bg-gray-100 flex items-center gap-3"
+                                        onClick={() => setIsOpen(false)}
+                                    >
+                                        <span className="text-gray-600 text-[14px]"><FaUpload className="w-5 h-5" /></span>
+                                        <span className="text-gray-700 text-[14px]">Thêm tệp</span>
+                                    </button>} />
                             </div>
                         </div>
                     </div>
@@ -97,10 +99,14 @@ export default function page({ params }: { params: { id: string } }) {
                 {viewMode === 'table' && (//+
                     <TableStorage
                         projectId={Number(params.id)}
-                        data={data!.data}
+                        data={data!.data.sort((a, b) => {
+                            const nameComparison = b.createdAt!.localeCompare(a.createdAt!);
+                            return nameComparison !== 0 ? nameComparison : b.id! - a.id!;
+                        })}
                     />
                 )}
             </div>
         </>
     )
 }
+

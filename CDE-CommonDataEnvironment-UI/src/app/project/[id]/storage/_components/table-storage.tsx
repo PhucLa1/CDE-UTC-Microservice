@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FileIcon, FolderIcon, ChevronUpIcon } from 'lucide-react';
 import {
   Table,
@@ -12,8 +12,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { useState } from 'react';
 import { Storage } from '@/data/schema/Project/storage.schema';
-import SheetFolder from './sheet-folder';
-import { Button } from '@/components/custom/button';
+import SheetStorage from './sheet-storage';
 type FormProps = {
   data: Storage[],
   projectId: number
@@ -24,6 +23,7 @@ export default function TableStorage({ data, projectId }: FormProps) {
   const [selectAll, setSelectAll] = useState(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [id, setId] = useState<number>(0)
+  const [isFile, setIsFile] = useState<number>(0);  //1: File, 2 : Folder
   const handleSelectAll = (checked: boolean) => {
     setSelectAll(checked);
     if (checked) {
@@ -43,9 +43,15 @@ export default function TableStorage({ data, projectId }: FormProps) {
     setSelectedStorage(newSelected);
     setSelectAll(newSelected.size === data.length);
   };
+  console.log(isFile)
   return (
     <>
-      {id != 0 && <SheetFolder projectId={projectId} id={id} node={<></>} isOpen={isOpen} setIsOpen={setIsOpen} />}
+      {id != 0 && isFile != 0 && <SheetStorage
+        isFile={isFile == 1 ? true : false}
+        projectId={projectId} id={id}
+        node={<></>}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen} />}
       <div>
         <Table>
           <TableHeader>
@@ -68,6 +74,7 @@ export default function TableStorage({ data, projectId }: FormProps) {
           <TableBody>
             {data.map((item, index) => (
               <TableRow onClick={() => {
+                setIsFile(item.isFile == true ? 1 : 2)
                 setIsOpen(true);
                 setId(item.id!);
               }} className='h-[60px]' key={index}>
@@ -83,7 +90,7 @@ export default function TableStorage({ data, projectId }: FormProps) {
                     {item.isFile === false ? (
                       <FolderIcon className="h-6 w-6 text-blue-500" />
                     ) : (
-                      <FileIcon className="h-6 w-6 text-gray-500" />
+                      <img className="h-6 w-6" src={item.urlImage} />
                     )}
                     {item.name}
                   </div>

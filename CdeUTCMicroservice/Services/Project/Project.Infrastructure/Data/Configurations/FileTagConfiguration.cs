@@ -4,13 +4,13 @@ namespace Project.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<FileTag> builder)
         {          
-            builder.HasOne<File>()
-                .WithMany()
+            builder.HasOne(e => e.File)
+                .WithMany(e => e.FileTags)
                 .HasForeignKey(o => o.FileId)
                 .OnDelete(DeleteBehavior.SetNull);
 
-            builder.HasOne<Tag>()
-                .WithMany()
+            builder.HasOne(e => e.Tag)
+                .WithMany(e => e.FileTags)
                 .HasForeignKey(o => o.TagId)
                 .OnDelete(DeleteBehavior.SetNull);
         }
