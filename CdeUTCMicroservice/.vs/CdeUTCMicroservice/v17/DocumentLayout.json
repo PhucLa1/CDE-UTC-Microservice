@@ -3,8 +3,11 @@
   "WorkspaceRootPath": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\storage\\getallstorages\\getallstorageshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\storage\\getallstorages\\getallstorageshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\storage\\createfile\\createfilehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\storage\\createfile\\createfilehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/ProjectDB/True/SqlTable/dbo.Files.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\extensions\\convertextensiontourl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -13,37 +16,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\storage\\getfilebyid\\getfilebyidhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\storage\\getfilebyid\\getfilebyidhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\storage\\getfilebyid\\getfilebyidrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\storage\\getfilebyid\\getfilebyidrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.api\\endpoint\\storage\\getfilebyid\\getfilebyidendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|solutionrelative:services\\project\\project.api\\endpoint\\storage\\getfilebyid\\getfilebyidendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/ProjectDB/True/SqlTable/dbo.Files.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.api\\endpoint\\storage\\getfolderbyid\\getfolderbyidendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9ADD497-C817-483D-A065-67EF35382D0E}|Services\\Project\\Project.API\\Project.API.csproj|solutionrelative:services\\project\\project.api\\endpoint\\storage\\getfolderbyid\\getfolderbyidendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\storage\\getfolderbyid\\getfolderbyidhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\storage\\getfolderbyid\\getfolderbyidhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\storage\\getfilebyid\\getfilebyidresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\storage\\getfilebyid\\getfilebyidresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\storage\\getfolderbyid\\getfolderbyidresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\storage\\getfolderbyid\\getfolderbyidresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\storage\\getfolderbyid\\getfolderbyidrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\storage\\getfolderbyid\\getfolderbyidrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -61,148 +33,51 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "dbo.Files [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/ProjectDB/True/SqlTable/dbo.Files.sql",
-              "ToolTip": "dbo.Files [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-02-21T11:32:41.429Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ConvertExtensionToUrl.cs",
               "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Extensions\\ConvertExtensionToUrl.cs",
               "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Extensions\\ConvertExtensionToUrl.cs",
               "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Extensions\\ConvertExtensionToUrl.cs",
               "RelativeToolTip": "Services\\Project\\Project.Application\\Extensions\\ConvertExtensionToUrl.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAiAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T11:28:38.217Z",
+              "WhenOpened": "2025-02-21T16:13:57.626Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "dbo.Files [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/ProjectDB/True/SqlTable/dbo.Files.sql",
+              "ToolTip": "dbo.Files [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-02-21T16:12:27.428Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GetAllStoragesHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\GetAllStorages\\GetAllStoragesHandler.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Storage\\GetAllStorages\\GetAllStoragesHandler.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\GetAllStorages\\GetAllStoragesHandler.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Storage\\GetAllStorages\\GetAllStoragesHandler.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAcwCoAAAAeAAAA",
+              "Title": "CreateFileHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\CreateFile\\CreateFileHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Storage\\CreateFile\\CreateFileHandler.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\CreateFile\\CreateFileHandler.cs",
+              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Storage\\CreateFile\\CreateFileHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T11:23:28.779Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GetFileByIdEndpoint.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Storage\\GetFileById\\GetFileByIdEndpoint.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.API\\Endpoint\\Storage\\GetFileById\\GetFileByIdEndpoint.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Storage\\GetFileById\\GetFileByIdEndpoint.cs",
-              "RelativeToolTip": "Services\\Project\\Project.API\\Endpoint\\Storage\\GetFileById\\GetFileByIdEndpoint.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T10:53:30.009Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "GetFolderByIdRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\GetFolderById\\GetFolderByIdRequest.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Storage\\GetFolderById\\GetFolderByIdRequest.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\GetFolderById\\GetFolderByIdRequest.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Storage\\GetFolderById\\GetFolderByIdRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T10:42:57.196Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "GetFileByIdResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\GetFileById\\GetFileByIdResponse.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Storage\\GetFileById\\GetFileByIdResponse.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\GetFileById\\GetFileByIdResponse.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Storage\\GetFileById\\GetFileByIdResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA8AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T10:42:06.545Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "GetFileByIdHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\GetFileById\\GetFileByIdHandler.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Storage\\GetFileById\\GetFileByIdHandler.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\GetFileById\\GetFileByIdHandler.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Storage\\GetFileById\\GetFileByIdHandler.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAAwHQAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T10:41:49.825Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 712,
-          "SelectedChildIndex": 3,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "GetFolderByIdEndpoint.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Storage\\GetFolderById\\GetFolderByIdEndpoint.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.API\\Endpoint\\Storage\\GetFolderById\\GetFolderByIdEndpoint.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\Endpoint\\Storage\\GetFolderById\\GetFolderByIdEndpoint.cs",
-              "RelativeToolTip": "Services\\Project\\Project.API\\Endpoint\\Storage\\GetFolderById\\GetFolderByIdEndpoint.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T10:53:34.503Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "GetFolderByIdHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\GetFolderById\\GetFolderByIdHandler.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Storage\\GetFolderById\\GetFolderByIdHandler.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\GetFolderById\\GetFolderByIdHandler.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Storage\\GetFolderById\\GetFolderByIdHandler.cs",
-              "ViewState": "AQIAADgAAAAAAAAAAAAAAG4AAAByAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T10:44:45.81Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "GetFolderByIdResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\GetFolderById\\GetFolderByIdResponse.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Storage\\GetFolderById\\GetFolderByIdResponse.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\GetFolderById\\GetFolderByIdResponse.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Storage\\GetFolderById\\GetFolderByIdResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAABsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T10:43:12.249Z",
+              "WhenOpened": "2025-02-21T16:09:20.476Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "GetFileByIdRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\GetFileById\\GetFileByIdRequest.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Storage\\GetFileById\\GetFileByIdRequest.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\GetFileById\\GetFileByIdRequest.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Storage\\GetFileById\\GetFileByIdRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAjAAAA",
+              "Title": "GetFileByIdHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\GetFileById\\GetFileByIdHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Storage\\GetFileById\\GetFileByIdHandler.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\GetFileById\\GetFileByIdHandler.cs",
+              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Storage\\GetFileById\\GetFileByIdHandler.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAgwFcAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T10:42:01.744Z",
+              "WhenOpened": "2025-02-21T16:03:08.398Z",
               "EditorCaption": ""
             }
           ]

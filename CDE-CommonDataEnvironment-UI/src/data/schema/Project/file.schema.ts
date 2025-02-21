@@ -4,6 +4,7 @@ import { tagSchema } from "./tag.schema";
 import { fileHistorySchema } from "./filehistory.schema";
 
 export const fileSchema = z.object({
+    id: z.number().optional(),
     name: z.string().min(1, "Tên không được để trống"),
     size: z.number().optional(),
     url: z.string().optional(),

@@ -1,4 +1,6 @@
-﻿using Project.Domain.Extensions;
+﻿using Project.Application.Extensions;
+using Project.Domain.Extensions;
+using System;
 
 namespace Project.Application.Features.Storage.CreateFile;
 
@@ -13,6 +15,7 @@ public class CreateFileHandler
          * Nếu có file đó rồi thì chỉ cập nhật thôi + Thêm 1 bản ghi vào file history
          * Chưa có thì thêm như bình thường
          */
+        var IMAGE_EXTENSION = new List<string>() { ".png", ".jpg", ".jpeg" };
         const decimal fileSizeInMB = 1024 * 1024;
         using var transaction = await fileRepository.BeginTransactionAsync(cancellationToken);
 
@@ -43,7 +46,9 @@ public class CreateFileHandler
                 FileId = fileInDb.Id,
                 Name = fileInDb.Name,
                 Size = fileInDb.Size,
-                Url = fileInDb.Url,
+                Url = IMAGE_EXTENSION.Contains(fileInDb.Extension)
+                    ? fileInDb.Url
+                    : fileInDb.Extension.ConvertToUrl(),
                 FileVersion = fileInDb.FileVersion,
                 FileType = fileInDb.FileType,
                 MimeType= fileInDb.MimeType,

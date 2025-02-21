@@ -1,35 +1,35 @@
-import folderCommentApiRequest from '@/apis/foldercomment.api';
+import fileCommentApiRequest from '@/apis/filecomment.api';
 import { Button } from '@/components/custom/button';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Textarea } from '@/components/ui/textarea';
-import { FolderComment, folderCommentSchema } from '@/data/schema/Project/foldercomment.schema';
+import { FileComment, fileCommentSchema } from '@/data/schema/Project/filecomment.schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import React from 'react'
 import { useForm } from 'react-hook-form';
 type FormProps = {
-    folderComment: FolderComment,
+    fileComment: FileComment,
     setUpdateComment: (updateComment: number) => void
 }
-export default function UpdateComment({ folderComment, setUpdateComment }: FormProps) {
+export default function UpdateFileComment({ fileComment, setUpdateComment }: FormProps) {
     const queryClient = useQueryClient();
-    const form = useForm<FolderComment>({
-        resolver: zodResolver(folderCommentSchema),
+    const form = useForm<FileComment>({
+        resolver: zodResolver(fileCommentSchema),
         defaultValues: {
-            content: folderComment.content,
-            id: folderComment.id,
-            projectId: folderComment.projectId,
-            folderId: folderComment.folderId
+            content: fileComment.content,
+            id: fileComment.id,
+            projectId: fileComment.projectId,
+            fileId: fileComment.fileId
         }
     });
-    const onSubmit = (values: FolderComment) => {
+    const onSubmit = (values: FileComment) => {
         mutate(values)
     };
     const { mutate, isPending } = useMutation({
         mutationKey: ['update-foler-comment'],
-        mutationFn: (value: FolderComment) => folderCommentApiRequest.update(value),
+        mutationFn: (value: FileComment) => fileCommentApiRequest.update(value),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['get-detail-folder', folderComment.folderId] })
+            queryClient.invalidateQueries({ queryKey: ['get-detail-file', fileComment.fileId] })
             setUpdateComment(0)
         }
     })

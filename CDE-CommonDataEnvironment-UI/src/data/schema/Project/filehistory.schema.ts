@@ -6,7 +6,8 @@ export const fileHistorySchema = z.object({
     version: z.number().optional(),
     createdAt: z.string().optional(),
     createdBy: z.number().optional(),
-    nameCreatedBy: z.string().optional()
+    nameCreatedBy: z.string().optional(),
+    imageUrl: z.string().optional(),
 });
 
 export type FileHistory = z.infer<typeof fileHistorySchema>;

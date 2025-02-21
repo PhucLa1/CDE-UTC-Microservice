@@ -1,4 +1,5 @@
 ﻿using Project.Application.Dtos.Result;
+using Project.Application.Extensions;
 using Project.Application.Features.Storage.GetFolderById;
 using Project.Application.Grpc;
 using Project.Application.Grpc.GrpcRequest;
@@ -16,6 +17,7 @@ namespace Project.Application.Storage.GetFileById
 
         public async Task<ApiResponse<GetFileByIdResponse>> Handle(GetFileByIdRequest request, CancellationToken cancellationToken)
         {
+            var IMAGE_EXTENSION = new List<string>() { ".png", ".jpg", ".jpeg" };
             //lấy định dạng ngày tháng
             var listIDGrpc = new List<int>() { };
             var currentDateDisplay = fileRepository.GetCurrentDateDisplay();
@@ -57,16 +59,19 @@ namespace Project.Application.Storage.GetFileById
 
             var updatedByList = fileComments.Select(fc => fc.UpdatedBy).Distinct().ToList(); // Distinct IDs //List thứ 2
 
-            //Xử lí phần folder history
+            //Xử lí phần file history
             var fileHistories = await fileHistoryRepository.GetAllQueryAble()
                 .Where(e => e.FileId == request.Id)
                 .Select(e => new FileHistoryResult()
                 {
                     Id = e.Id,
-                    Name = e.Name,
+                    Name = e.Name + e.Extension,
                     Version = e.FileVersion,
                     CreatedAt = e.CreatedAt.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
-                    CreatedBy = e.CreatedBy
+                    CreatedBy = e.CreatedBy,
+                    ImageUrl = IMAGE_EXTENSION.Contains(e.Extension)
+                    ? e.Url
+                    : Setting.PROJECT_HOST + "/Extension/" + e.Url,
                 })
                 .ToListAsync(cancellationToken);
 
@@ -105,7 +110,8 @@ namespace Project.Application.Storage.GetFileById
                         Version = fc.Version,
                         CreatedAt = fc.CreatedAt,
                         CreatedBy = fc.CreatedBy,
-                        Name = fc.Name
+                        Name = fc.Name,
+                        ImageUrl = fc.ImageUrl
                     };
                 }).ToList();
             }

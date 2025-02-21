@@ -73,6 +73,10 @@
         public const string FOLDER_COMMENT_ROUTER = "folder-comment";
         #endregion
 
+        #region File Comment
+        public const string FILE_COMMENT_ROUTER = "file-comment";
+        #endregion
+
 
         #endregion
 

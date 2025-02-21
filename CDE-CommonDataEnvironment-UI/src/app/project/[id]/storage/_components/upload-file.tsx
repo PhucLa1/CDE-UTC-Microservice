@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/sheet"
 import { useEdgeStore } from "@/lib/edgestore";
 import { FileState, MultiFileDropzone } from "@/components/ui/multi-dropzone";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { File } from "@/data/schema/Project/file.schema";
 import fileApiRequest from "@/apis/file.api";
 import path from "path";
@@ -28,10 +28,19 @@ export default function UploadFile({ node, folderId, projectId }: FormProps) {
     const [open, setOpen] = useState(false);
     const [fileStates, setFileStates] = useState<FileState[]>([]);
     const { edgestore } = useEdgeStore();
+    const queryClient = useQueryClient()
 
     const { mutate } = useMutation({
         mutationKey: ['create-file'],
-        mutationFn: (value: File) => fileApiRequest.create(value)
+        mutationFn: (value: File) => fileApiRequest.create(value),
+        onSuccess: () => {
+            setOpen(false)
+            queryClient.invalidateQueries({ queryKey: ['storage'] })
+            //Gọi lại API
+        },
+        onError: () => {
+            setOpen(false)
+        }
     })
     const updateFileProgress = (key: string, progress: FileState['progress']) => {
         setFileStates((fileStates) => {

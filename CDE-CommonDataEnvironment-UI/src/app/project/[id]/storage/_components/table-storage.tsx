@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { FileIcon, FolderIcon, ChevronUpIcon } from 'lucide-react';
+import { FileIcon, FolderIcon, ChevronUpIcon, MoreVerticalIcon } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -13,12 +13,15 @@ import { Badge } from "@/components/ui/badge";
 import { useState } from 'react';
 import { Storage } from '@/data/schema/Project/storage.schema';
 import SheetStorage from './sheet-storage';
+import { useRouter } from 'next/navigation';
+import { PathItem } from '@/components/custom/_breadcrumb';
 type FormProps = {
   data: Storage[],
-  projectId: number
-
+  projectId: number,
+  addPathItem:(newItem: PathItem) => void
 }
-export default function TableStorage({ data, projectId }: FormProps) {
+export default function TableStorage({ data, projectId, addPathItem }: FormProps) {
+  const router = useRouter();
   const [selectedStorage, setSelectedStorage] = useState<Set<number>>(new Set());
   const [selectAll, setSelectAll] = useState(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -69,15 +72,22 @@ export default function TableStorage({ data, projectId }: FormProps) {
               <TableHead>Được tạo vào</TableHead>
               <TableHead>Được tạo bởi</TableHead>
               <TableHead>Nhãn dán</TableHead>
+              <TableHead></TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {data.map((item, index) => (
-              <TableRow onClick={() => {
-                setIsFile(item.isFile == true ? 1 : 2)
-                setIsOpen(true);
-                setId(item.id!);
-              }} className='h-[60px]' key={index}>
+              <TableRow
+                onClick={() => {
+                  if (!isFile) {
+                    addPathItem({
+                      name: item.name!,
+                      url: `project/${projectId}/storage/${item.id}`
+                    })
+                    router.push(`${item.id}`);
+                  }
+                }}
+                className='h-[60px]' key={index}>
                 <TableCell>
                   <Checkbox
                     checked={selectedStorage.has(item.id!)}
@@ -106,6 +116,11 @@ export default function TableStorage({ data, projectId }: FormProps) {
                     ))}
                   </div>
                 </TableCell>
+                <TableCell><MoreVerticalIcon onClick={() => {
+                  setIsFile(item.isFile == true ? 1 : 2)
+                  setIsOpen(true);
+                  setId(item.id!);
+                }} className='h-5 w-5 text-gray-800 cursor-pointer hover:text-gray-200' /></TableCell>
               </TableRow>
             ))}
           </TableBody>

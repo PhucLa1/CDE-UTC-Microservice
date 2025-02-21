@@ -15,22 +15,46 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import folderCommentApiRequest from '@/apis/foldercomment.api'
 import { handleSuccessApi } from '@/lib/utils'
 import { Button } from '@/components/custom/button'
+import fileCommentApiRequest from '@/apis/filecomment.api'
 type FormProps = {
     node: ReactNode,
-    folderComment: FolderComment
+    id: number,
+    projectId: number,
+    storageId: number,
+    isFile: boolean,
 }
-export default function DeleteForm({ node, folderComment }: FormProps) {
+export default function DeleteForm({ node, id, projectId, storageId, isFile }: FormProps) {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const queryClient = useQueryClient()
     const { mutate: mutateDelete, isPending: isPendingDelete } = useMutation({
         mutationKey: ['delete-foler-comment'],
-        mutationFn: () => folderCommentApiRequest.delete(folderComment),
+        mutationFn: () => folderCommentApiRequest.delete({
+            id: id,
+            projectId: projectId,
+            content: ''
+        }),
         onSuccess: () => {
             handleSuccessApi({
                 title: 'Xóa bình luận',
                 message: 'Xóa bình luận thành công'
             })
-            queryClient.invalidateQueries({ queryKey: ['get-detail-folder', folderComment.folderId] })
+            queryClient.invalidateQueries({ queryKey: ['get-detail-folder', storageId] })
+            setIsOpen(false)
+        }
+    })
+    const { mutate: mutateDeleteFileComment, isPending: isPendingDeleteFileComment } = useMutation({
+        mutationKey: ['delete-file-comment'],
+        mutationFn: () => fileCommentApiRequest.delete({
+            id: id,
+            projectId: projectId,
+            content: ''
+        }),
+        onSuccess: () => {
+            handleSuccessApi({
+                title: 'Xóa bình luận',
+                message: 'Xóa bình luận thành công'
+            })
+            queryClient.invalidateQueries({ queryKey: ['get-detail-file', storageId] })
             setIsOpen(false)
         }
     })
@@ -48,7 +72,10 @@ export default function DeleteForm({ node, folderComment }: FormProps) {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel>Hủy</AlertDialogCancel>
-                    <Button loading={isPendingDelete} onClick={() => mutateDelete()}>Tiếp tục</Button>
+                    <Button
+                        loading={isPendingDelete || isPendingDeleteFileComment}
+                        onClick={() => { isFile ? mutateDeleteFileComment() : mutateDelete() }}>Tiếp tục
+                    </Button>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>

@@ -3,28 +3,49 @@ import AppBreadcrumb, { PathItem } from '@/components/custom/_breadcrumb'
 import { Button } from '@/components/custom/button';
 import { Input } from '@/components/ui/input';
 import { LayoutGrid, List, Search } from 'lucide-react';
-import React, { useState } from 'react'
-import CreateFolder from './_components/create-folder';
+import React, { useEffect, useRef, useState } from 'react'
+import CreateFolder from '../_components/create-folder';
 import { FaFolder, FaUpload } from 'react-icons/fa';
-import UploadFile from './_components/upload-file';
+import UploadFile from '../_components/upload-file';
 import { useQuery } from '@tanstack/react-query';
 import storageApiRequest from '@/apis/storage.api';
-import TableStorage from './_components/table-storage';
+import TableStorage from '../_components/table-storage';
 const pathList: Array<PathItem> = [
     {
         name: "Tệp & Thư mục",
         url: "#"
     },
 ];
-export default function page({ params }: { params: { id: string } }) {
+const STORAGE_KEY = "breadcrumb";
+export default function page({ params }: { params: { id: string, parentId: string } }) {
     const [viewMode, setViewMode] = useState<'table' | 'grid'>('table');
     const [searchQuery, setSearchQuery] = useState('');
     const [isOpen, setIsOpen] = useState(false);
-    const [parentId, setParentId] = useState<number>(0)
+    const [pathListStorage, setPathListStorage] = useState<PathItem[]>(() => {
+        if (typeof window !== "undefined") {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+        }
+        return [];
+    });
+
+    // Lưu breadcrumb vào localStorage mỗi khi thay đổi
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(pathListStorage));
+        }
+    }, [pathListStorage]);
+
+    const addPathItem = (newItem: PathItem) => {
+        setPathListStorage((prev) => {
+            const newList = [...prev, newItem];
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(newList));
+            return newList;
+        });
+    };
 
     const { data, isLoading } = useQuery({
-        queryKey: ['storage'],
-        queryFn: () => storageApiRequest.getList(Number(params.id), parentId),
+        queryKey: ['storage', Number(params.parentId)],
+        queryFn: () => storageApiRequest.getList(Number(params.id), Number(params.parentId)),
     })
     if (isLoading) return <></>
     return (
@@ -47,11 +68,11 @@ export default function page({ params }: { params: { id: string } }) {
                                         <span className="text-gray-600 text-[14px]"><FaFolder className="w-5 h-5" /></span>
                                         <span className="text-gray-700 text-[14px]">Thêm thư mục</span>
                                     </button>}
-                                    parentId={parentId}
+                                    parentId={Number(params.parentId)}
                                     projectId={Number(params.id)}
                                 />
                                 <UploadFile
-                                    folderId={parentId}
+                                    folderId={Number(params.parentId)}
                                     projectId={Number(params.id)} node={<button
                                         className="w-full px-4 py-2 hover:bg-gray-100 flex items-center gap-3"
                                         onClick={() => setIsOpen(false)}
@@ -64,6 +85,7 @@ export default function page({ params }: { params: { id: string } }) {
                     </div>
                 </div>
             </div>
+
             <div className="flex justify-between items-center gap-4">
                 <div className="relative flex-1 max-w-xs">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
@@ -95,9 +117,13 @@ export default function page({ params }: { params: { id: string } }) {
                     </Button>
                 </div>
             </div>
-            <div className='-mx-4 flex-1 overflow-auto px-4 py-8 lg:flex-row'>
+            <div>
+                <AppBreadcrumb pathList={pathListStorage} className="mt-2" />
+            </div>
+            <div className='-mx-4 flex-1 overflow-auto px-4 py-4 lg:flex-row'>
                 {viewMode === 'table' && (//+
                     <TableStorage
+                        addPathItem={addPathItem}
                         projectId={Number(params.id)}
                         data={data!.data.sort((a, b) => {
                             const nameComparison = b.createdAt!.localeCompare(a.createdAt!);
