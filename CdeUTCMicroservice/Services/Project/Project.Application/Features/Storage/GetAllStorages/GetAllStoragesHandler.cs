@@ -95,6 +95,7 @@ namespace Project.Application.Features.Storage.GetAllStorages
                 else
                 {
                     result.Add("+ " + (tagNames.Count() - i).ToString());
+                    break;
                 }
             }
 

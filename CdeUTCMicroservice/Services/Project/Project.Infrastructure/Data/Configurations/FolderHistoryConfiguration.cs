@@ -9,7 +9,6 @@ namespace Project.Infrastructure.Data.Configurations
                 .WithMany(e => e.FolderHistories)
                 .HasForeignKey(o => o.FolderId)
                 .OnDelete(DeleteBehavior.SetNull);
-            builder.HasIndex(o => o.Name).IsUnique();
         }
     }
 }

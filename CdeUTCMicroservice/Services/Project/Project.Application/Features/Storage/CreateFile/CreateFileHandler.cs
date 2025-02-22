@@ -1,12 +1,12 @@
 ﻿using Project.Application.Extensions;
 using Project.Domain.Extensions;
-using System;
 
 namespace Project.Application.Features.Storage.CreateFile;
 
 public class CreateFileHandler
     (IBaseRepository<File> fileRepository,
-    IBaseRepository<FileHistory> fileHistoryRepository)
+    IBaseRepository<FileHistory> fileHistoryRepository,
+    IBaseRepository<Folder> folderRepository)
     : ICommandHandler<CreateFileRequest, CreateFileResponse>
 {
     public async Task<CreateFileResponse> Handle(CreateFileRequest request, CancellationToken cancellationToken)
@@ -19,8 +19,22 @@ public class CreateFileHandler
         const decimal fileSizeInMB = 1024 * 1024;
         using var transaction = await fileRepository.BeginTransactionAsync(cancellationToken);
 
+        string fullPath = "";
+        if(request.FolderId is not 0)
+        {
+            var parent = await folderRepository.GetAllQueryAble()
+                .FirstOrDefaultAsync(e => e.Id == request.FolderId);
+
+            if (parent is null)
+                throw new NotFoundException(Message.NOT_FOUND);
+
+            fullPath = parent.FullPath;
+        }
+
+        //Kiểm tra xem tên đó có ở trong thư mục và cùng dự án không
         var fileInDb = await fileRepository.GetAllQueryAble()
-            .FirstOrDefaultAsync(e => e.Name == request.Name, cancellationToken);
+            .FirstOrDefaultAsync(e => e.Name == request.Name 
+            && e.FolderId == request.FolderId, cancellationToken);
         if(fileInDb is null)
         {
             var file = new File
@@ -33,9 +47,13 @@ public class CreateFileHandler
                 FileType = IconFileExtension.GetFileType(request.Name),
                 Extension = request.Extension,
                 MimeType = request.MimeType,
-                FileVersion = 0
+                FileVersion = 0,
             };
             await fileRepository.AddAsync(file, cancellationToken);
+            await fileRepository.SaveChangeAsync(cancellationToken);
+
+            file.FullPath = fullPath + "/" + file.Id;
+            fileRepository.Update(file);
             await fileRepository.SaveChangeAsync(cancellationToken);
         }
         else

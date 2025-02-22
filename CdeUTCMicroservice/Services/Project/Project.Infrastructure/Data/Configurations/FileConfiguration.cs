@@ -7,7 +7,6 @@ namespace Project.Infrastructure.Data.Configurations
             builder.Property(f => f.Size)
                 .HasPrecision(18, 4);
 
-            builder.HasIndex(o => o.FullPath).IsUnique();
         }
     }
 }

@@ -94,8 +94,17 @@ export default function UploadFile({ node, folderId, projectId }: FormProps) {
                                             size: res.size,
                                             folderId: folderId,
                                             projectId: projectId,
-                                            mimeType: addedFileState.file.type,
-                                            extension: path.parse(addedFileState.file.name).ext
+                                            mimeType: addedFileState.file.type == "" ? "mimeType" : addedFileState.file.type,
+                                            extension: path.parse(addedFileState.file.name).ext == "" ? ".extension" : path.parse(addedFileState.file.name).ext
+                                        })
+                                        console.log({
+                                            name: path.parse(addedFileState.file.name).name,
+                                            url: res.url,
+                                            size: res.size,
+                                            folderId: folderId,
+                                            projectId: projectId,
+                                            mimeType: addedFileState.file.type == "" ? "mimeType" : addedFileState.file.type,
+                                            extension: path.parse(addedFileState.file.name).ext == "" ? ".extension" : path.parse(addedFileState.file.name).ext
                                         })
                                     } catch (err) {
                                         updateFileProgress(addedFileState.key, 'ERROR');

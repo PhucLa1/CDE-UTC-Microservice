@@ -14,7 +14,6 @@ import { useState } from 'react';
 import { Storage } from '@/data/schema/Project/storage.schema';
 import SheetStorage from './sheet-storage';
 import { useRouter } from 'next/navigation';
-import { PathItem } from '@/components/custom/_breadcrumb';
 type FormProps = {
   data: Storage[],
   projectId: number
@@ -76,7 +75,6 @@ export default function TableStorage({ data, projectId }: FormProps) {
           <TableBody>
             {data.map((item, index) => (
               <TableRow
-
                 className='h-[60px]' key={index}>
                 <TableCell>
                   <Checkbox
@@ -86,7 +84,7 @@ export default function TableStorage({ data, projectId }: FormProps) {
                   />
                 </TableCell>
                 <TableCell onClick={() => {
-                  if (isFile != 1) {
+                  if (!item.isFile) {
                     console.log(1)
                     router.push(`${item.id}`);
                   }

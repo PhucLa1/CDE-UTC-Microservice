@@ -40,6 +40,15 @@ namespace Project.Application.Features.Storage.UpdateFile
                 .Where(e => e.FileId == request.Id)
                 .ToListAsync(cancellationToken);
 
+            //Check xem đã có file này trong dự án và cùng thư mục chưa
+            var fileInDb = await fileRepository.GetAllQueryAble()
+                .FirstOrDefaultAsync(e => e.FolderId == file.FolderId
+                && e.Name == request.Name, cancellationToken);
+
+            if (fileInDb is not null)
+                throw new BadRequestException(Message.IS_EXIST_FILE);
+
+
             //Sửa tên của file. Nếu tên khác tên cũ thì update lên 1 ver mới 
             if (file.Name != request.Name)
             {

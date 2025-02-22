@@ -28,6 +28,14 @@
             if (tag is null)
                 throw new NotFoundException(Message.NOT_FOUND);
 
+            var tagInDb = await tagRepository.GetAllQueryAble()
+                .Where(e => e.Id != request.Id && e.ProjectId == request.ProjectId 
+                && e.Name == request.Name)
+                .FirstOrDefaultAsync(cancellationToken);
+
+            if (tagInDb is not null)
+                throw new BadRequestException(Message.IS_EXIST_TAG);
+
             tag.Name = request.Name;
             tagRepository.Update(tag);
             await tagRepository.SaveChangeAsync(cancellationToken);

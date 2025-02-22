@@ -54,7 +54,24 @@ export default function SheetStorage({ node, id, isOpen, setIsOpen, projectId, i
     })
 
     const { roleDetail } = useRole()
-
+    const downloadItem = async (fileUrl: string, fileName: string) => {
+        try {
+          const response = await fetch(fileUrl);
+          const blob = await response.blob();
+          const url = URL.createObjectURL(blob);
+      
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = fileName; // Đặt tên file tải về
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+      
+          URL.revokeObjectURL(url); // Giải phóng bộ nhớ
+        } catch (error) {
+          console.error("Lỗi tải xuống:", error);
+        }
+      };
 
 
     if (isLoadingFile || isLoadingFolder) return <></>
@@ -103,13 +120,15 @@ export default function SheetStorage({ node, id, isOpen, setIsOpen, projectId, i
                         </TooltipProvider>
                         <TooltipProvider>
                             <Tooltip>
-                                <TooltipTrigger asChild>
+                                <TooltipTrigger onClick={() => {
+                                    if(isFile) downloadItem(dataFile?.data.url!, dataFile?.data.name!)
+                                }} asChild>
                                     <div className="flex items-center gap-1">
                                         <DownloadIcon className="h-5 w-5" />
                                     </div>
                                 </TooltipTrigger>
                                 <TooltipContent>
-                                    <p>Tải thư mục</p>
+                                    <p>Tải {isFile ? "tệp" : "thư mục"}</p>
                                 </TooltipContent>
                             </Tooltip>
                         </TooltipProvider>

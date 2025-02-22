@@ -9,8 +9,6 @@ namespace Project.Infrastructure.Data.Configurations
                 .HasForeignKey(o => o.ProjectId)
                 .OnDelete(DeleteBehavior.SetNull);
 
-            builder.HasIndex(o => o.FullPath).IsUnique();
-            builder.HasIndex(o => o.FullPathName).IsUnique();
         }
     }
 }

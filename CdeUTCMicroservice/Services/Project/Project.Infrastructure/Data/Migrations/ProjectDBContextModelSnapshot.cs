@@ -182,7 +182,7 @@ namespace Project.Infrastructure.Data.Migrations
 
                     b.Property<string>("FullPath")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsCheckIn")
                         .HasColumnType("bit");
@@ -218,9 +218,6 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FullPath")
-                        .IsUnique();
 
                     b.ToTable("Files");
                 });
@@ -504,11 +501,11 @@ namespace Project.Infrastructure.Data.Migrations
 
                     b.Property<string>("FullPath")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullPathName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsCheckin")
                         .HasColumnType("bit");
@@ -538,12 +535,6 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FullPath")
-                        .IsUnique();
-
-                    b.HasIndex("FullPathName")
-                        .IsUnique();
 
                     b.HasIndex("ProjectId");
 
@@ -611,7 +602,7 @@ namespace Project.Infrastructure.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2")
@@ -627,9 +618,6 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("FolderId");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
 
                     b.ToTable("FolderHistorys");
                 });

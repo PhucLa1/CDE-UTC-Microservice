@@ -16,7 +16,8 @@
             { ".rar", "rar.png" },
             { ".gif", "image.gif" },
             { ".mp3", "audio.png" },
-            { ".mp4", "video.png" }
+            { ".mp4", "video.png" },
+            { ".extension", "file.png" }
         };
 
         public static string ConvertToUrl(this string extension)
