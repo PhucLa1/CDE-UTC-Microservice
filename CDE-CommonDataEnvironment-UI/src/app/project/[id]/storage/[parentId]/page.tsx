@@ -16,38 +16,22 @@ const pathList: Array<PathItem> = [
         url: "#"
     },
 ];
-const STORAGE_KEY = "breadcrumb";
 export default function page({ params }: { params: { id: string, parentId: string } }) {
     const [viewMode, setViewMode] = useState<'table' | 'grid'>('table');
     const [searchQuery, setSearchQuery] = useState('');
     const [isOpen, setIsOpen] = useState(false);
-    const [pathListStorage, setPathListStorage] = useState<PathItem[]>(() => {
-        if (typeof window !== "undefined") {
-            return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-        }
-        return [];
-    });
 
-    // Lưu breadcrumb vào localStorage mỗi khi thay đổi
-    useEffect(() => {
-        if (typeof window !== "undefined") {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(pathListStorage));
-        }
-    }, [pathListStorage]);
-
-    const addPathItem = (newItem: PathItem) => {
-        setPathListStorage((prev) => {
-            const newList = [...prev, newItem];
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(newList));
-            return newList;
-        });
-    };
 
     const { data, isLoading } = useQuery({
         queryKey: ['storage', Number(params.parentId)],
         queryFn: () => storageApiRequest.getList(Number(params.id), Number(params.parentId)),
     })
-    if (isLoading) return <></>
+
+    const { data: dataPath, isLoading: isLoadingPath } = useQuery({
+        queryKey: ['full-path', Number(params.parentId)],
+        queryFn: () => storageApiRequest.getFullPath(Number(params.parentId)),
+    })
+    if (isLoading || isLoadingPath) return <></>
     return (
         <>
             <div className='mb-2 flex items-center justify-between space-y-2'>
@@ -118,12 +102,16 @@ export default function page({ params }: { params: { id: string, parentId: strin
                 </div>
             </div>
             <div>
-                <AppBreadcrumb pathList={pathListStorage} className="mt-2" />
+                <AppBreadcrumb pathList={dataPath!.data.map((item, index) => {
+                    return {
+                        name: item.name,
+                        url: `${item.folderId}`
+                    }
+                })} className="mt-2" />
             </div>
             <div className='-mx-4 flex-1 overflow-auto px-4 py-4 lg:flex-row'>
                 {viewMode === 'table' && (//+
                     <TableStorage
-                        addPathItem={addPathItem}
                         projectId={Number(params.id)}
                         data={data!.data.sort((a, b) => {
                             const nameComparison = b.createdAt!.localeCompare(a.createdAt!);

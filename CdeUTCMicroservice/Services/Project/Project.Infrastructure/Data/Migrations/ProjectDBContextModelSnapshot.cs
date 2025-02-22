@@ -180,6 +180,10 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Property<int?>("FolderId")
                         .HasColumnType("int");
 
+                    b.Property<string>("FullPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("IsCheckIn")
                         .HasColumnType("bit");
 
@@ -214,6 +218,9 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FullPath")
+                        .IsUnique();
 
                     b.ToTable("Files");
                 });
@@ -495,6 +502,14 @@ namespace Project.Infrastructure.Data.Migrations
                         .HasColumnType("int")
                         .HasColumnName("created_by");
 
+                    b.Property<string>("FullPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FullPathName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("IsCheckin")
                         .HasColumnType("bit");
 
@@ -503,7 +518,7 @@ namespace Project.Infrastructure.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ParentId")
                         .HasColumnType("int");
@@ -524,7 +539,10 @@ namespace Project.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name")
+                    b.HasIndex("FullPath")
+                        .IsUnique();
+
+                    b.HasIndex("FullPathName")
                         .IsUnique();
 
                     b.HasIndex("ProjectId");
@@ -1590,15 +1608,19 @@ namespace Project.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Project.Domain.Entities.FileTag", b =>
                 {
-                    b.HasOne("Project.Domain.Entities.File", null)
-                        .WithMany()
+                    b.HasOne("Project.Domain.Entities.File", "File")
+                        .WithMany("FileTags")
                         .HasForeignKey("FileId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("Project.Domain.Entities.Tag", null)
-                        .WithMany()
+                    b.HasOne("Project.Domain.Entities.Tag", "Tag")
+                        .WithMany("FileTags")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("File");
+
+                    b.Navigation("Tag");
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.FileTodo", b =>
@@ -1632,10 +1654,12 @@ namespace Project.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Project.Domain.Entities.FolderHistory", b =>
                 {
-                    b.HasOne("Project.Domain.Entities.Folder", null)
-                        .WithMany()
+                    b.HasOne("Project.Domain.Entities.Folder", "Folder")
+                        .WithMany("FolderHistories")
                         .HasForeignKey("FolderId")
                         .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Folder");
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.FolderPermission", b =>
@@ -1870,8 +1894,15 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Navigation("BCFTopicTags");
                 });
 
+            modelBuilder.Entity("Project.Domain.Entities.File", b =>
+                {
+                    b.Navigation("FileTags");
+                });
+
             modelBuilder.Entity("Project.Domain.Entities.Folder", b =>
                 {
+                    b.Navigation("FolderHistories");
+
                     b.Navigation("FolderTags");
                 });
 
@@ -1894,6 +1925,8 @@ namespace Project.Infrastructure.Data.Migrations
             modelBuilder.Entity("Project.Domain.Entities.Tag", b =>
                 {
                     b.Navigation("BCFTopicTags");
+
+                    b.Navigation("FileTags");
 
                     b.Navigation("FolderTags");
                 });

@@ -21,7 +21,7 @@ export default function AppBreadcrumb({ pathList,className }: { pathList: Array<
             const isLastItem = i == pathList.length - 1;
             return(
             <Fragment key={i}>
-              <BreadcrumbItem>
+              <BreadcrumbItem className="cursor-pointer">
                 {isLastItem &&<BreadcrumbPage>{x.name}</BreadcrumbPage>}
                 {!isLastItem &&<BreadcrumbLink href={x.url}>{x.name}</BreadcrumbLink>}
               </BreadcrumbItem> 

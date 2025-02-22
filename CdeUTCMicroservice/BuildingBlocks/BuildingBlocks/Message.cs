@@ -10,6 +10,7 @@
         public static string FORBIDDEN_CHANGE = "Không có quyền thay đổi dữ kiện";
         public static string IS_EXIST = "Người dùng đã tồn tại trong rồi";
         public static string MUST_HAVE_ONE_ADMIN = "Một dự án phải có ít nhất 1 admin";
+        public static string IS_EXIST_FOLDER = "Tên folder đã tồn tại";
         #endregion
 
         #region Notice Successfully

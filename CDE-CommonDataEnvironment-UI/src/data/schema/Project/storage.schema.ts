@@ -11,9 +11,15 @@ export const storageSchema = z.object({
     projectId: z.number().optional(),
     parentId: z.number().optional(),
     tagNames: z.array(z.string()).optional(),
-    urlImage: z.string().optional(),
+    urlImage: z.string().optional()
 })
 
 export type Storage = z.infer<typeof storageSchema>;
 export const storageDefault: Storage = {
 };
+
+export type PathItemResult = {
+    name: string,
+    folderId: number
+}
+

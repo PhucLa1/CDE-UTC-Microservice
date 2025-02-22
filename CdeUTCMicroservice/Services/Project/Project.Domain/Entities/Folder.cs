@@ -8,6 +8,8 @@
         public int ParentId { get; set; } = default!;  //Nếu parent id bằng 0 thì tức là nó không có folder cha
         public bool IsCheckin { get; set; }
         public bool IsCheckout { get; set; }
+        public string FullPath { get; set; } = string.Empty;
+        public string FullPathName { get; set; } = string.Empty;
         public ICollection<FolderTag>? FolderTags { get; set; }
         public ICollection<FolderHistory>? FolderHistories { get; set; }
 

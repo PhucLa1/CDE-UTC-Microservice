@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\Extension\\pdf.jpg"
     },
     {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Extension\\txt.png",
+      "PackagePath": "staticwebassets\\Extension\\txt.png"
+    },
+    {
       "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Project\\638736155813135980.jpg",
       "PackagePath": "staticwebassets\\Project\\638736155813135980.jpg"
     },

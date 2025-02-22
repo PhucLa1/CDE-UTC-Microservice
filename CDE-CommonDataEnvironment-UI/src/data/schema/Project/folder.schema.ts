@@ -17,7 +17,7 @@ export const folderSchema = z.object({
     tagResults: z.array(tagSchema).optional(),
     createdBy: z.number().optional(),
     tagIds: z.array(z.number()).optional(),
-    folderHistoryResults: z.array(folderHistorySchema).optional()
+    folderHistoryResults: z.array(folderHistorySchema).optional(),
 })
 
 export type Folder = z.infer<typeof folderSchema>;

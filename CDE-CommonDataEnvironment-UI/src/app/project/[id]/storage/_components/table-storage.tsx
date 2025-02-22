@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { FileIcon, FolderIcon, ChevronUpIcon, MoreVerticalIcon } from 'lucide-react';
+import React from 'react'
+import { FolderIcon, ChevronUpIcon, MoreVerticalIcon } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -17,10 +17,9 @@ import { useRouter } from 'next/navigation';
 import { PathItem } from '@/components/custom/_breadcrumb';
 type FormProps = {
   data: Storage[],
-  projectId: number,
-  addPathItem:(newItem: PathItem) => void
+  projectId: number
 }
-export default function TableStorage({ data, projectId, addPathItem }: FormProps) {
+export default function TableStorage({ data, projectId }: FormProps) {
   const router = useRouter();
   const [selectedStorage, setSelectedStorage] = useState<Set<number>>(new Set());
   const [selectAll, setSelectAll] = useState(false);
@@ -46,7 +45,6 @@ export default function TableStorage({ data, projectId, addPathItem }: FormProps
     setSelectedStorage(newSelected);
     setSelectAll(newSelected.size === data.length);
   };
-  console.log(isFile)
   return (
     <>
       {id != 0 && isFile != 0 && <SheetStorage
@@ -78,15 +76,7 @@ export default function TableStorage({ data, projectId, addPathItem }: FormProps
           <TableBody>
             {data.map((item, index) => (
               <TableRow
-                onClick={() => {
-                  if (!isFile) {
-                    addPathItem({
-                      name: item.name!,
-                      url: `project/${projectId}/storage/${item.id}`
-                    })
-                    router.push(`${item.id}`);
-                  }
-                }}
+
                 className='h-[60px]' key={index}>
                 <TableCell>
                   <Checkbox
@@ -95,7 +85,12 @@ export default function TableStorage({ data, projectId, addPathItem }: FormProps
                     aria-label={`Select ${item.id}`}
                   />
                 </TableCell>
-                <TableCell className="font-medium">
+                <TableCell onClick={() => {
+                  if (isFile != 1) {
+                    console.log(1)
+                    router.push(`${item.id}`);
+                  }
+                }} className="font-medium cursor-pointer">
                   <div className="flex items-center gap-2">
                     {item.isFile === false ? (
                       <FolderIcon className="h-6 w-6 text-blue-500" />

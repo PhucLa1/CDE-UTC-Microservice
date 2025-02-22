@@ -10,6 +10,7 @@
         public int FileVersion { get; set; }
         public bool IsCheckIn { get; set; }
         public bool IsCheckout { get; set; } = true;
+        public string FullPath { get; set; } = string.Empty;
         public FileType FileType { get; set; } = default!;
         public string MimeType { get; set; } = default!;
         public string Extension { get; set; } = default!;
