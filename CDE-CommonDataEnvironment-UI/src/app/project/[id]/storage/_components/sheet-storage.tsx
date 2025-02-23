@@ -32,6 +32,7 @@ import CreateFileComment from "./create-file-comment"
 import CreateFolderComment from "./create-folder-comment"
 import UpdateFileComment from "./update-file-comment"
 import FileHistoryPage from "./file-history"
+import { SheetFolderDestination } from "./sheet-folder-destination"
 type FormProps = {
     node: ReactNode,
     id: number,
@@ -42,6 +43,7 @@ type FormProps = {
 }
 export default function SheetStorage({ node, id, isOpen, setIsOpen, projectId, isFile }: FormProps) {
     const [updateComment, setUpdateComment] = useState<number>(0)
+    const [openFolderDes, setOpenFolderDes] = useState<boolean>(false)
     const { data: dataFolder, isLoading: isLoadingFolder } = useQuery({
         queryKey: ['get-detail-folder', id],
         queryFn: () => folderApiRequest.getDetail(id),
@@ -56,22 +58,22 @@ export default function SheetStorage({ node, id, isOpen, setIsOpen, projectId, i
     const { roleDetail } = useRole()
     const downloadItem = async (fileUrl: string, fileName: string) => {
         try {
-          const response = await fetch(fileUrl);
-          const blob = await response.blob();
-          const url = URL.createObjectURL(blob);
-      
-          const a = document.createElement("a");
-          a.href = url;
-          a.download = fileName; // Đặt tên file tải về
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-      
-          URL.revokeObjectURL(url); // Giải phóng bộ nhớ
+            const response = await fetch(fileUrl);
+            const blob = await response.blob();
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = fileName; // Đặt tên file tải về
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            URL.revokeObjectURL(url); // Giải phóng bộ nhớ
         } catch (error) {
-          console.error("Lỗi tải xuống:", error);
+            console.error("Lỗi tải xuống:", error);
         }
-      };
+    };
 
 
     if (isLoadingFile || isLoadingFolder) return <></>
@@ -121,7 +123,7 @@ export default function SheetStorage({ node, id, isOpen, setIsOpen, projectId, i
                         <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger onClick={() => {
-                                    if(isFile) downloadItem(dataFile?.data.url!, dataFile?.data.name!)
+                                    if (isFile) downloadItem(dataFile?.data.url!, dataFile?.data.name!)
                                 }} asChild>
                                     <div className="flex items-center gap-1">
                                         <DownloadIcon className="h-5 w-5" />
@@ -132,18 +134,16 @@ export default function SheetStorage({ node, id, isOpen, setIsOpen, projectId, i
                                 </TooltipContent>
                             </Tooltip>
                         </TooltipProvider>
-                        <TooltipProvider>
-                            <Tooltip>
-                                <TooltipTrigger asChild>
-                                    <div className="flex items-center gap-1">
-                                        <MoveLeftIcon className="h-5 w-5" />
-                                    </div>
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                    <p>Di chuyển thư mục</p>
-                                </TooltipContent>
-                            </Tooltip>
-                        </TooltipProvider>
+                        {
+                            openFolderDes == true && <SheetFolderDestination 
+                                isOpen={openFolderDes}
+                                setIsOpen={setOpenFolderDes}
+                                folderIds={isFile ? [] : [dataFolder?.data.id!]}
+                                fileIds={!isFile ? [] : [dataFile?.data.id!]} />
+                        }
+                        <div onClick={() => setOpenFolderDes(true)} className="flex items-center gap-1 cursor-pointer">
+                            <MoveLeftIcon className="h-5 w-5" />
+                        </div>
                         {roleDetail?.role == Role.Admin && <DeleteFolder
                             setSheetOpen={setIsOpen}
                             node={

@@ -85,7 +85,6 @@ export default function TableStorage({ data, projectId }: FormProps) {
                 </TableCell>
                 <TableCell onClick={() => {
                   if (!item.isFile) {
-                    console.log(1)
                     router.push(`${item.id}`);
                   }
                 }} className="font-medium cursor-pointer">

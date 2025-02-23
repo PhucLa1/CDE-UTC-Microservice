@@ -25,3 +25,9 @@ export const folderDefault: Folder = {
     name: ""
 };
 
+export type FolderDestination = {
+    folderIds : number[],
+    fileIds : number[],
+    parentId: number
+}
+

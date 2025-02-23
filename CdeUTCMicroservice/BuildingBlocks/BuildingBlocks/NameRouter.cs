@@ -59,6 +59,7 @@
 
         #region Folder
         public const string FOLDER_ROUTER = "folder";
+        public const string FOLDER_DESTINATION = "destination";
         #endregion
 
         #region File

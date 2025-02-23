@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oACzG65cj80Jpk8dGMMYEbtMAfLvsbaxcHu91UJmFI0=",
+  "Hash": "/O6IKqEYqW8uJ4y8cC2A7H+mqc7ei1KSS0IhruDV2LU=",
   "Source": "Project.API",
   "BasePath": "_content/Project.API",
   "Mode": "Default",
@@ -34,6 +34,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Extension\\docx.png"
+    },
+    {
+      "Identity": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Extension\\file.png",
+      "SourceId": "Project.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\",
+      "BasePath": "_content/Project.API",
+      "RelativePath": "Extension/file.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Extension\\file.png"
     },
     {
       "Identity": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Extension\\pdf.jpg",

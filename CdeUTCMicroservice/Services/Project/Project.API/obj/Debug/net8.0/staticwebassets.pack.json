@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Extension\\docx.png"
     },
     {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Extension\\file.png",
+      "PackagePath": "staticwebassets\\Extension\\file.png"
+    },
+    {
       "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Extension\\pdf.jpg",
       "PackagePath": "staticwebassets\\Extension\\pdf.jpg"
     },

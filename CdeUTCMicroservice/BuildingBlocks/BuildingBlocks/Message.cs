@@ -13,6 +13,7 @@
         public static string IS_EXIST_FOLDER = "Tên folder đã tồn tại";
         public static string IS_EXIST_TAG = "Tên nhãn dán đã tồn tại";
         public static string IS_EXIST_FILE = "Tên tệp đã tồn tại";
+        public static string NOT_SAME_PARENT = "Các lựa chọn không cùng 1 cấp";
         #endregion
 
         #region Notice Successfully
