@@ -135,7 +135,8 @@ export default function SheetStorage({ node, id, isOpen, setIsOpen, projectId, i
                             </Tooltip>
                         </TooltipProvider>
                         {
-                            openFolderDes == true && <SheetFolderDestination 
+                            openFolderDes == true && <SheetFolderDestination
+                                isFile={isFile}
                                 isOpen={openFolderDes}
                                 setIsOpen={setOpenFolderDes}
                                 folderIds={isFile ? [] : [dataFolder?.data.id!]}

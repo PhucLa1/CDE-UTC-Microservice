@@ -60,10 +60,12 @@
         #region Folder
         public const string FOLDER_ROUTER = "folder";
         public const string FOLDER_DESTINATION = "destination";
+        public const string MOVE_FOLDER = "move-folder";
         #endregion
 
         #region File
         public const string FILE_ROUTER = "file";
+        public const string MOVE_FILE = "move-file";
         #endregion
 
         #region Storage

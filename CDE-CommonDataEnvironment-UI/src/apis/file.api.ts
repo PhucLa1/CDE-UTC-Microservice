@@ -8,5 +8,6 @@ const fileApiRequest = {
     create: (file: File) => http.post<ApiResponse<boolean>>('file', file, undefined, Service.ProjectService),
     getDetail: (id: number) => http.get<ApiResponse<File>>('file/' + id, undefined, Service.ProjectService),
     update: (file: File) => http.put<ApiResponse<boolean>>('file', file, undefined, Service.ProjectService),
+    moveFile: (file: File) => http.put<ApiResponse<boolean>>('file/move-file', file, undefined, Service.ProjectService),
 }
 export default fileApiRequest;

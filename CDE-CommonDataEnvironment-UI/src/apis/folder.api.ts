@@ -10,5 +10,6 @@ const folderApiRequest = {
     update: (folder: Folder) => http.put<ApiResponse<boolean>>('folder', folder, undefined, Service.ProjectService),
     getDetail: (id: number) => http.get<ApiResponse<Folder>>('folder/' + id, undefined, Service.ProjectService),
     getFoldersDestination: (folderDestination: FolderDestination) => http.post<ApiResponse<Folder[]>>('folder/destination', folderDestination, undefined, Service.ProjectService),
+    moveFolder: (folder: Folder) => http.put<ApiResponse<boolean>>('folder/move-folder', folder, undefined, Service.ProjectService),
 }
 export default folderApiRequest;

@@ -1,8 +1,8 @@
+import fileApiRequest from "@/apis/file.api"
 import folderApiRequest from "@/apis/folder.api"
 import storageApiRequest from "@/apis/storage.api"
-import AppBreadcrumb from "@/components/custom/_breadcrumb"
 import AppBreadcrumbSheet from "@/components/custom/_breadcrumb_sheet"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/custom/button"
 import {
     Sheet,
     SheetClose,
@@ -14,18 +14,21 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { useQuery } from "@tanstack/react-query"
+import { handleSuccessApi } from "@/lib/utils"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { ChevronUpIcon, FolderIcon, ArrowRightIcon } from "lucide-react"
-import { ReactNode, useState } from "react"
+import { useState } from "react"
 
 type FormProps = {
     fileIds: number[]
     folderIds: number[],
     isOpen: boolean,
-    setIsOpen: (value: boolean) => void
+    setIsOpen: (value: boolean) => void,
+    isFile: boolean
 }
-export function SheetFolderDestination({ fileIds, folderIds, isOpen, setIsOpen }: FormProps) {
+export function SheetFolderDestination({ fileIds, folderIds, isOpen, setIsOpen, isFile }: FormProps) {
     const [parentId, setParentId] = useState<number>(0)
+    const queryClient = useQueryClient()
     const { data, isLoading } = useQuery({
         queryKey: ['get-folder-destination', parentId],
         queryFn: () => folderApiRequest.getFoldersDestination({
@@ -38,7 +41,39 @@ export function SheetFolderDestination({ fileIds, folderIds, isOpen, setIsOpen }
         queryKey: ['full-path', parentId],
         queryFn: () => storageApiRequest.getFullPath(parentId),
     })
-    if (isLoading || isLoadingPath) return <div>Loading...</div>
+
+    const { mutate: mutateFile, isPending: isPendingFile } = useMutation({
+        mutationKey: ['move-file'],
+        mutationFn: () => fileApiRequest.moveFile({
+            id: fileIds[0]!,
+            folderId: parentId,
+            name: ""
+        }),
+        onSuccess: () => {
+            handleSuccessApi({
+                title: 'Di chuyển file thành công',
+                message: 'File đã được di chuyển thành công',
+            })
+            queryClient.invalidateQueries({ queryKey: ['storage'] })
+            setIsOpen(false)
+        }
+    })
+    const { mutate: mutateFolder, isPending: isPendingFolder } = useMutation({
+        mutationKey: ['move-folder'],
+        mutationFn: () => folderApiRequest.moveFolder({
+            id: folderIds[0]!,
+            parentId: parentId,
+            name: ""
+        }),
+        onSuccess: () => {
+            handleSuccessApi({
+                title: 'Di chuyển thư mục thành công',
+                message: 'Thư mục đã được di chuyển thành công',
+            })
+            queryClient.invalidateQueries({ queryKey: ['storage'] })
+            setIsOpen(false)
+        }
+    })
     return (
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
@@ -51,14 +86,14 @@ export function SheetFolderDestination({ fileIds, folderIds, isOpen, setIsOpen }
                     </SheetDescription>
                 </SheetHeader>
                 <div className="grid gap-4 py-4">
-                    <AppBreadcrumbSheet pathList={dataPath!.data.map((item, _) => {
+                    {isLoadingPath ? <></> : <AppBreadcrumbSheet pathList={dataPath!.data.map((item, _) => {
                         return {
                             name: item.name,
                             url: `${item.folderId}`
                         }
                     })}
-                    setParentId={setParentId} 
-                    className="mt-2" />
+                        setParentId={setParentId}
+                        className="mt-2" />}
                     <Table>
                         <TableHeader>
                             <TableRow>
@@ -69,7 +104,7 @@ export function SheetFolderDestination({ fileIds, folderIds, isOpen, setIsOpen }
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {data?.data.map((item, index) => (
+                            {isLoading ? <></> : data?.data.map((item, index) => (
                                 <TableRow
                                     className='h-[60px]' key={index}>
                                     <TableCell className="font-medium cursor-pointer">
@@ -86,7 +121,13 @@ export function SheetFolderDestination({ fileIds, folderIds, isOpen, setIsOpen }
                 </div>
                 <SheetFooter>
                     <SheetClose asChild>
-                        <Button type="submit">Chuyển tới thư mục này</Button>
+                        <Button loading={isPendingFile || isPendingFolder}
+                            onClick={() => {
+                                if(isFile) mutateFile()
+                                else mutateFolder()
+                                
+                            }}
+                            type="submit">Chuyển tới thư mục này</Button>
                     </SheetClose>
                 </SheetFooter>
             </SheetContent>
