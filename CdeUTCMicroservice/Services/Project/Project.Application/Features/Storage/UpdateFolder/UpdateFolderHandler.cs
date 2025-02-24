@@ -48,11 +48,56 @@
                     FolderId = request.Id,
                 };
                 await folderHistoryRepository.AddAsync(folderHistory, cancellationToken);
-                folder.Name = request.Name; //Sửa tên
+                
                 folder.Version = folder.Version + 1; //Tăng lên một version
+
+                #region Cập nhật fullpathname
+                var folderNameString = "";
+                var folderIdString = "";
+                var childFolder = await folderRepository.GetAllQueryAble()
+                    .Where(e => e.FullPath.Contains(folder.FullPath + "/"))
+                    .OrderByDescending(e => e.FullPath)
+                    .Select(e => new
+                    {
+                        FullPathName = e.FullPathName,
+                        FullPath = e.FullPath
+                    })
+                    .FirstOrDefaultAsync(cancellationToken);
+
+                if (childFolder is not null)
+                {
+                    folderNameString = childFolder.FullPathName;
+                    folderIdString = childFolder.FullPath;
+                }
+
+
+                //Thay phần folder full path name
+                var folderIdStringArr = folderIdString.Split('/');
+                var indexOfFolderId = Array.IndexOf(folderIdStringArr, folder.Id.ToString());
+                var folderNameStringArr = folderNameString.Split('/');
+                folderNameStringArr[indexOfFolderId] = request.Name;
+                folder.FullPathName = string.Join("/", folderNameStringArr);
+                var fullPath = string.Join("/", folderNameStringArr);
+                //Lấy ra những folder id con
+                var folderIds = folderIdStringArr.Skip(indexOfFolderId + 1).Select(int.Parse).ToList(); //Lấy ra những phần tử con của folder
+                var folders = await folderRepository.GetAllQueryAble()
+                    .Where(e => folderIds.Contains(e.Id))
+                    .OrderBy(e => e.FullPathName)
+                    .ToListAsync(cancellationToken);
+
+                foreach(var folderUpdate in folders)
+                {
+                    fullPath = fullPath + "/" + folderUpdate.Name;
+                    folderUpdate.FullPathName = fullPath;
+                }
+
+                folderRepository.UpdateMany(folders);
+                #endregion
+                folder.Name = request.Name; //Sửa tên
             }
             
             folderRepository.Update(folder);
+            
 
             var existingTags = await folderTagRepository.GetAllQueryAble()
                 .Where(e => e.FolderId == request.Id)

@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/tooltip"
 import { Card } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery } from "@tanstack/react-query"
 import folderApiRequest from "@/apis/folder.api"
 import { useRole } from "../../layout"
 import { Role } from "@/data/enums/role.enum"
@@ -33,6 +33,9 @@ import CreateFolderComment from "./create-folder-comment"
 import UpdateFileComment from "./update-file-comment"
 import FileHistoryPage from "./file-history"
 import { SheetFolderDestination } from "./sheet-folder-destination"
+import storageApiRequest from "@/apis/storage.api"
+import { handleSuccessApi } from "@/lib/utils"
+import { downloadFolderAsZip } from "@/lib/zipUtil"
 type FormProps = {
     node: ReactNode,
     id: number,
@@ -55,9 +58,22 @@ export default function SheetStorage({ node, id, isOpen, setIsOpen, projectId, i
         enabled: id !== 0 && isFile
     })
 
+    const { mutate, isPending } = useMutation({
+        mutationKey: ['get-tree-storage'],
+        mutationFn: () => storageApiRequest.getTreeStorage(id),
+        onSuccess: (data) => {
+            downloadFolderAsZip(data.data, data.data.name);
+            handleSuccessApi({
+                title: 'Bắt đầu tải xuống',
+                message: '...............'
+            })
+        }
+    })
+
     const { roleDetail } = useRole()
     const downloadItem = async (fileUrl: string, fileName: string) => {
         try {
+            console.log(fileName, fileUrl)
             const response = await fetch(fileUrl);
             const blob = await response.blob();
             const url = URL.createObjectURL(blob);
@@ -74,6 +90,8 @@ export default function SheetStorage({ node, id, isOpen, setIsOpen, projectId, i
             console.error("Lỗi tải xuống:", error);
         }
     };
+
+    //const downloadFolderAsZip = async (folderId: string)
 
 
     if (isLoadingFile || isLoadingFolder) return <></>
@@ -104,7 +122,12 @@ export default function SheetStorage({ node, id, isOpen, setIsOpen, projectId, i
                     </div>
                     <Separator className="my-2" />
                     <div className="flex items-center justify-center">
-                        <FolderIcon className="w-10 h-10 font-semibold" />
+                        {
+                            isFile
+                                ? <img src={dataFile?.data.thumbnail} className="w-10 h-10 font-semibold" alt="" />
+                                : <FolderIcon className="w-10 h-10 font-semibold" />
+                        }
+
                     </div>
                     <Separator className="my-" />
                     <div className="flex h-5 items-center justify-center space-x-10 text-sm">
@@ -123,7 +146,8 @@ export default function SheetStorage({ node, id, isOpen, setIsOpen, projectId, i
                         <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger onClick={() => {
-                                    if (isFile) downloadItem(dataFile?.data.url!, dataFile?.data.name!)
+                                    if (isFile) { downloadItem(dataFile?.data.url!, dataFile?.data.name!) }
+                                    else { mutate() }
                                 }} asChild>
                                     <div className="flex items-center gap-1">
                                         <DownloadIcon className="h-5 w-5" />

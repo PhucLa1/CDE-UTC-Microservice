@@ -17,32 +17,26 @@ namespace Project.Application.Features.Storage.MoveFolder
             if (folder is null)
                 throw new NotFoundException(Message.NOT_FOUND);
 
-            var folderIdString = folder.FullPath;
+            if(folder.ParentId == request.ParentId)
+                return new MoveFolderResponse() { Data = true, Message = Message.UPDATE_SUCCESSFULLY };
 
+            var folderIdString = "";
+
+            //Lấy ra những phần tử con
             var childFolderFullPath = await folderRepository.GetAllQueryAble()
-                .Where(e => e.FullPath.Contains(folderIdString) 
+                .Where(e => e.FullPath.Contains(folder.FullPath + "/") //Tránh trường hợp là 1/2/3 có thể trùng với 1/2/31
                 && e.ParentId != folder.ParentId) //Nhừng folder con là những folder không có cùng cha với thằng folder đang xét
                 .Select(e => e.FullPath)
                 .OrderByDescending(e => e.Length) // Sắp xếp theo độ dài giảm dần
                 .FirstOrDefaultAsync(cancellationToken);
 
-            if (childFolderFullPath is not null) //Tức là folder này không có folder con
-            {
-                var countFolderIdString = folderIdString.Length;
-                var countChildFolderFullPath = childFolderFullPath.Length;
-                folderIdString = childFolderFullPath.Substring(countFolderIdString - 1, countChildFolderFullPath - 1);
-            };
+            if (childFolderFullPath is not null)
+                folderIdString = childFolderFullPath;
 
-
-            //Láy ra những phần từ con của folder 
-            var folderIds = folderIdString
-                 .Split('/')
-                 .Skip(1)
-                 .Select(x => int.TryParse(x, out var num) ? num : (int?)null)
-                 .Where(x => x.HasValue) // Loại bỏ giá trị null
-                 .Select(x => x.Value) // Chuyển về danh sách số nguyên
-                 .ToList();
-
+            var folderIdStringArr = folderIdString.Split('/', StringSplitOptions.RemoveEmptyEntries);
+            var indexOfFolderId = Array.IndexOf(folderIdStringArr, folder.Id.ToString());
+            var folderIds = folderIdStringArr.Skip(indexOfFolderId + 1).Select(int.Parse).ToList(); //Lấy ra những phần tử con của folder
+                                                                                                    //
             //Check xem là parent id đó có trong folder con không ?
             if (folderIds.Contains(request.ParentId))
                 throw new BadRequestException(Message.CAN_NOT_MOVE_FOLDER);
@@ -66,12 +60,12 @@ namespace Project.Application.Features.Storage.MoveFolder
 
             //Lấy ra những thằng folder con của nó và nó
             var folderUpdates = await folderRepository.GetAllQueryAble()
-                .Where(e => folderIds.Contains(e.Id) && e.Id == request.Id)
+                .Where(e => folderIds.Contains(e.Id) || e.Id == request.Id)
                 .OrderBy(e => e.FullPath) //Sắp xếp từ folder con gần nhất
                 .ToListAsync(cancellationToken);
 
             var fileUpdates = await fileRepository.GetAllQueryAble()
-                .Where(e => e.FullPath.Contains(folder.FullPath))
+                .Where(e => e.FullPath.Contains(folder.FullPath + "/"))
                 .OrderBy(e => e.FullPath) //Sắp xếp từ file con gần nhất
                 .ToListAsync(cancellationToken);
 

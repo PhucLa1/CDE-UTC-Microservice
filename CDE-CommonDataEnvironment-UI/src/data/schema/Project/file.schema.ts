@@ -20,7 +20,8 @@ export const fileSchema = z.object({
     createdBy: z.number().optional(),
     tagIds: z.array(z.number()).optional(),
     createdAt: z.string().optional(),
-    fileHistoryResults: z.array(fileHistorySchema).optional()
+    fileHistoryResults: z.array(fileHistorySchema).optional(),
+    thumbnail: z.string().optional(),
 });
 
 export type File = z.infer<typeof fileSchema>;

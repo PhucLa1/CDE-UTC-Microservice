@@ -1,4 +1,7 @@
 ﻿
+using Project.Application.Features.Storage.MoveFolder;
+using Project.Domain.Entities;
+
 namespace Project.Application.Features.Storage.MoveFile
 {
     public class MoveFileHandler
@@ -19,8 +22,13 @@ namespace Project.Application.Features.Storage.MoveFile
                 .Where(e => e.Id == request.Id)
                 .FirstOrDefaultAsync(cancellationToken);
 
-            if(file is null)
+
+
+
+            if (file is null)
                 throw new NotFoundException(Message.NOT_FOUND);
+            if (file.FolderId == request.FolderId)
+                return new MoveFileResponse() { Data = true, Message = Message.UPDATE_SUCCESSFULLY };
             //Update file
             if (folderFullPath is not null)
                 fullPath = folderFullPath + "/" + file.Id;

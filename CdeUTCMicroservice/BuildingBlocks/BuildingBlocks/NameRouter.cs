@@ -71,6 +71,7 @@
         #region Storage
         public const string STORAGE_ROUTER = "storage";
         public const string FULL_PATH = "full-path";
+        public const string TREE_STORAGE = "tree-storage";
         #endregion
 
         #region Folder Comment

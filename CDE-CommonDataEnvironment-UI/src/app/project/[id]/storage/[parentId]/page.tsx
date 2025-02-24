@@ -10,6 +10,7 @@ import UploadFile from '../_components/upload-file';
 import { useQuery } from '@tanstack/react-query';
 import storageApiRequest from '@/apis/storage.api';
 import TableStorage from '../_components/table-storage';
+import GridStorage from '../_components/grid-storage';
 const pathList: Array<PathItem> = [
     {
         name: "Tệp & Thư mục",
@@ -17,10 +18,14 @@ const pathList: Array<PathItem> = [
     },
 ];
 export default function page({ params }: { params: { id: string, parentId: string } }) {
-    const [viewMode, setViewMode] = useState<'table' | 'grid'>('table');
     const [searchQuery, setSearchQuery] = useState('');
     const [isOpen, setIsOpen] = useState(false);
+    const [viewMode, setViewMode] = useState(localStorage.getItem('viewModeData') || 'table');
 
+    const handleViewModeChange = (mode: 'table' | 'grid') => {
+        localStorage.setItem('viewModeData', mode);
+        setViewMode(mode); // Cập nhật state để component re-render
+    };
 
     const { data, isLoading } = useQuery({
         queryKey: ['storage', Number(params.parentId)],
@@ -86,7 +91,7 @@ export default function page({ params }: { params: { id: string, parentId: strin
                     <Button
                         variant="outline"
                         size="icon"
-                        onClick={() => setViewMode('table')}
+                        onClick={() => handleViewModeChange('table')}
                         className={viewMode === 'table' ? 'bg-accent' : ''}
                     >
                         <List className="h-4 w-4" />
@@ -94,7 +99,7 @@ export default function page({ params }: { params: { id: string, parentId: strin
                     <Button
                         variant="outline"
                         size="icon"
-                        onClick={() => setViewMode('grid')}
+                        onClick={() => handleViewModeChange('grid')}
                         className={viewMode === 'grid' ? 'bg-accent' : ''}
                     >
                         <LayoutGrid className="h-4 w-4" />
@@ -110,7 +115,7 @@ export default function page({ params }: { params: { id: string, parentId: strin
                 })} className="mt-2" />
             </div>
             <div className='-mx-4 flex-1 overflow-auto px-4 py-4 lg:flex-row'>
-                {viewMode === 'table' && (//+
+                {localStorage.getItem('viewModeData') === 'table' && (//+
                     <TableStorage
                         projectId={Number(params.id)}
                         data={data!.data.sort((a, b) => {
@@ -119,6 +124,10 @@ export default function page({ params }: { params: { id: string, parentId: strin
                         })}
                     />
                 )}
+                {localStorage.getItem('viewModeData') === 'grid' && <GridStorage
+                    projectId={Number(params.id)}
+                    data={data!.data} />
+                }
             </div>
         </>
     )

@@ -37,7 +37,10 @@ namespace Project.Application.Storage.GetFileById
                         Id = e.TagId.Value,
                         Name = e.Tag.Name
                     }).ToList(),
-                    ImageUrl = e.Url
+                    Url = e.Url,
+                    Thumbnail = IMAGE_EXTENSION.Contains(e.Extension)
+                    ? e.Url
+                    : Setting.PROJECT_HOST + "/Extension/" + e.Extension.ConvertToUrl(),
                 })
                 .FirstOrDefaultAsync(e => e.Id == request.Id, cancellationToken);
 
@@ -71,7 +74,7 @@ namespace Project.Application.Storage.GetFileById
                     CreatedBy = e.CreatedBy,
                     ImageUrl = IMAGE_EXTENSION.Contains(e.Extension)
                     ? e.Url
-                    : Setting.PROJECT_HOST + "/Extension/" + e.Url,
+                    : Setting.PROJECT_HOST + "/Extension/" + e.Extension.ConvertToUrl(),
                 })
                 .ToListAsync(cancellationToken);
 
