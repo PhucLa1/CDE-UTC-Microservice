@@ -12,6 +12,7 @@ export default function AppLayout({ children }: Readonly<{ children: React.React
     let layout = 0;
     if (authPaths.includes(pathname)) layout = 0;
     else if (pathname == "/project") layout = 0;
+    else if (pathname.includes("view-file")) layout = 0;
     else layout = 1;
 
     return (

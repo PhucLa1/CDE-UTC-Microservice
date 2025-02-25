@@ -36,6 +36,7 @@ import { SheetFolderDestination } from "./sheet-folder-destination"
 import storageApiRequest from "@/apis/storage.api"
 import { handleSuccessApi } from "@/lib/utils"
 import { downloadFolderAsZip } from "@/lib/zipUtil"
+import { Button } from "@/components/custom/button"
 type FormProps = {
     node: ReactNode,
     id: number,
@@ -131,6 +132,7 @@ export default function SheetStorage({ node, id, isOpen, setIsOpen, projectId, i
                     </div>
                     <Separator className="my-" />
                     <div className="flex h-5 items-center justify-center space-x-10 text-sm">
+                        {isFile && <Button onClick={() => window.open(`../view-file?url=${dataFile?.data.url}`, '_blank')}>Xem file</Button>}
                         <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger asChild>
