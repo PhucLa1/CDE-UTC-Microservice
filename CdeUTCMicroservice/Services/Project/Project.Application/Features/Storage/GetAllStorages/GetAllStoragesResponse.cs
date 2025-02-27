@@ -1,7 +1,4 @@
-﻿using Project.Application.Dtos.Result;
-using System.Xml.XPath;
-
-namespace Project.Application.Features.Storage.GetAllStorages
+﻿namespace Project.Application.Features.Storage.GetAllStorages
 {
     public class GetAllStoragesResponse
     {

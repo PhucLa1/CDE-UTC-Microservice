@@ -1,9 +1,6 @@
-﻿
-using Project.Application.Dtos.Result;
-using Project.Application.Extensions;
+﻿using Project.Application.Extensions;
 using Project.Application.Grpc;
 using Project.Application.Grpc.GrpcRequest;
-using System.Xml.XPath;
 
 namespace Project.Application.Features.Storage.GetAllStorages
 {

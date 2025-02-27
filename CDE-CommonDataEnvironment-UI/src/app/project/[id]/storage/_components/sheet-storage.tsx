@@ -132,7 +132,11 @@ export default function SheetStorage({ node, id, isOpen, setIsOpen, projectId, i
                     </div>
                     <Separator className="my-" />
                     <div className="flex h-5 items-center justify-center space-x-10 text-sm">
-                        {isFile && <Button onClick={() => window.open(`../view-file?url=${dataFile?.data.url}`, '_blank')}>Xem file</Button>}
+                        {isFile && <Button onClick={() => {
+                            console.log("id", id)
+                            window.open(`../view-file/file/${id}?url=${dataFile?.data.url}`, '_blank')
+                        }
+                        }>Xem file</Button>}
                         <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger asChild>

@@ -20,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\Models\" />
     <Folder Include="Exceptions\" />
   </ItemGroup>
 

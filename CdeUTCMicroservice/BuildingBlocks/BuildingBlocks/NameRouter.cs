@@ -74,8 +74,16 @@
         public const string TREE_STORAGE = "tree-storage";
         #endregion
 
+        #region View
+        public const string VIEW = "view";
+        #endregion
+
         #region Folder Comment
         public const string FOLDER_COMMENT_ROUTER = "folder-comment";
+        #endregion
+
+        #region View Comment
+        public const string VIEW_COMMENT_ROUTER = "view-comment";
         #endregion
 
         #region File Comment

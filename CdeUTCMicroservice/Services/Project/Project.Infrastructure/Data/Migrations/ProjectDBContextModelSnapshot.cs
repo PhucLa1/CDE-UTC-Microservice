@@ -22,6 +22,52 @@ namespace Project.Infrastructure.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Project.Domain.Entities.Annotation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Action")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AnnotationId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("created_at");
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int")
+                        .HasColumnName("created_by");
+
+                    b.Property<string>("InkString")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("updated_at");
+
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("int")
+                        .HasColumnName("updated_by");
+
+                    b.Property<int>("ViewId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ViewId");
+
+                    b.ToTable("Annotation");
+                });
+
             modelBuilder.Entity("Project.Domain.Entities.BCFComment", b =>
                 {
                     b.Property<int>("Id")
@@ -1272,6 +1318,10 @@ namespace Project.Infrastructure.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Annotation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
                         .HasColumnName("created_at");
@@ -1298,6 +1348,10 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Property<int>("UpdatedBy")
                         .HasColumnType("int")
                         .HasColumnName("updated_by");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ViewType")
                         .HasColumnType("int");
@@ -1466,6 +1520,17 @@ namespace Project.Infrastructure.Data.Migrations
                     b.HasIndex("ViewId");
 
                     b.ToTable("ViewTodos");
+                });
+
+            modelBuilder.Entity("Project.Domain.Entities.Annotation", b =>
+                {
+                    b.HasOne("Project.Domain.Entities.View", "View")
+                        .WithMany("Annotations")
+                        .HasForeignKey("ViewId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("View");
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.BCFComment", b =>
@@ -1917,6 +1982,11 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Navigation("FileTags");
 
                     b.Navigation("FolderTags");
+                });
+
+            modelBuilder.Entity("Project.Domain.Entities.View", b =>
+                {
+                    b.Navigation("Annotations");
                 });
 #pragma warning restore 612, 618
         }

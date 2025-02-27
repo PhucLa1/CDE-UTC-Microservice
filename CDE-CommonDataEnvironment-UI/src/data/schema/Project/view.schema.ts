@@ -1,0 +1,28 @@
+import { AnnotationAction } from "@/data/enums/annotationaction.enum";
+import { z } from "zod";
+export const annotationSchema = z.object({
+    annotationAction: z.nativeEnum(AnnotationAction).optional(),
+    inkString: z.string().optional(),
+    viewId: z.number().optional()
+})
+
+export const viewSchema = z.object({
+    id: z.number().optional(),
+    name: z.string().min(1, "Nội dung dán phải có ít nhất 1 ký tự."),
+    userId: z.number().optional(),
+    description: z.string().min(1, "Nội dung dán phải có ít nhất 1 ký tự."),
+    fileId: z.number().optional(),
+    annotationModels: z.array(annotationSchema).optional(),
+    createdAt: z.string().optional(),
+    nameCreatedBy: z.string().optional(),
+    tagNames: z.array(z.string()).optional(),
+    thumbnailUrl: z.string().optional(),
+});
+
+export type View = z.infer<typeof viewSchema>;
+
+export const viewDefault: View = {
+    name: "",
+    description: "",
+};
+

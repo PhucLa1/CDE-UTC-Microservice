@@ -4,12 +4,12 @@ namespace Project.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<ViewTag> builder)
         {          
-            builder.HasOne<View>()
-              .WithMany()
+            builder.HasOne(e => e.View)
+              .WithMany(e => e.ViewTags)
               .HasForeignKey(o => o.ViewId)
               .OnDelete(DeleteBehavior.SetNull);
-            builder.HasOne<Tag>()
-              .WithMany()
+            builder.HasOne(e => e.Tag)
+              .WithMany(e => e.ViewTags)
               .HasForeignKey(o => o.TagId)
               .OnDelete(DeleteBehavior.SetNull);
         }
