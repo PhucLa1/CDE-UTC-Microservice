@@ -15,7 +15,7 @@ const pathList: Array<PathItem> = [
         url: "#"
     },
 ];
-export default function page({ params }: { params: { id: string, parentId: string } }) {
+export default function page({ params }: { params: { id: string} }) {
     const [searchQuery, setSearchQuery] = useState('');
     const [isOpen, setIsOpen] = useState(false);
     const [viewMode, setViewMode] = useState(localStorage.getItem('viewModeData') || 'table');
@@ -26,7 +26,7 @@ export default function page({ params }: { params: { id: string, parentId: strin
     };
 
     const { data, isLoading } = useQuery({
-        queryKey: ['storage', Number(params.parentId)],
+        queryKey: ['views'],
         queryFn: () => viewApiRequest.getList(Number(params.id)),
     })
 

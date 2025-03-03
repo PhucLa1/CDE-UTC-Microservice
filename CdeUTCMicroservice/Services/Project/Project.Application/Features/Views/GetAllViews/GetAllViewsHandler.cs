@@ -20,7 +20,7 @@ namespace Project.Application.Features.Views.GetAllViews
                                where f.ProjectId == request.ProjectId
                                select new GetAllViewsResponse()
                                {
-                                   Id = f.Id,
+                                   Id = v.Id,
                                    Name = v.Name,
                                    CreatedAt = v.CreatedAt.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
                                    CreatedBy = v.CreatedBy,
