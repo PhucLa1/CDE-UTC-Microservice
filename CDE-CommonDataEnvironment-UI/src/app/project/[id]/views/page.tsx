@@ -3,8 +3,7 @@ import AppBreadcrumb, { PathItem } from '@/components/custom/_breadcrumb'
 import { Button } from '@/components/custom/button';
 import { Input } from '@/components/ui/input';
 import { LayoutGrid, List, Search } from 'lucide-react';
-import React, { useEffect, useRef, useState } from 'react'
-import { FaFolder, FaUpload } from 'react-icons/fa';
+import React, { useState } from 'react'
 import { useQuery } from '@tanstack/react-query';
 import viewApiRequest from '@/apis/view.api';
 import TableView from './_components/table-view';
@@ -15,9 +14,8 @@ const pathList: Array<PathItem> = [
         url: "#"
     },
 ];
-export default function page({ params }: { params: { id: string} }) {
+export default function page({ params }: { params: { id: string } }) {
     const [searchQuery, setSearchQuery] = useState('');
-    const [isOpen, setIsOpen] = useState(false);
     const [viewMode, setViewMode] = useState(localStorage.getItem('viewModeData') || 'table');
 
     const handleViewModeChange = (mode: 'table' | 'grid') => {

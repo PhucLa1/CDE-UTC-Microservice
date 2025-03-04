@@ -18,6 +18,7 @@ export default function GridStorage({ data, projectId }: FormProps) {
     return (
         <div>
             {id != 0 && <SheetView
+                node={<></>}
                 projectId={projectId}
                 id={id}
                 isOpen={isOpen}

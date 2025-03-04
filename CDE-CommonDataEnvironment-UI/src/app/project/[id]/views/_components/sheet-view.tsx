@@ -26,14 +26,16 @@ import { useRole } from '../../layout'
 import CreateViewComment from './create-view-comment'
 import DeleteViewComment from './delete-view-comment'
 import UpdateViewComment from './update-view-comment'
+import { UpdateView } from './update-view'
 type FormProps = {
+    node: ReactNode,
     id: number,
     projectId: number,
     isOpen: boolean,
     setIsOpen: (value: boolean) => void
 }
 
-export default function SheetView({ id, projectId, isOpen, setIsOpen }: FormProps) {
+export default function SheetView({ node, id, projectId, isOpen, setIsOpen }: FormProps) {
     const [updateComment, setUpdateComment] = useState<number>(0)
     const { roleDetail } = useRole()
     console.log(updateComment)
@@ -41,10 +43,11 @@ export default function SheetView({ id, projectId, isOpen, setIsOpen }: FormProp
         queryKey: ['get-detail-view', id],
         queryFn: () => viewApiRequest.getById(id)
     })
+    if (isLoading) return <></>
     return (
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-                <></>
+                {node}
             </SheetTrigger>
             <SheetContent className="overflow-y-auto">
                 <SheetHeader>
@@ -60,7 +63,7 @@ export default function SheetView({ id, projectId, isOpen, setIsOpen }: FormProp
                         </span>
                         {roleDetail?.role !== Role.Admin && data?.data.createdBy !== roleDetail?.id
                             ? <></>
-                            : <Pencil className="h-5 w-5" />
+                            : <UpdateView node={<Pencil className="h-5 w-5" />} projectId={projectId} view={data?.data!} />
                         }
 
                     </div>
@@ -68,9 +71,9 @@ export default function SheetView({ id, projectId, isOpen, setIsOpen }: FormProp
                     <div className="flex items-center justify-center">
                         <FolderIcon className="w-10 h-10 font-semibold" />
                     </div>
-                    <Separator className="my-" />
+                    <Separator className="my-2" />
                     <div className="flex h-5 items-center justify-center space-x-10 text-sm">
-                        <Button>Xem file</Button>
+                        <Button>Xem views</Button>
                         <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger asChild>
@@ -103,19 +106,8 @@ export default function SheetView({ id, projectId, isOpen, setIsOpen }: FormProp
                         <h5 className="font-bold">Chi tiết chế độ xem</h5>
                         <div className="text-[12px]">
                             <div className="mt-2">
-                                <span>Phiên bản</span>
-                                {/* {isFile ? <FileHistoryPage
-                                    node={<p className="hover:cursor-pointer hover:text-gray-600 font-bold underline">
-                                        {dataFile?.data.fileHistoryResults?.length} phiên bản trước đó
-                                    </p>}
-                                    fileHistories={dataFile?.data.fileHistoryResults!}
-                                /> : <FolderHistoryPage
-                                    node={<p className="hover:cursor-pointer hover:text-gray-600 font-bold underline">
-                                        {dataFolder?.data.folderHistoryResults?.length} phiên bản trước đó
-                                    </p>}
-                                    folderHistories={dataFolder?.data.folderHistoryResults!}
-                                />} */}
-
+                                <span>Mô tả</span>
+                                <p>{data?.data.description}</p>
                             </div>
                             <div className="mt-2">
                                 <span>Ngày tạo</span>

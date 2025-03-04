@@ -22,6 +22,8 @@ export const viewSchema = z.object({
     tagResults: z.array(tagSchema).optional(),
     userCommentResults: z.array(userCommentSchema).optional(),
     createdBy: z.number().optional(),
+    projectId: z.number().optional(),
+    tagIds: z.array(z.number()).optional(),
 });
 
 export type View = z.infer<typeof viewSchema>;

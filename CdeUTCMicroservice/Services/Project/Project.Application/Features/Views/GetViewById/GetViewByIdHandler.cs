@@ -31,7 +31,8 @@ namespace Project.Application.Features.Storage.GetViewById
                     {
                         Id = e.TagId.Value,
                         Name = e.Tag.Name
-                    }).ToList()
+                    }).ToList(),
+                    Description = e.Description
                 })
                 .FirstOrDefaultAsync(e => e.Id == request.Id, cancellationToken);
 

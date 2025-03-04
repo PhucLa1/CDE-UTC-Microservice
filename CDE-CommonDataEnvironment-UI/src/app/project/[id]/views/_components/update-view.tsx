@@ -1,5 +1,4 @@
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import {
     Sheet,
     SheetClose,
@@ -14,43 +13,45 @@ import { ReactNode, useEffect, useState } from "react"
 import { Button } from '@/components/custom/button'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
-import { File, fileDefault, fileSchema } from '@/data/schema/Project/file.schema'
+import { View, viewDefault, viewSchema } from '@/data/schema/Project/view.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
-import fileApiRequest from '@/apis/file.api'
+import viewApiRequest from '@/apis/view.api'
 import { handleSuccessApi } from '@/lib/utils'
 import Select from "react-select";
 import tagApiRequest from "@/apis/tag.api"
 type FormProps = {
     node: ReactNode,
     projectId: number,
-    file: File
+    view: View
 }
 
-export function UpdateFile({ node, projectId, file }: FormProps) {
+export function UpdateView({ node, projectId, view }: FormProps) {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const queryClient = useQueryClient();
     const [selectedTagIds, setSelectedTagIds] = useState<{ label: string, value: number }[]>([]);
 
-    const form = useForm<File>({
-        resolver: zodResolver(fileSchema),
-        defaultValues: fileDefault
+    const form = useForm<View>({
+        resolver: zodResolver(viewSchema),
+        defaultValues: viewDefault
     });
-    const onSubmit = (values: File) => {
-        values.id = file.id
+    const onSubmit = (values: View) => {
+        values.id = view.id
         values.projectId = projectId
         values.tagIds = selectedTagIds.map(tag => tag.value)
+        console.log(values)
         mutate(values)
     };
     useEffect(() => {
-        if (file.tagResults) {
-            setSelectedTagIds(file.tagResults.map((item) => ({
+        if (view.tagResults) {
+            setSelectedTagIds(view.tagResults.map((item) => ({
                 label: item.name,
                 value: item.id!
             })));
         }
-        form.setValue('name', file.name);
-    }, [file]); // Loại bỏ `selectedTagIds` khỏi dependency array 
+        form.setValue('name', view.name);
+        form.setValue('description', view.description);
+    }, [view]); // Loại bỏ `selectedTagIds` khỏi dependency array 
 
     const { data, isLoading } = useQuery({
         queryKey: ['get-all-tags'],
@@ -58,17 +59,17 @@ export function UpdateFile({ node, projectId, file }: FormProps) {
     })
 
     const { mutate, isPending } = useMutation({
-        mutationKey: ['update-file'],
-        mutationFn: (value: File) => fileApiRequest.update(value),
+        mutationKey: ['update-view'],
+        mutationFn: (value: View) => viewApiRequest.update(value),
         onSuccess: () => {
             handleSuccessApi({
-                title: 'Cập nhật tệp',
-                message: 'Cập nhật tệp thành công'
+                title: 'Cập nhật chế độ xem',
+                message: 'Cập nhật chế độ xem thành công'
             })
             setIsOpen(false)
             form.reset()
-            queryClient.invalidateQueries({ queryKey: ['get-detail-file', file.id] })
-            queryClient.invalidateQueries({ queryKey: ['storage'] })
+            queryClient.invalidateQueries({ queryKey: ['get-detail-view', view.id] })
+            queryClient.invalidateQueries({ queryKey: ['views'] })
             //Gọi lại API
         },
         onError: () => {
@@ -84,7 +85,7 @@ export function UpdateFile({ node, projectId, file }: FormProps) {
             </SheetTrigger>
             <SheetContent>
                 <SheetHeader>
-                    <SheetTitle>Cập nhật tệp</SheetTitle>
+                    <SheetTitle>Cập nhật chế độ xem</SheetTitle>
                     <SheetDescription>
                         Tạo ra những thay đổi của bạn tại đâyy.
                     </SheetDescription>
@@ -99,7 +100,22 @@ export function UpdateFile({ node, projectId, file }: FormProps) {
                                     <FormItem>
                                         <FormLabel>Tên</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="Tệp A1" {...field} autoFocus />
+                                            <Input placeholder="Chế độ xem A1" {...field} autoFocus />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
+                        <div className="flex flex-col space-y-1.5 flex-1">
+                            <FormField
+                                control={form.control}
+                                name="description"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Mô tả</FormLabel>
+                                        <FormControl>
+                                            <Input placeholder="Mô tả" {...field} autoFocus />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>

@@ -43,7 +43,7 @@ namespace Project.Application.Features.Storage.UpdateFile
             //Check xem đã có file này trong dự án và cùng thư mục chưa
             var fileInDb = await fileRepository.GetAllQueryAble()
                 .FirstOrDefaultAsync(e => e.FolderId == file.FolderId
-                && e.Name == request.Name, cancellationToken);
+                && e.Name == request.Name && e.Id != request.Id, cancellationToken);
 
             if (fileInDb is not null)
                 throw new BadRequestException(Message.IS_EXIST_FILE);
