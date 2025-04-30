@@ -1,5 +1,5 @@
 export enum AnnotationAction {
-    ADD,
-    UPDATE,
-    DELETE
+    ADD = 0,
+    UPDATE = 1,
+    DELETE = 2
 }

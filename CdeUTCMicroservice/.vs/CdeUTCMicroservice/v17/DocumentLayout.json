@@ -3,36 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\views\\getallviews\\getallviewshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\views\\getallviews\\getallviewshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\todos\\createtodo\\createtodorequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\todos\\createtodo\\createtodorequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\views\\getviewbyid\\getviewbyidhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\views\\getviewbyid\\getviewbyidhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\todos\\createtodo\\createtodohandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\todos\\createtodo\\createtodohandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\views\\getviewbyid\\getviewbyidresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\views\\getviewbyid\\getviewbyidresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B672F4FA-1536-4183-AE42-503640E24350}|Services\\Event\\Event.Features\\Event.Features.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\event\\event.features\\messagehandlers\\assigntodosubcribe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B672F4FA-1536-4183-AE42-503640E24350}|Services\\Event\\Event.Features\\Event.Features.csproj|solutionrelative:services\\event\\event.features\\messagehandlers\\assigntodosubcribe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\views\\getviewbyid\\getviewbyidrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\views\\getviewbyid\\getviewbyidrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\todos\\gettodos\\gettodoshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\todos\\gettodos\\gettodoshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\views\\updateview\\updateviewhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\views\\updateview\\updateviewhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\todos\\gettodos\\gettodosrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\todos\\gettodos\\gettodosrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\views\\updateview\\updateviewrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\views\\updateview\\updateviewrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\storage\\updatefolder\\updatefolderhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\storage\\updatefolder\\updatefolderhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\storage\\updatefile\\updatefilehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\storage\\updatefile\\updatefilehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|c:\\users\\hong phuc\\desktop\\study\\cde-common data environment\\cde-utc-microservice\\cdeutcmicroservice\\services\\project\\project.application\\features\\todos\\gettodos\\gettodosresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1555BB5-276D-461C-B3E2-699E9BEC6ED6}|Services\\Project\\Project.Application\\Project.Application.csproj|solutionrelative:services\\project\\project.application\\features\\todos\\gettodos\\gettodosresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -41,116 +33,95 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 1761,
-          "SelectedChildIndex": 1,
+          "DockedWidth": 1087,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AssignTodoSubcribe.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\MessageHandlers\\AssignTodoSubcribe.cs",
+              "RelativeDocumentMoniker": "Services\\Event\\Event.Features\\MessageHandlers\\AssignTodoSubcribe.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\MessageHandlers\\AssignTodoSubcribe.cs",
+              "RelativeToolTip": "Services\\Event\\Event.Features\\MessageHandlers\\AssignTodoSubcribe.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T18:45:34.746Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GetAllViewsHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Views\\GetAllViews\\GetAllViewsHandler.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Views\\GetAllViews\\GetAllViewsHandler.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Views\\GetAllViews\\GetAllViewsHandler.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Views\\GetAllViews\\GetAllViewsHandler.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Title": "CreateTodoRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Todos\\CreateTodo\\CreateTodoRequest.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Todos\\CreateTodo\\CreateTodoRequest.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Todos\\CreateTodo\\CreateTodoRequest.cs",
+              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Todos\\CreateTodo\\CreateTodoRequest.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAAABMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T10:15:11.229Z",
+              "WhenOpened": "2025-04-30T14:46:29.737Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "GetViewByIdHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Views\\GetViewById\\GetViewByIdHandler.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Views\\GetViewById\\GetViewByIdHandler.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Views\\GetViewById\\GetViewByIdHandler.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Views\\GetViewById\\GetViewByIdHandler.cs",
-              "ViewState": "AQIAAF4AAAAAAAAAAAAQwF4AAAAvAAAA",
+              "Title": "CreateTodoHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Todos\\CreateTodo\\CreateTodoHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Todos\\CreateTodo\\CreateTodoHandler.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Todos\\CreateTodo\\CreateTodoHandler.cs",
+              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Todos\\CreateTodo\\CreateTodoHandler.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAAAQwBQAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T10:09:51.727Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "GetViewByIdResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Views\\GetViewById\\GetViewByIdResponse.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Views\\GetViewById\\GetViewByIdResponse.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Views\\GetViewById\\GetViewByIdResponse.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Views\\GetViewById\\GetViewByIdResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T10:09:46.03Z",
+              "WhenOpened": "2025-04-26T07:43:38.839Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "GetViewByIdRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Views\\GetViewById\\GetViewByIdRequest.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Views\\GetViewById\\GetViewByIdRequest.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Views\\GetViewById\\GetViewByIdRequest.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Views\\GetViewById\\GetViewByIdRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "GetTodosHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Todos\\GetTodos\\GetTodosHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Todos\\GetTodos\\GetTodosHandler.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Todos\\GetTodos\\GetTodosHandler.cs",
+              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Todos\\GetTodos\\GetTodosHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAABmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T10:09:45.286Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UpdateViewHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Views\\UpdateView\\UpdateViewHandler.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Views\\UpdateView\\UpdateViewHandler.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Views\\UpdateView\\UpdateViewHandler.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Views\\UpdateView\\UpdateViewHandler.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAADwvyEAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T10:07:09.017Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-26T07:42:37.717Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "UpdateViewRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Views\\UpdateView\\UpdateViewRequest.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Views\\UpdateView\\UpdateViewRequest.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Views\\UpdateView\\UpdateViewRequest.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Views\\UpdateView\\UpdateViewRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAA7AAAA",
+              "Title": "GetTodosResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Todos\\GetTodos\\GetTodosResponse.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Todos\\GetTodos\\GetTodosResponse.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Todos\\GetTodos\\GetTodosResponse.cs",
+              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Todos\\GetTodos\\GetTodosResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T10:06:44.714Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-26T07:30:55.548Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UpdateFolderHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\UpdateFolder\\UpdateFolderHandler.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Storage\\UpdateFolder\\UpdateFolderHandler.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\UpdateFolder\\UpdateFolderHandler.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Storage\\UpdateFolder\\UpdateFolderHandler.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAAwAAAAAAAAAAA",
+              "DocumentIndex": 4,
+              "Title": "GetTodosRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Todos\\GetTodos\\GetTodosRequest.cs",
+              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Todos\\GetTodos\\GetTodosRequest.cs",
+              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Todos\\GetTodos\\GetTodosRequest.cs",
+              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Todos\\GetTodos\\GetTodosRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAABNAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T09:50:55.495Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UpdateFileHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\UpdateFile\\UpdateFileHandler.cs",
-              "RelativeDocumentMoniker": "Services\\Project\\Project.Application\\Features\\Storage\\UpdateFile\\UpdateFileHandler.cs",
-              "ToolTip": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.Application\\Features\\Storage\\UpdateFile\\UpdateFileHandler.cs",
-              "RelativeToolTip": "Services\\Project\\Project.Application\\Features\\Storage\\UpdateFile\\UpdateFileHandler.cs",
-              "ViewState": "AQIAABkAAAAAAAAAAAAUwC0AAAA/AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T09:48:38.545Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-26T07:30:28.385Z"
             }
           ]
         }

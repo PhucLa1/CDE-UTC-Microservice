@@ -76,6 +76,8 @@
 
         #region View
         public const string VIEW = "view";
+        public const string ADD_ANNOTATION = "add-annotation";
+        public const string GET_ANNOTATIONS = "get-annotations";
         #endregion
 
         #region Folder Comment
@@ -88,6 +90,10 @@
 
         #region File Comment
         public const string FILE_COMMENT_ROUTER = "file-comment";
+        #endregion
+
+        #region To do
+        public const string TODO_ROUTER = "todo";
         #endregion
 
 

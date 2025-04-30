@@ -1061,11 +1061,26 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("IsAssignToGroup")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("PriorityId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("StatusId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TypeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -1782,58 +1797,6 @@ namespace Project.Infrastructure.Data.Migrations
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.SetNull);
-
-                    b.OwnsOne("Project.Domain.ValueObjects.Characteristic", "Characteristic", b1 =>
-                        {
-                            b1.Property<int>("TodoId")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("PriorityId")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("StatusId")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("TypeId")
-                                .HasColumnType("int");
-
-                            b1.HasKey("TodoId");
-
-                            b1.HasIndex("PriorityId");
-
-                            b1.HasIndex("StatusId");
-
-                            b1.HasIndex("TypeId");
-
-                            b1.ToTable("Todos");
-
-                            b1.HasOne("Project.Domain.Entities.Priority", "Priority")
-                                .WithMany()
-                                .HasForeignKey("PriorityId")
-                                .OnDelete(DeleteBehavior.SetNull);
-
-                            b1.HasOne("Project.Domain.Entities.Status", "Status")
-                                .WithMany()
-                                .HasForeignKey("StatusId")
-                                .OnDelete(DeleteBehavior.SetNull);
-
-                            b1.WithOwner()
-                                .HasForeignKey("TodoId");
-
-                            b1.HasOne("Project.Domain.Entities.Type", "Type")
-                                .WithMany()
-                                .HasForeignKey("TypeId")
-                                .OnDelete(DeleteBehavior.SetNull);
-
-                            b1.Navigation("Priority");
-
-                            b1.Navigation("Status");
-
-                            b1.Navigation("Type");
-                        });
-
-                    b.Navigation("Characteristic")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.TodoComment", b =>
@@ -1916,15 +1879,19 @@ namespace Project.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Project.Domain.Entities.ViewTag", b =>
                 {
-                    b.HasOne("Project.Domain.Entities.Tag", null)
-                        .WithMany()
+                    b.HasOne("Project.Domain.Entities.Tag", "Tag")
+                        .WithMany("ViewTags")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("Project.Domain.Entities.View", null)
-                        .WithMany()
+                    b.HasOne("Project.Domain.Entities.View", "View")
+                        .WithMany("ViewTags")
                         .HasForeignKey("ViewId")
                         .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Tag");
+
+                    b.Navigation("View");
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.ViewTodo", b =>
@@ -1982,11 +1949,15 @@ namespace Project.Infrastructure.Data.Migrations
                     b.Navigation("FileTags");
 
                     b.Navigation("FolderTags");
+
+                    b.Navigation("ViewTags");
                 });
 
             modelBuilder.Entity("Project.Domain.Entities.View", b =>
                 {
                     b.Navigation("Annotations");
+
+                    b.Navigation("ViewTags");
                 });
 #pragma warning restore 612, 618
         }

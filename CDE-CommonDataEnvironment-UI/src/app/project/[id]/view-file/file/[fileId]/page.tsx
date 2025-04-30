@@ -3,6 +3,16 @@ import React, { useEffect, useState } from 'react';
 import PDFViewer from '../../_components/pdf-viewer';
 import { Button } from '@/components/custom/button';
 import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+import {
   AlertDialog,
   AlertDialogCancel,
   AlertDialogContent,
@@ -22,9 +32,10 @@ import { z } from 'zod';
 import { useMutation } from '@tanstack/react-query';
 import viewApiRequest from '@/apis/view.api';
 import { handleSuccessApi } from '@/lib/utils';
+import { UpsertTodo } from '../../../todo/components/form-crud-todo';
 
 
-export default function ViewerPage({ params }: { params: { fileId: string } }) {
+export default function ViewerPageFile({ params }: { params: { fileId: string } }) {
   const [fileUrl, setFileUrl] = useState<string | null>(null);
   const [annotationList, setAnnotationList] = useState<z.infer<typeof annotationSchema>[]>([])
 
@@ -56,7 +67,7 @@ export default function ViewerPage({ params }: { params: { fileId: string } }) {
     values.fileId = Number(params.fileId)
     values.annotationModels = annotationList;
     console.log(values)
-    //mutate(values)
+    mutate(values)
   };
 
   useEffect(() => {
@@ -77,10 +88,11 @@ export default function ViewerPage({ params }: { params: { fileId: string } }) {
 
   return (
     <div>
-      <div className='flex items-center justify-between'>
+      <div className='flex items-center justify-start'>
+        <UpsertTodo />
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Button>Tạo mới chế độ xem</Button>
+            <Button className='ml-4'>Tạo mới chế độ xem</Button>
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
@@ -124,14 +136,14 @@ export default function ViewerPage({ params }: { params: { fileId: string } }) {
 
                 <AlertDialogFooter>
                   <AlertDialogCancel>Hủy</AlertDialogCancel>
-                  <Button type='submit'>Tiếp tục</Button>
+                  <Button loading={isPending} type='submit'>Tiếp tục</Button>
                 </AlertDialogFooter>
               </form>
             </Form>
           </AlertDialogContent>
         </AlertDialog>
       </div>
-      <PDFViewer addAnnotation={addAnnotation} url={fileUrl} />
+      <PDFViewer viewId={0} annotationList={[]} addAnnotation={addAnnotation} url={fileUrl} />
     </div>
   );
 }

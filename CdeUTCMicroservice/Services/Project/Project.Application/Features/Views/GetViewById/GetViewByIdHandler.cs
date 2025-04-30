@@ -8,6 +8,7 @@ namespace Project.Application.Features.Storage.GetViewById
     public class GetViewByIdHandler
         (IBaseRepository<ViewComment> ViewCommentRepository,
         IBaseRepository<View> ViewRepository,
+        IBaseRepository<File> fileRepository,
         IUserGrpc userGrpc)
         : IQueryHandler<GetViewByIdRequest, ApiResponse<GetViewByIdResponse>>
     {
@@ -19,22 +20,28 @@ namespace Project.Application.Features.Storage.GetViewById
             var currenTimeDisplay = ViewRepository.GetCurrentTimeDisplay();
 
             var View = await ViewRepository.GetAllQueryAble()
-                .Include(e => e.ViewTags)
-                .ThenInclude(e => e.Tag)
-                .Select(e => new GetViewByIdResponse()
-                {
-                    Id = e.Id,
-                    Name = e.Name,
-                    CreatedAt = e.CreatedAt.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
-                    CreatedBy = e.CreatedBy,
-                    TagResults = e.ViewTags.Select(e => new TagResult()
-                    {
-                        Id = e.TagId.Value,
-                        Name = e.Tag.Name
-                    }).ToList(),
-                    Description = e.Description
-                })
-                .FirstOrDefaultAsync(e => e.Id == request.Id, cancellationToken);
+                 .Include(e => e.ViewTags)
+                     .ThenInclude(e => e.Tag)
+                 .Join(fileRepository.GetAllQueryAble(),
+                     view => view.FileId,  // Giả sử View có trường FileId
+                     file => file.Id,
+                     (view, file) => new { view, file }) // Chọn cả View và File
+                 .Select(e => new GetViewByIdResponse()
+                 {
+                     Id = e.view.Id,
+                     Name = e.view.Name,
+                     CreatedAt = e.view.CreatedAt.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
+                     CreatedBy = e.view.CreatedBy,
+                     TagResults = e.view.ViewTags.Select(tag => new TagResult()
+                     {
+                         Id = tag.TagId.Value,
+                         Name = tag.Tag.Name
+                     }).ToList(),
+                     Description = e.view.Description,
+                     Url = e.file.Url // Lấy URL từ File
+                 })
+                 .FirstOrDefaultAsync(e => e.Id == request.Id, cancellationToken);
+
 
             if (View is null)
                 throw new NotFoundException(Message.NOT_FOUND);

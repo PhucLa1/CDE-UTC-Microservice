@@ -73,7 +73,9 @@ export default function SheetView({ node, id, projectId, isOpen, setIsOpen }: Fo
                     </div>
                     <Separator className="my-2" />
                     <div className="flex h-5 items-center justify-center space-x-10 text-sm">
-                        <Button>Xem views</Button>
+                        <Button onClick={() => {
+                            window.open(`./view-file/view/${id}?url=${data?.data.url}`, '_blank')
+                        }}>Xem views</Button>
                         <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger asChild>
@@ -99,7 +101,6 @@ export default function SheetView({ node, id, projectId, isOpen, setIsOpen }: Fo
                                 projectId: projectId
                             }}
                         />} */}
-
                     </div>
                     <Separator className="my-2" />
                     <div>

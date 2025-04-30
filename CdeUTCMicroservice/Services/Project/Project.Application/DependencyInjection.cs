@@ -3,6 +3,7 @@ using BuildingBlocks.Messaging.MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.FeatureManagement;
+using Project.Application.Hubs;
 using System.Reflection;
 
 namespace Project.Application
@@ -22,6 +23,7 @@ namespace Project.Application
 
             services.AddFeatureManagement();
             services.AddMessageBroker(configuration, Assembly.GetExecutingAssembly());
+            
 
             return services;
         }
