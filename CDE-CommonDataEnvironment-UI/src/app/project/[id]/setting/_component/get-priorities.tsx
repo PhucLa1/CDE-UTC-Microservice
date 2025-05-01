@@ -37,11 +37,11 @@ export default function GetPriorities({ projectId, role }: { projectId: number, 
                         <div className="flex justify-between items-center mb-4">
                             <h3 className="text-lg font-semibold">Danh sách ưu tiên</h3>
                             <div className="flex justify-between items-center">
-                                {role == Role.Admin && <FormCRUDPriority trigger={<Button variant="default">Thêm mới ưu tiên</Button>} state={State.CREATE} priority={{
+                                {role == Role.Admin ? <FormCRUDPriority trigger={<Button variant="default">Thêm mới ưu tiên</Button>} state={State.CREATE} priority={{
                                     projectId: projectId,
                                     name: '',
                                     colorRGB: '',
-                                }} />}
+                                }} /> : <></>}
                             </div>
                         </div>
                         <Table>
@@ -50,7 +50,7 @@ export default function GetPriorities({ projectId, role }: { projectId: number, 
                                     <TableHead>#</TableHead>
                                     <TableHead>Hiển thị</TableHead>
                                     <TableHead>Tên</TableHead>
-                                    {role == Role.Admin && <TableHead>Hành động</TableHead>}
+                                    {role == Role.Admin ?  <TableHead>Hành động</TableHead> : <></>}
                                 </TableRow>
                             </TableHeader>
                             <TableBody>

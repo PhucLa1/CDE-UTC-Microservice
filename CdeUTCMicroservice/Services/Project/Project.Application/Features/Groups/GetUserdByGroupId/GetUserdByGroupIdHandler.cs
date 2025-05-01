@@ -15,32 +15,35 @@ namespace Project.Application.Features.Groups.GetUserdByGroupId
             var currentDateDisplay = userProjectRepository.GetCurrentDateDisplay();
             var currenTimeDisplay = userProjectRepository.GetCurrentTimeDisplay();
 
-            var users = await (from ug in userGroupRepository.GetAllQueryAble()
-                               join up in userProjectRepository.GetAllQueryAble() on ug.UserId equals up.UserId
-                               where ug.GroupId == request.GroupId
-                               select new
-                               {
-                                   UserId = ug.UserId,
-                                   DateJoined = ug.DateJoined,
-                                   UserProjectStatus = up.UserProjectStatus,
-                                   Role = up.Role,
-                               })
-                                 .ToListAsync(cancellationToken);
+            var users = await (
+                from ug in userGroupRepository.GetAllQueryAble()
+                join up in userProjectRepository.GetAllQueryAble() on ug.UserId equals up.UserId
+                where ug.GroupId == request.GroupId
+                group new { ug, up } by ug.UserId into g
+                select new
+                {
+                    UserId = g.Key,
+                    DateJoined = g.First().ug.DateJoined,
+                    UserProjectStatus = g.First().up.UserProjectStatus,
+                    Role = g.First().up.Role
+                }
+            ).ToListAsync(cancellationToken);
+
 
             var usersInfo = await userGrpc.GetUsersByIds(new GetUserRequestGrpc() { Ids = users.Select(e => e.UserId).ToList() });
 
             var userResponse = (from u in users
-                               join ui in usersInfo on u.UserId equals ui.Id
-                               select new GetUserdByGroupIdResponse
-                               {
-                                   FullName = ui.FullName,
-                                   Id = ui.Id,
-                                   Email = ui.Email,
-                                   ImageUrl = ui.ImageUrl,
-                                   DateJoined = u.DateJoined.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
-                                   UserProjectStatus = u.UserProjectStatus,
-                                   Role = u.Role
-                               }).ToList();
+                                join ui in usersInfo on u.UserId equals ui.Id
+                                select new GetUserdByGroupIdResponse
+                                {
+                                    FullName = ui.FullName,
+                                    Id = ui.Id,
+                                    Email = ui.Email,
+                                    ImageUrl = ui.ImageUrl,
+                                    DateJoined = u.DateJoined.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
+                                    UserProjectStatus = u.UserProjectStatus,
+                                    Role = u.Role
+                                }).ToList();
 
             return new ApiResponse<List<GetUserdByGroupIdResponse>> { Data = userResponse, Message = Message.GET_SUCCESSFULLY };
 

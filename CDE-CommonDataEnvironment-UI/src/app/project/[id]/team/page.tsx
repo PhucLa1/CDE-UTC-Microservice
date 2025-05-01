@@ -55,14 +55,14 @@ export default function page({ params }: { params: { id: string } }) {
             <div className='-mx-4 flex-1 overflow-auto px-4 py-8 lg:flex-row'>
                 <div className="flex gap-2 p-6">
                     <Card className="w-1/4 p-4">
-                        <div className='flex items-center justify-between'>
+                        <div className='flex items-center justify-between cursor-pointer'>
                             <h2 className="text-lg font-semibold">Thành viên dự án</h2>
-                            {roleDetail?.role == Role.Admin && <FormCRUDGroup trigger={<Button>Tạo nhóm</Button>} state={State.CREATE} group={{
+                            {roleDetail?.role == Role.Admin ? <FormCRUDGroup trigger={<Button>Tạo nhóm</Button>} state={State.CREATE} group={{
                                 projectId: Number(params.id),
                                 name: ""
-                            }} />}
+                            }} /> : <></>}
                         </div>
-                        <div className="mt-4 space-y-2">
+                        <div className="mt-4 space-y-2 cursor-pointer">
                             <div onClick={() => setGroupId(0)}
                             // className={`${groupId == 0 ? 'bg-gray-800 rounded-lg cursor-pointer' : 'cursor-pointer'}`}
                             >
@@ -73,13 +73,13 @@ export default function page({ params }: { params: { id: string } }) {
                                 <p className="text-gray-500 mt-4">Nhóm riêng</p>
                                 {
                                     dataGroups?.data.map((item, index) => {
-                                        return <div key={index} className='flex items-center justify-between'>
+                                        return <div key={index} className='flex items-center justify-between cursor-pointer'>
                                             <div onClick={() => setGroupId(item.id!)}
                                             // className={`${groupId == item.id! ? 'bg-gray-600 rounded-lg cursor-pointer' : 'cursor-pointer'}`}
                                             >
                                                 <p className="font-medium mt-2">{item.name} ({item.userCount} thành viên)</p>
                                             </div>
-                                            {roleDetail?.role == Role.Admin && <div className='flex items-center justify-end mt-2'>
+                                            {roleDetail?.role == Role.Admin ? <div className='flex items-center justify-end mt-2'>
                                                 <FormCRUDGroup trigger={<Edit className="w-4 h-4 mr-2" />} state={State.UPDATE} group={{
                                                     projectId: Number(params.id),
                                                     name: item.name,
@@ -90,7 +90,7 @@ export default function page({ params }: { params: { id: string } }) {
                                                     name: item.name,
                                                     id: item.id
                                                 }} />
-                                            </div>}
+                                            </div> : <></>}
                                         </div>
                                     })
                                 }

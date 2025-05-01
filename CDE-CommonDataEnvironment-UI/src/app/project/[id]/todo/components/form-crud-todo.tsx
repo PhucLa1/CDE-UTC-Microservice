@@ -1,5 +1,4 @@
 import todoApiRequest from "@/apis/todo.api";
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -30,6 +29,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { Label } from "@/components/ui/label"
 import {
   Todo,
   todoDefault,
@@ -45,6 +45,11 @@ import priorityApiRequest from "@/apis/priority.api";
 import { useEffect, useState } from "react";
 import groupApiRequest from "@/apis/group.api";
 import teamApiRequest from "@/apis/team.api";
+import SelectMulti from "react-select";
+
+import tagApiRequest from "@/apis/tag.api";
+import FileReferenceDialog from "./file-view-choose";
+import { Button } from "@/components/custom/button";
 
 interface Props {
   mode: "ADD" | "DELETE" | "UPDATE";
@@ -61,8 +66,19 @@ interface AssignTo {
 export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
   const queryClient = useQueryClient();
   const [assignTo, setAssignTo] = useState<AssignTo[]>([])
+  const [selectedTagIds, setSelectedTagIds] = useState<{ label: string, value: number }[]>([]);
+  const [isOpenDialog, setIsOpenDialog] = useState<boolean>(false)
+  const [selectedFiles, setSelectedFiles] = useState<number[]>([]);
+  const [selectedViews, setSelectedViews] = useState<number[]>([]);
   const onSubmit = (values: Todo) => {
+    values.projectId = projectId;
+    values.tagIds = selectedTagIds.map((item) => item.value)
+    values.assignTo = Number(values.assignToString?.slice(1))
+    values.isAssignToGroup = Number(values.assignToString?.[0])
+    values.fileIds = selectedFiles
+    values.viewIds = selectedViews
     console.log(values);
+    if(mode == 'ADD') mutate(values)
     // if(state === State.CREATE) mutateCreate(values);
     // else if(state === State.UPDATE) mutateUpdate(values)
   };
@@ -96,6 +112,11 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
     queryFn: () => teamApiRequest.getUsersByProjectId(projectId),
   });
 
+  const { data: dataTag, isLoading: isLoadingTag } = useQuery({
+    queryKey: ["get-list-tag"],
+    queryFn: () => tagApiRequest.getList(projectId),
+  });
+
   useEffect(() => {
     if(dataGroup && dataUser){
       const userIds = dataUser.data.map((item, _) => {
@@ -122,19 +143,20 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
         title: "Tạo mới việc cần làm",
         message: "Chế độ xem được tạo thành công",
       });
+      setIsOpen(false);
     },
   });
   return (
     <Sheet  open={!!isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>{}</SheetTrigger>
-      <SheetContent className="w-[500px]">
+      <SheetContent className="w-[600px] overflow-y-auto">
         <SheetHeader>
           <SheetTitle>Việc cần làm</SheetTitle>
           <SheetDescription>Tạo việc cần làm của bạn ở đây</SheetDescription>
         </SheetHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
-            <div className="flex flex-col space-y-1.5 flex-1 mt-2">
+            <div className="flex flex-col space-y-1.5 flex-1 mt-3">
               <FormField
                 control={form.control}
                 name="name"
@@ -149,7 +171,7 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
                 )}
               />
             </div>
-            <div className="flex flex-col space-y-1.5 flex-1 mt-2">
+            <div className="flex flex-col space-y-1.5 flex-1 mt-3">
               <FormField
                 control={form.control}
                 name="description"
@@ -167,7 +189,7 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
                 )}
               />
             </div>
-            <div className="flex flex-col space-y-1.5 mt-2">
+            <div className="flex flex-col space-y-1.5 mt-4">
               <FormField
                 control={form.control}
                 name="typeId"
@@ -204,7 +226,7 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
                 )}
               />
             </div>
-            <div className="flex flex-col space-y-1.5 mt-2">
+            <div className="flex flex-col space-y-1.5 mt-4">
               <FormField
                 control={form.control}
                 name="statusId"
@@ -240,7 +262,7 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
                 )}
               />
             </div>
-            <div className="flex flex-col space-y-1.5 mt-2">
+            <div className="flex flex-col space-y-1.5 mt-4">
               <FormField
                 control={form.control}
                 name="priorityId"
@@ -276,7 +298,7 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
                 )}
               />
             </div>
-            <div className="grid grid-cols-2 gap-4 mt-2">
+            <div className="grid grid-cols-2 gap-4 mt-4">
                                 <FormField
                                     control={form.control}
                                     name="startDate"
@@ -320,10 +342,10 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
                                     )}
                                 />
             </div>
-            <div className="flex flex-col space-y-1.5 mt-2">
+            <div className="flex flex-col space-y-1.5 mt-4">
               <FormField
                 control={form.control}
-                name="priorityId"
+                name="assignToString"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Giao việc</FormLabel>
@@ -355,27 +377,31 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
                 )}
               />
             </div>
-            <div className="flex flex-col space-y-1.5 mt-2">
-            <Select
-                            isMulti
-                            options={data!.data
-                                .map(item => ({ label: item.name, value: item.id! }))}
-                            value={selectedTagIds}
-                            className="w-full"
-                            placeholder="Thêm nhãn dán"
-                            onChange={(newValue) => setSelectedTagIds([...newValue])} // Chuyển từ readonly sang mảng mutable
-                        />
-                        </div>
-            <div className="flex items-center space-x-2 mt-2 cursor-pointer">
+            <div className="flex flex-col space-y-1.5 mt-4">
+              <Label htmlFor="tags">Nhãn dán</Label>
+              <SelectMulti
+                isMulti
+                options={dataTag?.data.map(item => ({ label: item.name, value: item.id! }))}
+                value={selectedTagIds}
+                className="w-full"
+                placeholder="Thêm nhãn dán"
+                onChange={(newValue: any) => setSelectedTagIds([...newValue])} // Chuyển từ readonly sang mảng mutable
+              />
+            </div>
+            <div onClick={() => setIsOpenDialog(!isOpenDialog)} className="flex items-center space-x-2 cursor-pointer mt-4">
               <LucideLink className="w-4 h-4 text-gray-500" />
               <p className="text-sm font-medium text-gray-700">Thêm liên kết tới các tệp & chế độ xem</p>
             </div>
+            {isOpenDialog ? <FileReferenceDialog isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} projectId={projectId} selectedFiles={selectedFiles} setSelectedFiles={setSelectedFiles}
+            selectedViews={selectedViews} setSelectedViews={setSelectedViews}/> : <></> }
 
-            <SheetFooter>
-              <SheetClose>Hủy</SheetClose>
-              {/* <Button loading={isPending} type="submit">
-                Tiếp tục
-              </Button> */}
+            <SheetFooter className="mt-4">
+              <SheetClose asChild>
+                <Button variant="outline">Hủy</Button>
+              </SheetClose>
+              <Button loading={isPending} type="submit">
+                Thêm
+              </Button>
             </SheetFooter>
           </form>
         </Form>

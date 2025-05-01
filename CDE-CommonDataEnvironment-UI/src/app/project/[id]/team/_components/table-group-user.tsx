@@ -41,6 +41,7 @@ export default function TableGroupUsers({ projectId, role, data, dataDropdown, g
                 : [...prev, value]
         );
     };
+    console.log(data?.data)
     useEffect(() => {
         if (data) {
             const filteredData = data.data.filter(item =>

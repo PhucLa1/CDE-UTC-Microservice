@@ -11,5 +11,11 @@ const todoApiRequest = {
       undefined,
       Service.ProjectService
     ),
+    getList: (projectId: number) => 
+      http.get<ApiResponse<Todo[]>>(
+       "todo/" + projectId ,
+       undefined,
+       Service.ProjectService
+      )
 };
 export default todoApiRequest;

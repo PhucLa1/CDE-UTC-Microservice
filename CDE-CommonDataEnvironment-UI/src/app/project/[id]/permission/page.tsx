@@ -56,14 +56,14 @@ export default function page({ params }: { params: { id: string } }) {
                     <h2 className='text-2xl font-bold tracking-tight'>Quyền trong dự án</h2>
                     <AppBreadcrumb pathList={pathList} className="mt-2" />
                 </div>
-                {roleDetail?.role == Role.Admin && <div>
+                {roleDetail?.role == Role.Admin ? <div>
                     <Button onClick={() => mutate({
                         projectId: Number(params.id),
                         invitationPermission: Number(invitationPermission),
                         todoVisibility: Number(todoVisibility)
                     })} 
                     loading={isPending}>Lưu</Button>
-                </div>}
+                </div> : <></>}
             </div>
             <div className='-mx-4 flex-1 overflow-auto px-4 py-8 lg:flex-row'>
                 <Card className="rounded-xl border bg-card text-card-foreground shadow col-span-4">

@@ -12,7 +12,7 @@ namespace Event.Features.MessageHandlers
             {
                 var bodyContentEmail = HandleFile.READ_FILE("Email", "AssignTodo.html")
                             .Replace("{Name}", message.UserNames[i])
-                            .Replace("{Email}", message.TaskTitle)
+                            .Replace("{TaskTitle}", message.TaskTitle)
                             .Replace("{DueDate}", message.DueDate)
                             .Replace("{Priority}", message.Priority);
                 var contentEmail = emailService.TemplateContent.Replace("{content}", bodyContentEmail);

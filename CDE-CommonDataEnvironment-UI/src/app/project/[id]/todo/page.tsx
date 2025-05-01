@@ -18,6 +18,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { ChevronUpIcon } from "@radix-ui/react-icons";
 import { Todo } from "@/data/schema/Project/todo.schema";
 import { UpsertTodo } from "./components/form-crud-todo";
+import { TaskCard } from "./components/card";
+import todoApiRequest from "@/apis/todo.api";
 const pathList: Array<PathItem> = [
   {
     name: "Danh sách việc cần làm",
@@ -36,12 +38,12 @@ export default function page({ params }: { params: { id: string } }) {
     setViewMode(mode); // Cập nhật state để component re-render
   };
 
-  const { data, isLoading } = useQuery({
-    queryKey: ["views"],
-    queryFn: () => viewApiRequest.getList(Number(params.id)),
+  const { data: dataTodo, isLoading: isLoadingTodo } = useQuery({
+    queryKey: ["get-list-todo"],
+    queryFn: () => todoApiRequest.getList(Number(params.id)),
   });
   console.log(!!isOpen)
-  if (isLoading) return <></>;
+  if (isLoadingTodo) return <></>;
   return (
     <>
       {!!isOpen ? <UpsertTodo projectId={Number(params.id)} mode={'ADD'} isOpen={isOpen} setIsOpen={setIsOpen}/> : <></>}
@@ -86,22 +88,28 @@ export default function page({ params }: { params: { id: string } }) {
           </Button>
         </div>
       </div>
-      <div>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[200px]">
-                Tên <ChevronUpIcon className="inline-block ml-2 h-4 w-4" />
-              </TableHead>
-              <TableHead>Được giao cho</TableHead>
-              <TableHead>Tạo vào</TableHead>
-              <TableHead>Tạo bởi</TableHead>
-              <TableHead>Trạng thái</TableHead>
-              <TableHead>Ưu tiên</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody></TableBody>
-        </Table>
+      <div className="mt-4">
+        {
+          dataTodo?.data.map((item, index) => {
+            return (
+              <TaskCard
+                id={index + 1}
+                title={item.name}
+                author={item.nameCreatedBy!}
+                priority={item.priority?.name}
+                priorityColor={item.priority?.colorRGB}
+                status={item.status?.name}
+                statusColor={item.status?.colorRGB}
+                type={item.type?.name}
+                typeUrl={item.type?.iconImageUrl}
+                startDate={item.startDate}
+                dueDate={item.dueDate}
+                tags={item.tags}
+                des={item.description}
+            />
+            )
+          })
+        }
       </div>
     </>
   );

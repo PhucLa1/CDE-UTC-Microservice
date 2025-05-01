@@ -11,6 +11,7 @@ export const typeSchema = z.object({
     iconImage: z
         .instanceof(File),
     isBlock: z.boolean().optional(),
+    iconImageUrl: z.string().optional(),
 
 }).refine((data) => data.id || (data.iconImage && data.iconImage.size > 0), {
     path: ["iconImage"],
