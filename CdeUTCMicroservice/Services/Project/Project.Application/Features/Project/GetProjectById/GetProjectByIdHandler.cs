@@ -38,9 +38,9 @@ namespace Project.Application.Features.Project.GetProjectById
                 Description = project.Description,
                 Ownership = project.Ownership,
                 UserCount = userCount,
-                FolderCount = 0,
-                FileCount = 0,
-                Size = 0.0,
+                FolderCount = fileRepository.GetAllQueryAble().Where(e => e.ProjectId == request.Id).Count(),
+                FileCount = folderRepository.GetAllQueryAble().Where(e => e.ProjectId == request.Id).Count(),
+                Size = (double)fileRepository.GetAllQueryAble().Where(e => e.ProjectId == request.Id).Sum(e => e.Size),
                 CreatedAt = project.CreatedAt.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
                 UpdatedAt = project.UpdatedAt.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
             };

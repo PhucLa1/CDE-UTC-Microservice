@@ -1,8 +1,16 @@
 ﻿
+using BuildingBlocks.Enums;
+using BuildingBlocks.Messaging.Events;
+using MassTransit;
+using Project.Application.Grpc;
+using Project.Application.Grpc.GrpcRequest;
+
 namespace Project.Application.Features.Team.ChangeRole
 {
     public class ChangeRoleHandler
-        (IBaseRepository<UserProject> userProjectRepository)
+        (IBaseRepository<UserProject> userProjectRepository,
+        IUserGrpc userGrc,
+        IPublishEndpoint publishEndpoint)
         : ICommandHandler<ChangeRoleRequest, ChangeRoleResponse>
     {
         public async Task<ChangeRoleResponse> Handle(ChangeRoleRequest request, CancellationToken cancellationToken)
@@ -34,15 +42,28 @@ namespace Project.Application.Features.Team.ChangeRole
 
             //Nếu chuyển role thành member trong 1 dự án mà chỉ còn 1 admin
             //Người được update cũng là người admin cuối cùng thì không được
-            if (request.Role is Role.Member 
+            if (request.Role is Role.Member
                 && countAdmin == 1 && userProjectUpdate.Role == Role.Admin)
                 throw new Exception(Message.MUST_HAVE_ONE_ADMIN);
 
+            var ids = new List<int>() { userProject.UserId };
 
+            var users = await userGrc.GetUsersByIds(new GetUserRequestGrpc() { Ids = ids });
 
             userProjectUpdate.Role = request.Role;
             userProjectRepository.Update(userProjectUpdate);
             await userProjectRepository.SaveChangeAsync(cancellationToken);
+
+            var activityEvent = new CreateActivityEvent
+            {
+                Action = "CHANGE_ROLE",
+                ResourceId = request.UserId,
+                Content = $"Vai trò của người dùng ${users.First().Email} đã được thay đổi thành {request.Role}.",
+                TypeActivity = TypeActivity.Team,
+                ProjectId = request.ProjectId
+            };
+
+            await publishEndpoint.Publish(activityEvent, cancellationToken);
 
             return new ChangeRoleResponse() { Data = true, Message = Message.UPDATE_SUCCESSFULLY };
 

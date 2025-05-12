@@ -1214,6 +1214,7 @@
       },
       "Event.Core/1.0.0": {
         "dependencies": {
+          "BuildingBlocks": "1.0.0",
           "Event.Shared": "1.0.0"
         },
         "runtime": {

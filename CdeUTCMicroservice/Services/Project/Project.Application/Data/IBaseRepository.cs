@@ -14,6 +14,7 @@ namespace Project.Application.Data
         int GetCurrentId();
         DateDisplay GetCurrentDateDisplay();
         TimeDisplay GetCurrentTimeDisplay();
+        int GetProjectId();
         Task AddAsync(T entity, CancellationToken cancellationToken);
         void Remove(T entity);
         void RemoveRangeByEntitiesAsync(List<T> entities);

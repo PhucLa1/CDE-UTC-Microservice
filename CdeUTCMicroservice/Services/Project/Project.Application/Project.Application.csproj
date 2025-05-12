@@ -19,9 +19,4 @@
     <ProjectReference Include="..\Project.Domain\Project.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Todos\DeleteTodo\" />
-    <Folder Include="Features\Todos\UpdateTodo\" />
-  </ItemGroup>
-
 </Project>

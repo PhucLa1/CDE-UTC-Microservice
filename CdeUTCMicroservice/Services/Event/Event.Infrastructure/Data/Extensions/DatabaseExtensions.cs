@@ -19,11 +19,13 @@ namespace Event.Infrastructure.Data
         }
         public static async Task SeedAsync(EventDBContext context)
         {
+            /*
             if(!context.ActivityTypeParents.Any())
             {
                 await context.ActivityTypeParents.AddRangeAsync(InitalData.ActivityTypeParents);
                 await context.SaveChangesAsync();
             }
+            */
         }  
     }
 }

@@ -1,10 +1,14 @@
 ﻿
+using BuildingBlocks.Enums;
+using BuildingBlocks.Messaging.Events;
+using MassTransit;
 using MassTransit.Initializers;
 
 namespace Project.Application.Features.Storage.CreateFolder
 {
     public class CreateFolderHandler
-        (IBaseRepository<Folder> folderRepository)
+        (IBaseRepository<Folder> folderRepository,
+        IPublishEndpoint publishEndpoint)
         : ICommandHandler<CreateFolderRequest, CreateFolderResponse>
     {
         public async Task<CreateFolderResponse> Handle(CreateFolderRequest request, CancellationToken cancellationToken)
@@ -57,6 +61,16 @@ namespace Project.Application.Features.Storage.CreateFolder
 
             //Kết thúc 1 transaction
             await folderRepository.CommitTransactionAsync(transaction, cancellationToken);
+
+            var eventMessage = new CreateActivityEvent()
+            {
+                Action = "ADD",
+                ResourceId = folder.Id,
+                Content = $"Đã tạo mới thư mục \"{folder.Name}\"",
+                TypeActivity = TypeActivity.Folder,
+                ProjectId = request.ProjectId.Value,
+            };
+            await publishEndpoint.Publish(eventMessage, cancellationToken);
 
             return new CreateFolderResponse() { Data = true, Message = Message.CREATE_SUCCESSFULLY };
         }

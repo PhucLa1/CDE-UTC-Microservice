@@ -8,6 +8,7 @@ namespace Event.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Activity> builder)
         {
+            
             builder.Property(x => x.Action).HasMaxLength(255);
             builder.Property(x => x.Content).IsRequired();
         }

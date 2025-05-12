@@ -1,10 +1,16 @@
-﻿namespace Project.Application.Features.Storage.UpdateFolder
+﻿using BuildingBlocks.Enums;
+using BuildingBlocks.Messaging.Events;
+using MassTransit;
+using MassTransit.Transports;
+
+namespace Project.Application.Features.Storage.UpdateFolder
 {
     public class UpdateFolderHandler
         (IBaseRepository<Folder> folderRepository,
         IBaseRepository<UserProject> userProjectRepository,
         IBaseRepository<FolderTag> folderTagRepository,
-        IBaseRepository<FolderHistory> folderHistoryRepository)
+        IBaseRepository<FolderHistory> folderHistoryRepository,
+        IPublishEndpoint publishEndpoint)
         : ICommandHandler<UpdateFolderRequest, UpdateFolderResponse>
     {
         /*
@@ -74,24 +80,31 @@
                 //Thay phần folder full path name
                 var folderIdStringArr = folderIdString.Split('/');
                 var indexOfFolderId = Array.IndexOf(folderIdStringArr, folder.Id.ToString());
-                var folderNameStringArr = folderNameString.Split('/');
-                folderNameStringArr[indexOfFolderId] = request.Name;
-                folder.FullPathName = string.Join("/", folderNameStringArr);
-                var fullPath = string.Join("/", folderNameStringArr);
-                //Lấy ra những folder id con
-                var folderIds = folderIdStringArr.Skip(indexOfFolderId + 1).Select(int.Parse).ToList(); //Lấy ra những phần tử con của folder
-                var folders = await folderRepository.GetAllQueryAble()
-                    .Where(e => folderIds.Contains(e.Id))
-                    .OrderBy(e => e.FullPathName)
-                    .ToListAsync(cancellationToken);
-
-                foreach(var folderUpdate in folders)
+                if (indexOfFolderId > 0)
                 {
-                    fullPath = fullPath + "/" + folderUpdate.Name;
-                    folderUpdate.FullPathName = fullPath;
-                }
+                    var folderNameStringArr = folderNameString.Split('/');
+                    folderNameStringArr[indexOfFolderId] = request.Name;
+                    folder.FullPathName = string.Join("/", folderNameStringArr);
+                    var fullPath = string.Join("/", folderNameStringArr);
+                    //Lấy ra những folder id con
+                    var folderIds = folderIdStringArr.Skip(indexOfFolderId + 1).Select(int.Parse).ToList(); //Lấy ra những phần tử con của folder
+                    var folders = await folderRepository.GetAllQueryAble()
+                        .Where(e => folderIds.Contains(e.Id))
+                        .OrderBy(e => e.FullPathName)
+                        .ToListAsync(cancellationToken);
 
-                folderRepository.UpdateMany(folders);
+                    foreach (var folderUpdate in folders)
+                    {
+                        fullPath = fullPath + "/" + folderUpdate.Name;
+                        folderUpdate.FullPathName = fullPath;
+                    }
+
+                    folderRepository.UpdateMany(folders);
+                }
+                else
+                {
+                    folder.FullPathName = "/" + request.Name;
+                }
                 #endregion
                 folder.Name = request.Name; //Sửa tên
             }
@@ -123,6 +136,16 @@
                 await folderTagRepository.AddRangeAsync(tagsToAdd, cancellationToken);
 
             await folderTagRepository.SaveChangeAsync(cancellationToken);
+
+            var eventMessage = new CreateActivityEvent
+            {
+                Action = "UPDATE",
+                ResourceId = folder.Id,
+                Content = "Tệp tin " + folder.Name + " được cập nhật thành công",
+                TypeActivity = TypeActivity.Folder,
+                ProjectId = folder.ProjectId.Value
+            };
+            await publishEndpoint.Publish(eventMessage, cancellationToken);
 
             return new UpdateFolderResponse() { Data = true, Message = Message.UPDATE_SUCCESSFULLY };
         }

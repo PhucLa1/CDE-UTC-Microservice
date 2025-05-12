@@ -12,6 +12,10 @@ namespace Project.Application.Features.Todos.GetTodos
         IBaseRepository<Type> typeRepository,
         IBaseRepository<Tag> tagRepository,
         IBaseRepository<TodoTag> todoTagRepository,
+        IBaseRepository<ViewTodo> viewTodoRepository,
+        IBaseRepository<FileTodo> fileTodoRepository,
+        IBaseRepository<File> fileRepository,
+        IBaseRepository<View> viewRepository,
         IUserGrpc userGrpc)
         : IQueryHandler<GetTodosRequest, ApiResponse<List<GetTodosResponse>>>
     {
@@ -34,10 +38,19 @@ namespace Project.Application.Features.Todos.GetTodos
                     Description = e.Description,
                     StartDate = e.StartDate.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
                     DueDate = e.DueDate.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
+                    AssignToString = e.IsAssignToGroup.ToString() + e.AssignTo.ToString(),
                     Tags = (from tt in todoTagRepository.GetAllQueryAble() 
                             join t in tagRepository.GetAllQueryAble() on tt.TagId equals t.Id
                             where tt.TodoId == e.Id
                             select t).ToList(),
+                    Files = (from ft in fileTodoRepository.GetAllQueryAble()
+                            join f in fileRepository.GetAllQueryAble() on ft.FileId equals f.Id
+                            where ft.TodoId == e.Id
+                            select f).ToList(),
+                    Views = (from vt in viewTodoRepository.GetAllQueryAble()
+                             join v in viewRepository.GetAllQueryAble() on vt.ViewId equals v.Id
+                             where vt.TodoId == e.Id
+                             select v).ToList(),
                 }).ToListAsync(cancellationToken);
 
             var idCreated = todo.Select(e => e.CreatedBy).Distinct().ToList();
@@ -61,6 +74,9 @@ namespace Project.Application.Features.Todos.GetTodos
                              DueDate = t.DueDate,
                              NameCreatedBy = u.FullName,
                              Tags = t.Tags,
+                             AssignToString = t.AssignToString,
+                             Files = t.Files,
+                             Views = t.Views,
                          }).ToList();
 
 

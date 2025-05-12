@@ -12,6 +12,8 @@ import { Button } from "@/components/ui/button"
 import { ImageIcon, Laptop } from "lucide-react"
 import StorageChoose from "./storage-choose"
 import ViewChoose from "./view-choose"
+import { View } from "@/data/schema/Project/view.schema"
+import { File } from "@/data/schema/Project/file.schema"
 
 
 
@@ -19,10 +21,10 @@ interface Props {
   isOpen: boolean;
   setIsOpen: (value: boolean) => void
   projectId: number;
-  selectedFiles: number[];
-  setSelectedFiles: React.Dispatch<React.SetStateAction<number[]>>;
-  selectedViews: number[];
-  setSelectedViews: React.Dispatch<React.SetStateAction<number[]>>;
+  selectedFiles: File[];
+  setSelectedFiles: React.Dispatch<React.SetStateAction<File[]>>;
+  selectedViews: View[];
+  setSelectedViews: React.Dispatch<React.SetStateAction<View[]>>;
 }
 
 export default function FileReferenceDialog({isOpen, setIsOpen, projectId, selectedFiles, setSelectedFiles, selectedViews, setSelectedViews} : Props) {

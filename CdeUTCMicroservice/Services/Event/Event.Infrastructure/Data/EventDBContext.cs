@@ -78,7 +78,6 @@ namespace Event.Infrastructure
 
         public int GetCurrentUserId()
         {
-            /*
             var context = _httpContextAccessor.HttpContext;
             var userIdObj = context.Request.Headers["X-UserId"].FirstOrDefault();
             if (userIdObj is null)
@@ -87,17 +86,17 @@ namespace Event.Infrastructure
             {
                 return userId; // Trả về int nếu chuyển đổi thành công
             }
-            */
 
-            return 0; // Trả về int mặc định nếu chuyển đổi thất bại
+            
+
+            return 1; // Trả về int mặc định nếu chuyển đổi thất bại
         }
 
         #endregion
 
         public DbSet<Activity> Activities { get; set; }
-        public DbSet<ActivityType> ActivityTypes { get; set; }
-        public DbSet<ActivityTypeParent> ActivityTypeParents { get; set; }
         public DbSet<Log> Logs { get; set; }
+        public DbSet<ActivityType> ActivityTypes { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

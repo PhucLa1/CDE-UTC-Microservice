@@ -1,9 +1,14 @@
 ﻿
+using BuildingBlocks.Enums;
+using BuildingBlocks.Messaging.Events;
+using MassTransit;
+
 namespace Project.Application.Features.Storage.MoveFolder
 {
     public class MoveFolderHandler
         (IBaseRepository<Folder> folderRepository,
-        IBaseRepository<File> fileRepository)
+        IBaseRepository<File> fileRepository,
+        IPublishEndpoint publishEndpoint)
         : ICommandHandler<MoveFolderRequest, MoveFolderResponse>
     {
         public async Task<MoveFolderResponse> Handle(MoveFolderRequest request, CancellationToken cancellationToken)
@@ -95,6 +100,16 @@ namespace Project.Application.Features.Storage.MoveFolder
             folderRepository.UpdateMany(folderUpdates);
             fileRepository.UpdateMany(fileUpdates);
             await folderRepository.SaveChangeAsync(cancellationToken);
+
+            var eventMessage = new CreateActivityEvent
+            {
+                Action = "MOVE",
+                ResourceId = folder.Id,
+                Content = $"Đã di chuyển thư mục \"{folder.Name}\" sang thư mục mới",
+                TypeActivity = TypeActivity.Folder,
+                ProjectId = folder.ProjectId.Value,
+            };
+            await publishEndpoint.Publish(eventMessage, cancellationToken);
 
             return new MoveFolderResponse() { Data = true, Message = Message.UPDATE_SUCCESSFULLY };
         }

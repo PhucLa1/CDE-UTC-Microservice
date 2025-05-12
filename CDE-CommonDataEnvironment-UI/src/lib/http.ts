@@ -27,9 +27,8 @@ const request = async <T>(
   // Nếu truyền baseUrl thì lấy giá trị truyền vào, truyền vào '' thì đồng nghĩa với việc chúng ta gọi API đến Next.js Server
   let baseUrl = options?.baseUrl ?? envConfig.NEXT_PUBLIC_API_ENDPOINT;
   if (service != null) {
-    baseUrl = baseUrl + service
+    baseUrl = baseUrl + service;
   }
-
 
   const fullUrl = url.startsWith("/")
     ? `${baseUrl}${url}`
@@ -40,13 +39,14 @@ const request = async <T>(
     headers: {
       ...baseHeaders,
       ...options?.headers,
+      "X-Project-Id": localStorage.getItem("projectId") || "",
     } as any,
     body,
     method,
-    credentials: 'include'
+    credentials: "include",
   });
   if (!res.ok) {
-    let errorMessage = 'Unknown error'; // Giá trị mặc định nếu không nhận được message từ API
+    let errorMessage = "Unknown error"; // Giá trị mặc định nếu không nhận được message từ API
     try {
       // Cố gắng đọc phản hồi từ API dưới dạng JSON
       const errorResponse = await res.json();
@@ -62,7 +62,9 @@ const request = async <T>(
     });
 
     // Ném lỗi để dừng luồng xử lý
-    throw new Error(`Request failed with status ${res.status}: ${errorMessage}`);
+    throw new Error(
+      `Request failed with status ${res.status}: ${errorMessage}`
+    );
   }
   const payload: Response = await res.json();
 
@@ -71,23 +73,31 @@ const request = async <T>(
     // console.log("resData",resData)
     return resData;
   } catch (error) {
-    console.log()
-    console.error(error)
+    console.log();
+    console.error(error);
     throw error;
   }
-
-
 };
 
 const http = {
-  get<T>(url: string, options?: Omit<CustomOptions, "body"> | undefined, service?: Service.AuthService | Service.EventService | Service.ProjectService) {
+  get<T>(
+    url: string,
+    options?: Omit<CustomOptions, "body"> | undefined,
+    service?:
+      | Service.AuthService
+      | Service.EventService
+      | Service.ProjectService
+  ) {
     return request<T>("GET", url, options, service);
   },
   post<T>(
     url: string,
     body: any,
     options?: Omit<CustomOptions, "body"> | undefined,
-    service?: Service.AuthService | Service.EventService | Service.ProjectService
+    service?:
+      | Service.AuthService
+      | Service.EventService
+      | Service.ProjectService
   ) {
     return request<T>("POST", url, { ...options, body }, service);
   },
@@ -95,12 +105,23 @@ const http = {
     url: string,
     body: any,
     options?: Omit<CustomOptions, "body"> | undefined,
-    service?: Service.AuthService | Service.EventService | Service.ProjectService
+    service?:
+      | Service.AuthService
+      | Service.EventService
+      | Service.ProjectService
   ) {
     return request<T>("PUT", url, { ...options, body }, service);
   },
-  delete<T>(url: string, body: any, options?: Omit<CustomOptions, "body"> | undefined, service?: Service.AuthService | Service.EventService | Service.ProjectService) {
-    return request<T>("DELETE", url, { ...options,body }, service);
+  delete<T>(
+    url: string,
+    body: any,
+    options?: Omit<CustomOptions, "body"> | undefined,
+    service?:
+      | Service.AuthService
+      | Service.EventService
+      | Service.ProjectService
+  ) {
+    return request<T>("DELETE", url, { ...options, body }, service);
   },
 };
 

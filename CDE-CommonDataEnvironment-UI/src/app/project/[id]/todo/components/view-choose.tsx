@@ -3,11 +3,12 @@ import React, { useState } from 'react'
 import { useQuery } from '@tanstack/react-query';
 import { Checkbox } from "@/components/ui/checkbox"
 import { Eye } from "lucide-react";
+import { View } from '@/data/schema/Project/view.schema';
 
 interface Props {
   projectId: number;
-  selectedViews: number[];
-  setSelectedViews: React.Dispatch<React.SetStateAction<number[]>>;
+  selectedViews: View[];
+  setSelectedViews: React.Dispatch<React.SetStateAction<View[]>>;
 }
 
 
@@ -20,11 +21,11 @@ export default function ViewChoose({ projectId, selectedViews, setSelectedViews 
     queryFn: () => viewApiRequest.getList(projectId)
   });
 
-  const toggleView = (viewId: number) => {
+  const toggleView = (view: View) => {
     setSelectedViews(prev =>
-      prev.includes(viewId)
-        ? prev.filter(id => id !== viewId)
-        : [...prev, viewId]
+      prev.some(f => f.id === view.id)
+        ? prev.filter(f => f.id !== view.id)
+        : [...prev, view]
     );
   };
 
@@ -40,10 +41,10 @@ export default function ViewChoose({ projectId, selectedViews, setSelectedViews 
             key={index}
             className="flex items-center gap-2 px-2 py-1 hover:bg-muted rounded"
           >
-            <Checkbox
-              id={`view-${index}`}
-              checked={selectedViews.includes(item.id!)}
-              onCheckedChange={() => toggleView(item.id!)}
+           <Checkbox
+            id={`view-${index}`}
+            checked={selectedViews.some(f => f.id === item.id)}
+            onCheckedChange={() => toggleView(item)}
             />
             <Eye className="w-5 h-5 text-blue-500" />
             <label htmlFor={`view-${index}`} className="text-sm truncate cursor-pointer">

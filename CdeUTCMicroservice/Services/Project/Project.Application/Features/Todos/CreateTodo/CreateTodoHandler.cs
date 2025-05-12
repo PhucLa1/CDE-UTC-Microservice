@@ -1,4 +1,5 @@
 ﻿
+using BuildingBlocks.Enums;
 using BuildingBlocks.Messaging.Events;
 using MassTransit;
 using MassTransit.Initializers;
@@ -132,6 +133,17 @@ namespace Project.Application.Features.Todos.CreateTodo
 
 
             await todoRepository.CommitTransactionAsync(transaction, cancellationToken);
+
+            var activityEvent = new CreateActivityEvent
+            {
+                Action = "CREATE_TODO",
+                ResourceId = todo.Id,
+                Content = $"Công việc '{todo.Name}' đã được tạo.",
+                TypeActivity = TypeActivity.Todo,
+                ProjectId = todo.ProjectId.Value
+            };
+
+            await publishEndpoint.Publish(activityEvent, cancellationToken);
             return new CreateTodoResponse() { Data = true, Message = Message.CREATE_SUCCESSFULLY };
         }
     }

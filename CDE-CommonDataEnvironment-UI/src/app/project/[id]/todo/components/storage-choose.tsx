@@ -3,10 +3,11 @@ import React, { useState } from 'react'
 import { useQuery } from '@tanstack/react-query';
 import { Checkbox } from "@/components/ui/checkbox"
 import { Folder, FileText, ImageIcon } from "lucide-react"
+import { File } from '@/data/schema/Project/file.schema';
 interface Props {
   projectId: number;
-  selectedFiles: number[];
-  setSelectedFiles: React.Dispatch<React.SetStateAction<number[]>>;
+  selectedFiles: File[];
+  setSelectedFiles: React.Dispatch<React.SetStateAction<File[]>>;
 }
 interface Folder {
   name: string;
@@ -23,13 +24,13 @@ export default function StorageChoose({projectId, selectedFiles, setSelectedFile
     queryKey: ['get-list-storage', parentId],
     queryFn: () => storageApiRequest.getList(projectId,parentId)
   })
-  const toggleFile = (fileId: number) => {
+  const toggleFile = (file: File) => {
     setSelectedFiles(prev =>
-      prev.includes(fileId)
-        ? prev.filter(id => id !== fileId)
-        : [...prev, fileId]
+      prev.some(f => f.id === file.id)
+        ? prev.filter(f => f.id !== file.id)
+        : [...prev, file]
     );
-  };  
+  };
   return (
     <div>
        <p className="text-sm text-muted-foreground mt-2">
@@ -69,9 +70,10 @@ export default function StorageChoose({projectId, selectedFiles, setSelectedFile
               {!isLoadingStorage && dataStorage ? dataStorage.data.map((item, index) => {
                 if(item.isFile){
                   return ( <div key={index} className="flex items-center gap-2 px-2 py-1 hover:bg-muted rounded">
-                    <Checkbox id={`file-${index}`}     
-                      checked={selectedFiles.includes(item.id!)}
-                      onCheckedChange={() => toggleFile(item.id!)} 
+                    <Checkbox
+                      id={`file-${index}`}
+                      checked={selectedFiles.some(f => f.id === item.id)}
+                      onCheckedChange={() => toggleFile(item as File)}
                     />
                     <img width={25} src={item.urlImage} alt="" />
                     <label htmlFor={`file-${index}`} className="text-sm truncate cursor-pointer">

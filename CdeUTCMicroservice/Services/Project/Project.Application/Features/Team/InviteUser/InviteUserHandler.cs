@@ -1,4 +1,5 @@
-﻿using BuildingBlocks.Messaging.Events;
+﻿using BuildingBlocks.Enums;
+using BuildingBlocks.Messaging.Events;
 using Grpc.Core;
 using MassTransit;
 using Project.Application.Grpc;
@@ -87,6 +88,17 @@ namespace Project.Application.Features.Team.InviteUser
                 };
 
                 await publishEndpoint.Publish(invitationUser, cancellationToken);
+
+                var activityEvent = new CreateActivityEvent
+                {
+                    Action = "INVITE_USER",
+                    ResourceId = user.Id,
+                    Content = $"Đã mời người dùng có email {user.Email} vào dự án với vai trò {request.Role}.",
+                    TypeActivity = TypeActivity.Team,
+                    ProjectId = request.ProjectId
+                };
+
+                await publishEndpoint.Publish(activityEvent, cancellationToken);
             }
             catch (RpcException ex) when (ex.StatusCode == StatusCode.NotFound)
             {

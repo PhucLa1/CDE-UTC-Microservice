@@ -4,6 +4,7 @@ namespace Auth.Data.Data.Extensions
 {
     public static class InitalData
     {
+        /*
         public static IEnumerable<ActivityTypeParent> ActivityTypeParents => new List<ActivityTypeParent>()
         {
             new ActivityTypeParent()
@@ -108,5 +109,6 @@ namespace Auth.Data.Data.Extensions
         }
         .OrderBy(x => x.Id) // Sắp xếp theo Id của ActivityTypeParent
         .ToList();
+        */
     }
 }

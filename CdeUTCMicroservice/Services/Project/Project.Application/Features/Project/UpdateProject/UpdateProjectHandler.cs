@@ -1,11 +1,14 @@
 ﻿
-using BuildingBlocks.Exceptions;
+using BuildingBlocks.Enums;
+using BuildingBlocks.Messaging.Events;
+using MassTransit;
 
 namespace Project.Application.Features.Project.UpdateProject
 {
     public class UpdateProjectHandler
         (IBaseRepository<ProjectEntity> projectEntityRepository,
-        IBaseRepository<UserProject> userProjectRepository)
+        IBaseRepository<UserProject> userProjectRepository,
+        IPublishEndpoint publishEndpoint)
         : ICommandHandler<UpdateProjectRequest, UpdateProjectResponse>
     {
         public async Task<UpdateProjectResponse> Handle(UpdateProjectRequest request, CancellationToken cancellationToken)
@@ -36,6 +39,17 @@ namespace Project.Application.Features.Project.UpdateProject
 
             projectEntityRepository.Update(project);
             await projectEntityRepository.SaveChangeAsync(cancellationToken);
+
+            //Gửi message 
+            var eventMessage = new CreateActivityEvent()
+            {
+                Action = "UPDATE",
+                ResourceId = project.Id,
+                Content = "Chỉnh sửa thông tin dự án " + project.Name,
+                TypeActivity = TypeActivity.Project,
+                ProjectId = projectEntityRepository.GetProjectId(),
+            };
+            await publishEndpoint.Publish(eventMessage, cancellationToken);
             return new UpdateProjectResponse() { Data = true, Message = Message.UPDATE_SUCCESSFULLY };
         }
     }

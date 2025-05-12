@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JiYR86hjyGnpkXhXoXwyzz+QC/NPff2MGlaOIhKxHtc=",
+  "Hash": "rYCNZWLnW5/QvXzVAuVLf9ISGMEWdm+EfDn3rz2zFTw=",
   "Source": "Event.Features",
   "BasePath": "_content/Event.Features",
   "Mode": "Default",
@@ -16,6 +16,44 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Activity\\hoat-dong-20250511.xlsx",
+      "SourceId": "Event.Features",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\",
+      "BasePath": "_content/Event.Features",
+      "RelativePath": "Activity/hoat-dong-20250511.xlsx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Activity\\hoat-dong-20250511.xlsx"
+    },
+    {
+      "Identity": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Activity\\WIN_20230523_21_57_19_Pro.jpg",
+      "SourceId": "Event.Features",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\",
+      "BasePath": "_content/Event.Features",
+      "RelativePath": "Activity/WIN_20230523_21_57_19_Pro.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Activity\\WIN_20230523_21_57_19_Pro.jpg"
+    },
     {
       "Identity": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Email\\AssignTodo.html",
       "SourceId": "Event.Features",
@@ -72,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Email\\InvitationUser.html"
+    },
+    {
+      "Identity": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Email\\LogActivity.html",
+      "SourceId": "Event.Features",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\",
+      "BasePath": "_content/Event.Features",
+      "RelativePath": "Email/LogActivity.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Email\\LogActivity.html"
     },
     {
       "Identity": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Email\\SendEmailVerify.html",

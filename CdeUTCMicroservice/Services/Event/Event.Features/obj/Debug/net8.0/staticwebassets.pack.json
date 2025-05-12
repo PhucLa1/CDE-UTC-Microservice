@@ -1,6 +1,14 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Activity\\WIN_20230523_21_57_19_Pro.jpg",
+      "PackagePath": "staticwebassets\\Activity\\WIN_20230523_21_57_19_Pro.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Activity\\hoat-dong-20250511.xlsx",
+      "PackagePath": "staticwebassets\\Activity\\hoat-dong-20250511.xlsx"
+    },
+    {
       "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Email\\AssignTodo.html",
       "PackagePath": "staticwebassets\\Email\\AssignTodo.html"
     },
@@ -11,6 +19,10 @@
     {
       "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Email\\InvitationUser.html",
       "PackagePath": "staticwebassets\\Email\\InvitationUser.html"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Email\\LogActivity.html",
+      "PackagePath": "staticwebassets\\Email\\LogActivity.html"
     },
     {
       "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Event\\Event.Features\\wwwroot\\Email\\SendEmailVerify.html",

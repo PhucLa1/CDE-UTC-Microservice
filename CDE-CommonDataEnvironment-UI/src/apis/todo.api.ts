@@ -11,6 +11,14 @@ const todoApiRequest = {
       undefined,
       Service.ProjectService
     ),
+    delete: (id: number) =>
+      http.delete<ApiResponse<boolean>>(
+        "todo/" + id,
+        undefined,
+        undefined,
+        Service.ProjectService
+      ),
+    update: (id: number, todo: Todo) => http.put<ApiResponse<boolean>>('todo/' + id, todo, undefined, Service.ProjectService),
     getList: (projectId: number) => 
       http.get<ApiResponse<Todo[]>>(
        "todo/" + projectId ,

@@ -1,4 +1,7 @@
-﻿using Project.Application.Extensions;
+﻿using BuildingBlocks.Enums;
+using BuildingBlocks.Messaging.Events;
+using MassTransit;
+using Project.Application.Extensions;
 
 namespace Project.Application.Features.Storage.UpdateFile
 {
@@ -6,7 +9,8 @@ namespace Project.Application.Features.Storage.UpdateFile
         (IBaseRepository<File> fileRepository,
         IBaseRepository<UserProject> userProjectRepository,
         IBaseRepository<FileTag> fileTagRepository,
-        IBaseRepository<FileHistory> fileHistoryRepository)
+        IBaseRepository<FileHistory> fileHistoryRepository,
+        IPublishEndpoint publishEndpoint)
         : ICommandHandler<UpdateFileRequest, UpdateFileResponse>
     {
         /*
@@ -94,6 +98,16 @@ namespace Project.Application.Features.Storage.UpdateFile
                 await fileTagRepository.AddRangeAsync(tagsToAdd, cancellationToken);
 
             await fileTagRepository.SaveChangeAsync(cancellationToken);
+
+            var eventMessage = new CreateActivityEvent
+            {
+                Action = "UPDATE",
+                ResourceId = file.Id,
+                Content = "Tệp tin "+ file.Name + " được cập nhật thành công",
+                TypeActivity = TypeActivity.File,
+                ProjectId = file.ProjectId.Value
+            };
+            await publishEndpoint.Publish(eventMessage, cancellationToken);
 
             return new UpdateFileResponse() { Data = true, Message = Message.UPDATE_SUCCESSFULLY };
         }

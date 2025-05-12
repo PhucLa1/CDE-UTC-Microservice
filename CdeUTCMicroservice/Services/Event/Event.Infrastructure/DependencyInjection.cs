@@ -10,10 +10,13 @@ namespace Event.Infrastructure
     {
         public static IServiceCollection AddInfraService(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<EventDBContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("EventDBContext")));
+            var connectionString = configuration.GetConnectionString("EventDBContext");
+            services.AddHttpContextAccessor();
+            services.AddDbContext<EventDBContext>((sp, options) =>
+            {
+                options.UseSqlServer(connectionString);
+            });
             services.AddScoped<IEmailService, EmailService>();
-            
             #region Repositories
             services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             #endregion

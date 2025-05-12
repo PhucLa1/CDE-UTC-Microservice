@@ -14,3 +14,5 @@ C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservic
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Event\Event.Core\obj\Debug\net8.0\Event.Core.pdb
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Event\Event.Core\obj\Debug\net8.0\ref\Event.Core.dll
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Event\Event.Core\obj\Debug\net8.0\Event.Core.sourcelink.json
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Event\Event.Core\bin\Debug\net8.0\BuildingBlocks.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Event\Event.Core\bin\Debug\net8.0\BuildingBlocks.pdb

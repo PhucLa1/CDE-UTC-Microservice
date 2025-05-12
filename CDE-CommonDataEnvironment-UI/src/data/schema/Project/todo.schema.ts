@@ -3,6 +3,8 @@ import { prioritySchema } from "./priority.schema";
 import { statusSchema } from "./status.schema";
 import { typeSchema } from "./type.schema";
 import { tagSchema } from "./tag.schema";
+import { fileSchema } from "./file.schema";
+import { viewSchema } from "./view.schema";
 // We're keeping a simple non-relational schema here.
 // IRL, you will have a schema for your data models.
 export const todoSchema = z.object({
@@ -28,7 +30,9 @@ export const todoSchema = z.object({
     type: typeSchema.optional(),
     createdBy: z.number().optional(),
     nameCreatedBy: z.string().optional(),  
-    tags: z.array(tagSchema).optional()
+    tags: z.array(tagSchema).optional(),
+    files: z.array(fileSchema).optional(),
+    views: z.array(viewSchema).optional()
 })
 
 export type Todo = z.infer<typeof todoSchema>;

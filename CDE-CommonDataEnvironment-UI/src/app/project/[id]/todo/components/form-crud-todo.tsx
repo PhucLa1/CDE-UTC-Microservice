@@ -7,7 +7,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Link as LucideLink } from 'lucide-react';
+import { Link as LucideLink, Pencil, Trash } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -50,9 +50,16 @@ import SelectMulti from "react-select";
 import tagApiRequest from "@/apis/tag.api";
 import FileReferenceDialog from "./file-view-choose";
 import { Button } from "@/components/custom/button";
+import { useRole } from "../../layout";
+import { Role } from "@/data/enums/role.enum";
+import TabView from "./tab-view";
+import { View } from "@/data/schema/Project/view.schema";
+import { File } from "@/data/schema/Project/file.schema";
+import DeleteFormTodo from "./delete-form-todo";
 
 interface Props {
-  mode: "ADD" | "DELETE" | "UPDATE";
+  mode: "ADD" | "VIEW" | "UPDATE";
+  setMode: (value: "ADD" | "UPDATE" | "VIEW") => void;
   setIsOpen: (value: boolean | Todo) => void;
   isOpen: boolean | Todo | undefined;
   projectId: number;
@@ -63,24 +70,25 @@ interface AssignTo {
   id: string;
 }
 
-export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
+export function UpsertTodo({ mode, setIsOpen, isOpen, projectId, setMode }: Props) {
   const queryClient = useQueryClient();
+  const { roleDetail } = useRole()
   const [assignTo, setAssignTo] = useState<AssignTo[]>([])
   const [selectedTagIds, setSelectedTagIds] = useState<{ label: string, value: number }[]>([]);
   const [isOpenDialog, setIsOpenDialog] = useState<boolean>(false)
-  const [selectedFiles, setSelectedFiles] = useState<number[]>([]);
-  const [selectedViews, setSelectedViews] = useState<number[]>([]);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [selectedViews, setSelectedViews] = useState<View[]>([]);
+  const [disable, setDisable] = useState<boolean>(true)
   const onSubmit = (values: Todo) => {
     values.projectId = projectId;
     values.tagIds = selectedTagIds.map((item) => item.value)
     values.assignTo = Number(values.assignToString?.slice(1))
     values.isAssignToGroup = Number(values.assignToString?.[0])
-    values.fileIds = selectedFiles
-    values.viewIds = selectedViews
+    values.fileIds = selectedFiles.map((item, _) => item.id!)
+    values.viewIds = selectedViews.map((item, _) => item.id!)
     console.log(values);
-    if(mode == 'ADD') mutate(values)
-    // if(state === State.CREATE) mutateCreate(values);
-    // else if(state === State.UPDATE) mutateUpdate(values)
+    if(mode == 'ADD') mutateCreate(values)
+    else if(mode === 'UPDATE') mutateUpdate(values);
   };
   const form = useForm<Todo>({
     resolver: zodResolver(todoSchema),
@@ -135,7 +143,35 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
     }
   }, [dataGroup, dataUser, isLoadingGroup, isLoadingUser])
 
-  const { mutate, isPending } = useMutation({
+  useEffect(() => {
+    if(mode == 'UPDATE' || mode == 'ADD') setDisable(false)
+    if(mode == 'UPDATE' || mode == 'VIEW'){
+      if(typeof isOpen == 'object'){
+        form.setValue('id', isOpen?.id)
+        form.setValue('name', isOpen?.name)
+        form.setValue('description', isOpen?.description)
+        form.setValue('typeId', isOpen?.type?.id)
+        form.setValue('statusId', isOpen?.status?.id)
+        form.setValue('priorityId', isOpen?.priority?.id)
+        form.setValue('startDate', new Date(isOpen?.startDate!).toISOString().split("T")[0])
+        form.setValue('dueDate', new Date(isOpen?.dueDate!).toISOString().split("T")[0])
+        form.setValue('assignToString', (isOpen?.isAssignToGroup ?? '').toString() + (isOpen?.assignTo ?? '').toString())
+        if(isOpen && isOpen.tags && isOpen.tags.length > 0){
+          const tagIds = isOpen.tags.map((item, _) => {
+            return {
+              label: item.name,
+              value: item.id!,
+            }
+          })
+          setSelectedTagIds(tagIds)
+        }
+        setSelectedFiles(isOpen?.files!)
+        setSelectedViews(isOpen?.views!)
+      }
+    }
+  }, [isOpen, mode])
+
+  const { mutate: mutateCreate, isPending: isPendingCreate } = useMutation({
     mutationKey: ["create-todo"],
     mutationFn: (todo: Todo) => todoApiRequest.create(todo),
     onSuccess: () => {
@@ -144,6 +180,19 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
         message: "Chế độ xem được tạo thành công",
       });
       setIsOpen(false);
+      queryClient.invalidateQueries({ queryKey: ["get-list-todo"] });
+    },
+  });
+  const { mutate: mutateUpdate, isPending: isPendingUpdate } = useMutation({
+    mutationKey: ["update-todo"],
+    mutationFn: (todo: Todo) => todoApiRequest.update(todo.id!, todo),
+    onSuccess: () => {
+      handleSuccessApi({
+        title: "Chỉnh sửa việc cần làm",
+        message: "Chế độ xem được chỉnh sửa thành công",
+      });
+      setIsOpen(false);
+      queryClient.invalidateQueries({ queryKey: ["get-list-todo"] });
     },
   });
   return (
@@ -151,7 +200,19 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
       <SheetTrigger asChild>{}</SheetTrigger>
       <SheetContent className="w-[600px] overflow-y-auto">
         <SheetHeader>
-          <SheetTitle>Việc cần làm</SheetTitle>
+          <SheetTitle>
+            <div className="flex items-center justify-between mt-6">
+              <p>Việc cần làm</p>
+              {roleDetail?.role == Role.Admin || (typeof isOpen == 'object' && isOpen.createdBy == roleDetail?.id) ? 
+              <div className="flex items-center">
+                <DeleteFormTodo node={<Trash className="w-3.5 h-3.5 cursor-pointer" />} id={typeof isOpen == 'object' ? isOpen.id! : 0}/>
+                <Pencil className="w-3.5 h-3.5 cursor-pointer ml-2" onClick={() => {
+                setDisable(!disable)
+                setMode(mode == 'UPDATE' ? 'VIEW' : 'UPDATE')
+                }}/>
+              </div> : <></>}
+            </div>
+          </SheetTitle>
           <SheetDescription>Tạo việc cần làm của bạn ở đây</SheetDescription>
         </SheetHeader>
         <Form {...form}>
@@ -164,7 +225,7 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
                   <FormItem>
                     <FormLabel>Tên</FormLabel>
                     <FormControl>
-                      <Input placeholder="Sửa lại tên file" {...field} />
+                      <Input disabled={disable} placeholder="Sửa lại tên file" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -180,6 +241,7 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
                     <FormLabel>Mô tả</FormLabel>
                     <FormControl>
                       <Textarea
+                      disabled={disable}
                         placeholder="Nhập mô tả cho việc cần làm"
                         {...field}
                       />
@@ -198,6 +260,7 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
                     <FormLabel>Phân loại</FormLabel>
                     <FormControl>
                       <Select
+                      disabled={disable}
                         key={field.value}
                         value={field.value?.toString()} // Lấy giá trị từ field
                         onValueChange={(value) => {
@@ -235,6 +298,7 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
                     <FormLabel>Trạng thái</FormLabel>
                     <FormControl>
                       <Select
+                      disabled={disable}
                         key={field.value}
                         value={field.value?.toString()} // Lấy giá trị từ field
                         onValueChange={(value) => {
@@ -271,6 +335,7 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
                     <FormLabel>Mức độ cần thiết</FormLabel>
                     <FormControl>
                       <Select
+                        disabled={disable}
                         key={field.value}
                         value={field.value?.toString()} // Lấy giá trị từ field
                         onValueChange={(value) => {
@@ -307,6 +372,7 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
                                             <FormLabel>Ngày bắt đầu</FormLabel>
                                             <FormControl>
                                                 <Input
+                                                    disabled={disable}
                                                     type="date"
                                                     {...field}
                                                     value={field.value ? field.value : ""} // Hiển thị giá trị mặc định nếu có
@@ -328,6 +394,7 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
                                             <FormLabel>Ngày kết thúc</FormLabel>
                                             <FormControl>
                                                 <Input
+                                                    disabled={disable}
                                                     type="date"
                                                     {...field}
                                                     value={field.value ? field.value : ""} // Hiển thị giá trị mặc định nếu có
@@ -351,6 +418,7 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
                     <FormLabel>Giao việc</FormLabel>
                     <FormControl>
                       <Select
+                      disabled={disable}
                         key={field.value}
                         value={field.value?.toString()} // Lấy giá trị từ field
                         onValueChange={(value) => {
@@ -380,6 +448,7 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
             <div className="flex flex-col space-y-1.5 mt-4">
               <Label htmlFor="tags">Nhãn dán</Label>
               <SelectMulti
+                isDisabled={disable}
                 isMulti
                 options={dataTag?.data.map(item => ({ label: item.name, value: item.id! }))}
                 value={selectedTagIds}
@@ -388,23 +457,24 @@ export function UpsertTodo({ mode, setIsOpen, isOpen, projectId }: Props) {
                 onChange={(newValue: any) => setSelectedTagIds([...newValue])} // Chuyển từ readonly sang mảng mutable
               />
             </div>
-            <div onClick={() => setIsOpenDialog(!isOpenDialog)} className="flex items-center space-x-2 cursor-pointer mt-4">
+            <div onClick={() => setIsOpenDialog(!isOpenDialog)} className={`flex items-center space-x-2 cursor-pointer mt-4 ${mode !== 'UPDATE' ? 'hidden' : ''}`}>
               <LucideLink className="w-4 h-4 text-gray-500" />
               <p className="text-sm font-medium text-gray-700">Thêm liên kết tới các tệp & chế độ xem</p>
             </div>
             {isOpenDialog ? <FileReferenceDialog isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} projectId={projectId} selectedFiles={selectedFiles} setSelectedFiles={setSelectedFiles}
             selectedViews={selectedViews} setSelectedViews={setSelectedViews}/> : <></> }
 
-            <SheetFooter className="mt-4">
+            {mode != 'VIEW' ? <SheetFooter className="mt-4">
               <SheetClose asChild>
                 <Button variant="outline">Hủy</Button>
               </SheetClose>
-              <Button loading={isPending} type="submit">
-                Thêm
+              <Button loading={mode == 'ADD' ? isPendingCreate : isPendingUpdate} type="submit">
+                {mode == 'ADD' ? 'Thêm' : 'Cập nhật'}
               </Button>
-            </SheetFooter>
+            </SheetFooter> : <></>}
           </form>
         </Form>
+        {mode == 'VIEW' && typeof isOpen == 'object' ? <TabView todoId={isOpen?.id!} views={selectedViews ?? []} files={selectedFiles ?? []}/> : <></>}
       </SheetContent>
     </Sheet>
   );

@@ -1,11 +1,16 @@
 ﻿
 
+using BuildingBlocks.Enums;
+using BuildingBlocks.Messaging.Events;
+using MassTransit;
+
 namespace Project.Application.Features.Views.UpdateView
 {
     public class UpdateViewHandler(
         IBaseRepository<View> viewRepository,
         IBaseRepository<ViewTag> viewTagRepository,
-        IBaseRepository<UserProject> userProjectRepository)
+        IBaseRepository<UserProject> userProjectRepository,
+        IPublishEndpoint publishEndpoint)
         : ICommandHandler<UpdateViewRequest, UpdateViewResponse>
     {
         public async Task<UpdateViewResponse> Handle(UpdateViewRequest request, CancellationToken cancellationToken)
@@ -59,6 +64,16 @@ namespace Project.Application.Features.Views.UpdateView
                 await viewTagRepository.AddRangeAsync(tagsToAdd, cancellationToken);
 
             await viewTagRepository.SaveChangeAsync(cancellationToken);
+
+            var eventMessage = new CreateActivityEvent()
+            {
+                Action = "ADD",
+                ResourceId = view.Id,
+                Content = "Sửa đổi góc nhín tên " + view.Name,
+                TypeActivity = TypeActivity.View,
+                ProjectId = request.ProjectId.Value,
+            };
+            await publishEndpoint.Publish(eventMessage, cancellationToken);
 
             return new UpdateViewResponse() { Data = true, Message = Message.UPDATE_SUCCESSFULLY };
         }

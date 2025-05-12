@@ -1,8 +1,15 @@
-﻿namespace Project.Application.Features.Comment.ViewComments.DeleteViewComment
+﻿using BuildingBlocks.Enums;
+using BuildingBlocks.Messaging.Events;
+using MassTransit;
+using Project.Domain.Entities;
+
+namespace Project.Application.Features.Comment.ViewComments.DeleteViewComment
 {
     public class DeleteViewCommentHandler
     (IBaseRepository<ViewComment> viewCommentRepository,
-        IBaseRepository<UserProject> userProjectRepository)
+        IBaseRepository<UserProject> userProjectRepository,
+        IBaseRepository<View> viewRepository,
+        IPublishEndpoint publishEndpoint)
         : ICommandHandler<DeleteViewCommentRequest, DeleteViewCommentResponse>
     {
         public async Task<DeleteViewCommentResponse> Handle(DeleteViewCommentRequest request, CancellationToken cancellationToken)
@@ -22,6 +29,18 @@
 
             viewCommentRepository.Remove(viewComment);
             await viewCommentRepository.SaveChangeAsync(cancellationToken);
+
+            var view = await viewRepository.GetAllQueryAble().FirstAsync(e => e.Id == viewComment.ViewId);
+
+            var eventMessage = new CreateActivityEvent()
+            {
+                Action = "DELETE",
+                ResourceId = viewComment.Id,
+                Content = "Đã xóa bình luận với nội dung " + viewComment.Content + " ở góc nhìn " + view.Name,
+                TypeActivity = TypeActivity.Comment,
+                ProjectId = request.ProjectId,
+            };
+            await publishEndpoint.Publish(eventMessage, cancellationToken);
 
             return new DeleteViewCommentResponse() { Data = true, Message = Message.DELETE_SUCCESSFULLY };
         }

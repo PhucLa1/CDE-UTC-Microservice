@@ -17,13 +17,14 @@
             { ".gif", "image.gif" },
             { ".mp3", "audio.png" },
             { ".mp4", "video.png" },
-            { ".extension", "file.png" }
+            { ".extension", "file.png" },
+            { ".svg", "svg.png" }
         };
 
         public static string ConvertToUrl(this string extension)
         {
             if (string.IsNullOrWhiteSpace(extension))
-                return "unknown.png"; // Ảnh mặc định nếu không xác định được
+                return "file.png"; // Ảnh mặc định nếu không xác định được
 
             extension = extension.ToLowerInvariant().Trim();
 

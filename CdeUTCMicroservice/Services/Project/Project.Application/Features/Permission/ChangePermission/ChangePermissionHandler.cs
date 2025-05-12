@@ -1,9 +1,14 @@
 ﻿
+using BuildingBlocks.Enums;
+using BuildingBlocks.Messaging.Events;
+using MassTransit;
+
 namespace Project.Application.Features.Permission.ChangePermission
 {
     public class ChangePermissionHandler
         (IBaseRepository<ProjectEntity> projectEntityRepository,
-        IBaseRepository<UserProject> userProjectRepository)
+        IBaseRepository<UserProject> userProjectRepository,
+        IPublishEndpoint publishEndpoint)
         : ICommandHandler<ChangePermissionRequest, ChangePermissionResponse>
     {
         public async Task<ChangePermissionResponse> Handle(ChangePermissionRequest request, CancellationToken cancellationToken)
@@ -22,13 +27,24 @@ namespace Project.Application.Features.Permission.ChangePermission
             var project = await projectEntityRepository.GetAllQueryAble()
                 .FirstOrDefaultAsync(e => e.Id == request.ProjectId);
 
-            if(project is null)
+            if (project is null)
                 throw new NotFoundException(Message.NOT_FOUND);
 
             project.TodoVisibility = request.TodoVisibility;
             project.InvitationPermission = request.InvitationPermission;
             projectEntityRepository.Update(project);
             await projectEntityRepository.SaveChangeAsync(cancellationToken);
+
+            //Gửi message sang bên event
+            var eventMessage = new CreateActivityEvent()
+            {
+                Action = "ADD",
+                ResourceId = project.Id,
+                Content = "Đã cập nhật quyền truy cập của dự án tên " + project.Name,
+                TypeActivity = TypeActivity.Project,
+                ProjectId = project.Id,
+            };
+            await publishEndpoint.Publish(eventMessage, cancellationToken);
 
             return new ChangePermissionResponse() { Data = true, Message = Message.UPDATE_SUCCESSFULLY };
 

@@ -1,11 +1,16 @@
 ﻿
 
 
+using BuildingBlocks.Enums;
+using BuildingBlocks.Messaging.Events;
+using MassTransit;
+
 namespace Project.Application.Features.Storage.DeleteFolder
 {
     public class DeleteFolderHandler
         (IBaseRepository<Folder> folderRepository,
-        IBaseRepository<UserProject> userProjectRepository)
+        IBaseRepository<UserProject> userProjectRepository,
+        IPublishEndpoint publishEndpoint)
         : ICommandHandler<DeleteFolderRequest, DeleteFolderResponse>
     {
         public async Task<DeleteFolderResponse> Handle(DeleteFolderRequest request, CancellationToken cancellationToken)
@@ -28,6 +33,17 @@ namespace Project.Application.Features.Storage.DeleteFolder
 
             folderRepository.Remove(folder);
             await folderRepository.SaveChangeAsync(cancellationToken);
+
+            // Gửi message activity
+            var eventMessage = new CreateActivityEvent
+            {
+                Action = "DELETE",
+                ResourceId = folder.Id,
+                Content = $"Đã xóa thư mục \"{folder.Name}\"",
+                TypeActivity = TypeActivity.Folder,
+                ProjectId = request.ProjectId
+            };
+            await publishEndpoint.Publish(eventMessage, cancellationToken);
 
             return new DeleteFolderResponse() { Data = true, Message = Message.DELETE_SUCCESSFULLY };
         }

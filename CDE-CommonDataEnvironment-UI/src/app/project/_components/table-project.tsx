@@ -34,7 +34,6 @@ export default function TableProject({ filteredProjects }: { filteredProjects: P
                                 </td>
                                 <td className="p-4 text-muted-foreground">{project.startDate}</td>
                                 <td className="p-4 text-muted-foreground">{project.endDate}</td>
-
                             </tr>
                         ))}
                     </tbody>

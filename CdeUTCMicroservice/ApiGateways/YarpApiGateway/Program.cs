@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using YarpApiGateway.Middleware;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -69,6 +70,7 @@ builder.Services.AddRateLimiter(rateLimiterOptions =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -100,7 +102,7 @@ app.MapReverseProxy(proxyPipeline =>
 });
 
 
-
+app.UseMiddleware<ProjectIdValidationMiddleware>();
 app.UseHttpsRedirection();
 app.UseRateLimiter();
 

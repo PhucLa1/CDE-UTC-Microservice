@@ -1,4 +1,8 @@
-﻿using Project.Application.Extensions;
+﻿using BuildingBlocks.Enums;
+using BuildingBlocks.Messaging.Events;
+using MassTransit;
+using MassTransit.Transports;
+using Project.Application.Extensions;
 using Project.Domain.Extensions;
 
 namespace Project.Application.Features.Storage.CreateFile;
@@ -6,7 +10,8 @@ namespace Project.Application.Features.Storage.CreateFile;
 public class CreateFileHandler
     (IBaseRepository<File> fileRepository,
     IBaseRepository<FileHistory> fileHistoryRepository,
-    IBaseRepository<Folder> folderRepository)
+    IBaseRepository<Folder> folderRepository,
+    IPublishEndpoint publishEndpoint)
     : ICommandHandler<CreateFileRequest, CreateFileResponse>
 {
     public async Task<CreateFileResponse> Handle(CreateFileRequest request, CancellationToken cancellationToken)
@@ -18,7 +23,7 @@ public class CreateFileHandler
         var IMAGE_EXTENSION = new List<string>() { ".png", ".jpg", ".jpeg" };
         const decimal fileSizeInMB = 1024 * 1024;
         using var transaction = await fileRepository.BeginTransactionAsync(cancellationToken);
-
+        CreateActivityEvent eventMessage;
         string fullPath = "";
         if(request.FolderId is not 0)
         {
@@ -55,6 +60,15 @@ public class CreateFileHandler
             file.FullPath = fullPath + "/" + file.Id;
             fileRepository.Update(file);
             await fileRepository.SaveChangeAsync(cancellationToken);
+
+            eventMessage = new CreateActivityEvent()
+            {
+                Action = "ADD",
+                ResourceId = file.Id,
+                Content = $"Đã tạo mới tệp \"{file.Name}\"",
+                TypeActivity = TypeActivity.Project,
+                ProjectId = request.ProjectId.Value,
+            };
         }
         else
         {
@@ -87,9 +101,22 @@ public class CreateFileHandler
 
             fileRepository.Update(fileInDb);
             await fileHistoryRepository.SaveChangeAsync(cancellationToken);
+
+            eventMessage = new CreateActivityEvent()
+            {
+                Action = "UPDATE",
+                ResourceId = fileInDb.Id,
+                Content = $"Đã cập nhật phiên bản mới cho tệp \"{fileInDb.Name}\" (v{fileInDb.FileVersion})",
+                TypeActivity = TypeActivity.File,
+                ProjectId = request.ProjectId.Value,
+            };
         }
 
         await fileRepository.CommitTransactionAsync(transaction, cancellationToken);
+
+        //Gửi message sang bên event
+        
+        await publishEndpoint.Publish(eventMessage, cancellationToken);
 
         return new CreateFileResponse() { Data = true, Message = Message.CREATE_SUCCESSFULLY };
     }

@@ -13,8 +13,16 @@
       "PackagePath": "staticwebassets\\Extension\\pdf.jpg"
     },
     {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Extension\\svg.png",
+      "PackagePath": "staticwebassets\\Extension\\svg.png"
+    },
+    {
       "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Extension\\txt.png",
       "PackagePath": "staticwebassets\\Extension\\txt.png"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Extension\\xls.png",
+      "PackagePath": "staticwebassets\\Extension\\xls.png"
     },
     {
       "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Project\\638736155813135980.jpg",
@@ -107,6 +115,50 @@
     {
       "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Project\\638753419931155694.jpg",
       "PackagePath": "staticwebassets\\Project\\638753419931155694.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Project\\638819174575597721.jpg",
+      "PackagePath": "staticwebassets\\Project\\638819174575597721.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Project\\638819515826363411.jpg",
+      "PackagePath": "staticwebassets\\Project\\638819515826363411.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Project\\638819523035930130.jpg",
+      "PackagePath": "staticwebassets\\Project\\638819523035930130.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Project\\638819532413617696.jpg",
+      "PackagePath": "staticwebassets\\Project\\638819532413617696.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Project\\638819542431970717.jpg",
+      "PackagePath": "staticwebassets\\Project\\638819542431970717.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Project\\638819543770180978.jpg",
+      "PackagePath": "staticwebassets\\Project\\638819543770180978.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Project\\638820833449413064.jpg",
+      "PackagePath": "staticwebassets\\Project\\638820833449413064.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Project\\638825184279823267.jpg",
+      "PackagePath": "staticwebassets\\Project\\638825184279823267.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Project\\638825188222883935.jpg",
+      "PackagePath": "staticwebassets\\Project\\638825188222883935.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Project\\638825190259407993.jpg",
+      "PackagePath": "staticwebassets\\Project\\638825190259407993.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Project\\638825198491855817.jpg",
+      "PackagePath": "staticwebassets\\Project\\638825198491855817.jpg"
     },
     {
       "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Project\\Project.API\\wwwroot\\Types\\638743497490502424.png",

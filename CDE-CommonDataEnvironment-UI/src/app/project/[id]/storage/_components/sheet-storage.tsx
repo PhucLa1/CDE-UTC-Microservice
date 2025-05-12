@@ -46,6 +46,7 @@ type FormProps = {
     isFile: boolean,
 }
 export default function SheetStorage({ node, id, isOpen, setIsOpen, projectId, isFile }: FormProps) {
+    console.log(isFile)
     const [updateComment, setUpdateComment] = useState<number>(0)
     const [openFolderDes, setOpenFolderDes] = useState<boolean>(false)
     const { data: dataFolder, isLoading: isLoadingFolder } = useQuery({

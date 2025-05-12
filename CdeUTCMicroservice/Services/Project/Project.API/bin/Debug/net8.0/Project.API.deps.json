@@ -1430,6 +1430,7 @@
       },
       "BuildingBlocks.Messaging/1.0.0": {
         "dependencies": {
+          "BuildingBlocks": "1.0.0",
           "MassTransit.RabbitMQ": "8.3.4"
         },
         "runtime": {

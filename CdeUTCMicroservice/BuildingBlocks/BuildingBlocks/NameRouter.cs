@@ -97,6 +97,14 @@
         public const string TODO_COMMENT_ROUTER = "todo-comment";
         #endregion
 
+        #region Activity
+        public const string ACTIVITY_ROUTER = "activities";
+        #endregion
+
+        #region Activity type
+        public const string ACTIVITY_TYPE_ROUTER = "activities-type";
+        #endregion
+
 
         #endregion
 

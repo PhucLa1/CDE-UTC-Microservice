@@ -36,9 +36,6 @@ namespace Event.Infrastructure.Data.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<int?>("ActivityTypeId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -51,7 +48,13 @@ namespace Event.Infrastructure.Data.Migrations
                         .HasColumnType("int")
                         .HasColumnName("created_by");
 
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ResourceId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TypeActivity")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -63,8 +66,6 @@ namespace Event.Infrastructure.Data.Migrations
                         .HasColumnName("updated_by");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ActivityTypeId");
 
                     b.ToTable("Activities");
                 });
@@ -78,15 +79,6 @@ namespace Event.Infrastructure.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ActivityTypeCategory")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ActivityTypeMode")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ActivityTypeParentId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2")
                         .HasColumnName("created_at");
@@ -95,64 +87,21 @@ namespace Event.Infrastructure.Data.Migrations
                         .HasColumnType("int")
                         .HasColumnName("created_by");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("Template")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("updated_at");
-
-                    b.Property<int>("UpdatedBy")
-                        .HasColumnType("int")
-                        .HasColumnName("updated_by");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ActivityTypeParentId");
-
-                    b.ToTable("ActivityTypes");
-                });
-
-            modelBuilder.Entity("Event.Core.Entities.ActivityTypeParent", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ActivityTypeParentCategory")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("created_at");
-
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int")
-                        .HasColumnName("created_by");
-
-                    b.Property<string>("IconImageUrl")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<bool>("IsAcceptAll")
+                        .HasColumnType("bit");
 
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
+                    b.Property<TimeSpan>("TimeSend")
+                        .HasColumnType("time");
+
+                    b.Property<int>("TypeActivity")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2")
                         .HasColumnName("updated_at");
@@ -163,10 +112,7 @@ namespace Event.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name")
-                        .IsUnique();
-
-                    b.ToTable("ActivityTypeParents");
+                    b.ToTable("ActivityTypes");
                 });
 
             modelBuilder.Entity("Event.Core.Entities.Log", b =>
@@ -215,34 +161,6 @@ namespace Event.Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Logs");
-                });
-
-            modelBuilder.Entity("Event.Core.Entities.Activity", b =>
-                {
-                    b.HasOne("Event.Core.Entities.ActivityType", "ActivityType")
-                        .WithMany("Activities")
-                        .HasForeignKey("ActivityTypeId");
-
-                    b.Navigation("ActivityType");
-                });
-
-            modelBuilder.Entity("Event.Core.Entities.ActivityType", b =>
-                {
-                    b.HasOne("Event.Core.Entities.ActivityTypeParent", "ActivityTypeParent")
-                        .WithMany("ActivityTypes")
-                        .HasForeignKey("ActivityTypeParentId");
-
-                    b.Navigation("ActivityTypeParent");
-                });
-
-            modelBuilder.Entity("Event.Core.Entities.ActivityType", b =>
-                {
-                    b.Navigation("Activities");
-                });
-
-            modelBuilder.Entity("Event.Core.Entities.ActivityTypeParent", b =>
-                {
-                    b.Navigation("ActivityTypes");
                 });
 #pragma warning restore 612, 618
         }

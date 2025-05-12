@@ -1,4 +1,5 @@
-﻿using Project.API;
+﻿using BuildingBlocks.Behaviors;
+using Project.API;
 using Project.Application;
 using Project.Infrastructure;
 using Project.Infrastructure.Hubs;
@@ -21,7 +22,10 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<ProjectIdFilter>();
+});
 //Add services to the container
 builder.Services
     .AddApplicationServices(builder.Configuration)

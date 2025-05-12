@@ -29,6 +29,22 @@ namespace Project.Infrastructure.Data.Base
             return 0; // Trả về int mặc định nếu chuyển đổi thất bại
         }
 
+        public int GetProjectId()
+        {
+            var projectId = _httpContextAccessor.HttpContext?.Items["ProjectId"]?.ToString();
+            if (string.IsNullOrEmpty(projectId))
+            {
+                throw new InvalidOperationException("ProjectId is missing.");
+            }
+            if (int.TryParse(projectId.ToString(), out var intProjectId))
+            {
+                return intProjectId; // Trả về int nếu chuyển đổi thành công
+            }
+
+            return 1; // Trả về int mặc định nếu chuyển đổi thất bại
+        }
+
+
         public async Task AddRangeAsync(IEnumerable<T> entities, CancellationToken cancellationToken)
         {
             await _dbSet.AddRangeAsync(entities, cancellationToken);

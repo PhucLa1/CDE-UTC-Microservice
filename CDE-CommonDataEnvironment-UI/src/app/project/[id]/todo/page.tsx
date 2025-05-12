@@ -5,17 +5,6 @@ import { Input } from "@/components/ui/input";
 import { LayoutGrid, List, Search } from "lucide-react";
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import viewApiRequest from "@/apis/view.api";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Checkbox } from "@/components/ui/checkbox";
-import { ChevronUpIcon } from "@radix-ui/react-icons";
 import { Todo } from "@/data/schema/Project/todo.schema";
 import { UpsertTodo } from "./components/form-crud-todo";
 import { TaskCard } from "./components/card";
@@ -32,6 +21,7 @@ export default function page({ params }: { params: { id: string } }) {
     localStorage.getItem("viewModeData") || "table"
   );
   const [isOpen, setIsOpen] = useState<boolean | Todo>(false);
+  const [mode, setMode] = useState<"ADD" | "UPDATE" | "VIEW">("ADD");
 
   const handleViewModeChange = (mode: "table" | "grid") => {
     localStorage.setItem("viewModeData", mode);
@@ -42,18 +32,35 @@ export default function page({ params }: { params: { id: string } }) {
     queryKey: ["get-list-todo"],
     queryFn: () => todoApiRequest.getList(Number(params.id)),
   });
-  console.log(!!isOpen)
+  console.log(!!isOpen);
   if (isLoadingTodo) return <></>;
   return (
     <>
-      {!!isOpen ? <UpsertTodo projectId={Number(params.id)} mode={'ADD'} isOpen={isOpen} setIsOpen={setIsOpen}/> : <></>}
+      {!!isOpen ? (
+        <UpsertTodo
+          setMode={setMode}
+          projectId={Number(params.id)}
+          mode={mode}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+        />
+      ) : (
+        <></>
+      )}
       <div className="mb-2 flex items-center justify-between space-y-2">
         <div>
           <h2 className="text-2xl font-bold tracking-tight">Việc cần làm</h2>
           <AppBreadcrumb pathList={pathList} className="mt-2" />
         </div>
         <div>
-          <Button onClick={() => setIsOpen(true)}>Thêm mới</Button>
+          <Button
+            onClick={() => {
+              setIsOpen(true);
+              setMode("ADD");
+            }}
+          >
+            Thêm mới
+          </Button>
         </div>
       </div>
 
@@ -89,27 +96,16 @@ export default function page({ params }: { params: { id: string } }) {
         </div>
       </div>
       <div className="mt-4">
-        {
-          dataTodo?.data.map((item, index) => {
-            return (
-              <TaskCard
-                id={index + 1}
-                title={item.name}
-                author={item.nameCreatedBy!}
-                priority={item.priority?.name}
-                priorityColor={item.priority?.colorRGB}
-                status={item.status?.name}
-                statusColor={item.status?.colorRGB}
-                type={item.type?.name}
-                typeUrl={item.type?.iconImageUrl}
-                startDate={item.startDate}
-                dueDate={item.dueDate}
-                tags={item.tags}
-                des={item.description}
+        {dataTodo?.data.map((item, index) => {
+          return (
+            <TaskCard
+              setMode={setMode}
+              setIsOpen={setIsOpen}
+              key={index}
+              todo={item}
             />
-            )
-          })
-        }
+          );
+        })}
       </div>
     </>
   );

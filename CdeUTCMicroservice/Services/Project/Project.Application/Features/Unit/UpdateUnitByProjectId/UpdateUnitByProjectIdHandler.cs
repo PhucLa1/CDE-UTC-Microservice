@@ -1,8 +1,13 @@
-﻿namespace Project.Application.Features.Unit.UpdateUnitByProjectId
+﻿using BuildingBlocks.Enums;
+using BuildingBlocks.Messaging.Events;
+using MassTransit;
+
+namespace Project.Application.Features.Unit.UpdateUnitByProjectId
 {
     public class UpdateUnitByProjectIdHandler
         (IBaseRepository<ProjectEntity> projectEntityRepository,
-        IBaseRepository<UserProject> userProjectRepository)
+        IBaseRepository<UserProject> userProjectRepository,
+        IPublishEndpoint publishEndpoint)
         : ICommandHandler<UpdateUnitByProjectIdRequest, UpdateUnitByProjectIdResponse>
     {
         public async Task<UpdateUnitByProjectIdResponse> Handle(UpdateUnitByProjectIdRequest request, CancellationToken cancellationToken)
@@ -40,6 +45,18 @@
             //Save
             projectEntityRepository.Update(project);
             await projectEntityRepository.SaveChangeAsync(cancellationToken);
+
+            //Gửi message sang bên event
+            var eventMessage = new CreateActivityEvent()
+            {
+                Action = "ADD",
+                ResourceId = project.Id,
+                Content = "Đã cập nhật phần độ đo của dự án ",
+                TypeActivity = TypeActivity.Project,
+                ProjectId = project.Id,
+            };
+            await publishEndpoint.Publish(eventMessage, cancellationToken);
+
             return new UpdateUnitByProjectIdResponse() { Data = true, Message = Message.UPDATE_SUCCESSFULLY };
         }
     }

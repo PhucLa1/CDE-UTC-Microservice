@@ -1,8 +1,14 @@
-﻿namespace Project.Application.Features.Groups.DeleteGroup
+﻿using BuildingBlocks.Enums;
+using BuildingBlocks.Messaging.Events;
+using MassTransit;
+using MassTransit.Transports;
+
+namespace Project.Application.Features.Groups.DeleteGroup
 {
     public class DeleteGroupHandler
          (IBaseRepository<Group> groupRepository,
-        IBaseRepository<UserProject> userProjectRepository)
+        IBaseRepository<UserProject> userProjectRepository,
+        IPublishEndpoint publishEndpoint)
         : ICommandHandler<DeleteGroupRequest, DeleteGroupResponse>
     {
         public async Task<DeleteGroupResponse> Handle(DeleteGroupRequest request, CancellationToken cancellationToken)
@@ -31,6 +37,18 @@
 
             groupRepository.Remove(group);
             await groupRepository.SaveChangeAsync(cancellationToken);
+
+            //Gửi message sang bên event
+            var eventMessage = new CreateActivityEvent()
+            {
+                Action = "ADD",
+                ResourceId = group.Id,
+                Content = "Đã xóa nhóm mang tên " + group.Name,
+                TypeActivity = TypeActivity.Group,
+                ProjectId = request.ProjectId,
+            };
+            await publishEndpoint.Publish(eventMessage, cancellationToken);
+
             return new DeleteGroupResponse() { Data = true, Message = Message.DELETE_SUCCESSFULLY };
         }
     }

@@ -45,6 +45,10 @@
       "PackagePath": "staticwebassets\\User\\638745359761220846.jpg"
     },
     {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\Auth\\Auth.API\\wwwroot\\User\\638825054548836280.jpg",
+      "PackagePath": "staticwebassets\\User\\638825054548836280.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Auth.API.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

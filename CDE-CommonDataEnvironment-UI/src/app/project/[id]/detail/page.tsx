@@ -1,92 +1,121 @@
-"use client"
-import projectApiRequest from '@/apis/project.api';
-import AppBreadcrumb, { PathItem } from '@/components/custom/_breadcrumb';
-import { Button } from '@/components/custom/button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { ProjectDetail, projectDetailDefault, projectDetailSchema } from '@/data/schema/Project/projectdetail.schema';
-import { handleSuccessApi } from '@/lib/utils';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import React, { useEffect } from 'react'
-import { useForm } from 'react-hook-form';
-import DeleteProject from './_component/delete-project';
-import LeaveProject from './_component/leave-project';
+"use client";
+import projectApiRequest from "@/apis/project.api";
+import AppBreadcrumb, { PathItem } from "@/components/custom/_breadcrumb";
+import { Button } from "@/components/custom/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  ProjectDetail,
+  projectDetailDefault,
+  projectDetailSchema,
+} from "@/data/schema/Project/projectdetail.schema";
+import { handleSuccessApi } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import React, { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import DeleteProject from "./_component/delete-project";
+import LeaveProject from "./_component/leave-project";
 const pathList: Array<PathItem> = [
   {
     name: "Chi tiết dự án",
-    url: "#"
+    url: "#",
   },
 ];
-export default function page({ params }: { params: { id: number } }) {
-  const queryClient = useQueryClient()
+export default function page({ params }: { params: { id: string } }) {
+  const queryClient = useQueryClient();
 
   const form = useForm<ProjectDetail>({
     resolver: zodResolver(projectDetailSchema),
-    defaultValues: projectDetailDefault
+    defaultValues: projectDetailDefault,
   });
   const { data, isLoading } = useQuery({
-    queryKey: ['get-detail-project'],
-    queryFn: () => projectApiRequest.getDetail(params.id),
-  })
+    queryKey: ["get-detail-project"],
+    queryFn: () => projectApiRequest.getDetail(Number(params.id)),
+  });
 
   const { mutate, isPending } = useMutation({
-    mutationKey: ['update-project'],
+    mutationKey: ["update-project"],
     mutationFn: (body: FormData) => projectApiRequest.updateProject(body),
     onSuccess: () => {
       handleSuccessApi({
         title: "Cập nhật dự án thành công",
-        message: "Bạn đã cập nhật dự án thành công"
-      })
-      queryClient.invalidateQueries({ queryKey: ['get-detail-project'] })
-    }
-  })
+        message: "Bạn đã cập nhật dự án thành công",
+      });
+      queryClient.invalidateQueries({ queryKey: ["get-detail-project"] });
+    },
+  });
 
   useEffect(() => {
     if (data) {
-      form.setValue("id", params.id)
-      form.setValue("name", data.data.name)
-      form.setValue("description", data.data.description)
-      form.setValue("createdAt", data.data.createdAt)
-      form.setValue("updatedAt", data.data.updatedAt)
-      form.setValue("imageUrl", data.data.imageUrl)
-      form.setValue("ownership", data.data.ownership)
-      form.setValue("userCount", data.data.userCount)
-      form.setValue("folderCount", data.data.folderCount)
-      form.setValue("fileCount", data.data.fileCount)
+      form.setValue("id", Number(params.id));
+      form.setValue("name", data.data.name);
+      form.setValue("description", data.data.description);
+      form.setValue("createdAt", data.data.createdAt);
+      form.setValue("updatedAt", data.data.updatedAt);
+      form.setValue("imageUrl", data.data.imageUrl);
+      form.setValue("ownership", data.data.ownership);
+      form.setValue("userCount", data.data.userCount);
+      form.setValue("folderCount", data.data.folderCount);
+      form.setValue("fileCount", data.data.fileCount);
       form.setValue("size", data.data.size);
-      form.setValue("startDate", data.data.startDate.toString().split("T")[0])
-      form.setValue("endDate", data.data.endDate.toString().split("T")[0])
+      form.setValue("startDate", data.data.startDate.toString().split("T")[0]);
+      form.setValue("endDate", data.data.endDate.toString().split("T")[0]);
+      // form.setValue("image", new File([], "default.png"))
     }
-  }, [data])
+  }, [data]);
   const onSubmit = (values: ProjectDetail) => {
-    const formData = new FormData()
-    formData.append("id", params.id.toString())
-    formData.append("name", form.getValues("name"))
-    formData.append("description", form.getValues("description"))
-    formData.append("image", form.getValues("image"))
-    formData.append("startDate", form.getValues("startDate"))
-    formData.append("endDate", form.getValues("endDate"))
-    mutate(formData)
+    const formData = new FormData();
+    formData.append("id", params.id.toString());
+    formData.append("name", form.getValues("name"));
+    formData.append("description", form.getValues("description"));
+    formData.append("image", form.getValues("image"));
+    formData.append("startDate", form.getValues("startDate"));
+    formData.append("endDate", form.getValues("endDate"));
+    console.log(values);
+    mutate(formData);
   };
-  if (isLoading) return <></>
+  const onInvalid = (errors: any) => {
+    console.log("Form validation errors:", errors);
+  };
+  if (isLoading) return <></>;
   return (
     <>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <div className='mb-2 flex items-center justify-between space-y-2'>
+        <form
+          onSubmit={form.handleSubmit(onSubmit, onInvalid)}
+          className="space-y-8"
+        >
+          <div className="mb-2 flex items-center justify-between space-y-2">
             <div>
-              <h2 className='text-2xl font-bold tracking-tight'>Chi tiết dự án</h2>
+              <h2 className="text-2xl font-bold tracking-tight">
+                Chi tiết dự án
+              </h2>
               <AppBreadcrumb pathList={pathList} className="mt-2" />
             </div>
             <div>
-              <Button loading={isPending}>Lưu</Button>
+              <Button type="submit" loading={isPending}>
+                Lưu
+              </Button>
             </div>
           </div>
-          <div className='-mx-4 flex-1 overflow-auto px-4 py-8 lg:flex-row'>
-            <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-8'>
+          <div className="-mx-4 flex-1 overflow-auto px-4 py-8 lg:flex-row">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-8">
               <Card className="rounded-xl border bg-card text-card-foreground shadow col-span-4">
                 <CardHeader>
                   <CardTitle>Thông tin cơ bản</CardTitle>
@@ -131,7 +160,9 @@ export default function page({ params }: { params: { id: number } }) {
                           <FormItem>
                             <FormLabel>Chủ sở hữu</FormLabel>
                             <FormControl>
-                              <span className='text-xs block text-gray-600'>{field.value || "Không có chủ sỡ hữu"}</span>
+                              <span className="text-xs block text-gray-600">
+                                {field.value || "Không có chủ sỡ hữu"}
+                              </span>
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -147,7 +178,9 @@ export default function page({ params }: { params: { id: number } }) {
                             <FormItem>
                               <FormLabel>Ngày tạo dự án</FormLabel>
                               <FormControl>
-                                <span className='text-xs block text-gray-600'>{field.value || "Không có chủ sỡ hữu"}</span>
+                                <span className="text-xs block text-gray-600">
+                                  {field.value || "Không có chủ sỡ hữu"}
+                                </span>
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -162,7 +195,9 @@ export default function page({ params }: { params: { id: number } }) {
                             <FormItem>
                               <FormLabel>Lần sửa cuối cùng</FormLabel>
                               <FormControl>
-                                <span className='text-xs block text-gray-600'>{field.value || "Không có chủ sỡ hữu"}</span>
+                                <span className="text-xs block text-gray-600">
+                                  {field.value || "Không có chủ sỡ hữu"}
+                                </span>
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -179,7 +214,9 @@ export default function page({ params }: { params: { id: number } }) {
                             <FormItem>
                               <FormLabel>Thành viên</FormLabel>
                               <FormControl>
-                                <span className='text-xs block text-gray-600'>{field.value}</span>
+                                <span className="text-xs block text-gray-600">
+                                  {field.value}
+                                </span>
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -194,7 +231,9 @@ export default function page({ params }: { params: { id: number } }) {
                             <FormItem>
                               <FormLabel>Tệp</FormLabel>
                               <FormControl>
-                                <span className='text-xs block text-gray-600'>{field.value}</span>
+                                <span className="text-xs block text-gray-600">
+                                  {field.value}
+                                </span>
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -209,7 +248,9 @@ export default function page({ params }: { params: { id: number } }) {
                             <FormItem>
                               <FormLabel>Thư mục</FormLabel>
                               <FormControl>
-                                <span className='text-xs block text-gray-600'>{field.value}</span>
+                                <span className="text-xs block text-gray-600">
+                                  {field.value}
+                                </span>
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -224,7 +265,9 @@ export default function page({ params }: { params: { id: number } }) {
                             <FormItem>
                               <FormLabel>Kích thước</FormLabel>
                               <FormControl>
-                                <span className='text-xs block text-gray-600'>{field.value}</span>
+                                <span className="text-xs block text-gray-600">
+                                  {field.value} MB
+                                </span>
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -265,7 +308,9 @@ export default function page({ params }: { params: { id: number } }) {
                                       className="w-full h-full object-cover rounded-lg"
                                     />
                                   ) : (
-                                    <span className="text-gray-500">Nhấn vào đây để chọn ảnh</span>
+                                    <span className="text-gray-500">
+                                      Nhấn vào đây để chọn ảnh
+                                    </span>
                                   )}
                                   <Input
                                     type="file"
@@ -278,7 +323,8 @@ export default function page({ params }: { params: { id: number } }) {
                                   />
                                 </div>
                               </FormControl>
-                              <FormMessage /> {/* Hiển thị thông báo lỗi từ Zod */}
+                              <FormMessage />{" "}
+                              {/* Hiển thị thông báo lỗi từ Zod */}
                             </FormItem>
                           );
                         }}
@@ -324,9 +370,9 @@ export default function page({ params }: { params: { id: number } }) {
         </form>
       </Form>
       <div className="flex items-center gap-2 mb-4">
-        <DeleteProject id={params.id} />
-        <LeaveProject id={params.id} />
+        <DeleteProject id={Number(params.id)} />
+        <LeaveProject id={Number(params.id)} />
       </div>
     </>
-  )
+  );
 }

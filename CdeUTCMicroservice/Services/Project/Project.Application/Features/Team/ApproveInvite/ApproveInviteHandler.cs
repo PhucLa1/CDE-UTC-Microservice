@@ -1,8 +1,16 @@
 ﻿
+using BuildingBlocks.Enums;
+using BuildingBlocks.Messaging.Events;
+using MassTransit;
+using Project.Application.Grpc;
+using Project.Application.Grpc.GrpcRequest;
+
 namespace Project.Application.Features.Team.ApproveInvite
 {
     public class ApproveInviteHandler
-        (IBaseRepository<UserProject> userProjectRepository)
+        (IBaseRepository<UserProject> userProjectRepository,
+        IUserGrpc userGrc,
+        IPublishEndpoint publishEndpoint)
         : ICommandHandler<ApproveInviteRequest, ApproveInviteResponse>
     {
         public async Task<ApproveInviteResponse> Handle(ApproveInviteRequest request, CancellationToken cancellationToken)
@@ -16,6 +24,22 @@ namespace Project.Application.Features.Team.ApproveInvite
             userProject.UserProjectStatus = UserProjectStatus.Active;
             userProjectRepository.Update(userProject);
             await userProjectRepository.SaveChangeAsync(cancellationToken);
+
+            var ids = new List<int>() { userProject.UserId };
+
+            var users = await userGrc.GetUsersByIds(new GetUserRequestGrpc() { Ids = ids });
+
+
+            var activityEvent = new CreateActivityEvent
+            {
+                Action = "APPROVE_INVITE",
+                ResourceId = userProject.UserId,
+                Content = $"Người dùng ${users.First().Email} đã chấp nhận lời mời tham gia dự án.",
+                TypeActivity = TypeActivity.Team,
+                ProjectId = userProject.ProjectId.Value
+            };
+
+            await publishEndpoint.Publish(activityEvent, cancellationToken);
             return new ApproveInviteResponse() { Data = true, Message = Message.UPDATE_SUCCESSFULLY };
         }
     }

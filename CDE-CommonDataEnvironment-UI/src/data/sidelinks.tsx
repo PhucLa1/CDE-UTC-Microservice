@@ -52,12 +52,6 @@ export const sidelinks: SideLink[] = [
     icon: <IconActivity size={18} />, // Icon hoạt động
   },
   {
-    title: 'Chủ đề BCF',
-    label: '',
-    href: '/bcf-topic',
-    icon: <IconInfoCircle size={18} />, // Icon thông tin
-  },
-  {
     title: 'Việc cần làm',
     label: '',
     href: '/todo',
