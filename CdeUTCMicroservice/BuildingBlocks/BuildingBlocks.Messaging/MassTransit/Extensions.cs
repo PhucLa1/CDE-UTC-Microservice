@@ -1,4 +1,5 @@
-﻿using MassTransit;
+﻿using BuildingBlocks.Middleware;
+using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -10,6 +11,9 @@ namespace BuildingBlocks.Messaging.MassTransit
         public static IServiceCollection AddMessageBroker
             (this IServiceCollection services, IConfiguration configuration, Assembly? assembly = null)
         {
+            services.AddHttpContextAccessor();
+
+            services.AddSingleton<ConfigureUserIdSendObserver>();
             services.AddMassTransit(config =>
             {
                 config.SetKebabCaseEndpointNameFormatter();
@@ -25,6 +29,10 @@ namespace BuildingBlocks.Messaging.MassTransit
                         host.Password(configuration["MessageBroker:Password"]!);
                     });
                     configurator.ConfigureEndpoints(context);
+                    // Đăng ký middleware toàn cục
+                    var observer = context.GetRequiredService<ConfigureUserIdSendObserver>();
+                    configurator.ConnectSendObserver(observer);
+                    configurator.ConnectPublishObserver(observer);
                 });
 
             });

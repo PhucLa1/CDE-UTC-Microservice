@@ -36,12 +36,19 @@ namespace Event.Infrastructure
                 {
                     var entity = (IAuditable)entry.Entity;
                     entity.UpdatedAt = DateTime.UtcNow;
-                    entity.UpdatedBy = userId;
+                    if(userId != null)
+                    {
+                        entity.UpdatedBy = userId.Value;
+                    }
+                    
 
                     if (entry.State == EntityState.Added)
                     {
                         entity.CreatedAt = DateTime.UtcNow;
-                        entity.CreatedBy = userId;
+                        if (userId != null)
+                        {
+                            entity.UpdatedBy = userId.Value;
+                        };
                     }
                 }
             }
@@ -76,9 +83,10 @@ namespace Event.Infrastructure
 
         #region Get token from gateways
 
-        public int GetCurrentUserId()
+        public int? GetCurrentUserId()
         {
             var context = _httpContextAccessor.HttpContext;
+            if (context == null) return null;
             var userIdObj = context.Request.Headers["X-UserId"].FirstOrDefault();
             if (userIdObj is null)
                 return 0;

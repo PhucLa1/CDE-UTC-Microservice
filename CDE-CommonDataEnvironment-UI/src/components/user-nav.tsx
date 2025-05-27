@@ -7,7 +7,6 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import Link from 'next/link'
@@ -40,7 +39,7 @@ export function UserNav() {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          Đăng xuất
+          <Link href={"/login"}>Đăng xuất</Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -1,0 +1,10 @@
+﻿{
+  "AppDescription": "Ứng dụng quản lý dự án, hỗ trợ quản lý file (PDF, text), công việc, và trả lời câu hỏi liên quan đến dự án.",
+  "Rules": [
+    "Mỗi dự án có ID, tên, và mô tả riêng, ngày bắt đầu và ngày kết thúc.",
+    "Dự án sẽ quản lí file, folder, công việc, góc nhìn, hoạt động trong dự án",
+    "Có thể upload file lên, tạo mới folder",
+    "File up lên nếu cùng 1 folder thì sẽ tăng lên 1 version cho file đó",
+    "Folder khi đổi tên cũng sẽ tăng lên 1 version cho folder đó"
+  ]
+}

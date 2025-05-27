@@ -10,7 +10,7 @@ import TableView from './_components/table-view';
 import GridView from './_components/grid-view';
 const pathList: Array<PathItem> = [
     {
-        name: "Tệp & Thư mục",
+        name: "Chế độ xem",
         url: "#"
     },
 ];

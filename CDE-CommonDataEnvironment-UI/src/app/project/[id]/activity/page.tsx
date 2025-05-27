@@ -126,7 +126,8 @@ export default function ActivityLog({ params }: { params: { id: string } }) {
                   onCheckedChange={() => toggleTypeActivity(item.value)}
                   onSelect={(e) => e.preventDefault()}
                 >
-                  {item.label}
+                  {item.icon}
+                  <span>{item.label}</span>
                 </DropdownMenuCheckboxItem>
               );
             })}
@@ -163,7 +164,12 @@ export default function ActivityLog({ params }: { params: { id: string } }) {
             <Card key={index}>
               <CardContent className="p-4 flex items-start justify-between">
                 <div className="flex items-start gap-4">
-                  <CheckCircle2 className="text-blue-500 mt-1" />
+                  {
+                    activityOptions.find(
+                      (option) => option.value === item.typeActivity
+                    )?.icon
+                  }
+                  {/* <CheckCircle2 className="text-blue-500 mt-1" /> */}
                   <div className="flex flex-col gap-1">
                     <div className="flex items-center gap-2">
                       <Avatar className="w-8 h-8">

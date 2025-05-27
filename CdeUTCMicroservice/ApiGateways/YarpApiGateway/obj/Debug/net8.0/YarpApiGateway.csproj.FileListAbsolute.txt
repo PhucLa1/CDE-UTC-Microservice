@@ -54,3 +54,9 @@ C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservic
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\ApiGateways\YarpApiGateway\bin\Debug\net8.0\Microsoft.FeatureManagement.AspNetCore.dll
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\ApiGateways\YarpApiGateway\bin\Debug\net8.0\BuildingBlocks.dll
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\ApiGateways\YarpApiGateway\bin\Debug\net8.0\BuildingBlocks.pdb
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\ApiGateways\YarpApiGateway\bin\Debug\net8.0\MassTransit.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\ApiGateways\YarpApiGateway\bin\Debug\net8.0\MassTransit.Abstractions.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\ApiGateways\YarpApiGateway\bin\Debug\net8.0\System.Net.Http.Formatting.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\ApiGateways\YarpApiGateway\bin\Debug\net8.0\System.Web.Http.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\ApiGateways\YarpApiGateway\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\ApiGateways\YarpApiGateway\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll

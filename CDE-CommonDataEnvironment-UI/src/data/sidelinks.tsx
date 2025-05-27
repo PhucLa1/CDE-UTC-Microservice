@@ -11,6 +11,7 @@ import {
   IconRuler,
   IconTag,
   IconShieldCheck,
+  IconRobot,
 } from '@tabler/icons-react';
 
 export interface NavLink {
@@ -44,6 +45,12 @@ export const sidelinks: SideLink[] = [
         icon: <IconEye size={18} />, // Icon con mắt
       },
     ],
+  },
+   {
+    title: 'Trò chuyện với AI',
+    label: '',
+    href: '/chatbot',
+    icon: <IconRobot size={18} />, // Icon hoạt động
   },
   {
     title: 'Hoạt động',

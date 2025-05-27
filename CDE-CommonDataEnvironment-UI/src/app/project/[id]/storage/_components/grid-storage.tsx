@@ -31,9 +31,9 @@ export default function GridStorage({ data, projectId }: FormProps) {
                     <Card key={index} className="p-4 flex items-center justify-between cursor-pointer">
                         <div onClick={() => {
                             router.push(`${item.id}`);
-                        }} className="flex items-center gap-3">
+                        }} className="flex items-center gap-3 flex-1 overflow-hidden">
                             <Folder className="text-yellow-500" size={24} />
-                            <span className="truncate w-[3/4] overflow-hidden text-ellipsis whitespace-nowrap">{item.name}</span>
+                            <span className="truncate overflow-hidden text-ellipsis whitespace-nowrap">{item.name}</span>
                         </div>
                         {/* Icon ba chấm */}
                         <Button onClick={() => {

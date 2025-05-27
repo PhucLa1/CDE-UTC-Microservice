@@ -9,6 +9,7 @@ namespace Event.Features.MessageHandlers
         {
             var message = context.Message;
             Console.WriteLine(message);
+            var userId = context.Headers.Get<int>("UserId");
 
             await activityRepository.AddAsync(new Activity()
             {
@@ -16,7 +17,9 @@ namespace Event.Features.MessageHandlers
                 ResourceId = message.ResourceId,
                 Content = message.Content,
                 TypeActivity = message.TypeActivity,
-                ProjectId = message.ProjectId
+                ProjectId = message.ProjectId,
+                CreatedBy = (int)userId.Value,
+                UpdatedBy = (int)userId,
             }, CancellationToken.None);
             await activityRepository.SaveChangeAsync(CancellationToken.None);
         }

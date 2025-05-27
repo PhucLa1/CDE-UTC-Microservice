@@ -11,6 +11,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
     <PackageReference Include="NEST" Version="7.17.5" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.3.1" />
+    <PackageReference Include="Xbim.Essentials" Version="6.0.521" />
+    <PackageReference Include="Xbim.Geometry" Version="5.1.820" />
+    <PackageReference Include="Xbim.Geometry.Engine.Interop" Version="5.1.820" />
   </ItemGroup>
 
   <ItemGroup>

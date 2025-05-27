@@ -86,18 +86,18 @@ export default function page({ params }: { params: { id: string } }) {
                 </Card>
                 <Card className="rounded-xl border bg-card text-card-foreground shadow col-span-4 mt-12">
                     <CardHeader>
-                        <CardTitle>Quyền xem việc cần làm </CardTitle>
+                        <CardTitle>Quyền tạo việc cần làm</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <RadioGroup disabled={roleDetail?.role !== Role.Admin} value={todoVisibility}
                             onValueChange={(val) => setTodoVisibility(val)}>
                             <div className="flex items-center space-x-2">
                                 <RadioGroupItem value={TodoVisibility.Default.toString()} />
-                                <Label htmlFor="option-one">Việc cần làm có thể xem được tất cả bởi mọi người</Label>
+                                <Label htmlFor="option-one">Việc cần làm có thể tạo bởi tất cả mọi người</Label>
                             </div>
                             <div className="flex items-center space-x-2 mt-4">
                                 <RadioGroupItem value={TodoVisibility.Restricted.toString()} />
-                                <Label htmlFor="option-two">Việc cần làm chỉ có thể xem bởi admin, người tạo ra và người được giao việc</Label>
+                                <Label htmlFor="option-two">Việc cần làm chỉ có thể tạo bởi admin</Label>
                             </div>
                         </RadioGroup>
                     </CardContent>

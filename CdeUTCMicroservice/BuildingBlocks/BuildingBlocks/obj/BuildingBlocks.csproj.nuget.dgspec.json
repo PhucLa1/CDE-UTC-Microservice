@@ -66,6 +66,10 @@
               "target": "Package",
               "version": "[7.4.0, )"
             },
+            "MassTransit": {
+              "target": "Package",
+              "version": "[8.3.4, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[12.4.1, )"

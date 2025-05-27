@@ -32,7 +32,7 @@ namespace Project.Application.Storage.GetFileById
                     Name = e.Name,
                     CreatedAt = e.CreatedAt.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
                     CreatedBy = e.CreatedBy,
-                    TagResults = e.FileTags.Select(e => new TagResult()
+                    TagResults = e.FileTags.Where(f => f.Tag != null && f.Tag.Name != null).Select(e => new TagResult()
                     {
                         Id = e.TagId.Value,
                         Name = e.Tag.Name

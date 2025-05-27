@@ -11,7 +11,6 @@ namespace Event.Features.Features.Activities
     {
         public async Task<ApiResponse<List<GetActivitiesResponse>>> Handle(GetActivitiesRequest request, CancellationToken cancellationToken)
         {
-
             var activities = await activityRepository.GetAllQueryAble()
                 .Where(e => e.ProjectId == request.ProjectId).ToListAsync(cancellationToken);
 
@@ -48,7 +47,7 @@ namespace Event.Features.Features.Activities
                                    Content = a.Content,
                                    TypeActivity = a.TypeActivity,
                                    ProjectId = a.ProjectId,
-                                   CreatedAt = a.CreatedAt.ToString(),
+                                   CreatedAt = a.CreatedAt.AddHours(7).ToString(),
                                    FullName = u.FullName,
                                    UserId = u.Id,
                                    Email = u.Email,

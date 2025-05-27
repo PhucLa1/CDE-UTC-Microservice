@@ -205,3 +205,14 @@ C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservic
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\Grpc.Net.Common.dll
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\Elasticsearch.Net.dll
 C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\Nest.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\Esent.Interop.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\Xbim.Common.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\Xbim.Geometry.Engine.Interop.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\Xbim.Ifc.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\Xbim.Ifc2x3.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\Xbim.Ifc4.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\Xbim.Ifc4x3.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\Xbim.IO.Esent.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\Xbim.IO.MemoryModel.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\Xbim.ModelGeometry.Scene.dll
+C:\Users\Hong Phuc\Desktop\Study\CDE-Common Data Environment\CDE-UTC-Microservice\CdeUTCMicroservice\Services\Project\Project.API\bin\Debug\net8.0\Xbim.Tessellator.dll

@@ -80,7 +80,7 @@ const PDFViewer = ({ url, addAnnotation, annotationList, viewId }: FormProps) =>
                             if (addElement?.length > 0) {
                                 const addContent = new XMLSerializer().serializeToString(addElement[0]);
                                 addAnnotation({ inkString: addContent, annotationAction: AnnotationAction.ADD, viewId });
-                                if (viewId !== 0) mutate({ inkString: addContent, annotationAction: AnnotationAction.ADD, viewId });
+                                if (viewId !== 0) mutate({ inkString: addContent, action: AnnotationAction.ADD, viewId });
                             }
                             break;
                         case 'delete':
@@ -88,15 +88,16 @@ const PDFViewer = ({ url, addAnnotation, annotationList, viewId }: FormProps) =>
                             if (deleteElement?.length > 0) {
                                 const deleteContent = new XMLSerializer().serializeToString(deleteElement[0]);
                                 addAnnotation({ inkString: deleteContent, annotationAction: AnnotationAction.DELETE, viewId });
-                                if (viewId !== 0) mutate({ inkString: deleteContent, annotationAction: AnnotationAction.DELETE, viewId });
+                                if (viewId !== 0) mutate({ inkString: deleteContent, action: AnnotationAction.DELETE, viewId });
                             }
+                            console.log('Delete action detected:', deleteElement);
                             break;
                         case 'modify':
                             const modifyElement = xmlDoc.getElementsByTagName('modify')[0]?.children;
                             if (modifyElement?.length > 0) {
                                 const modifyContent = new XMLSerializer().serializeToString(modifyElement[0]);
                                 addAnnotation({ inkString: modifyContent, annotationAction: AnnotationAction.UPDATE, viewId });
-                                if (viewId !== 0) mutate({ inkString: modifyContent, annotationAction: AnnotationAction.UPDATE, viewId });
+                                if (viewId !== 0) mutate({ inkString: modifyContent, action: AnnotationAction.UPDATE, viewId });
                             }
                             break;
                         default:

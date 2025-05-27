@@ -113,7 +113,7 @@ namespace Project.Application.Features.Storage.UpdateFolder
             
 
             var existingTags = await folderTagRepository.GetAllQueryAble()
-                .Where(e => e.FolderId == request.Id)
+                .Where(e => e.FolderId == request.Id && e.TagId != null)
                 .ToListAsync(cancellationToken);
 
             // Tag hiện tại

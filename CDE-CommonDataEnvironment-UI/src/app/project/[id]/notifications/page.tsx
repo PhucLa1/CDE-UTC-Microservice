@@ -131,11 +131,11 @@ export default function page({ params }: { params: { id: string } }) {
           </h2>
           <AppBreadcrumb pathList={pathList} className="mt-2" />
         </div>
-        <div>
+        {roleDetail?.role == Role.Admin ?<div>
           <Button loading={isPending} onClick={() => mutate()}>
             Lưu
           </Button>
-        </div>
+        </div> : <></>}
       </div>
       <Card className="w-full mx-auto mb-4">
         <CardHeader className="pb-3">

@@ -12,7 +12,7 @@ const request = async <T>(
   method: "GET" | "POST" | "PUT" | "DELETE",
   url: string,
   options?: CustomOptions | undefined,
-  service?: Service.AuthService | Service.EventService | Service.ProjectService
+  service?: Service.AuthService | Service.EventService | Service.ProjectService | Service.AIService
 ) => {
   let body: FormData | string | undefined = undefined;
   if (options?.body instanceof FormData) {
@@ -87,6 +87,7 @@ const http = {
       | Service.AuthService
       | Service.EventService
       | Service.ProjectService
+      | Service.AIService
   ) {
     return request<T>("GET", url, options, service);
   },
@@ -98,6 +99,7 @@ const http = {
       | Service.AuthService
       | Service.EventService
       | Service.ProjectService
+      | Service.AIService
   ) {
     return request<T>("POST", url, { ...options, body }, service);
   },
@@ -109,6 +111,7 @@ const http = {
       | Service.AuthService
       | Service.EventService
       | Service.ProjectService
+      | Service.AIService
   ) {
     return request<T>("PUT", url, { ...options, body }, service);
   },
@@ -120,6 +123,7 @@ const http = {
       | Service.AuthService
       | Service.EventService
       | Service.ProjectService
+      | Service.AIService
   ) {
     return request<T>("DELETE", url, { ...options, body }, service);
   },

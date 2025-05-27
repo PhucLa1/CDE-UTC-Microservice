@@ -29,6 +29,7 @@ export default function InviteForm({ button, projectId }: { button: ReactNode, p
     });
     const onSubmit = (values: UserProject) => {
         values.projectId = projectId
+        console.log(values)
         mutate(values);
     };
 

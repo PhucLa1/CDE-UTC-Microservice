@@ -141,6 +141,10 @@
               "target": "Package",
               "version": "[7.4.0, )"
             },
+            "MassTransit": {
+              "target": "Package",
+              "version": "[8.3.4, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[12.4.1, )"
@@ -245,6 +249,18 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.3.1, )"
+            },
+            "Xbim.Essentials": {
+              "target": "Package",
+              "version": "[6.0.521, )"
+            },
+            "Xbim.Geometry": {
+              "target": "Package",
+              "version": "[5.1.820, )"
+            },
+            "Xbim.Geometry.Engine.Interop": {
+              "target": "Package",
+              "version": "[5.1.820, )"
             }
           },
           "imports": [

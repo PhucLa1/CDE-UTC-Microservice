@@ -18,7 +18,8 @@
             { ".mp3", "audio.png" },
             { ".mp4", "video.png" },
             { ".extension", "file.png" },
-            { ".svg", "svg.png" }
+            { ".svg", "svg.png" },
+            { ".glb", "3dfile.png" }
         };
 
         public static string ConvertToUrl(this string extension)

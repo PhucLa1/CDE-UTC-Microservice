@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "q7451uG/BZejpqc8e4TGeht8dwX4WzhQ/SvyPluabEM=",
+  "Source": "AI-LLM",
+  "BasePath": "_content/AI-LLM",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "AI-LLM\\wwwroot",
+      "Source": "AI-LLM",
+      "ContentRoot": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\AI-LLM\\wwwroot\\",
+      "BasePath": "_content/AI-LLM",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\AI-LLM\\wwwroot\\system_context.json",
+      "SourceId": "AI-LLM",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\AI-LLM\\wwwroot\\",
+      "BasePath": "_content/AI-LLM",
+      "RelativePath": "system_context.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\system_context.json"
+    }
+  ]
+}

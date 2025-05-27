@@ -25,13 +25,14 @@ namespace Event.Features.Service
                    .Where(e => e.Enabled == true)
                    .ToListAsync(stoppingToken);
 
+
                 var groupedByProject = activityTypes
                     .GroupBy(e => e.ProjectId)
                     .ToDictionary(
                         g => g.Key,
                         g => g.ToList()
                     );
-
+                Console.WriteLine(groupedByProject);
                 foreach (var activityType in groupedByProject)
                 {
                     if (activityType.Value[0].IsAcceptAll)
@@ -113,7 +114,7 @@ namespace Event.Features.Service
 
             RecipentEmail email = new()
             {
-                To = "phucminhbeo@gmail.com",
+                To = "phucminhbeos@gmail.com",
                 Body = contentEmail,
                 Subject = "CDE - Thư thông báo hoạt động hàng ngày"
             };

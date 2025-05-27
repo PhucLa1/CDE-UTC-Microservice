@@ -66,7 +66,7 @@ public class CreateFileHandler
                 Action = "ADD",
                 ResourceId = file.Id,
                 Content = $"Đã tạo mới tệp \"{file.Name}\"",
-                TypeActivity = TypeActivity.Project,
+                TypeActivity = TypeActivity.File,
                 ProjectId = request.ProjectId.Value,
             };
         }

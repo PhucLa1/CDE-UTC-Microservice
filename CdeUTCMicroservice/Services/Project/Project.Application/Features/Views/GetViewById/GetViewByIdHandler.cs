@@ -32,7 +32,7 @@ namespace Project.Application.Features.Storage.GetViewById
                      Name = e.view.Name,
                      CreatedAt = e.view.CreatedAt.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
                      CreatedBy = e.view.CreatedBy,
-                     TagResults = e.view.ViewTags.Select(tag => new TagResult()
+                     TagResults = e.view.ViewTags.Where(e => e.Tag != null && e.TagId != null).Select(tag => new TagResult()
                      {
                          Id = tag.TagId.Value,
                          Name = tag.Tag.Name

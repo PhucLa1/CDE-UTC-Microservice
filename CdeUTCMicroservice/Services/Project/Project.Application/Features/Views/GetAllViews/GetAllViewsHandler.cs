@@ -24,7 +24,7 @@ namespace Project.Application.Features.Views.GetAllViews
                                    Name = v.Name,
                                    CreatedAt = v.CreatedAt.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
                                    CreatedBy = v.CreatedBy,
-                                   TagNames = v.ViewTags.Select(e => e.Tag.Name).ToList()
+                                   TagNames = v.ViewTags.Where(e => e.Tag != null && e.TagId != null).Select(e => e.Tag.Name).ToList()
                                })
                                .ToListAsync(cancellationToken);
 

@@ -53,7 +53,7 @@ namespace Auth.Application.Auth.Login
                     jwtServerSetting.Value.Issuer,
                     jwtServerSetting.Value.Audience,
                     claims,
-                    expires: DateTime.UtcNow.AddDays(7),
+                    expires: DateTime.UtcNow.AddMonths(7),
                     signingCredentials: signIn);
 
                 var encrypterToken = new JwtSecurityTokenHandler().WriteToken(token);

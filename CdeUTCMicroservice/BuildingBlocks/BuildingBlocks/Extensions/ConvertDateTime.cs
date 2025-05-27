@@ -27,7 +27,7 @@ namespace BuildingBlocks.Extensions
                 _ => " hh:mm:ss tt"
             };
 
-            return dateTime.ToString(dateFormat + timeFormat).Trim(); // Trim() để loại bỏ khoảng trắng nếu không có giờ
+            return dateTime.AddHours(7).ToString(dateFormat + timeFormat).Trim(); // Trim() để loại bỏ khoảng trắng nếu không có giờ
         }
     }
 }

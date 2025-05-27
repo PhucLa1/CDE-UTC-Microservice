@@ -1,17 +1,6 @@
 "use client";
-import React, { useEffect, useState } from 'react';
-import PDFViewer from '../../_components/pdf-viewer';
+import viewApiRequest from '@/apis/view.api';
 import { Button } from '@/components/custom/button';
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -21,20 +10,21 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
-import { useForm } from 'react-hook-form';
-import { annotationSchema, View, viewDefault, viewSchema } from '@/data/schema/Project/view.schema';
-import { zodResolver } from '@hookform/resolvers/zod';
+} from "@/components/ui/alert-dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { z } from 'zod';
-import { useMutation } from '@tanstack/react-query';
-import viewApiRequest from '@/apis/view.api';
+import { annotationSchema, View, viewDefault, viewSchema } from '@/data/schema/Project/view.schema';
 import { handleSuccessApi } from '@/lib/utils';
-import { UpsertTodo } from '../../../todo/components/form-crud-todo';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import PDFViewer from '../../_components/pdf-viewer';
+import View3D from '../../_components/view-3d';
 
-
+const Url3DFiles = ['gltf', 'glb', 'obj', 'fbx'];
 export default function ViewerPageFile({ params }: { params: { fileId: string } }) {
   const [fileUrl, setFileUrl] = useState<string | null>(null);
   const [annotationList, setAnnotationList] = useState<z.infer<typeof annotationSchema>[]>([])
@@ -89,8 +79,7 @@ export default function ViewerPageFile({ params }: { params: { fileId: string } 
   return (
     <div>
       <div className='flex items-center justify-start'>
-        <UpsertTodo />
-        <AlertDialog>
+        {!Url3DFiles.includes(fileUrl.split('.').pop() ?? '') && <AlertDialog>
           <AlertDialogTrigger asChild>
             <Button className='ml-4'>Tạo mới chế độ xem</Button>
           </AlertDialogTrigger>
@@ -141,9 +130,19 @@ export default function ViewerPageFile({ params }: { params: { fileId: string } 
               </form>
             </Form>
           </AlertDialogContent>
-        </AlertDialog>
+        </AlertDialog>}
       </div>
-      <PDFViewer viewId={0} annotationList={[]} addAnnotation={addAnnotation} url={fileUrl} />
+      {!Url3DFiles.includes(fileUrl.split('.').pop() ?? '') && <PDFViewer viewId={0} annotationList={[]} addAnnotation={addAnnotation} url={fileUrl} />}
+      {Url3DFiles.includes(fileUrl.split('.').pop() ?? '') && (
+        <View3D
+          fileUrl={fileUrl}
+          fileType={
+            (['gltf', 'glb', 'obj', 'fbx'].includes(fileUrl.split('.').pop() ?? '')
+              ? (fileUrl.split('.').pop() as 'gltf' | 'glb' | 'obj' | 'fbx')
+              : 'gltf')
+          }
+        />
+      )}
     </div>
   );
 }

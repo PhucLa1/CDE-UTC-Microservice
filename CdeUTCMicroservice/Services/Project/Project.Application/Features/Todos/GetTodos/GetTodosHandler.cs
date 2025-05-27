@@ -25,6 +25,7 @@ namespace Project.Application.Features.Todos.GetTodos
             var currenTimeDisplay = todoRepository.GetCurrentTimeDisplay();
 
             var todo = await todoRepository.GetAllQueryAble().Where(e => e.ProjectId == request.ProjectId)
+                .OrderByDescending(e => e.CreatedAt)
                 .Select(e => new GetTodosResponse()
                 {
                     Id = e.Id,

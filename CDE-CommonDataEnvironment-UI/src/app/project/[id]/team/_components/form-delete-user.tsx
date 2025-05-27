@@ -57,6 +57,7 @@ export default function FormDeleteUser({ node, userProject, projectId, groupId }
                 message: 'Xóa người dùng khỏi nhóm thành công'
             })
             queryClient.invalidateQueries({ queryKey: ['users-group', groupId] })
+            queryClient.invalidateQueries({ queryKey: ['groups'] })
             setIsOpen(false)
         }
     })

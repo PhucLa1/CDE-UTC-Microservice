@@ -9,6 +9,8 @@ import { Todo } from "@/data/schema/Project/todo.schema";
 import { UpsertTodo } from "./components/form-crud-todo";
 import { TaskCard } from "./components/card";
 import todoApiRequest from "@/apis/todo.api";
+import { useRole } from "../layout";
+import { TodoVisibility } from "@/data/enums/todovisibility.enum";
 const pathList: Array<PathItem> = [
   {
     name: "Danh sách việc cần làm",
@@ -16,6 +18,7 @@ const pathList: Array<PathItem> = [
   },
 ];
 export default function page({ params }: { params: { id: string } }) {
+  const { roleDetail } = useRole();
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState(
     localStorage.getItem("viewModeData") || "table"
@@ -53,14 +56,14 @@ export default function page({ params }: { params: { id: string } }) {
           <AppBreadcrumb pathList={pathList} className="mt-2" />
         </div>
         <div>
-          <Button
+          {roleDetail?.todoVisibility == TodoVisibility.Default ? <Button
             onClick={() => {
               setIsOpen(true);
               setMode("ADD");
             }}
           >
             Thêm mới
-          </Button>
+          </Button> : <></>}
         </div>
       </div>
 
@@ -103,6 +106,7 @@ export default function page({ params }: { params: { id: string } }) {
               setIsOpen={setIsOpen}
               key={index}
               todo={item}
+              indexx={index + 1}
             />
           );
         })}

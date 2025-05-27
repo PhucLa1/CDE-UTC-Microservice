@@ -33,6 +33,7 @@ export default function TableStorage({ data, projectId }: FormProps) {
       setSelectedStorage(new Set());
     }
   };
+  console.log(selectedStorage)
 
   const handleSelectFile = (id: number, checked: boolean) => {
     const newSelected = new Set(selectedStorage);

@@ -86,7 +86,7 @@ export function SheetFolderDestination({ fileIds, folderIds, isOpen, setIsOpen, 
                     </SheetDescription>
                 </SheetHeader>
                 <div className="grid gap-4 py-4">
-                    {isLoadingPath ? <></> : <AppBreadcrumbSheet pathList={dataPath!.data.map((item, _) => {
+                    {isLoadingPath ? <></> : <AppBreadcrumbSheet pathList={dataPath!.data.map((item) => {
                         return {
                             name: item.name,
                             url: `${item.folderId}`

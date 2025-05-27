@@ -1,4 +1,5 @@
 ﻿using BuildingBlocks.Behaviors;
+using Microsoft.AspNetCore.StaticFiles;
 using Project.API;
 using Project.Application;
 using Project.Infrastructure;
@@ -26,6 +27,18 @@ builder.Services.AddControllers(options =>
 {
     options.Filters.Add<ProjectIdFilter>();
 });
+#region CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin",
+        builder => builder
+            .WithOrigins("http://127.0.0.1:5500", "http://localhost:3000") // Điền vào tên miền của dự án giao diện của bạn
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials() // Cho phép sử dụng credentials (cookies, xác thực)
+    );
+});
+#endregion
 //Add services to the container
 builder.Services
     .AddApplicationServices(builder.Configuration)
@@ -53,7 +66,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 
 }
-app.UseStaticFiles();
+
+app.UseCors("AllowOrigin");
+app.UseStaticFiles(new StaticFileOptions
+{
+    ContentTypeProvider = new FileExtensionContentTypeProvider
+    {
+        Mappings = { [".gltf"] = "model/gltf+json" }
+    }
+});
 app.UseHttpsRedirection();
 app.UseApiServices();
 app.UseCors("AllowReact"); // Trước MapHub

@@ -17,6 +17,7 @@ namespace Auth.Application.Auth.GetUserByIds
                     ImageUrl = Setting.AUTH_HOST + "/User/" + e.ImageUrl,
                 })
                 .ToListAsync(cancellationToken);
+            Console.WriteLine(user);
 
             return new ApiResponse<List<GetUserByIdsResponse>> { Data = user, Message = Message.GET_SUCCESSFULLY };
         }

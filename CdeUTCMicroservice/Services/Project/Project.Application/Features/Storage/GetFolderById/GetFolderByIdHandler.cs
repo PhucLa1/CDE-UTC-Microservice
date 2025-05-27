@@ -27,7 +27,7 @@ namespace Project.Application.Features.Storage.GetFolderById
                     Name = e.Name,
                     CreatedAt = e.CreatedAt.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
                     CreatedBy = e.CreatedBy,
-                    TagResults = e.FolderTags.Select(e => new TagResult()
+                    TagResults = e.FolderTags.Where(f => f.Tag != null && f.Tag.Name != null).Select(e => new TagResult()
                     {
                         Id = e.TagId.Value,
                         Name = e.Tag.Name

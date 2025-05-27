@@ -19,7 +19,7 @@ namespace Project.Application.Features.Project.GetProjectById
             var currenTimeDisplay = userProjectRepository.GetCurrentTimeDisplay();
 
             var userCount = await userProjectRepository.GetAllQueryAble()
-                .Where(e => e.ProjectId == request.Id)
+                .Where(e => e.ProjectId == request.Id && e.UserProjectStatus == UserProjectStatus.Active)
                 .CountAsync(cancellationToken);
 
             var project = await projectEntityRepository.GetAllQueryAble()

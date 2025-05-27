@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Hong Phuc\\Desktop\\Study\\CDE-Common Data Environment\\CDE-UTC-Microservice\\CdeUTCMicroservice\\Services\\AI-LLM\\wwwroot\\system_context.json",
+      "PackagePath": "staticwebassets\\system_context.json"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.AI-LLM.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.AI-LLM.props",
+      "PackagePath": "build\\AI-LLM.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.AI-LLM.props",
+      "PackagePath": "buildMultiTargeting\\AI-LLM.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.AI-LLM.props",
+      "PackagePath": "buildTransitive\\AI-LLM.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

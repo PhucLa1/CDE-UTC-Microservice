@@ -12,7 +12,10 @@
           "Microsoft.EntityFrameworkCore.Design": "9.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.0",
-          "Project.Application": "1.0.0"
+          "Project.Application": "1.0.0",
+          "Xbim.Essentials": "6.0.521",
+          "Xbim.Geometry": "5.1.820",
+          "Xbim.Geometry.Engine.Interop": "5.1.820"
         },
         "runtime": {
           "Project.Infrastructure.dll": {}
@@ -563,6 +566,14 @@
           }
         }
       },
+      "Microsoft.Database.ManagedEsent/2.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/Esent.Interop.dll": {
+            "assemblyVersion": "1.9.4.1",
+            "fileVersion": "1.9.4.1"
+          }
+        }
+      },
       "Microsoft.EntityFrameworkCore/9.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Abstractions": "9.0.0",
@@ -915,6 +926,8 @@
           }
         }
       },
+      "Microsoft.NETCore.Platforms/1.1.0": {},
+      "Microsoft.NETCore.Targets/1.1.0": {},
       "Microsoft.SqlServer.Server/1.0.0": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.SqlServer.Server.dll": {
@@ -1167,6 +1180,12 @@
           "System.Collections.Immutable": "7.0.0"
         }
       },
+      "System.Runtime/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0"
+        }
+      },
       "System.Runtime.Caching/6.0.0": {
         "dependencies": {
           "System.Configuration.ConfigurationManager": "6.0.1"
@@ -1257,6 +1276,13 @@
       },
       "System.Threading.Channels/7.0.0": {},
       "System.Threading.RateLimiting/8.0.0": {},
+      "System.Threading.Tasks/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
+        }
+      },
       "System.Threading.Tasks.Extensions/4.5.4": {},
       "System.Windows.Extensions/6.0.0": {
         "dependencies": {
@@ -1277,12 +1303,162 @@
           }
         }
       },
+      "Xbim.Common/6.0.521": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "9.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Xbim.Common.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.521.0"
+          }
+        }
+      },
+      "Xbim.Essentials/6.0.521": {
+        "dependencies": {
+          "Xbim.Common": "6.0.521",
+          "Xbim.IO.Esent": "6.0.521",
+          "Xbim.IO.MemoryModel": "6.0.521",
+          "Xbim.Ifc": "6.0.521",
+          "Xbim.Ifc2x3": "6.0.521",
+          "Xbim.Ifc4": "6.0.521",
+          "Xbim.Ifc4x3": "6.0.521",
+          "Xbim.Tessellator": "6.0.521"
+        }
+      },
+      "Xbim.Geometry/5.1.820": {
+        "dependencies": {
+          "Xbim.Geometry.Engine.Interop": "5.1.820",
+          "Xbim.ModelGeometry.Scene": "5.1.820"
+        }
+      },
+      "Xbim.Geometry.Engine.Interop/5.1.820": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "9.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.0",
+          "System.Threading.Tasks": "4.3.0",
+          "Xbim.Ifc": "6.0.521",
+          "Xbim.Tessellator": "6.0.521"
+        },
+        "runtime": {
+          "lib/net472/Xbim.Geometry.Engine.Interop.dll": {
+            "assemblyVersion": "5.1.0.0",
+            "fileVersion": "5.1.820.0"
+          }
+        }
+      },
+      "Xbim.Ifc/6.0.521": {
+        "dependencies": {
+          "Xbim.Common": "6.0.521",
+          "Xbim.IO.Esent": "6.0.521",
+          "Xbim.IO.MemoryModel": "6.0.521",
+          "Xbim.Ifc2x3": "6.0.521",
+          "Xbim.Ifc4": "6.0.521",
+          "Xbim.Ifc4x3": "6.0.521"
+        },
+        "runtime": {
+          "lib/net8.0/Xbim.Ifc.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.521.0"
+          }
+        }
+      },
+      "Xbim.Ifc2x3/6.0.521": {
+        "dependencies": {
+          "Xbim.Common": "6.0.521",
+          "Xbim.Ifc4": "6.0.521"
+        },
+        "runtime": {
+          "lib/net8.0/Xbim.Ifc2x3.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.521.0"
+          }
+        }
+      },
+      "Xbim.Ifc4/6.0.521": {
+        "dependencies": {
+          "Xbim.Common": "6.0.521"
+        },
+        "runtime": {
+          "lib/net8.0/Xbim.Ifc4.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.521.0"
+          }
+        }
+      },
+      "Xbim.Ifc4x3/6.0.521": {
+        "dependencies": {
+          "Xbim.Common": "6.0.521",
+          "Xbim.Ifc4": "6.0.521"
+        },
+        "runtime": {
+          "lib/net8.0/Xbim.Ifc4x3.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.521.0"
+          }
+        }
+      },
+      "Xbim.IO.Esent/6.0.521": {
+        "dependencies": {
+          "Microsoft.Database.ManagedEsent": "2.0.3",
+          "Xbim.Common": "6.0.521",
+          "Xbim.IO.MemoryModel": "6.0.521"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Xbim.IO.Esent.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.521.0"
+          }
+        }
+      },
+      "Xbim.IO.MemoryModel/6.0.521": {
+        "dependencies": {
+          "Xbim.Common": "6.0.521",
+          "Xbim.Ifc2x3": "6.0.521",
+          "Xbim.Ifc4": "6.0.521",
+          "Xbim.Ifc4x3": "6.0.521"
+        },
+        "runtime": {
+          "lib/net8.0/Xbim.IO.MemoryModel.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.521.0"
+          }
+        }
+      },
+      "Xbim.ModelGeometry.Scene/5.1.820": {
+        "dependencies": {
+          "Xbim.Geometry.Engine.Interop": "5.1.820",
+          "Xbim.Ifc": "6.0.521",
+          "Xbim.Tessellator": "6.0.521"
+        },
+        "runtime": {
+          "lib/net472/Xbim.ModelGeometry.Scene.dll": {
+            "assemblyVersion": "5.1.0.1",
+            "fileVersion": "5.1.820.0"
+          }
+        }
+      },
+      "Xbim.Tessellator/6.0.521": {
+        "dependencies": {
+          "Xbim.Common": "6.0.521",
+          "Xbim.Ifc2x3": "6.0.521",
+          "Xbim.Ifc4": "6.0.521"
+        },
+        "runtime": {
+          "lib/net8.0/Xbim.Tessellator.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.521.0"
+          }
+        }
+      },
       "BuildingBlocks/1.0.0": {
         "dependencies": {
           "FluentValidation": "11.11.0",
           "FluentValidation.AspNetCore": "11.3.0",
           "FluentValidation.DependencyInjectionExtensions": "11.11.0",
           "Mapster": "7.4.0",
+          "MassTransit": "8.3.4",
           "MediatR": "12.4.1",
           "Microsoft.FeatureManagement.AspNetCore": "4.0.0",
           "System.IdentityModel.Tokens.Jwt": "8.3.1"
@@ -1308,7 +1484,10 @@
           "Microsoft.EntityFrameworkCore": "9.0.0",
           "NEST": "7.17.5",
           "Project.Domain": "1.0.0",
-          "System.IdentityModel.Tokens.Jwt": "8.3.1"
+          "System.IdentityModel.Tokens.Jwt": "8.3.1",
+          "Xbim.Essentials": "6.0.521",
+          "Xbim.Geometry": "5.1.820",
+          "Xbim.Geometry.Engine.Interop": "5.1.820"
         },
         "runtime": {
           "Project.Application.dll": {}
@@ -1535,6 +1714,13 @@
       "sha512": "sha512-wNGM5ZTQCa2blc9ikXQouybGiyMd6IHPVJvAlBEPtr6JepZEOYeDxGyprYvFVeOxlCXs7avridZQ0nYkHzQWCQ==",
       "path": "microsoft.data.sqlclient.sni.runtime/5.1.1",
       "hashPath": "microsoft.data.sqlclient.sni.runtime.5.1.1.nupkg.sha512"
+    },
+    "Microsoft.Database.ManagedEsent/2.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-liyUzhHNir3ix0VKzeP08VuXDWGSyYQ/6y9lTUX2bhfh/AGs56tpS8Oj08ap+idb4FIZAwDfAbA7uARTj56CmA==",
+      "path": "microsoft.database.managedesent/2.0.3",
+      "hashPath": "microsoft.database.managedesent.2.0.3.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore/9.0.0": {
       "type": "package",
@@ -1774,6 +1960,20 @@
       "path": "microsoft.identitymodel.tokens/8.3.1",
       "hashPath": "microsoft.identitymodel.tokens.8.3.1.nupkg.sha512"
     },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Targets/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
+      "path": "microsoft.netcore.targets/1.1.0",
+      "hashPath": "microsoft.netcore.targets.1.1.0.nupkg.sha512"
+    },
     "Microsoft.SqlServer.Server/1.0.0": {
       "type": "package",
       "serviceable": true,
@@ -1963,6 +2163,13 @@
       "path": "system.reflection.metadata/7.0.0",
       "hashPath": "system.reflection.metadata.7.0.0.nupkg.sha512"
     },
+    "System.Runtime/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
+      "path": "system.runtime/4.3.0",
+      "hashPath": "system.runtime.4.3.0.nupkg.sha512"
+    },
     "System.Runtime.Caching/6.0.0": {
       "type": "package",
       "serviceable": true,
@@ -2047,6 +2254,13 @@
       "path": "system.threading.ratelimiting/8.0.0",
       "hashPath": "system.threading.ratelimiting.8.0.0.nupkg.sha512"
     },
+    "System.Threading.Tasks/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LbSxKEdOUhVe8BezB/9uOGGppt+nZf6e1VFyw6v3DN6lqitm0OSn2uXMOdtP0M3W4iMcqcivm2J6UgqiwwnXiA==",
+      "path": "system.threading.tasks/4.3.0",
+      "hashPath": "system.threading.tasks.4.3.0.nupkg.sha512"
+    },
     "System.Threading.Tasks.Extensions/4.5.4": {
       "type": "package",
       "serviceable": true,
@@ -2060,6 +2274,90 @@
       "sha512": "sha512-IXoJOXIqc39AIe+CIR7koBtRGMiCt/LPM3lI+PELtDIy9XdyeSrwXFdWV9dzJ2Awl0paLWUaknLxFQ5HpHZUog==",
       "path": "system.windows.extensions/6.0.0",
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
+    },
+    "Xbim.Common/6.0.521": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zMQpmpsPQD8HmYuX0d8wF3Fb4rbHlJnoil5on8vaBv/0gPx3FlNqyRVHCmx3kCyghrN/D+8ItYQryj36WhNRWA==",
+      "path": "xbim.common/6.0.521",
+      "hashPath": "xbim.common.6.0.521.nupkg.sha512"
+    },
+    "Xbim.Essentials/6.0.521": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ESD5w/wHwl8mYlgLIKIJ+gBvQVe9CIxusmLmyquHdvRm4ZtuTPOyjynglYROmYM429pXhVxez3A6hb6WZBW3VQ==",
+      "path": "xbim.essentials/6.0.521",
+      "hashPath": "xbim.essentials.6.0.521.nupkg.sha512"
+    },
+    "Xbim.Geometry/5.1.820": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FFwuvLP1R4nWdD69VgF1+jEmiK2743FxNc00LLu97BfzQw0aYvsNqOO8yC2UTIo7a7m5OFCZgBte1qNFm1AdrQ==",
+      "path": "xbim.geometry/5.1.820",
+      "hashPath": "xbim.geometry.5.1.820.nupkg.sha512"
+    },
+    "Xbim.Geometry.Engine.Interop/5.1.820": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ScdCTZcehRwYzMtfbRaYcU7KhyGisqNg39sHfVq5jZbMvKb976J0LKhn75LmYTWW37nYwsYo7t7Kle/Qok4Ugg==",
+      "path": "xbim.geometry.engine.interop/5.1.820",
+      "hashPath": "xbim.geometry.engine.interop.5.1.820.nupkg.sha512"
+    },
+    "Xbim.Ifc/6.0.521": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8w+h8wJ8H8cxNcp/6APlr2HsTI26i/yi/tJxBSwRI1qyC98D6XGpmLzYWSnKExUK23mMHN2rhR+4JAqDi7Fzow==",
+      "path": "xbim.ifc/6.0.521",
+      "hashPath": "xbim.ifc.6.0.521.nupkg.sha512"
+    },
+    "Xbim.Ifc2x3/6.0.521": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ws55QE349Rr5GRHO+DfaDzOBG4XthBVoeKgPVkjgMoHpSrVsgkiXCsmB5jYpwNfeLRRjA/50Lnk9AgJ+EGy0MA==",
+      "path": "xbim.ifc2x3/6.0.521",
+      "hashPath": "xbim.ifc2x3.6.0.521.nupkg.sha512"
+    },
+    "Xbim.Ifc4/6.0.521": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/taWnT4NOtIOdkdOX7R3EoJ8YhQVNSvvz8lwklLS37ZnO83m2Pt1B7JcJAub99X3nF50msp3vq2gkmLNKZ2TRQ==",
+      "path": "xbim.ifc4/6.0.521",
+      "hashPath": "xbim.ifc4.6.0.521.nupkg.sha512"
+    },
+    "Xbim.Ifc4x3/6.0.521": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/C05li8+hKsP1n9wuxTmXdxwjVXMzRaXv+XwE8HApN+bqoLpb3F0UsvxVyx81wdBL9LRb0yBnSR8W0phg4aShQ==",
+      "path": "xbim.ifc4x3/6.0.521",
+      "hashPath": "xbim.ifc4x3.6.0.521.nupkg.sha512"
+    },
+    "Xbim.IO.Esent/6.0.521": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YERP/01mt5wsn+KcCDa9dsqR9qyQTeDS9Svt42yrtP0cv4O4RDY/QOIlMLTwFEMt8WXDSOOflRFuTqJW3wlaMw==",
+      "path": "xbim.io.esent/6.0.521",
+      "hashPath": "xbim.io.esent.6.0.521.nupkg.sha512"
+    },
+    "Xbim.IO.MemoryModel/6.0.521": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2xuYZNnyw1cj9jqb68u9iUSPGAIRVmXd7ZaANYnVQSESSHazwZjtMlRXh5cjY8OIauDcQMKFvdWIBETeNNCnpg==",
+      "path": "xbim.io.memorymodel/6.0.521",
+      "hashPath": "xbim.io.memorymodel.6.0.521.nupkg.sha512"
+    },
+    "Xbim.ModelGeometry.Scene/5.1.820": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/P/1JAQa8OqKncpwqSD5Xl5fZPqnf3g1BVL4uzBRoc1LwoclwulIciGaw7QaHs2tHQmSDsboRGlcx5Z3sHlKBw==",
+      "path": "xbim.modelgeometry.scene/5.1.820",
+      "hashPath": "xbim.modelgeometry.scene.5.1.820.nupkg.sha512"
+    },
+    "Xbim.Tessellator/6.0.521": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DcnJ+m2UNAlQ9wS3/3tcZLWU9e98YmnZhDPa5m/yVxWGg37hsuFcsmxI0ZbYsazc0ozHQWbUbfN1tT4xxVLyDQ==",
+      "path": "xbim.tessellator/6.0.521",
+      "hashPath": "xbim.tessellator.6.0.521.nupkg.sha512"
     },
     "BuildingBlocks/1.0.0": {
       "type": "project",

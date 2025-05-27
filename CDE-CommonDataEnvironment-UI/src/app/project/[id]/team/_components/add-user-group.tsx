@@ -38,6 +38,7 @@ export default function AddUserGroup({ dataDropdown, groupId, projectId }: FormP
                 message: 'Thêm thành công'
             })
             queryClient.invalidateQueries({ queryKey: ['users-group', groupId] })
+            queryClient.invalidateQueries({ queryKey: ['groups'] })
         }
     });
 

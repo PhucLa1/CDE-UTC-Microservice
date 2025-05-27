@@ -690,6 +690,19 @@
           }
         }
       },
+      "Microsoft.Database.ManagedEsent/2.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Esent.Interop.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Esent.Interop.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.EntityFrameworkCore/9.0.0": {
         "type": "package",
         "dependencies": {
@@ -1296,6 +1309,24 @@
           }
         }
       },
+      "Microsoft.NETCore.Platforms/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
+      "Microsoft.NETCore.Targets/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
       "Microsoft.SqlServer.Server/1.0.0": {
         "type": "package",
         "compile": {
@@ -1748,6 +1779,18 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
+      "System.Runtime/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0"
+        },
+        "compile": {
+          "ref/netstandard1.5/System.Runtime.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Runtime.Caching/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -1997,6 +2040,19 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
+      "System.Threading.Tasks/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Threading.Tasks.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Threading.Tasks.Extensions/4.5.4": {
         "type": "package",
         "compile": {
@@ -2028,6 +2084,210 @@
           }
         }
       },
+      "Xbim.Common/6.0.521": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "8.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Xbim.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Xbim.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Xbim.Essentials/6.0.521": {
+        "type": "package",
+        "dependencies": {
+          "Xbim.Common": "6.0.521",
+          "Xbim.IO.Esent": "6.0.521",
+          "Xbim.IO.MemoryModel": "6.0.521",
+          "Xbim.Ifc": "6.0.521",
+          "Xbim.Ifc2x3": "6.0.521",
+          "Xbim.Ifc4": "6.0.521",
+          "Xbim.Ifc4x3": "6.0.521",
+          "Xbim.Tessellator": "6.0.521"
+        }
+      },
+      "Xbim.Geometry/5.1.820": {
+        "type": "package",
+        "dependencies": {
+          "Xbim.Geometry.Engine.Interop": "5.1.820",
+          "Xbim.ModelGeometry.Scene": "5.1.820"
+        }
+      },
+      "Xbim.Geometry.Engine.Interop/5.1.820": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "2.1.1",
+          "Microsoft.Extensions.Logging.Abstractions": "2.1.1",
+          "System.Threading.Tasks": "4.3.0",
+          "Xbim.Ifc": "6.0.489",
+          "Xbim.Tessellator": "6.0.489"
+        },
+        "compile": {
+          "lib/net472/Xbim.Geometry.Engine.Interop.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/Xbim.Geometry.Engine.Interop.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "build/net472/Xbim.Geometry.Engine.Interop.targets": {}
+        }
+      },
+      "Xbim.Ifc/6.0.521": {
+        "type": "package",
+        "dependencies": {
+          "Xbim.Common": "6.0.521",
+          "Xbim.IO.Esent": "6.0.521",
+          "Xbim.IO.MemoryModel": "6.0.521",
+          "Xbim.Ifc2x3": "6.0.521",
+          "Xbim.Ifc4": "6.0.521",
+          "Xbim.Ifc4x3": "6.0.521"
+        },
+        "compile": {
+          "lib/net8.0/Xbim.Ifc.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Xbim.Ifc.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Xbim.Ifc2x3/6.0.521": {
+        "type": "package",
+        "dependencies": {
+          "Xbim.Common": "6.0.521",
+          "Xbim.Ifc4": "6.0.521"
+        },
+        "compile": {
+          "lib/net8.0/Xbim.Ifc2x3.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Xbim.Ifc2x3.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Xbim.Ifc4/6.0.521": {
+        "type": "package",
+        "dependencies": {
+          "Xbim.Common": "6.0.521"
+        },
+        "compile": {
+          "lib/net8.0/Xbim.Ifc4.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Xbim.Ifc4.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Xbim.Ifc4x3/6.0.521": {
+        "type": "package",
+        "dependencies": {
+          "Xbim.Common": "6.0.521",
+          "Xbim.Ifc4": "6.0.521"
+        },
+        "compile": {
+          "lib/net8.0/Xbim.Ifc4x3.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Xbim.Ifc4x3.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Xbim.IO.Esent/6.0.521": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Database.ManagedEsent": "2.0.3",
+          "Xbim.Common": "6.0.521",
+          "Xbim.IO.MemoryModel": "6.0.521"
+        },
+        "compile": {
+          "lib/netstandard2.0/Xbim.IO.Esent.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Xbim.IO.Esent.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Xbim.IO.MemoryModel/6.0.521": {
+        "type": "package",
+        "dependencies": {
+          "Xbim.Common": "6.0.521",
+          "Xbim.Ifc2x3": "6.0.521",
+          "Xbim.Ifc4": "6.0.521",
+          "Xbim.Ifc4x3": "6.0.521"
+        },
+        "compile": {
+          "lib/net8.0/Xbim.IO.MemoryModel.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Xbim.IO.MemoryModel.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Xbim.ModelGeometry.Scene/5.1.820": {
+        "type": "package",
+        "dependencies": {
+          "Xbim.Geometry.Engine.Interop": "5.1.820",
+          "Xbim.Ifc": "6.0.489",
+          "Xbim.Tessellator": "6.0.489"
+        },
+        "compile": {
+          "lib/net472/Xbim.ModelGeometry.Scene.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/Xbim.ModelGeometry.Scene.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Xbim.Tessellator/6.0.521": {
+        "type": "package",
+        "dependencies": {
+          "Xbim.Common": "6.0.521",
+          "Xbim.Ifc2x3": "6.0.521",
+          "Xbim.Ifc4": "6.0.521"
+        },
+        "compile": {
+          "lib/net8.0/Xbim.Tessellator.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Xbim.Tessellator.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "BuildingBlocks/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -2036,6 +2296,7 @@
           "FluentValidation.AspNetCore": "11.3.0",
           "FluentValidation.DependencyInjectionExtensions": "11.11.0",
           "Mapster": "7.4.0",
+          "MassTransit": "8.3.4",
           "MediatR": "12.4.1",
           "Microsoft.FeatureManagement.AspNetCore": "4.0.0",
           "System.IdentityModel.Tokens.Jwt": "7.1.2"
@@ -2071,7 +2332,10 @@
           "Microsoft.EntityFrameworkCore": "9.0.0",
           "NEST": "7.17.5",
           "Project.Domain": "1.0.0",
-          "System.IdentityModel.Tokens.Jwt": "8.3.1"
+          "System.IdentityModel.Tokens.Jwt": "8.3.1",
+          "Xbim.Essentials": "6.0.521",
+          "Xbim.Geometry": "5.1.820",
+          "Xbim.Geometry.Engine.Interop": "5.1.820"
         },
         "compile": {
           "bin/placeholder/Project.Application.dll": {}
@@ -3566,6 +3830,20 @@
         "runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll"
       ]
     },
+    "Microsoft.Database.ManagedEsent/2.0.3": {
+      "sha512": "liyUzhHNir3ix0VKzeP08VuXDWGSyYQ/6y9lTUX2bhfh/AGs56tpS8Oj08ap+idb4FIZAwDfAbA7uARTj56CmA==",
+      "type": "package",
+      "path": "microsoft.database.managedesent/2.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Esent.Interop.dll",
+        "lib/netstandard2.0/Esent.Interop.pdb",
+        "lib/netstandard2.0/Esent.Interop.xml",
+        "microsoft.database.managedesent.2.0.3.nupkg.sha512",
+        "microsoft.database.managedesent.nuspec"
+      ]
+    },
     "Microsoft.EntityFrameworkCore/9.0.0": {
       "sha512": "wpG+nfnfDAw87R3ovAsUmjr3MZ4tYXf6bFqEPVAIKE6IfPml3DS//iX0DBnf8kWn5ZHSO5oi1m4d/Jf+1LifJQ==",
       "type": "package",
@@ -4392,6 +4670,36 @@
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "type": "package",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/netstandard1.0/_._",
+        "microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+        "microsoft.netcore.platforms.nuspec",
+        "runtime.json"
+      ]
+    },
+    "Microsoft.NETCore.Targets/1.1.0": {
+      "sha512": "aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
+      "type": "package",
+      "path": "microsoft.netcore.targets/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/netstandard1.0/_._",
+        "microsoft.netcore.targets.1.1.0.nupkg.sha512",
+        "microsoft.netcore.targets.nuspec",
+        "runtime.json"
+      ]
+    },
     "Microsoft.SqlServer.Server/1.0.0": {
       "sha512": "N4KeF3cpcm1PUHym1RmakkzfkEv3GRMyofVv40uXsQhCQeglr2OHNcUk2WOG51AKpGO8ynGpo9M/kFXSzghwug==",
       "type": "package",
@@ -5087,6 +5395,98 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "System.Runtime/4.3.0": {
+      "sha512": "JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
+      "type": "package",
+      "path": "system.runtime/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/net462/System.Runtime.dll",
+        "lib/portable-net45+win8+wp80+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/net462/System.Runtime.dll",
+        "ref/netcore50/System.Runtime.dll",
+        "ref/netcore50/System.Runtime.xml",
+        "ref/netcore50/de/System.Runtime.xml",
+        "ref/netcore50/es/System.Runtime.xml",
+        "ref/netcore50/fr/System.Runtime.xml",
+        "ref/netcore50/it/System.Runtime.xml",
+        "ref/netcore50/ja/System.Runtime.xml",
+        "ref/netcore50/ko/System.Runtime.xml",
+        "ref/netcore50/ru/System.Runtime.xml",
+        "ref/netcore50/zh-hans/System.Runtime.xml",
+        "ref/netcore50/zh-hant/System.Runtime.xml",
+        "ref/netstandard1.0/System.Runtime.dll",
+        "ref/netstandard1.0/System.Runtime.xml",
+        "ref/netstandard1.0/de/System.Runtime.xml",
+        "ref/netstandard1.0/es/System.Runtime.xml",
+        "ref/netstandard1.0/fr/System.Runtime.xml",
+        "ref/netstandard1.0/it/System.Runtime.xml",
+        "ref/netstandard1.0/ja/System.Runtime.xml",
+        "ref/netstandard1.0/ko/System.Runtime.xml",
+        "ref/netstandard1.0/ru/System.Runtime.xml",
+        "ref/netstandard1.0/zh-hans/System.Runtime.xml",
+        "ref/netstandard1.0/zh-hant/System.Runtime.xml",
+        "ref/netstandard1.2/System.Runtime.dll",
+        "ref/netstandard1.2/System.Runtime.xml",
+        "ref/netstandard1.2/de/System.Runtime.xml",
+        "ref/netstandard1.2/es/System.Runtime.xml",
+        "ref/netstandard1.2/fr/System.Runtime.xml",
+        "ref/netstandard1.2/it/System.Runtime.xml",
+        "ref/netstandard1.2/ja/System.Runtime.xml",
+        "ref/netstandard1.2/ko/System.Runtime.xml",
+        "ref/netstandard1.2/ru/System.Runtime.xml",
+        "ref/netstandard1.2/zh-hans/System.Runtime.xml",
+        "ref/netstandard1.2/zh-hant/System.Runtime.xml",
+        "ref/netstandard1.3/System.Runtime.dll",
+        "ref/netstandard1.3/System.Runtime.xml",
+        "ref/netstandard1.3/de/System.Runtime.xml",
+        "ref/netstandard1.3/es/System.Runtime.xml",
+        "ref/netstandard1.3/fr/System.Runtime.xml",
+        "ref/netstandard1.3/it/System.Runtime.xml",
+        "ref/netstandard1.3/ja/System.Runtime.xml",
+        "ref/netstandard1.3/ko/System.Runtime.xml",
+        "ref/netstandard1.3/ru/System.Runtime.xml",
+        "ref/netstandard1.3/zh-hans/System.Runtime.xml",
+        "ref/netstandard1.3/zh-hant/System.Runtime.xml",
+        "ref/netstandard1.5/System.Runtime.dll",
+        "ref/netstandard1.5/System.Runtime.xml",
+        "ref/netstandard1.5/de/System.Runtime.xml",
+        "ref/netstandard1.5/es/System.Runtime.xml",
+        "ref/netstandard1.5/fr/System.Runtime.xml",
+        "ref/netstandard1.5/it/System.Runtime.xml",
+        "ref/netstandard1.5/ja/System.Runtime.xml",
+        "ref/netstandard1.5/ko/System.Runtime.xml",
+        "ref/netstandard1.5/ru/System.Runtime.xml",
+        "ref/netstandard1.5/zh-hans/System.Runtime.xml",
+        "ref/netstandard1.5/zh-hant/System.Runtime.xml",
+        "ref/portable-net45+win8+wp80+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.runtime.4.3.0.nupkg.sha512",
+        "system.runtime.nuspec"
+      ]
+    },
     "System.Runtime.Caching/6.0.0": {
       "sha512": "E0e03kUp5X2k+UAoVl6efmI7uU7JRBWi5EIdlQ7cr0NpBGjHG4fWII35PgsBY9T4fJQ8E4QPsL0rKksU9gcL5A==",
       "type": "package",
@@ -5578,6 +5978,74 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "System.Threading.Tasks/4.3.0": {
+      "sha512": "LbSxKEdOUhVe8BezB/9uOGGppt+nZf6e1VFyw6v3DN6lqitm0OSn2uXMOdtP0M3W4iMcqcivm2J6UgqiwwnXiA==",
+      "type": "package",
+      "path": "system.threading.tasks/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/System.Threading.Tasks.dll",
+        "ref/netcore50/System.Threading.Tasks.xml",
+        "ref/netcore50/de/System.Threading.Tasks.xml",
+        "ref/netcore50/es/System.Threading.Tasks.xml",
+        "ref/netcore50/fr/System.Threading.Tasks.xml",
+        "ref/netcore50/it/System.Threading.Tasks.xml",
+        "ref/netcore50/ja/System.Threading.Tasks.xml",
+        "ref/netcore50/ko/System.Threading.Tasks.xml",
+        "ref/netcore50/ru/System.Threading.Tasks.xml",
+        "ref/netcore50/zh-hans/System.Threading.Tasks.xml",
+        "ref/netcore50/zh-hant/System.Threading.Tasks.xml",
+        "ref/netstandard1.0/System.Threading.Tasks.dll",
+        "ref/netstandard1.0/System.Threading.Tasks.xml",
+        "ref/netstandard1.0/de/System.Threading.Tasks.xml",
+        "ref/netstandard1.0/es/System.Threading.Tasks.xml",
+        "ref/netstandard1.0/fr/System.Threading.Tasks.xml",
+        "ref/netstandard1.0/it/System.Threading.Tasks.xml",
+        "ref/netstandard1.0/ja/System.Threading.Tasks.xml",
+        "ref/netstandard1.0/ko/System.Threading.Tasks.xml",
+        "ref/netstandard1.0/ru/System.Threading.Tasks.xml",
+        "ref/netstandard1.0/zh-hans/System.Threading.Tasks.xml",
+        "ref/netstandard1.0/zh-hant/System.Threading.Tasks.xml",
+        "ref/netstandard1.3/System.Threading.Tasks.dll",
+        "ref/netstandard1.3/System.Threading.Tasks.xml",
+        "ref/netstandard1.3/de/System.Threading.Tasks.xml",
+        "ref/netstandard1.3/es/System.Threading.Tasks.xml",
+        "ref/netstandard1.3/fr/System.Threading.Tasks.xml",
+        "ref/netstandard1.3/it/System.Threading.Tasks.xml",
+        "ref/netstandard1.3/ja/System.Threading.Tasks.xml",
+        "ref/netstandard1.3/ko/System.Threading.Tasks.xml",
+        "ref/netstandard1.3/ru/System.Threading.Tasks.xml",
+        "ref/netstandard1.3/zh-hans/System.Threading.Tasks.xml",
+        "ref/netstandard1.3/zh-hant/System.Threading.Tasks.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.threading.tasks.4.3.0.nupkg.sha512",
+        "system.threading.tasks.nuspec"
+      ]
+    },
     "System.Threading.Tasks.Extensions/4.5.4": {
       "sha512": "zteT+G8xuGu6mS+mzDzYXbzS7rd3K6Fjb9RiZlYlJPam2/hU7JCBZBVEcywNuR+oZ1ncTvc/cq0faRr3P01OVg==",
       "type": "package",
@@ -5638,6 +6106,247 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Xbim.Common/6.0.521": {
+      "sha512": "zMQpmpsPQD8HmYuX0d8wF3Fb4rbHlJnoil5on8vaBv/0gPx3FlNqyRVHCmx3kCyghrN/D+8ItYQryj36WhNRWA==",
+      "type": "package",
+      "path": "xbim.common/6.0.521",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/Xbim.Common.dll",
+        "lib/net6.0/Xbim.Common.pdb",
+        "lib/net6.0/Xbim.Common.xml",
+        "lib/net8.0/Xbim.Common.dll",
+        "lib/net8.0/Xbim.Common.pdb",
+        "lib/net8.0/Xbim.Common.xml",
+        "lib/netstandard2.0/Xbim.Common.dll",
+        "lib/netstandard2.0/Xbim.Common.pdb",
+        "lib/netstandard2.0/Xbim.Common.xml",
+        "lib/netstandard2.1/Xbim.Common.dll",
+        "lib/netstandard2.1/Xbim.Common.pdb",
+        "lib/netstandard2.1/Xbim.Common.xml",
+        "xbim-toolkit-icon.png",
+        "xbim.common.6.0.521.nupkg.sha512",
+        "xbim.common.nuspec"
+      ]
+    },
+    "Xbim.Essentials/6.0.521": {
+      "sha512": "ESD5w/wHwl8mYlgLIKIJ+gBvQVe9CIxusmLmyquHdvRm4ZtuTPOyjynglYROmYM429pXhVxez3A6hb6WZBW3VQ==",
+      "type": "package",
+      "path": "xbim.essentials/6.0.521",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "xbim.essentials.6.0.521.nupkg.sha512",
+        "xbim.essentials.nuspec"
+      ]
+    },
+    "Xbim.Geometry/5.1.820": {
+      "sha512": "FFwuvLP1R4nWdD69VgF1+jEmiK2743FxNc00LLu97BfzQw0aYvsNqOO8yC2UTIo7a7m5OFCZgBte1qNFm1AdrQ==",
+      "type": "package",
+      "path": "xbim.geometry/5.1.820",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Xbim.Geometry.tmpl",
+        "xbim.geometry.5.1.820.nupkg.sha512",
+        "xbim.geometry.nuspec"
+      ]
+    },
+    "Xbim.Geometry.Engine.Interop/5.1.820": {
+      "sha512": "ScdCTZcehRwYzMtfbRaYcU7KhyGisqNg39sHfVq5jZbMvKb976J0LKhn75LmYTWW37nYwsYo7t7Kle/Qok4Ugg==",
+      "type": "package",
+      "path": "xbim.geometry.engine.interop/5.1.820",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Xbim.Geometry.Engine.Interop.targets",
+        "build/net472/Xbim.Geometry.Engine.Interop.targets",
+        "build/net472/Xbim.Geometry.Engine32.dll",
+        "build/net472/Xbim.Geometry.Engine64.dll",
+        "contentFiles/any/Xbim.Geometry.Engine.Interop.targets",
+        "lib/net472/Xbim.Geometry.Engine.Interop.dll",
+        "lib/net472/Xbim.Geometry.Engine.Interop.pdb",
+        "lib/net472/Xbim.Geometry.Engine.Interop.xml",
+        "xbim-toolkit-icon.png",
+        "xbim.geometry.engine.interop.5.1.820.nupkg.sha512",
+        "xbim.geometry.engine.interop.nuspec"
+      ]
+    },
+    "Xbim.Ifc/6.0.521": {
+      "sha512": "8w+h8wJ8H8cxNcp/6APlr2HsTI26i/yi/tJxBSwRI1qyC98D6XGpmLzYWSnKExUK23mMHN2rhR+4JAqDi7Fzow==",
+      "type": "package",
+      "path": "xbim.ifc/6.0.521",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/Xbim.Ifc.dll",
+        "lib/net6.0/Xbim.Ifc.pdb",
+        "lib/net6.0/Xbim.Ifc.xml",
+        "lib/net8.0/Xbim.Ifc.dll",
+        "lib/net8.0/Xbim.Ifc.pdb",
+        "lib/net8.0/Xbim.Ifc.xml",
+        "lib/netstandard2.0/Xbim.Ifc.dll",
+        "lib/netstandard2.0/Xbim.Ifc.pdb",
+        "lib/netstandard2.0/Xbim.Ifc.xml",
+        "lib/netstandard2.1/Xbim.Ifc.dll",
+        "lib/netstandard2.1/Xbim.Ifc.pdb",
+        "lib/netstandard2.1/Xbim.Ifc.xml",
+        "xbim-toolkit-icon.png",
+        "xbim.ifc.6.0.521.nupkg.sha512",
+        "xbim.ifc.nuspec"
+      ]
+    },
+    "Xbim.Ifc2x3/6.0.521": {
+      "sha512": "Ws55QE349Rr5GRHO+DfaDzOBG4XthBVoeKgPVkjgMoHpSrVsgkiXCsmB5jYpwNfeLRRjA/50Lnk9AgJ+EGy0MA==",
+      "type": "package",
+      "path": "xbim.ifc2x3/6.0.521",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/Xbim.Ifc2x3.dll",
+        "lib/net6.0/Xbim.Ifc2x3.pdb",
+        "lib/net6.0/Xbim.Ifc2x3.xml",
+        "lib/net8.0/Xbim.Ifc2x3.dll",
+        "lib/net8.0/Xbim.Ifc2x3.pdb",
+        "lib/net8.0/Xbim.Ifc2x3.xml",
+        "lib/netstandard2.0/Xbim.Ifc2x3.dll",
+        "lib/netstandard2.0/Xbim.Ifc2x3.pdb",
+        "lib/netstandard2.0/Xbim.Ifc2x3.xml",
+        "lib/netstandard2.1/Xbim.Ifc2x3.dll",
+        "lib/netstandard2.1/Xbim.Ifc2x3.pdb",
+        "lib/netstandard2.1/Xbim.Ifc2x3.xml",
+        "xbim-toolkit-icon.png",
+        "xbim.ifc2x3.6.0.521.nupkg.sha512",
+        "xbim.ifc2x3.nuspec"
+      ]
+    },
+    "Xbim.Ifc4/6.0.521": {
+      "sha512": "/taWnT4NOtIOdkdOX7R3EoJ8YhQVNSvvz8lwklLS37ZnO83m2Pt1B7JcJAub99X3nF50msp3vq2gkmLNKZ2TRQ==",
+      "type": "package",
+      "path": "xbim.ifc4/6.0.521",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/Xbim.Ifc4.dll",
+        "lib/net6.0/Xbim.Ifc4.pdb",
+        "lib/net6.0/Xbim.Ifc4.xml",
+        "lib/net8.0/Xbim.Ifc4.dll",
+        "lib/net8.0/Xbim.Ifc4.pdb",
+        "lib/net8.0/Xbim.Ifc4.xml",
+        "lib/netstandard2.0/Xbim.Ifc4.dll",
+        "lib/netstandard2.0/Xbim.Ifc4.pdb",
+        "lib/netstandard2.0/Xbim.Ifc4.xml",
+        "lib/netstandard2.1/Xbim.Ifc4.dll",
+        "lib/netstandard2.1/Xbim.Ifc4.pdb",
+        "lib/netstandard2.1/Xbim.Ifc4.xml",
+        "xbim-toolkit-icon.png",
+        "xbim.ifc4.6.0.521.nupkg.sha512",
+        "xbim.ifc4.nuspec"
+      ]
+    },
+    "Xbim.Ifc4x3/6.0.521": {
+      "sha512": "/C05li8+hKsP1n9wuxTmXdxwjVXMzRaXv+XwE8HApN+bqoLpb3F0UsvxVyx81wdBL9LRb0yBnSR8W0phg4aShQ==",
+      "type": "package",
+      "path": "xbim.ifc4x3/6.0.521",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/Xbim.Ifc4x3.dll",
+        "lib/net6.0/Xbim.Ifc4x3.pdb",
+        "lib/net6.0/Xbim.Ifc4x3.xml",
+        "lib/net8.0/Xbim.Ifc4x3.dll",
+        "lib/net8.0/Xbim.Ifc4x3.pdb",
+        "lib/net8.0/Xbim.Ifc4x3.xml",
+        "lib/netstandard2.0/Xbim.Ifc4x3.dll",
+        "lib/netstandard2.0/Xbim.Ifc4x3.pdb",
+        "lib/netstandard2.0/Xbim.Ifc4x3.xml",
+        "lib/netstandard2.1/Xbim.Ifc4x3.dll",
+        "lib/netstandard2.1/Xbim.Ifc4x3.pdb",
+        "lib/netstandard2.1/Xbim.Ifc4x3.xml",
+        "xbim-toolkit-icon.png",
+        "xbim.ifc4x3.6.0.521.nupkg.sha512",
+        "xbim.ifc4x3.nuspec"
+      ]
+    },
+    "Xbim.IO.Esent/6.0.521": {
+      "sha512": "YERP/01mt5wsn+KcCDa9dsqR9qyQTeDS9Svt42yrtP0cv4O4RDY/QOIlMLTwFEMt8WXDSOOflRFuTqJW3wlaMw==",
+      "type": "package",
+      "path": "xbim.io.esent/6.0.521",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Xbim.IO.Esent.dll",
+        "lib/netstandard2.0/Xbim.IO.Esent.pdb",
+        "lib/netstandard2.0/Xbim.IO.Esent.xml",
+        "xbim-toolkit-icon.png",
+        "xbim.io.esent.6.0.521.nupkg.sha512",
+        "xbim.io.esent.nuspec"
+      ]
+    },
+    "Xbim.IO.MemoryModel/6.0.521": {
+      "sha512": "2xuYZNnyw1cj9jqb68u9iUSPGAIRVmXd7ZaANYnVQSESSHazwZjtMlRXh5cjY8OIauDcQMKFvdWIBETeNNCnpg==",
+      "type": "package",
+      "path": "xbim.io.memorymodel/6.0.521",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/Xbim.IO.MemoryModel.dll",
+        "lib/net6.0/Xbim.IO.MemoryModel.pdb",
+        "lib/net6.0/Xbim.IO.MemoryModel.xml",
+        "lib/net8.0/Xbim.IO.MemoryModel.dll",
+        "lib/net8.0/Xbim.IO.MemoryModel.pdb",
+        "lib/net8.0/Xbim.IO.MemoryModel.xml",
+        "lib/netstandard2.0/Xbim.IO.MemoryModel.dll",
+        "lib/netstandard2.0/Xbim.IO.MemoryModel.pdb",
+        "lib/netstandard2.0/Xbim.IO.MemoryModel.xml",
+        "lib/netstandard2.1/Xbim.IO.MemoryModel.dll",
+        "lib/netstandard2.1/Xbim.IO.MemoryModel.pdb",
+        "lib/netstandard2.1/Xbim.IO.MemoryModel.xml",
+        "xbim-toolkit-icon.png",
+        "xbim.io.memorymodel.6.0.521.nupkg.sha512",
+        "xbim.io.memorymodel.nuspec"
+      ]
+    },
+    "Xbim.ModelGeometry.Scene/5.1.820": {
+      "sha512": "/P/1JAQa8OqKncpwqSD5Xl5fZPqnf3g1BVL4uzBRoc1LwoclwulIciGaw7QaHs2tHQmSDsboRGlcx5Z3sHlKBw==",
+      "type": "package",
+      "path": "xbim.modelgeometry.scene/5.1.820",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net472/Xbim.ModelGeometry.Scene.dll",
+        "lib/net472/Xbim.ModelGeometry.Scene.pdb",
+        "lib/net472/Xbim.ModelGeometry.Scene.xml",
+        "xbim-toolkit-icon.png",
+        "xbim.modelgeometry.scene.5.1.820.nupkg.sha512",
+        "xbim.modelgeometry.scene.nuspec"
+      ]
+    },
+    "Xbim.Tessellator/6.0.521": {
+      "sha512": "DcnJ+m2UNAlQ9wS3/3tcZLWU9e98YmnZhDPa5m/yVxWGg37hsuFcsmxI0ZbYsazc0ozHQWbUbfN1tT4xxVLyDQ==",
+      "type": "package",
+      "path": "xbim.tessellator/6.0.521",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/Xbim.Tessellator.dll",
+        "lib/net6.0/Xbim.Tessellator.pdb",
+        "lib/net6.0/Xbim.Tessellator.xml",
+        "lib/net8.0/Xbim.Tessellator.dll",
+        "lib/net8.0/Xbim.Tessellator.pdb",
+        "lib/net8.0/Xbim.Tessellator.xml",
+        "lib/netstandard2.0/Xbim.Tessellator.dll",
+        "lib/netstandard2.0/Xbim.Tessellator.pdb",
+        "lib/netstandard2.0/Xbim.Tessellator.xml",
+        "lib/netstandard2.1/Xbim.Tessellator.dll",
+        "lib/netstandard2.1/Xbim.Tessellator.pdb",
+        "lib/netstandard2.1/Xbim.Tessellator.xml",
+        "xbim-toolkit-icon.png",
+        "xbim.tessellator.6.0.521.nupkg.sha512",
+        "xbim.tessellator.nuspec"
+      ]
+    },
     "BuildingBlocks/1.0.0": {
       "type": "project",
       "path": "../../../BuildingBlocks/BuildingBlocks/BuildingBlocks.csproj",
@@ -5665,7 +6374,10 @@
       "Microsoft.EntityFrameworkCore.Design >= 9.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.0",
-      "Project.Application >= 1.0.0"
+      "Project.Application >= 1.0.0",
+      "Xbim.Essentials >= 6.0.521",
+      "Xbim.Geometry >= 5.1.820",
+      "Xbim.Geometry.Engine.Interop >= 5.1.820"
     ]
   },
   "packageFolders": {
@@ -5740,6 +6452,18 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[9.0.0, )"
+          },
+          "Xbim.Essentials": {
+            "target": "Package",
+            "version": "[6.0.521, )"
+          },
+          "Xbim.Geometry": {
+            "target": "Package",
+            "version": "[5.1.820, )"
+          },
+          "Xbim.Geometry.Engine.Interop": {
+            "target": "Package",
+            "version": "[5.1.820, )"
           }
         },
         "imports": [
@@ -5761,5 +6485,27 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Xbim.Geometry.Engine.Interop 5.1.820' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Xbim.Geometry.Engine.Interop",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Xbim.ModelGeometry.Scene 5.1.820' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Xbim.ModelGeometry.Scene",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

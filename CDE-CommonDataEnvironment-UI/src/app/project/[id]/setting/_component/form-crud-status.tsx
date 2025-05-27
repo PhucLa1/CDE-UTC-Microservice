@@ -139,7 +139,7 @@ export default function FormCRUDStatus({ trigger, state, status }: Props) {
                                         <FormItem>
                                             <FormLabel>Tên</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Thể loại A1" {...field} />
+                                                <Input placeholder="Trạng thái A1" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>

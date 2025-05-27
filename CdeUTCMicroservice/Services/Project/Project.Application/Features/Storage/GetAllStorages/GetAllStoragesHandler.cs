@@ -29,7 +29,7 @@ namespace Project.Application.Features.Storage.GetAllStorages
                     UrlImage = "",
                     CreatedAt = e.CreatedAt.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
                     CreatedBy = e.CreatedBy,
-                    TagNames = e.FolderTags.Select(e => e.Tag.Name).ToList()
+                    TagNames = e.FolderTags.Where(f => f.Tag != null && f.Tag.Name != null).Select(e => e.Tag.Name).ToList()
                 })
                 .ToListAsync(cancellationToken);
 
@@ -47,7 +47,7 @@ namespace Project.Application.Features.Storage.GetAllStorages
                     : Setting.PROJECT_HOST + "/Extension/" + e.Extension.ConvertToUrl(),
                     CreatedAt = e.CreatedAt.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
                     CreatedBy = e.CreatedBy,
-                    TagNames = e.FileTags.Select(e => e.Tag.Name).ToList()
+                    TagNames = e.FileTags.Where(f => f.Tag != null && f.Tag.Name != null).Select(e => e.Tag.Name).ToList()
                 })
                 .ToListAsync(cancellationToken);
 
@@ -71,7 +71,7 @@ namespace Project.Application.Features.Storage.GetAllStorages
                                 CreatedAt = s.CreatedAt,
                                 CreatedBy = s.CreatedBy,
                                 NameCreatedBy = u.FullName,
-                                TagNames = ConvertTagsToView(s.TagNames)
+                                TagNames = ConvertTagsToView(s.TagNames ?? new List<string>())
                             }).ToList();
 
             return new ApiResponse<List<GetAllStoragesResponse>> { Data = storages, Message = Message.GET_SUCCESSFULLY };
@@ -82,17 +82,20 @@ namespace Project.Application.Features.Storage.GetAllStorages
             var MAX_COUNT = 25;
             List<string> result = new List<string>();
             var countChars = 0;
-            for (int i = 0; i < tagNames.Count; i++)
+            if (tagNames != null && tagNames.Count > 0)
             {
-                countChars += tagNames[i].Count();
-                if (countChars <= MAX_COUNT)
+                for (int i = 0; i < tagNames.Count; i++)
                 {
-                    result.Add(tagNames[i]);
-                }
-                else
-                {
-                    result.Add("+ " + (tagNames.Count() - i).ToString());
-                    break;
+                    countChars += tagNames[i].Count();
+                    if (countChars <= MAX_COUNT)
+                    {
+                        result.Add(tagNames[i]);
+                    }
+                    else
+                    {
+                        result.Add("+ " + (tagNames.Count() - i).ToString());
+                        break;
+                    }
                 }
             }
 

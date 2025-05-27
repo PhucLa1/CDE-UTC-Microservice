@@ -57,7 +57,7 @@ export default function TableGroupUsers({ projectId, role, data, dataDropdown, g
     useEffect(() => {
         if (data && dataDropdown) {
             const existingIds = new Set(data.data.map(item => item.id)); // Tạo Set từ id của data
-            const filtered = dataDropdown.data.filter(item => !existingIds.has(item.id)); // Lọc ra những phần tử không có trong data
+            const filtered = dataDropdown.data.filter(item => !existingIds.has(item.id) && item.userProjectStatus == UserProjectStatus.Active); // Lọc ra những phần tử không có trong data
             setDataCanAdd(filtered);
         }
     }, [data, dataDropdown]);

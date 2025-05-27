@@ -61,6 +61,7 @@ namespace Project.Application.Features.Team.InviteUser
                         UserId = user.Id,
                         UserProjectStatus = UserProjectStatus.Pending,
                         DateJoined = DateTime.UtcNow,
+                        Role = request.Role,
                     };
                     await userProjectRepository.AddAsync(userProjectAdd, cancellationToken);
                     await userProjectRepository.SaveChangeAsync(cancellationToken);

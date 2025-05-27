@@ -75,7 +75,7 @@ namespace Project.Application.Features.Storage.UpdateFile
             fileRepository.Update(file);
 
             var existingTags = await fileTagRepository.GetAllQueryAble()
-                .Where(e => e.FileId == request.Id)
+                .Where(e => e.FileId == request.Id && e.TagId != null)
                 .ToListAsync(cancellationToken);
 
             // Tag hiện tại

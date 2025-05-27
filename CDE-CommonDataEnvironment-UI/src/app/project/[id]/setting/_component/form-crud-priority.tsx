@@ -138,7 +138,7 @@ export default function FormCRUDPriority({ trigger, state, priority }: Props) {
                                         <FormItem>
                                             <FormLabel>Tên</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Thể loại A1" {...field} />
+                                                <Input placeholder="Ưu tiên A1" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
