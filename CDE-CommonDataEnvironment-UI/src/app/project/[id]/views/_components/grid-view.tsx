@@ -13,6 +13,7 @@ type FormProps = {
 
 export default function GridStorage({ data, projectId }: FormProps) {
     const router = useRouter();
+    console.log(router);
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [id, setId] = useState<number>(0)
     return (

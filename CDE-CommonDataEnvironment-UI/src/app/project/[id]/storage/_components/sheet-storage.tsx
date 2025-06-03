@@ -32,7 +32,6 @@ import {
   TrashIcon,
 } from "lucide-react";
 import { ReactNode, useState } from "react";
-import { useRole } from "../../layout";
 import CreateFileComment from "./create-file-comment";
 import CreateFolderComment from "./create-folder-comment";
 import DeleteFolder from "./delete-folder";
@@ -44,6 +43,11 @@ import { UpdateFile } from "./update-file";
 import UpdateFileComment from "./update-file-comment";
 import { UpdateFolder } from "./update-folder";
 import UpdateFolderComment from "./update-folder-comment";
+import { UserCog } from "lucide-react";
+import DialogPermissions from "./dialog-permission";
+import teamApiRequest from "@/apis/team.api";
+import { Permission } from "@/data/enums/permisson.enum";
+import { useRole } from "@/hooks/use-role";
 type FormProps = {
   node: ReactNode;
   id: number;
@@ -63,6 +67,7 @@ export default function SheetStorage({
   console.log(isFile);
   const [updateComment, setUpdateComment] = useState<number>(0);
   const [openFolderDes, setOpenFolderDes] = useState<boolean>(false);
+  const [isOpenPermissions, setIsOpenPermissions] = useState<boolean>(false);
   const { data: dataFolder, isLoading: isLoadingFolder } = useQuery({
     queryKey: ["get-detail-folder", id],
     queryFn: () => folderApiRequest.getDetail(id),
@@ -72,6 +77,11 @@ export default function SheetStorage({
     queryKey: ["get-detail-file", id],
     queryFn: () => fileApiRequest.getDetail(id),
     enabled: id !== 0 && isFile,
+  });
+
+  const { data: dataTarget, isLoading: isLoadingTarget } = useQuery({
+    queryKey: ["get-targets-by-project", projectId],
+    queryFn: () => teamApiRequest.GetAllTarget(projectId),
   });
 
   const { mutate } = useMutation({
@@ -109,7 +119,7 @@ export default function SheetStorage({
 
   //const downloadFolderAsZip = async (folderId: string)
 
-  if (isLoadingFile || isLoadingFolder) return <></>;
+  if (isLoadingFile || isLoadingFolder || isLoadingTarget) return <></>;
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>{node}</SheetTrigger>
@@ -170,30 +180,64 @@ export default function SheetStorage({
                 Xem file
               </Button>
             )}
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger
-                  onClick={() => {
-                    if (isFile) {
-                      downloadItem(
-                        dataFile?.data.url ?? "",
-                        dataFile?.data.name ?? ""
-                      );
-                    } else {
-                      mutate();
-                    }
-                  }}
-                  asChild
-                >
-                  <div className="flex items-center gap-1">
-                    <DownloadIcon className="h-5 w-5" />
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Tải {isFile ? "tệp" : "thư mục"}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+            {roleDetail?.role == Role.Admin ||
+            ((isFile ? dataFile : dataFolder)?.data.access ==
+              Permission.Write &&
+              (isFile ? dataFile : dataFolder)?.data.storagePermissionResults
+                ?.length === 0) ||
+            (isFile
+              ? dataFile
+              : dataFolder
+            )?.data.storagePermissionResults?.find(
+              (item) => item.targetId === roleDetail?.id
+            )?.access === Permission.Write ? (
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger
+                    onClick={() => {
+                      if (isFile) {
+                        downloadItem(
+                          dataFile?.data.url ?? "",
+                          dataFile?.data.name ?? ""
+                        );
+                      } else {
+                        mutate();
+                      }
+                    }}
+                    asChild
+                  >
+                    <div className="flex items-center gap-1">
+                      <DownloadIcon className="h-5 w-5" />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Tải {isFile ? "tệp" : "thư mục"}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            ) : (
+              <></>
+            )}
+            {roleDetail?.role == Role.Admin ||
+            ((isFile ? dataFile : dataFolder)?.data.access ==
+              Permission.Write &&
+              (isFile ? dataFile : dataFolder)?.data.storagePermissionResults
+                ?.length === 0) ||
+            (isFile
+              ? dataFile
+              : dataFolder
+            )?.data.storagePermissionResults?.find(
+              (item) => item.targetId === roleDetail?.id
+            )?.access === Permission.Write ? (
+              <div
+                onClick={() => setOpenFolderDes(true)}
+                className="flex items-center gap-1 cursor-pointer"
+              >
+                <MoveLeftIcon className="h-5 w-5" />
+              </div>
+            ) : (
+              <></>
+            )}
             {openFolderDes == true && (
               <SheetFolderDestination
                 isFile={isFile}
@@ -203,12 +247,7 @@ export default function SheetStorage({
                 fileIds={!isFile ? [] : [dataFile?.data.id ?? 0]}
               />
             )}
-            <div
-              onClick={() => setOpenFolderDes(true)}
-              className="flex items-center gap-1 cursor-pointer"
-            >
-              <MoveLeftIcon className="h-5 w-5" />
-            </div>
+
             {roleDetail?.role == Role.Admin ? (
               <DeleteFolder
                 setSheetOpen={setIsOpen}
@@ -228,6 +267,30 @@ export default function SheetStorage({
                   name: "",
                   projectId: projectId,
                 }}
+              />
+            ) : (
+              <></>
+            )}
+            {roleDetail?.role == Role.Admin ? (
+              <DialogPermissions
+                storagePermissionResults={
+                  (isFile ? dataFile : dataFolder)?.data
+                    .storagePermissionResults ?? []
+                }
+                isOpenPermissions={isOpenPermissions}
+                setIsOpenPermissions={setIsOpenPermissions}
+                isFile={isFile}
+                id={id}
+                access={
+                  (isFile ? dataFile : dataFolder)?.data.access ??
+                  Permission.Write
+                }
+                targets={dataTarget?.data ?? []}
+                node={
+                  <div className="flex items-center gap-1 cursor-pointer">
+                    <UserCog className="h-5 w-5" />
+                  </div>
+                }
               />
             ) : (
               <></>
@@ -278,6 +341,50 @@ export default function SheetStorage({
                     ? dataFile?.data.nameCreatedBy
                     : dataFolder?.data.nameCreatedBy}
                 </p>
+              </div>
+            </div>
+          </div>
+          <Separator className="my-2" />
+          <div>
+            <h5 className="font-bold">Phân quyền</h5>
+            <div className="text-[12px]">
+              <div className="mt-2">
+                <span>Mặc định cho mọi người trong dự án</span>
+                <strong>
+                  <div className="">
+                    <strong>
+                      {(isFile ? dataFile : dataFolder)?.data.access ===
+                      Permission.Write
+                        ? "Quyền ghi"
+                        : (isFile ? dataFile : dataFolder)?.data.access ===
+                          Permission.Read
+                        ? "Chỉ đọc"
+                        : "Không có quyền"}
+                    </strong>
+                  </div>
+                </strong>
+              </div>
+              <div className="mt-4">
+                <span className="mt-2">Phân quyền riêng</span>
+                {(isFile
+                  ? dataFile
+                  : dataFolder
+                )?.data.storagePermissionResults?.map((item, index) => {
+                  return (
+                    <div key={index} className="mt-1">
+                      <span>
+                        {item.email} -{" "}
+                        <strong>
+                          {item.access === Permission.Write
+                            ? "Quyền ghi"
+                            : item.access === Permission.Read
+                            ? "Chỉ đọc"
+                            : "Không có quyền"}
+                        </strong>
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

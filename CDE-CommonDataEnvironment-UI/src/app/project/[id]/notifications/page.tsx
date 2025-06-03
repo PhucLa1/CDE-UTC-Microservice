@@ -14,8 +14,8 @@ import activityTypeApiRequest from "@/apis/activitytype.api";
 import { activityOptions } from "@/data/enums/typeactivity.enum";
 import { Checkbox } from "@/components/ui/checkbox";
 import { handleSuccessApi } from "@/lib/utils";
-import { useRole } from "../layout";
 import { Role } from "@/data/enums/role.enum";
+import { useRole } from "@/hooks/use-role";
 const pathList: Array<PathItem> = [
   {
     name: "Thông báo",
@@ -25,7 +25,7 @@ const pathList: Array<PathItem> = [
 export type ActivityTypeSchemaWithIcon = ActivityType & {
   icon?: ReactNode;
 };
-export default function page({ params }: { params: { id: string } }) {
+export default function Page({ params }: { params: { id: string } }) {
   const { roleDetail } = useRole();
   const { toast } = useToast();
   const [checked, setChecked] = useState<boolean>(false);
@@ -62,7 +62,7 @@ export default function page({ params }: { params: { id: string } }) {
 
   useEffect(() => {
     if (data) {
-      const types = data.data.map((item, _) => {
+      const types = data.data.map((item) => {
         item.isUpdated = false;
         item.label = activityOptions.filter(
           (ao) => ao.value == item.typeActivity

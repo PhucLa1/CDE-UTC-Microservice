@@ -14,7 +14,7 @@ const pathList: Array<PathItem> = [
         url: "#"
     },
 ];
-export default function page({ params }: { params: { id: string } }) {
+export default function Page({ params }: { params: { id: string } }) {
     const [searchQuery, setSearchQuery] = useState('');
     const [viewMode, setViewMode] = useState(localStorage.getItem('viewModeData') || 'table');
 

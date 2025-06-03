@@ -9,8 +9,8 @@ export default function GridProject({
 }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {filteredProjects.map((project) => (
-        <Link href={`/project/${project.id}/unit`}>
+      {filteredProjects.map((project, index) => (
+        <Link key={index} href={`/project/${project.id}/unit`}>
           <div
             key={project.id}
             className="rounded-lg border bg-card overflow-hidden transition-all hover:shadow-lg"

@@ -1,9 +1,9 @@
-import viewApiRequest from '@/apis/view.api'
-import React, { useState } from 'react'
-import { useQuery } from '@tanstack/react-query';
-import { Checkbox } from "@/components/ui/checkbox"
-import { Eye } from "lucide-react";
+import viewApiRequest from '@/apis/view.api';
+import { Checkbox } from "@/components/ui/checkbox";
 import { View } from '@/data/schema/Project/view.schema';
+import { useQuery } from '@tanstack/react-query';
+import { Eye } from "lucide-react";
+import React from 'react';
 
 interface Props {
   projectId: number;

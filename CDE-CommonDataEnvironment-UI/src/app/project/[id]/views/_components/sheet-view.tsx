@@ -13,19 +13,14 @@ import {
 } from "@/components/ui/sheet";
 import { Role } from "@/data/enums/role.enum";
 import { useQuery } from "@tanstack/react-query";
-import {
-  Pencil,
-  Trash,
-  TrashIcon
-} from "lucide-react";
+import { Pencil, Trash, TrashIcon } from "lucide-react";
 import { ReactNode, useState } from "react";
-import { useRole } from "../../layout";
 import CreateViewComment from "./create-view-comment";
 import DeleteView from "./delete-view";
 import DeleteViewComment from "./delete-view-comment";
 import { UpdateView } from "./update-view";
 import UpdateViewComment from "./update-view-comment";
-import { View } from '@/data/schema/Project/view.schema';
+import { useRole } from "@/hooks/use-role";
 type FormProps = {
   node: ReactNode;
   id: number;
@@ -62,16 +57,15 @@ export default function SheetView({
         <div className="grid gap-4 py-4">
           <div className="flex items-center justify-between">
             <span className="text-[14px] font-semibold">{data?.data.name}</span>
-            {roleDetail?.role !== Role.Admin &&
-            data?.data.createdBy !== roleDetail?.id ? (
-              <></>
-            ) : (
+            {(roleDetail?.role === Role.Admin ||
+              data?.data.createdBy === roleDetail?.id) &&
+            data?.data ? (
               <UpdateView
                 node={<Pencil className="h-5 w-5" />}
                 projectId={projectId}
-                view={data?.data!}
+                view={data.data}
               />
-            )}
+            ) : null}
           </div>
           <Separator className="my-2" />
           <div className="flex items-center justify-center">
@@ -89,15 +83,17 @@ export default function SheetView({
             >
               Xem views
             </Button>
-            {roleDetail?.role == Role.Admin && <DeleteView
-                            setSheetOpen={setIsOpen}
-                            node={
-                                <div className="flex items-center gap-1 text-red-500 cursor-pointer">
-                                    <TrashIcon className="h-5 w-5" />
-                                </div>
-                            }
-                            id={id ?? 0}
-                        />}
+            {roleDetail?.role == Role.Admin && (
+              <DeleteView
+                setSheetOpen={setIsOpen}
+                node={
+                  <div className="flex items-center gap-1 text-red-500 cursor-pointer">
+                    <TrashIcon className="h-5 w-5" />
+                  </div>
+                }
+                id={id ?? 0}
+              />
+            )}
           </div>
           <Separator className="my-2" />
           <div>

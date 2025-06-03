@@ -5,9 +5,8 @@ import { Button } from "@/components/custom/button";
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import {
   Form,
@@ -27,7 +26,7 @@ import {
 import { handleSuccessApi } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import DeleteProject from "./_component/delete-project";
 import LeaveProject from "./_component/leave-project";
@@ -37,7 +36,7 @@ const pathList: Array<PathItem> = [
     url: "#",
   },
 ];
-export default function page({ params }: { params: { id: string } }) {
+export default function Page({ params }: { params: { id: string } }) {
   const queryClient = useQueryClient();
 
   const form = useForm<ProjectDetail>({

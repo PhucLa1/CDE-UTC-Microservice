@@ -16,10 +16,9 @@ import {
 import { activityOptions, TypeActivity } from "@/data/enums/typeactivity.enum";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import { useQuery } from "@tanstack/react-query";
-import { CheckCircle2 } from "lucide-react";
+import { Download } from "lucide-react";
 import { useState } from "react";
 import { utils, writeFile } from "xlsx";
-import { Download } from "lucide-react";
 const pathList: Array<PathItem> = [
   {
     name: "Hoạt động",

@@ -11,8 +11,10 @@ namespace Project.Application.Storage.GetFileById
         public string Thumbnail { get; set; } = string.Empty;
         public int CreatedBy { get; set; }
         public string NameCreatedBy { get; set; } = string.Empty;
+        public Access Access { get; set; }
         public List<TagResult> TagResults { get; set; } = new List<TagResult>() { };
         public List<FileHistoryResult> FileHistoryResults { get; set; } = new List<FileHistoryResult>() { };
         public List<UserCommentResult> UserCommentResults { get; set; } = new List<UserCommentResult>() { };
+        public List<StoragePermissionResult> StoragePermissionResults { get; set; } = new List<StoragePermissionResult>() { };
     }
 }

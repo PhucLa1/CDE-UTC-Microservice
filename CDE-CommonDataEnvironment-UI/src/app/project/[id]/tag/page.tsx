@@ -9,15 +9,15 @@ import React, { useEffect, useState } from 'react'
 import FormCRUD from './_components/formCRUD';
 import { State } from '@/data/enums/state.enum';
 import { Pencil, Trash } from 'lucide-react';
-import { useRole } from '../layout';
 import { Role } from '@/data/enums/role.enum';
+import { useRole } from '@/hooks/use-role';
 const pathList: Array<PathItem> = [
     {
         name: "Dãn nhán",
         url: "#"
     },
 ];
-export default function page({ params }: { params: { id: string } }) {
+export default function Page({ params }: { params: { id: string } }) {
     const [ids, setIds] = useState<number[]>()
     const { roleDetail } = useRole();
     const { data, isLoading } = useQuery({

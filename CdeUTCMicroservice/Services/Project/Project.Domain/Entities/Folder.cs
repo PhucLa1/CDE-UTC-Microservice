@@ -10,8 +10,10 @@
         public bool IsCheckout { get; set; }
         public string FullPath { get; set; } = string.Empty;
         public string FullPathName { get; set; } = string.Empty;
+        public Access Access { get; set; } = Access.Write;
         public ICollection<FolderTag>? FolderTags { get; set; }
         public ICollection<FolderHistory>? FolderHistories { get; set; }
+        public ICollection<FolderPermission>? FolderPermissions { get; set; }
 
     }
 }

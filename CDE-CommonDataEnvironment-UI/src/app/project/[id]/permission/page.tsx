@@ -1,7 +1,6 @@
 "use client"
 import AppBreadcrumb, { PathItem } from '@/components/custom/_breadcrumb'
 import React, { useEffect, useState } from 'react'
-import { useRole } from '../layout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/custom/button';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
@@ -13,13 +12,14 @@ import { Role } from '@/data/enums/role.enum';
 import { TodoVisibility } from '@/data/enums/todovisibility.enum';
 import { Permission } from '@/data/schema/Project/permission.schema';
 import { handleSuccessApi } from '@/lib/utils';
+import { useRole } from '@/hooks/use-role';
 const pathList: Array<PathItem> = [
     {
         name: "Quyền trong dự án",
         url: "#"
     },
 ];
-export default function page({ params }: { params: { id: string } }) {
+export default function Page({ params }: { params: { id: string } }) {
     const { roleDetail } = useRole()
     const queryClient = useQueryClient()
     const [invitationPermission, setInvitationPermission] = useState<string>("");

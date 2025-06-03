@@ -6,7 +6,7 @@ import { SendEmailVerifyForm } from './_components/sendEmailVerify'
 import MultiStep from 'react-multistep'
 import VerifyCodeForm from './_components/verifyCode'
 import { ChangePasswordForm } from './_components/changePassword'
-export default function page() {
+export default function Page() {
     useEffect(() => {
         const nextButton = Array.from(document.querySelectorAll('button')).find(
             (btn) => btn.textContent?.trim() === "Next"

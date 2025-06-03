@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { useRole } from '../layout';
 import { InvitationPermission } from '@/data/enums/invitationpermission.enum';
 import { Role } from '@/data/enums/role.enum';
 import { useQuery } from '@tanstack/react-query';
@@ -17,13 +16,14 @@ import { Edit, Trash } from 'lucide-react';
 import TableAllUsers from './_components/table-all-users';
 import userGroupApiRequest from '@/apis/usergroup.api';
 import TableGroupUsers from './_components/table-group-user';
+import { useRole } from '@/hooks/use-role';
 const pathList: Array<PathItem> = [
     {
         name: "Đội ngũ trong dự án",
         url: "#"
     },
 ];
-export default function page({ params }: { params: { id: string } }) {
+export default function Page({ params }: { params: { id: string } }) {
     const { roleDetail } = useRole()
     const [groupId, setGroupId] = useState<number>(0)
     const { data: dataGroups, isLoading: isLoadingGroups } = useQuery({

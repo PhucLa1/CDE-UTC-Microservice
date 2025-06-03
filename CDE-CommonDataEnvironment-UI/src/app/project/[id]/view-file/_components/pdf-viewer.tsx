@@ -67,6 +67,7 @@ const PDFViewer = ({ url, addAnnotation, annotationList, viewId }: FormProps) =>
                 });
 
                 annotationManager.addEventListener('annotationChanged', async (annotations, action, { imported }) => {
+                    console.log(annotations)
                     if (imported) return;
 
                     const xfdfString = await annotationManager.exportAnnotationCommand();
@@ -122,7 +123,7 @@ const PDFViewer = ({ url, addAnnotation, annotationList, viewId }: FormProps) =>
         }
 
         const xfdfString = annotationString();
-        ///console.log("Updating annotations with XFDF:", xfdfString);
+        console.log("Updating annotations with XFDF:", xfdfString);
 
         const reDraw = async () => {
             console.log(annotationManager, documentViewer)

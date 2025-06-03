@@ -50,6 +50,7 @@
         public const string CHANGE_ROLE = "change-role";
         public const string KICK_USER = "kick-user";
         public const string APPROVE_INVITE = "approve-invite";
+        public const string TARGETS = "targets";
         #endregion
 
         #region Team

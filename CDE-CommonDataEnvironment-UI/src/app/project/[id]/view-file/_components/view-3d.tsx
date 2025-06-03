@@ -40,18 +40,18 @@ const View3D: React.FC<View3DProps> = ({ fileUrl, fileType }) => {
 
     // Load model based on file type
     const loadModel = () => {
-      let loader: THREE.GLTFLoader | THREE.OBJLoader | THREE.FBXLoader;
+      let loader;
       if (fileType === 'gltf' || fileType === 'glb') {
         loader = new GLTFLoader();
         loader.load(
           fileUrl,
-          (gltf) => {
+          (gltf: any) => {
             scene.add(gltf.scene);
             centerAndScale(gltf.scene);
             setLoading(false);
           },
           undefined,
-          (error) => {
+          (error: any) => {
             console.error('Error loading glTF/GLB:', error);
             setLoading(false);
           }
@@ -60,13 +60,13 @@ const View3D: React.FC<View3DProps> = ({ fileUrl, fileType }) => {
         loader = new OBJLoader();
         loader.load(
           fileUrl,
-          (obj) => {
+          (obj: any) => {
             scene.add(obj);
             centerAndScale(obj);
             setLoading(false);
           },
           undefined,
-          (error) => {
+          (error: any) => {
             console.error('Error loading OBJ:', error);
             setLoading(false);
           }
@@ -75,13 +75,13 @@ const View3D: React.FC<View3DProps> = ({ fileUrl, fileType }) => {
         loader = new FBXLoader();
         loader.load(
           fileUrl,
-          (fbx) => {
+          (fbx: any) => {
             scene.add(fbx);
             centerAndScale(fbx);
             setLoading(false);
           },
           undefined,
-          (error) => {
+          (error: any) => {
             console.error('Error loading FBX:', error);
             setLoading(false);
           }

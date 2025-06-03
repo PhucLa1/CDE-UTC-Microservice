@@ -107,7 +107,7 @@ export default function TableGroupUsers({ projectId, role, data, dataDropdown, g
                     </TableHeader>
                     <TableBody>
                         {filteredData.map((item, index) => (
-                            <UserInfoSheet groupId={groupId} currentUserId={currentUserId} isInGroup={true} projectId={projectId} currentRole={role} userProject={item} node={
+                            <UserInfoSheet key={index} groupId={groupId} currentUserId={currentUserId} isInGroup={true} projectId={projectId} currentRole={role} userProject={item} node={
                                 <TableRow key={index}>
                                     <TableCell className="flex items-center gap-3">
                                         <Avatar>

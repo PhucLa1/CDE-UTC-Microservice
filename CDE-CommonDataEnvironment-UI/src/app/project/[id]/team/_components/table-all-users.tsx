@@ -90,7 +90,7 @@ export default function TableAllUsers({ projectId, role, data, currentUserId }: 
                     </TableHeader>
                     <TableBody>
                         {filteredData.map((item, index) => (
-                            <UserInfoSheet groupId={0} currentUserId={currentUserId} isInGroup={false} projectId={projectId} currentRole={role} userProject={item} node={
+                            <UserInfoSheet key={index} groupId={0} currentUserId={currentUserId} isInGroup={false} projectId={projectId} currentRole={role} userProject={item} node={
                                 <TableRow key={index}>
                                     <TableCell className="flex items-center gap-3">
                                         <Avatar>

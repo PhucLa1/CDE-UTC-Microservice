@@ -36,7 +36,7 @@ const pathList: Array<PathItem> = [
         url: "/detail-user"
     },
 ];
-export default function page() {
+export default function Page() {
     const queryClient = useQueryClient()
     const [districtId, setDistrictId] = useState<number>(0)
     const [cityId, setCityId] = useState<number>(0)
@@ -261,7 +261,7 @@ export default function page() {
                                                                     </SelectTrigger>
                                                                     <SelectContent position="popper">
                                                                         {
-                                                                            cities?.data.map((item, _) => {
+                                                                            cities?.data.map((item) => {
                                                                                 return <SelectItem key={item.id} value={item.id!.toString()}>{item.name}</SelectItem>
                                                                             })
                                                                         }
@@ -294,7 +294,7 @@ export default function page() {
                                                                     </SelectTrigger>
                                                                     <SelectContent position="popper">
                                                                         {
-                                                                            districts?.data.map((item, _) => {
+                                                                            districts?.data.map((item) => {
                                                                                 return <SelectItem key={item.id} value={item.id!.toString()}>{item.name}</SelectItem>
                                                                             })
                                                                         }
@@ -324,7 +324,7 @@ export default function page() {
                                                                     </SelectTrigger>
                                                                     <SelectContent position="popper">
                                                                         {
-                                                                            wards?.data.map((item, _) => {
+                                                                            wards?.data.map((item) => {
                                                                                 return <SelectItem key={item.id} value={item.id!.toString()}>{item.name}</SelectItem>
                                                                             })
                                                                         }
@@ -495,7 +495,7 @@ export default function page() {
                                                                         </SelectTrigger>
                                                                         <SelectContent position="popper">
                                                                             {
-                                                                                jobTitles?.data.map((item, _) => {
+                                                                                jobTitles?.data.map((item) => {
                                                                                     return <SelectItem key={item.id} value={item.id!.toString()}>{item.name}</SelectItem>
                                                                                 })
                                                                             }

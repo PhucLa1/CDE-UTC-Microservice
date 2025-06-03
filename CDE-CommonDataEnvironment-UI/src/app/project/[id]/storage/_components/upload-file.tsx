@@ -1,22 +1,21 @@
 'use client';
-import { useState, ReactNode } from "react";
+import fileApiRequest from "@/apis/file.api";
 import { Button } from "@/components/ui/button";
+import { FileState, MultiFileDropzone } from "@/components/ui/multi-dropzone";
 import {
     Sheet,
-    SheetClose,
     SheetContent,
     SheetDescription,
     SheetFooter,
     SheetHeader,
     SheetTitle,
-    SheetTrigger,
-} from "@/components/ui/sheet"
-import { useEdgeStore } from "@/lib/edgestore";
-import { FileState, MultiFileDropzone } from "@/components/ui/multi-dropzone";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+    SheetTrigger
+} from "@/components/ui/sheet";
 import { File } from "@/data/schema/Project/file.schema";
-import fileApiRequest from "@/apis/file.api";
+import { useEdgeStore } from "@/lib/edgestore";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import path from "path";
+import { ReactNode, useState } from "react";
 
 type FormProps = {
     node: ReactNode;

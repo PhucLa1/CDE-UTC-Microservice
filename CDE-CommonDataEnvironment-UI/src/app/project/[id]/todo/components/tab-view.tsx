@@ -11,8 +11,8 @@ import DeleteFormComment from './delete-form-comment'
 import todoCommentApiRequest from '@/apis/todocomment.api'
 import { useQuery } from '@tanstack/react-query'
 import UpdateTodoComment from './update-todo-comment'
-import { useRole } from '../../layout'
 import { Role } from '@/data/enums/role.enum'
+import { useRole } from '@/hooks/use-role'
 interface Props{
   views: View[],
   files: File[],

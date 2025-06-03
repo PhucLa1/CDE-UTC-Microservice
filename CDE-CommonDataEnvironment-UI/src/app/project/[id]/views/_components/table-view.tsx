@@ -1,5 +1,5 @@
-import React from "react";
-import { FolderIcon, ChevronUpIcon, MoreVerticalIcon } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Table,
   TableBody,
@@ -8,11 +8,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Badge } from "@/components/ui/badge";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { View } from "@/data/schema/Project/view.schema";
+import { ChevronUpIcon, MoreVerticalIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import SheetView from "./sheet-view";
 type FormProps = {
   data: View[];
@@ -20,6 +19,7 @@ type FormProps = {
 };
 export default function TableView({ data, projectId }: FormProps) {
   const router = useRouter();
+  console.log(router);
   const [selectedView, setSelectedView] = useState<Set<number>>(new Set());
   const [selectAll, setSelectAll] = useState(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);

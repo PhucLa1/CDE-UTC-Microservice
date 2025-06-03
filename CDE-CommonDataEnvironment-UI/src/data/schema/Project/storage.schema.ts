@@ -1,3 +1,4 @@
+import { Permission } from "@/data/enums/permisson.enum";
 import { z } from "zod";
 // We're keeping a simple non-relational schema here.
 // IRL, you will have a schema for your data models.
@@ -21,5 +22,12 @@ export const storageDefault: Storage = {
 export type PathItemResult = {
     name: string,
     folderId: number
+}
+
+export interface UpdateStoragePermissionRequest {
+    id: number;
+    isFile: boolean;
+    access: Permission;
+    targetPermission: Record<number, Permission>;
 }
 

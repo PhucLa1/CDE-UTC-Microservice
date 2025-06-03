@@ -1,17 +1,22 @@
 "use client";
+import projectApiRequest from "@/apis/project.api";
 import { Button } from "@/components/custom/button";
 import { Input } from "@/components/ui/input";
-import { LayoutGrid, List, Search } from "lucide-react";
-import React, { useEffect, useState } from "react";
-import CreateProject from "./_components/create-project";
-import TableProject from "./_components/table-project";
-import GridProject from "./_components/grid-project";
-import { useQuery } from "@tanstack/react-query";
-import projectApiRequest from "@/apis/project.api";
 import { Project } from "@/data/schema/Project/project.schema";
-import { format } from "date-fns";
+import { useQuery } from "@tanstack/react-query";
+import { LayoutGrid, List, Search } from "lucide-react";
+import { useEffect, useState } from "react";
+import GridProject from "./_components/grid-project";
+import TableProject from "./_components/table-project";
 
-export default function page() {
+import dynamic from 'next/dynamic';
+ 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const DynamicComponentWithNoSSR = dynamic(
+  () => import('./_components/create-project'),
+  { ssr: false }
+)
+export default function Page() {
   const [viewMode, setViewMode] = useState<"table" | "grid">("table");
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
@@ -45,7 +50,7 @@ export default function page() {
         <div className="mb-8 space-y-6">
           <div className="flex justify-between items-center">
             <h1 className="text-3xl font-bold">Dự án</h1>
-            <CreateProject />
+            <DynamicComponentWithNoSSR  />
           </div>
 
           <div className="flex justify-between items-center gap-4">

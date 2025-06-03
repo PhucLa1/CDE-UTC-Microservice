@@ -10,6 +10,7 @@ namespace Project.Application.Storage.GetFileById
         (IBaseRepository<FileComment> fileCommentRepository,
         IBaseRepository<File> fileRepository,
         IBaseRepository<FileHistory> fileHistoryRepository,
+        IBaseRepository<FilePermission> filePermissionRepository,
         IUserGrpc userGrpc)
         : IQueryHandler<GetFileByIdRequest, ApiResponse<GetFileByIdResponse>>
     {
@@ -41,6 +42,7 @@ namespace Project.Application.Storage.GetFileById
                     Thumbnail = IMAGE_EXTENSION.Contains(e.Extension)
                     ? e.Url
                     : Setting.PROJECT_HOST + "/Extension/" + e.Extension.ConvertToUrl(),
+                    Access = e.Access,
                 })
                 .FirstOrDefaultAsync(e => e.Id == request.Id, cancellationToken);
 
@@ -60,7 +62,15 @@ namespace Project.Application.Storage.GetFileById
                 })
                 .ToListAsync(cancellationToken);
 
+
+
             var updatedByList = fileComments.Select(fc => fc.UpdatedBy).Distinct().ToList(); // Distinct IDs //List thứ 2
+
+            var filePermissions = await filePermissionRepository.GetAllQueryAble()
+                .Where(e => e.FileId == request.Id)
+                .ToListAsync(cancellationToken);
+
+            var targetIds = filePermissions.Select(e => e.TargetId).Distinct().ToList();
 
             //Xử lí phần file history
             var fileHistories = await fileHistoryRepository.GetAllQueryAble()
@@ -81,7 +91,7 @@ namespace Project.Application.Storage.GetFileById
             var createdByFileHistoryList = fileHistories.Select(fc => fc.CreatedBy).Distinct().ToList(); // Distinct IDs //List thứ 3
 
             //Ghép các id vào với nhau
-            var mergeList = createdByList.Concat(updatedByList).Concat(createdByFileHistoryList).Distinct().ToList();
+            var mergeList = createdByList.Concat(updatedByList).Concat(createdByFileHistoryList).Concat(targetIds).Distinct().ToList();
 
             var usersMergeList = await userGrpc
                 .GetUsersByIds(new GetUserRequestGrpc { Ids = mergeList });
@@ -117,11 +127,26 @@ namespace Project.Application.Storage.GetFileById
                         ImageUrl = fc.ImageUrl
                     };
                 }).ToList();
+                file.StoragePermissionResults = filePermissions.Select(e =>
+                {
+                    var uch = usersMergeList.First(u => u.Id == e.TargetId); // Find matching user
+                    return new StoragePermissionResult
+                    {
+                        Id = e.Id,
+                        TargetId = e.TargetId,
+                        Name = uch.FullName,
+                        Email = uch.Email,
+                        Access = e.Access,
+                        Url = uch.ImageUrl,
+                    };
+                }
+                ).ToList();
             }
             else
             {
                 file.FileHistoryResults = new List<FileHistoryResult>(); // Initialize empty list
                 file.UserCommentResults = new List<UserCommentResult>(); // Initialize empty list
+                file.StoragePermissionResults = new List<StoragePermissionResult>();
             }
             return new ApiResponse<GetFileByIdResponse>() { Data = file, Message = Message.GET_SUCCESSFULLY };
         }

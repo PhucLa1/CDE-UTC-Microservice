@@ -1,11 +1,7 @@
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Card } from "@/components/ui/card";
+import teamApiRequest from "@/apis/team.api";
+import { Button } from "@/components/custom/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Mail } from "lucide-react";
-import { ReactNode, useState } from "react";
-import { UserProject } from "@/data/schema/Project/userproject.schema";
-import { UserProjectStatus } from "@/data/enums/userprojectstatus.enum";
-import { Role } from "@/data/enums/role.enum";
+import { Card } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -13,10 +9,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Button } from "@/components/custom/button";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import teamApiRequest from "@/apis/team.api";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Role } from "@/data/enums/role.enum";
+import { UserProjectStatus } from "@/data/enums/userprojectstatus.enum";
+import { UserProject } from "@/data/schema/Project/userproject.schema";
 import { handleSuccessApi } from "@/lib/utils";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Mail } from "lucide-react";
+import { ReactNode, useState } from "react";
 import FormDeleteUser from "./form-delete-user";
 
 type FormProps = {
@@ -38,6 +38,7 @@ export default function UserInfoSheet({
   currentUserId,
   groupId,
 }: FormProps) {
+  console.log(currentUserId)
   const [role, setRole] = useState<Role>(userProject.role);
   const queryClient = useQueryClient();
   const { mutate: mutateUpdate, isPending: isPendingUpdate } = useMutation({

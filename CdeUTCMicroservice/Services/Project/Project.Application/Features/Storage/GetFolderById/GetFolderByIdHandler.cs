@@ -1,6 +1,7 @@
 ﻿using Project.Application.Dtos.Result;
 using Project.Application.Grpc;
 using Project.Application.Grpc.GrpcRequest;
+using Project.Domain.Entities;
 
 namespace Project.Application.Features.Storage.GetFolderById
 {
@@ -8,6 +9,7 @@ namespace Project.Application.Features.Storage.GetFolderById
         (IBaseRepository<FolderComment> folderCommentRepository,
         IBaseRepository<Folder> folderRepository,
         IBaseRepository<FolderHistory> folderHistoryRepository,
+        IBaseRepository<FolderPermission> folderPermissionRepository,
         IUserGrpc userGrpc)
         : IQueryHandler<GetFolderByIdRequest, ApiResponse<GetFolderByIdResponse>>
     {
@@ -27,6 +29,7 @@ namespace Project.Application.Features.Storage.GetFolderById
                     Name = e.Name,
                     CreatedAt = e.CreatedAt.ConvertToFormat(currentDateDisplay, currenTimeDisplay),
                     CreatedBy = e.CreatedBy,
+                    Access = e.Access,
                     TagResults = e.FolderTags.Where(f => f.Tag != null && f.Tag.Name != null).Select(e => new TagResult()
                     {
                         Id = e.TagId.Value,
@@ -66,8 +69,15 @@ namespace Project.Application.Features.Storage.GetFolderById
 
             var createdByFolderHistoryList = folderHistories.Select(fc => fc.CreatedBy).Distinct().ToList(); // Distinct IDs //List thứ 3
 
+            var folderPermissions = await folderPermissionRepository.GetAllQueryAble()
+                .Where(e => e.FolderId == request.Id)
+                .ToListAsync(cancellationToken);
+
+            var targetIds = folderPermissions.Select(e => e.TargetId).Distinct().ToList();
+
+
             //Ghép các id vào với nhau
-            var mergeList = createdByList.Concat(updatedByList).Concat(createdByFolderHistoryList).Distinct().ToList();
+            var mergeList = createdByList.Concat(updatedByList).Concat(createdByFolderHistoryList).Concat(targetIds).Distinct().ToList();
 
             var usersMergeList = await userGrpc
                .GetUsersByIds(new GetUserRequestGrpc { Ids = mergeList });
@@ -102,11 +112,26 @@ namespace Project.Application.Features.Storage.GetFolderById
                         Name = fc.Name
                     };
                 }).ToList();
+                folder.StoragePermissionResults = folderPermissions.Select(e =>
+                {
+                    var uch = usersMergeList.First(u => u.Id == e.TargetId); // Find matching user
+                    return new StoragePermissionResult
+                    {
+                        Id = e.Id,
+                        TargetId = e.TargetId,
+                        Name = uch.FullName,
+                        Email = uch.Email,
+                        Access = e.Access,
+                        Url = uch.ImageUrl,
+                    };
+                }
+                ).ToList();
             }
             else
             {
                 folder.FolderHistoryResults = new List<FolderHistoryResult>(); // Initialize empty list
                 folder.UserCommentResults = new List<UserCommentResult>(); // Initialize empty list
+                folder.StoragePermissionResults = new List<StoragePermissionResult>();
             }
             return new ApiResponse<GetFolderByIdResponse>() { Data = folder, Message = Message.GET_SUCCESSFULLY };
         }

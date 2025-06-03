@@ -21,6 +21,7 @@ interface DataTableRowActionsProps<TData> {
 }
 
 export default function DataTableRowActions<TData>({ row, handleView, handleEdit, handleDelete }: DataTableRowActionsProps<TData>) {
+  console.log("DataTableRowActions row:", row)
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

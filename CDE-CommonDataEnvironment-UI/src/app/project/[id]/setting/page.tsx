@@ -2,16 +2,16 @@
 import AppBreadcrumb, { PathItem } from '@/components/custom/_breadcrumb'
 import React from 'react'
 import GetTypes from './_component/get-types';
-import { useRole } from '../layout';
 import GetStatuses from './_component/get-statuses';
 import GetPriorities from './_component/get-priorities';
+import { useRole } from '@/hooks/use-role';
 const pathList: Array<PathItem> = [
     {
         name: "Cấu hình dự án",
         url: "#"
     },
 ];
-export default function page({ params }: { params: { id: string } }) {
+export default function Page({ params }: { params: { id: string } }) {
     const { roleDetail } = useRole()
     return (
         <>

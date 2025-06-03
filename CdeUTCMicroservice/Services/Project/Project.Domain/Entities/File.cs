@@ -14,7 +14,9 @@
         public FileType FileType { get; set; } = default!;
         public string MimeType { get; set; } = default!;
         public string Extension { get; set; } = default!;
+        public Access Access { get; set; } = Access.Write;
         public ICollection<FileTag>? FileTags { get; set; }
+        public ICollection<FilePermission>? FilePermissions { get; set; }
 
     }
 

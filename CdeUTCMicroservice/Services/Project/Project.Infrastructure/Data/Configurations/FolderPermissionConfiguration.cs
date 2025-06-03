@@ -4,9 +4,9 @@ namespace Project.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<FolderPermission> builder)
         {
-            builder.HasOne<Folder>()
-                .WithMany()
-                .HasForeignKey(o => o.FolderId)
+            builder.HasOne(fp => fp.Folder)
+                .WithMany(f => f.FolderPermissions)
+                .HasForeignKey(fp => fp.FolderId)
                 .OnDelete(DeleteBehavior.SetNull);
         }
     }

@@ -1,17 +1,15 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { useToast } from "@/hooks/use-toast";
-import ChatMessage from "./_components/chat-message";
-import ChatInput from "./_components/chat-input";
+import geminiApiRequest, { GeminiAskRequest } from "@/apis/gemini.api";
 import { Badge } from "@/components/ui/badge";
-import { Bot, ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import ConversationList from "./_components/conversation-list";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Conversation } from "@/data/schema/Project/conversation.schema";
 import { Message } from "@/data/schema/Project/message.schema";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import geminiApiRequest, { GeminiAskRequest } from "@/apis/gemini.api";
-import { Conversation } from "@/data/schema/Project/conversation.schema";
+import { Bot } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import ChatInput from "./_components/chat-input";
+import ChatMessage from "./_components/chat-message";
+import ConversationList from "./_components/conversation-list";
 
 const ChatContainer = ({ params }: { params: { id: string } }) => {
   const queryClient = useQueryClient();
@@ -77,7 +75,7 @@ const ChatContainer = ({ params }: { params: { id: string } }) => {
       projectId: Number(params.id),
     });
   };
-  console.log(conversation);
+  console.log(conversation, isLoading);
   return (
     <div className="flex gap-2 mt-8">
       <div className="flex-1 my-auto h-[90vh] sm:h-[80vh] bg-card rounded-lg sm:rounded-xl md:rounded-2xl shadow-lg border border-border overflow-hidden flex flex-col">

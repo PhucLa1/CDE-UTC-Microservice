@@ -1,23 +1,23 @@
 "use client";
+import storageApiRequest from "@/apis/storage.api";
 import AppBreadcrumb, { PathItem } from "@/components/custom/_breadcrumb";
 import { Button } from "@/components/custom/button";
 import { Input } from "@/components/ui/input";
-import { LayoutGrid, List, Search } from "lucide-react";
-import React, { useEffect, useRef, useState } from "react";
-import CreateFolder from "../_components/create-folder";
-import { FaFolder, FaUpload } from "react-icons/fa";
-import UploadFile from "../_components/upload-file";
 import { useQuery } from "@tanstack/react-query";
-import storageApiRequest from "@/apis/storage.api";
-import TableStorage from "../_components/table-storage";
+import { LayoutGrid, List, Search } from "lucide-react";
+import { useState } from "react";
+import { FaFolder, FaUpload } from "react-icons/fa";
+import CreateFolder from "../_components/create-folder";
 import GridStorage from "../_components/grid-storage";
+import TableStorage from "../_components/table-storage";
+import UploadFile from "../_components/upload-file";
 const pathList: Array<PathItem> = [
   {
     name: "Tệp & Thư mục",
     url: "#",
   },
 ];
-export default function page({
+export default function Page({
   params,
 }: {
   params: { id: string; parentId: string };
@@ -133,7 +133,7 @@ export default function page({
       </div>
       <div>
         <AppBreadcrumb
-          pathList={dataPath!.data.map((item, index) => {
+          pathList={dataPath!.data.map((item) => {
             return {
               name: item.name,
               url: `${item.folderId}`,

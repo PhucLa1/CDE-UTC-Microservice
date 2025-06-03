@@ -9,15 +9,16 @@ import { Todo } from "@/data/schema/Project/todo.schema";
 import { UpsertTodo } from "./components/form-crud-todo";
 import { TaskCard } from "./components/card";
 import todoApiRequest from "@/apis/todo.api";
-import { useRole } from "../layout";
 import { TodoVisibility } from "@/data/enums/todovisibility.enum";
+import { Role } from "@/data/enums/role.enum";
+import { useRole } from "@/hooks/use-role";
 const pathList: Array<PathItem> = [
   {
     name: "Danh sách việc cần làm",
     url: "#",
   },
 ];
-export default function page({ params }: { params: { id: string } }) {
+export default function Page({ params }: { params: { id: string } }) {
   const { roleDetail } = useRole();
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState(
@@ -56,7 +57,7 @@ export default function page({ params }: { params: { id: string } }) {
           <AppBreadcrumb pathList={pathList} className="mt-2" />
         </div>
         <div>
-          {roleDetail?.todoVisibility == TodoVisibility.Default ? <Button
+          {roleDetail?.todoVisibility == TodoVisibility.Default || roleDetail?.role == Role.Admin ? <Button
             onClick={() => {
               setIsOpen(true);
               setMode("ADD");

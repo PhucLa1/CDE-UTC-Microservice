@@ -1,10 +1,9 @@
-import { useState } from "react";
-import { format } from "date-fns";
-import { Plus, MessageSquare } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Conversation } from "@/data/schema/Project/conversation.schema";
+import { cn } from "@/lib/utils";
+import { format } from "date-fns";
+import { MessageSquare, Plus } from "lucide-react";
 
 interface ConversationListProps {
   className?: string;

@@ -6,8 +6,8 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { TimePickerDialog } from "./time-picker-dialog";
 import { ActivityTypeSchemaWithIcon } from "../page";
-import { useRole } from "../../layout";
 import { Role } from "@/data/enums/role.enum";
+import { useRole } from "@/hooks/use-role";
 
 interface NotificationItemProps {
   notification: ActivityTypeSchemaWithIcon;

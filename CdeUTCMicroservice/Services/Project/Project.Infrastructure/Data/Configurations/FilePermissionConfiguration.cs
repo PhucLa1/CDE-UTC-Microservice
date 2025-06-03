@@ -4,9 +4,9 @@ namespace Project.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<FilePermission> builder)
         {
-            builder.HasOne<File>()
-                .WithMany()
-                .HasForeignKey(o => o.FileId)
+            builder.HasOne(fp => fp.File)
+                .WithMany(f => f.FilePermissions)
+                .HasForeignKey(fp => fp.FileId)
                 .OnDelete(DeleteBehavior.SetNull);
         }
     }

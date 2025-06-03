@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from 'react'
 import {
     AlertDialog,
@@ -18,6 +19,8 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import projectApiRequest from '@/apis/project.api'
 import { handleSuccessApi } from '@/lib/utils'
 import { Plus } from 'lucide-react'
+
+
 export default function CreateProject() {
     const [open, setOpen] = useState<boolean>(false)
     const queryClient = useQueryClient()
@@ -155,9 +158,9 @@ export default function CreateProject() {
                                                     type="file"
                                                     accept="image/*"
                                                     onChange={(e) => {
-                                                        const file = e.target.files?.[0];
+                                                        const file = e.target.files;
                                                         if (file) {
-                                                            field.onChange(file); // Cập nhật giá trị vào form
+                                                            field.onChange(file[0]); // Cập nhật giá trị vào form
                                                         }
                                                     }}
                                                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"

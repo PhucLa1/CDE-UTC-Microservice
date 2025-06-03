@@ -1,9 +1,9 @@
-import storageApiRequest from '@/apis/storage.api'
-import React, { useState } from 'react'
-import { useQuery } from '@tanstack/react-query';
-import { Checkbox } from "@/components/ui/checkbox"
-import { Folder, FileText, ImageIcon } from "lucide-react"
+import storageApiRequest from '@/apis/storage.api';
+import { Checkbox } from "@/components/ui/checkbox";
 import { File } from '@/data/schema/Project/file.schema';
+import { useQuery } from '@tanstack/react-query';
+import { Folder } from "lucide-react";
+import React, { useState } from 'react';
 interface Props {
   projectId: number;
   selectedFiles: File[];

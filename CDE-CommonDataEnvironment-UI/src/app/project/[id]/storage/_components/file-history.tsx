@@ -7,7 +7,6 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 import { FileHistory } from "@/data/schema/Project/filehistory.schema"
-import { FileIcon } from "lucide-react"
 import { ReactNode } from "react"
 
 type FormProps = {

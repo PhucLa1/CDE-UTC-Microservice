@@ -28,6 +28,7 @@ const ChatMessage = ({ message }: ChatMessageProps) => {
         setTimeout(() => setCopied(false), 2000);
       })
       .catch((err) => {
+        console.log("Failed to copy message: ", err);
         toast({
           variant: "destructive",
           description: "Failed to copy message",
@@ -39,6 +40,7 @@ const ChatMessage = ({ message }: ChatMessageProps) => {
   const formatTimestamp = (date: Date) => {
     return format(date, "h:mm a");
   };
+  console.log("formatTimestamp: ", formatTimestamp(new Date()));
 
   // Function to render message content with code blocks
   const renderContent = (content: string) => {
